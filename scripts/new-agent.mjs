@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 // Fairdrive package boilerplate: package.json, bin, index, test runner, licence,
-// and the shared tests (MCP stdio, arg docs, evals). The agent's own manifest,
-// logic, demo, fixtures, evals and README are written by hand.
+// changelog, the shared tests (MCP stdio, arg docs, evals) and the contract tests.
+// The agent's own logic, manifest, demo, fixtures, evals and README are written by hand.
+// Run it again to refresh the generated files; hand-written files are kept.
 //
-//   node scripts/new-agent.mjs <star>-of-<process> "<one-line description>" kw1,kw2
+//   node scripts/new-agent.mjs <breed>-of-<job> "<one-line description>" kw1,kw2 [logic-module]
 import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repo = join(dirname(fileURLToPath(import.meta.url)), '..');
 const [name, description, kw = ''] = process.argv.slice(2);
-if (!name || !/^[a-z]+-of-[a-z]+$/.test(name) || !description) { console.error('usage: new-agent.mjs <star>-of-<process> "<description>" kw1,kw2'); process.exit(2); }
+if (!name || !/^[a-z]+-of-[a-z]+(-[a-z]+)*$/.test(name) || !description) { console.error('usage: new-agent.mjs <breed>-of-<job> "<description>" kw1,kw2'); process.exit(2); }
 const root = join(repo, 'packages', name);
-const prefix = name.split('-')[0];
 const corePkg = JSON.parse(readFileSync(join(repo, 'packages/fairdrive-core/package.json'), 'utf8'));
 const write = (f, text, { keep = false } = {}) => { const p = join(root, f); if (keep && existsSync(p)) return; mkdirSync(dirname(p), { recursive: true }); writeFileSync(p, text); };
 
@@ -25,10 +25,10 @@ write('package.json', JSON.stringify({
   repository: { type: 'git', url: 'git+https://github.com/fpavia111-creator/fairdrive-agents.git', directory: `packages/${name}` },
   homepage: `https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/${name}#readme`,
   bugs: { url: 'https://github.com/fpavia111-creator/fairdrive-agents/issues' },
-  keywords: ['mcp', 'mcp-server', 'freight', 'logistics', 'freight-audit', 'fairdrive', ...kw.split(',').filter(Boolean)],
+  keywords: ['mcp', 'mcp-server', 'auto-dealer', 'car-dealership', 'dealership', 'fairdrive', ...kw.split(',').filter(Boolean)],
 }, null, 2) + '\n');
 write(`bin/${name}.js`, `#!/usr/bin/env node\nimport { fileURLToPath } from 'node:url';\nimport { main } from 'fairdrive-core';\nimport { manifest } from '../src/manifest.js';\nimport { demo } from '../src/demo.js';\n\nmain(manifest, { bin: '${name}', demo, evalFile: fileURLToPath(new URL('../evals/cases.json', import.meta.url)) });\n`);
-write('src/index.js', `export { manifest } from './manifest.js';\nexport * from './${process.argv[5] || 'logic'}.js';\n`, { keep: true });
+write('src/index.js', `export { manifest } from './manifest.js';\nexport * from './check.js';\n`, { keep: true });
 write('scripts/run-tests.cjs', readFileSync(join(repo, 'packages/fairdrive-core/scripts/run-tests.cjs'), 'utf8'));
 write('LICENSE', readFileSync(join(repo, 'LICENSE'), 'utf8'));
 write('CHANGELOG.md', `# Changelog\n\n## 0.1.0 (unreleased)\n\n- First version (Fairdrive ver 1).\n`, { keep: true });
@@ -60,7 +60,7 @@ test('one-click categories are never allow, and the default is block', () => {
 test('private evals all pass', async () => {
   const r = await runEvalFile(manifest, fileURLToPath(new URL('../evals/cases.json', import.meta.url)));
   for (const c of r.results) assert.ok(c.pass, \`\${c.id}: \${c.fails.join('; ')}\`);
-  assert.ok(r.total >= 6, 'at least six eval cases');
+  assert.ok(r.total >= 15, 'at least fifteen eval cases');
 });
 
 test('stdio MCP: initialize, list, refuse an unknown tool, write the audit log', async () => {
@@ -81,5 +81,12 @@ test('stdio MCP: initialize, list, refuse an unknown tool, write the audit log',
     assert.ok(existsSync(join(state, 'audit.jsonl')));
   } finally { child.kill(); }
 });
+`);
+write('test/contract.test.js', `// Shared contract checks on this agent's own manifest, fixtures and eval cases.
+import { fileURLToPath } from 'node:url';
+import { agentContract } from 'fairdrive-core/testkit';
+import { manifest } from '../src/index.js';
+
+agentContract({ manifest, casesFile: fileURLToPath(new URL('../evals/cases.json', import.meta.url)) });
 `);
 console.log(`wrote ${root}`);

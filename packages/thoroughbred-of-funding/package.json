@@ -1,0 +1,57 @@
+{
+  "name": "thoroughbred-of-funding",
+  "version": "0.1.0",
+  "description": "Thoroughbred of Funding: ages every financed contract that has not funded yet (contracts in transit) by lender, with the stipulations still open, catches contracts funded short, money a lender sent that the DMS still shows as unfunded, and contracts marked funded that are not on the lender statement, and drafts the follow-up to a lender. Never submits to a lender or posts to the ledger.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "thoroughbred-of-funding": "bin/thoroughbred-of-funding.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/thoroughbred-of-funding.js demo",
+    "eval": "node bin/thoroughbred-of-funding.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/thoroughbred-of-funding"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/thoroughbred-of-funding#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "contracts-in-transit",
+    "funding",
+    "f-and-i",
+    "lender"
+  ]
+}
