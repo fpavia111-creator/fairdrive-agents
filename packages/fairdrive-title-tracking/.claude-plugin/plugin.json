@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-title-tracking",
+  "version": "0.1.0",
+  "description": "Tracks title applications, trade-in titles, registrations and temporary tags for every delivered deal against the days you set, and lists what is late or about to expire. Never files with the DMV.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-title-tracking#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "title",
+    "registration",
+    "temp-tags",
+    "dmv"
+  ]
+}

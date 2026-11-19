@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-product-cancellations": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-product-cancellations@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-ofac-red-flags": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-ofac-red-flags@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

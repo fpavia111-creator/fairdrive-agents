@@ -78,7 +78,7 @@ function headersOf(records) {
 export const conceptOf = (f, fd) => (fd && fd.translate === false ? null : fd && typeof fd.translate === 'string' ? fd.translate : FIELD_CONCEPTS[f] || f);
 
 // ---- Units ----
-// Freight files weigh in pounds or kilograms and measure in miles or kilometres.
+// Unit handling kept from the shared core (pounds and kilograms, miles and kilometres); no Fairdrive field declares a unit, so odometers and amounts are read as written.
 // A field that declares the unit the agent works in (fd.unit, or the default
 // below for its name) is converted when the column says it holds another unit
 // ("Weight (kg)", "Distance km", "重量(kg)"), when fairdrive-sources.json says so

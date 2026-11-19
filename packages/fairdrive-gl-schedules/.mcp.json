@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-gl-schedules": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-gl-schedules@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

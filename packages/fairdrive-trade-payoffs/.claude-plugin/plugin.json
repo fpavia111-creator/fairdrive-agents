@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-trade-payoffs",
+  "version": "0.1.0",
+  "description": "Lists every trade-in lien payoff not yet sent, sent after the quote expired, short of the quote plus per diem, not yet cleared or without a lien release, and drafts a payoff batch for one named person. Never sends money.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-trade-payoffs#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "trade-in",
+    "payoffs",
+    "lien",
+    "title"
+  ]
+}

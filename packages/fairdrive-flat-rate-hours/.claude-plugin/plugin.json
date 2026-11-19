@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-flat-rate-hours",
+  "version": "0.1.0",
+  "description": "Compares each technician flagged hours with clocked attendance and time punched on repair orders, works out proficiency and efficiency, and lists flags with no time, flags far above time and days flagged without a clock-in. Never changes hours or payroll.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-flat-rate-hours#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "technicians",
+    "flat-rate",
+    "productivity",
+    "service"
+  ]
+}

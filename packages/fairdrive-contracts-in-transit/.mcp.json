@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-contracts-in-transit": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-contracts-in-transit@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

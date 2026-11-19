@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-parts-receiving": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-parts-receiving@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

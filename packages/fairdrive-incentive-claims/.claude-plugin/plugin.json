@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-incentive-claims",
+  "version": "0.1.0",
+  "description": "Matches the manufacturer incentive and holdback you expect on each unit against the manufacturer statement and lists claims not submitted, submitted but unpaid, paid short, rejected or charged back, and drafts an inquiry to the incentive desk. Never submits a claim.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-incentive-claims#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "incentives",
+    "rebates",
+    "holdback",
+    "manufacturer"
+  ]
+}

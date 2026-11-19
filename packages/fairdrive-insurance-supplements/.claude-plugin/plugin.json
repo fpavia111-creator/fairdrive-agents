@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-insurance-supplements",
+  "version": "0.1.0",
+  "description": "Tracks every supplement sent to an insurer, lists those waiting past your follow-up days, approved short or denied, totals them by insurer, and drafts a follow-up to the adjuster. Never submits to an insurer.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-insurance-supplements#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "collision",
+    "supplements",
+    "insurance",
+    "body-shop"
+  ]
+}

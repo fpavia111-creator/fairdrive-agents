@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-flat-rate-hours": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-flat-rate-hours@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

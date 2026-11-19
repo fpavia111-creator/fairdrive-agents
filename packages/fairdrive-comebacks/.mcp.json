@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-comebacks": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-comebacks@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

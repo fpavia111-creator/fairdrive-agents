@@ -1,0 +1,508 @@
+{
+  "name": "fairdrive",
+  "owner": {
+    "name": "Fairdrive"
+  },
+  "metadata": {
+    "description": "Thirty-one agents for auto dealers, repair shops and body shops. Each reads your exported files, writes reports locally and waits for a named person before anything that moves money, sends a message or changes a live system."
+  },
+  "plugins": [
+    {
+      "name": "fairdrive-comebacks",
+      "source": "./packages/fairdrive-comebacks",
+      "description": "Finds repair orders where the same vehicle came back within your days and miles for the same operation or concern, and totals comebacks by technician and operation. Never charges a technician.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "comebacks",
+        "repeat-repairs",
+        "service",
+        "quality"
+      ]
+    },
+    {
+      "name": "fairdrive-contracts-in-transit",
+      "source": "./packages/fairdrive-contracts-in-transit",
+      "description": "Ages every financed contract that has not funded yet (contracts in transit) by lender, with the stipulations still open, catches contracts funded short, money a lender sent that the DMS still shows as unfunded, and contracts marked funded that are not on the lender statement, and drafts the follow-up to a lender. Never submits to a lender or posts to the ledger.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "contracts-in-transit",
+        "funding",
+        "f-and-i",
+        "lender"
+      ]
+    },
+    {
+      "name": "fairdrive-curtailments",
+      "source": "./packages/fairdrive-curtailments",
+      "description": "Works out the curtailment (principal pay-down) each floored unit owes under your lender schedule, lists what is overdue and what falls due in the coming weeks, and totals it by week. Never pays a lender.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "floorplan",
+        "curtailments",
+        "inventory",
+        "cash-planning"
+      ]
+    },
+    {
+      "name": "fairdrive-customer-deposits",
+      "source": "./packages/fairdrive-customer-deposits",
+      "description": "Matches customer deposits with deals and lists deposits held with no deal, deposits on dead deals (refund due), deposits not applied on delivered deals and refunds overdue. Never issues a refund.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "deposits",
+        "customer-deposits",
+        "deals",
+        "cash"
+      ]
+    },
+    {
+      "name": "fairdrive-deal-jackets",
+      "source": "./packages/fairdrive-deal-jackets",
+      "description": "Checks every deal jacket against the documents a deal of its type should hold (buyer's order, contract, odometer statement, title application, privacy notice, OFAC and Red Flags records, Buyers Guide on used cars, trade-in papers) and lists what is missing or unsigned, oldest delivery first. Never books, changes or sends a deal.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "deal-jacket",
+        "f-and-i",
+        "dealer-compliance-paperwork",
+        "dms"
+      ]
+    },
+    {
+      "name": "fairdrive-dmv-fees",
+      "source": "./packages/fairdrive-dmv-fees",
+      "description": "Compares the title, registration and plate fees collected on each deal with what the DMV or tag agency charged, and lists fees over-collected, under-collected, not yet paid and charges with no deal. Never issues a refund.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "dmv",
+        "fees",
+        "title",
+        "registration"
+      ]
+    },
+    {
+      "name": "fairdrive-estimate-vs-invoice",
+      "source": "./packages/fairdrive-estimate-vs-invoice",
+      "description": "Compares the latest estimate and supplements on each collision repair (CCC, Mitchell) with the final invoice by labor, parts, materials and sublet, and lists repairs invoiced over or under the estimate, invoices with no estimate and estimates not invoiced. Never contacts an insurer.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "collision",
+        "body-shop",
+        "estimates",
+        "invoices"
+      ]
+    },
+    {
+      "name": "fairdrive-finance-reserve",
+      "source": "./packages/fairdrive-finance-reserve",
+      "description": "Works out the finance reserve each deal should earn from the buy rate, contract rate, term and your lender share, compares it and the product income with what lenders and providers actually paid, and drafts a reserve inquiry to a lender. Never posts to the ledger.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "finance-reserve",
+        "dealer-participation",
+        "f-and-i",
+        "lender"
+      ]
+    },
+    {
+      "name": "fairdrive-flat-rate-hours",
+      "source": "./packages/fairdrive-flat-rate-hours",
+      "description": "Compares each technician flagged hours with clocked attendance and time punched on repair orders, works out proficiency and efficiency, and lists flags with no time, flags far above time and days flagged without a clock-in. Never changes hours or payroll.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "technicians",
+        "flat-rate",
+        "productivity",
+        "service"
+      ]
+    },
+    {
+      "name": "fairdrive-floorplan-audit",
+      "source": "./packages/fairdrive-floorplan-audit",
+      "description": "Matches the DMS vehicle inventory against the floorplan lender statement and lists units sold but not paid off, units on the statement the DMS does not have, units on the lot not floored and balance differences, and drafts a payoff list for one named person. Never pays a lender.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "floorplan",
+        "floor-plan-audit",
+        "inventory",
+        "lender"
+      ]
+    },
+    {
+      "name": "fairdrive-gl-schedules",
+      "source": "./packages/fairdrive-gl-schedules",
+      "description": "Ties each DMS schedule (contracts in transit, receivables, warranty, factory) to its ledger balance, ages the open items by control number, and lists items past 90 days, controls that net to zero and credit balances. Never posts or purges.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "schedules",
+        "general-ledger",
+        "reconciliation",
+        "dealership-accounting"
+      ]
+    },
+    {
+      "name": "fairdrive-incentive-claims",
+      "source": "./packages/fairdrive-incentive-claims",
+      "description": "Matches the manufacturer incentive and holdback you expect on each unit against the manufacturer statement and lists claims not submitted, submitted but unpaid, paid short, rejected or charged back, and drafts an inquiry to the incentive desk. Never submits a claim.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "incentives",
+        "rebates",
+        "holdback",
+        "manufacturer"
+      ]
+    },
+    {
+      "name": "fairdrive-insurance-supplements",
+      "source": "./packages/fairdrive-insurance-supplements",
+      "description": "Tracks every supplement sent to an insurer, lists those waiting past your follow-up days, approved short or denied, totals them by insurer, and drafts a follow-up to the adjuster. Never submits to an insurer.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "collision",
+        "supplements",
+        "insurance",
+        "body-shop"
+      ]
+    },
+    {
+      "name": "fairdrive-loaner-fleet",
+      "source": "./packages/fairdrive-loaner-fleet",
+      "description": "Checks service loaners and demonstrators against your days and mileage limits, and lists units over or near a limit, loaners out with no repair order and loan agreements open too long. Never retails a unit.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "loaners",
+        "demos",
+        "fleet",
+        "service"
+      ]
+    },
+    {
+      "name": "fairdrive-ofac-red-flags",
+      "source": "./packages/fairdrive-ofac-red-flags",
+      "description": "Checks that every deal has an OFAC check and a Red Flags (identity) check record for each buyer, dated before delivery, with the result recorded. It checks that records exist; it makes no compliance determination and never clears a match.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "ofac",
+        "red-flags",
+        "identity-theft",
+        "f-and-i"
+      ]
+    },
+    {
+      "name": "fairdrive-open-repair-orders",
+      "source": "./packages/fairdrive-open-repair-orders",
+      "description": "Ages every open repair order by advisor and pay type, and lists those past their promised date, warranty and internal orders open too long, and orders waiting on parts. Never closes a repair order.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "open-ro",
+        "repair-orders",
+        "service",
+        "work-in-process"
+      ]
+    },
+    {
+      "name": "fairdrive-parts-obsolescence",
+      "source": "./packages/fairdrive-parts-obsolescence",
+      "description": "Classes every part on hand by months since its last sale, values idle and obsolete stock, and lists returnable parts worth sending back first. Never adjusts inventory or returns parts.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "parts",
+        "obsolescence",
+        "inventory",
+        "parts-department"
+      ]
+    },
+    {
+      "name": "fairdrive-parts-receiving",
+      "source": "./packages/fairdrive-parts-receiving",
+      "description": "Matches parts received against vendor and manufacturer invoices by purchase order and part number, and lists parts billed but not received, received but not billed, price differences and duplicate invoice lines, and drafts a credit request. Never pays an invoice.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "parts",
+        "receiving",
+        "invoices",
+        "three-way-match"
+      ]
+    },
+    {
+      "name": "fairdrive-policy-adjustments",
+      "source": "./packages/fairdrive-policy-adjustments",
+      "description": "Lists policy and goodwill adjustments with no approver, self-approved, over the approval limit, with no reason or repeated on the same vehicle, and totals them by advisor and reason. Never posts an adjustment.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "policy",
+        "goodwill",
+        "service",
+        "controls"
+      ]
+    },
+    {
+      "name": "fairdrive-product-cancellations",
+      "source": "./packages/fairdrive-product-cancellations",
+      "description": "Recomputes the dealer chargeback on every cancelled F&I product (service contract, GAP, maintenance, appearance) from the product's profit and the unused share of its term, flags chargebacks above that figure or above the profit earned, and refunds not yet sent, and drafts a dispute to the provider. Never cancels a product or issues a refund.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "f-and-i",
+        "chargebacks",
+        "product-cancellations",
+        "service-contracts",
+        "gap"
+      ]
+    },
+    {
+      "name": "fairdrive-reconditioning",
+      "source": "./packages/fairdrive-reconditioning",
+      "description": "Follows every used unit from acquisition to front-line ready, with reconditioning cost against budget, days in recon, units stuck with open repair orders and units with no recon order at all. Never closes a repair order.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "reconditioning",
+        "used-cars",
+        "recon",
+        "service"
+      ]
+    },
+    {
+      "name": "fairdrive-repair-order-margins",
+      "source": "./packages/fairdrive-repair-order-margins",
+      "description": "Works out labor and parts gross profit on every closed repair order by pay type and advisor, and lists repair orders under your margin floors, parts sold below cost and customer-pay labor given away. Never reprices a repair order.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "repair-orders",
+        "gross-profit",
+        "service",
+        "parts"
+      ]
+    },
+    {
+      "name": "fairdrive-sales-commissions",
+      "source": "./packages/fairdrive-sales-commissions",
+      "description": "Works out each salesperson commission from your pay plans (front and back percentages, minimums, split deals), compares it with what was paid, and drafts the commission sheet for one named person to approve. Never runs payroll.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "commissions",
+        "pay-plans",
+        "salespeople",
+        "payroll"
+      ]
+    },
+    {
+      "name": "fairdrive-sales-tax",
+      "source": "./packages/fairdrive-sales-tax",
+      "description": "Recomputes the sales tax on each deal from the county rate table you supply (rate, trade-in credit, cap) and lists deals taxed over or under, and deals in a county with no rate. Never files a return.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "sales-tax",
+        "county",
+        "deals",
+        "tax"
+      ]
+    },
+    {
+      "name": "fairdrive-service-contract-remittances",
+      "source": "./packages/fairdrive-service-contract-remittances",
+      "description": "Matches every service contract sold with its remittance to the provider and lists contracts not remitted within your days, remitted short or over, remitted twice or remitted with no sale. Never pays a provider.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "service-contracts",
+        "remittance",
+        "f-and-i",
+        "provider"
+      ]
+    },
+    {
+      "name": "fairdrive-sublet-invoices",
+      "source": "./packages/fairdrive-sublet-invoices",
+      "description": "Matches sublet lines on repair orders against vendor invoices and lists invoices above the purchase order, closed orders with no sublet invoice, invoices with no repair order, sublet billed below cost and duplicate invoices. Never pays an invoice.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "sublet",
+        "repair-orders",
+        "invoices",
+        "service"
+      ]
+    },
+    {
+      "name": "fairdrive-title-tracking",
+      "source": "./packages/fairdrive-title-tracking",
+      "description": "Tracks title applications, trade-in titles, registrations and temporary tags for every delivered deal against the days you set, and lists what is late or about to expire. Never files with the DMV.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "title",
+        "registration",
+        "temp-tags",
+        "dmv"
+      ]
+    },
+    {
+      "name": "fairdrive-trade-payoffs",
+      "source": "./packages/fairdrive-trade-payoffs",
+      "description": "Lists every trade-in lien payoff not yet sent, sent after the quote expired, short of the quote plus per diem, not yet cleared or without a lien release, and drafts a payoff batch for one named person. Never sends money.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "trade-in",
+        "payoffs",
+        "lien",
+        "title"
+      ]
+    },
+    {
+      "name": "fairdrive-used-vehicle-aging",
+      "source": "./packages/fairdrive-used-vehicle-aging",
+      "description": "Ages the used-vehicle inventory, flags units past your wholesale age, priced above or well below market, priced below cost or with a stale price, and totals cost by age. Never changes a price or lists a car at auction.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "used-cars",
+        "inventory-aging",
+        "pricing",
+        "wholesale"
+      ]
+    },
+    {
+      "name": "fairdrive-warranty-claims",
+      "source": "./packages/fairdrive-warranty-claims",
+      "description": "Matches warranty claims submitted against the manufacturer statement and lists unpaid claims by age, claims paid short, rejections with their resubmission deadline and debits after payment, and drafts a review request. Never resubmits a claim.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "warranty",
+        "claims",
+        "service",
+        "manufacturer"
+      ]
+    },
+    {
+      "name": "fairdrive-we-owes",
+      "source": "./packages/fairdrive-we-owes",
+      "description": "Lists every we-owe (due bill) promised on a deal that is open past its promise date or not scheduled, and completed ones whose cost was never booked, with the open cost by age. Never contacts a customer.",
+      "version": "0.1.0",
+      "category": "automotive",
+      "keywords": [
+        "auto-dealer",
+        "car-dealership",
+        "dealership",
+        "we-owe",
+        "due-bills",
+        "deals",
+        "customer-promises"
+      ]
+    }
+  ]
+}

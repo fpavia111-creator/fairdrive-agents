@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-used-vehicle-aging",
+  "version": "0.1.0",
+  "description": "Ages the used-vehicle inventory, flags units past your wholesale age, priced above or well below market, priced below cost or with a stale price, and totals cost by age. Never changes a price or lists a car at auction.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-used-vehicle-aging#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "used-cars",
+    "inventory-aging",
+    "pricing",
+    "wholesale"
+  ]
+}

@@ -39,6 +39,9 @@ for (const n of readdirSync(PK).filter((x) => x.startsWith('fairdrive-') && x !=
     Object.values(m.sources || {}).some((s) => Object.values(s.fields).some((fd) => fd && fd.pii)) ? 'Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.' : 'This agent reads no customer columns. Results still pass through the customer-data masker, which replaces anything that looks like a phone number, e-mail or SSN.', '',
     '## Limits', '', ...(m.reportLimits || []).map((l) => `- ${l}`), '- Every figure comes from your files and settings. Check it before you act on it.', '',
   ].join('\n');
-  writeFileSync(f, text);
+  // Keep the generated part (readme-sections.mjs) when rewriting.
+  const old = existsSync(f) ? readFileSync(f, 'utf8') : '';
+  const gen = /<!-- generated:start -->[\s\S]*?<!-- generated:end -->/.exec(old);
+  writeFileSync(f, gen ? text.replace('\n## Limits', `\n${gen[0]}\n\n## Limits`) : text);
   console.log(`${n}: README written`);
 }

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-finance-reserve": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-finance-reserve@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

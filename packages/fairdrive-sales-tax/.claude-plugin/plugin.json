@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-sales-tax",
+  "version": "0.1.0",
+  "description": "Recomputes the sales tax on each deal from the county rate table you supply (rate, trade-in credit, cap) and lists deals taxed over or under, and deals in a county with no rate. Never files a return.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-sales-tax#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "sales-tax",
+    "county",
+    "deals",
+    "tax"
+  ]
+}

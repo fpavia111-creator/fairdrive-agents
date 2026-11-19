@@ -1,6 +1,6 @@
 # fairdrive-core
 
-The shared core for **Fairdrive Machine domain agents**: small MCP agents that each own one business process and cannot act outside it.
+The shared core for the **Fairdrive agents** (auto dealers, repair shops and body shops): small MCP agents that each own one business process and cannot act outside it.
 
 - **Pack manifest** — name, version, a declared model pin, the tool allowlist and the policy. `defineManifest()` fails closed: an unpinned model (`latest`), a tool without a rule, a write marked `allow`, or a one-click action marked `allow` are rejected at load time.
 - **Talos-style policy** — every tool call gets `allow`, `ask` or `block`. Unknown tools are blocked. The default is block.

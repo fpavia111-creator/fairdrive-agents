@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-parts-obsolescence": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-parts-obsolescence@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

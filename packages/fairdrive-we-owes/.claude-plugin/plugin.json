@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-we-owes",
+  "version": "0.1.0",
+  "description": "Lists every we-owe (due bill) promised on a deal that is open past its promise date or not scheduled, and completed ones whose cost was never booked, with the open cost by age. Never contacts a customer.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-we-owes#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "we-owe",
+    "due-bills",
+    "deals",
+    "customer-promises"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-floorplan-audit": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-floorplan-audit@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

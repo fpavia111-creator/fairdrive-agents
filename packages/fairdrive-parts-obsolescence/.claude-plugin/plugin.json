@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-parts-obsolescence",
+  "version": "0.1.0",
+  "description": "Classes every part on hand by months since its last sale, values idle and obsolete stock, and lists returnable parts worth sending back first. Never adjusts inventory or returns parts.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-parts-obsolescence#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "parts",
+    "obsolescence",
+    "inventory",
+    "parts-department"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-reconditioning",
+  "version": "0.1.0",
+  "description": "Follows every used unit from acquisition to front-line ready, with reconditioning cost against budget, days in recon, units stuck with open repair orders and units with no recon order at all. Never closes a repair order.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-reconditioning#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "reconditioning",
+    "used-cars",
+    "recon",
+    "service"
+  ]
+}

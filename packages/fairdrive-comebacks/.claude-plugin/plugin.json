@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-comebacks",
+  "version": "0.1.0",
+  "description": "Finds repair orders where the same vehicle came back within your days and miles for the same operation or concern, and totals comebacks by technician and operation. Never charges a technician.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-comebacks#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "comebacks",
+    "repeat-repairs",
+    "service",
+    "quality"
+  ]
+}

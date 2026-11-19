@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-estimate-vs-invoice": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-estimate-vs-invoice@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

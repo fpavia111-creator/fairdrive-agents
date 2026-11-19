@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-customer-deposits": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-customer-deposits@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

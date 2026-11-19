@@ -1,7 +1,7 @@
 # MCP quality checklist for Fairdrive agents
 
 The rules below were first written for the Mythos family and are applied here to the
-30 Fairdrive freight agents built on `fairdrive-core`.
+30 Fairdrive dealer and shop agents built on `fairdrive-core`.
 
 ## What the check found on the 30 Fairdrive agents (2026-11-16, ver 2)
 

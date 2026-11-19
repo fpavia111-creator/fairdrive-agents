@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-repair-order-margins",
+  "version": "0.1.0",
+  "description": "Works out labor and parts gross profit on every closed repair order by pay type and advisor, and lists repair orders under your margin floors, parts sold below cost and customer-pay labor given away. Never reprices a repair order.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-repair-order-margins#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "repair-orders",
+    "gross-profit",
+    "service",
+    "parts"
+  ]
+}

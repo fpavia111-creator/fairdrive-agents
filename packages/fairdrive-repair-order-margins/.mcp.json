@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-repair-order-margins": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-repair-order-margins@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

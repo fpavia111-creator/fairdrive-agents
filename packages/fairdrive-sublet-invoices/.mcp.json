@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-sublet-invoices": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-sublet-invoices@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

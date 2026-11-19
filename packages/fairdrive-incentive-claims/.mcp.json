@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-incentive-claims": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-incentive-claims@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-ofac-red-flags",
+  "version": "0.1.0",
+  "description": "Checks that every deal has an OFAC check and a Red Flags (identity) check record for each buyer, dated before delivery, with the result recorded. It checks that records exist; it makes no compliance determination and never clears a match.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-ofac-red-flags#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "ofac",
+    "red-flags",
+    "identity-theft",
+    "f-and-i"
+  ]
+}

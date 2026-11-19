@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-loaner-fleet": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-loaner-fleet@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

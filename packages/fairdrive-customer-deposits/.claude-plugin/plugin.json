@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-customer-deposits",
+  "version": "0.1.0",
+  "description": "Matches customer deposits with deals and lists deposits held with no deal, deposits on dead deals (refund due), deposits not applied on delivered deals and refunds overdue. Never issues a refund.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-customer-deposits#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "deposits",
+    "customer-deposits",
+    "deals",
+    "cash"
+  ]
+}

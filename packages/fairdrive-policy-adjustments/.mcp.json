@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-policy-adjustments": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-policy-adjustments@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

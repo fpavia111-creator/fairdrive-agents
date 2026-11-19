@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-deal-jackets",
+  "version": "0.1.0",
+  "description": "Checks every deal jacket against the documents a deal of its type should hold (buyer's order, contract, odometer statement, title application, privacy notice, OFAC and Red Flags records, Buyers Guide on used cars, trade-in papers) and lists what is missing or unsigned, oldest delivery first. Never books, changes or sends a deal.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-deal-jackets#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "deal-jacket",
+    "f-and-i",
+    "dealer-compliance-paperwork",
+    "dms"
+  ]
+}

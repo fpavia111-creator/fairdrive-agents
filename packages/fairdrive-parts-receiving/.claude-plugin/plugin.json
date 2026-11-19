@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-parts-receiving",
+  "version": "0.1.0",
+  "description": "Matches parts received against vendor and manufacturer invoices by purchase order and part number, and lists parts billed but not received, received but not billed, price differences and duplicate invoice lines, and drafts a credit request. Never pays an invoice.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-parts-receiving#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "parts",
+    "receiving",
+    "invoices",
+    "three-way-match"
+  ]
+}

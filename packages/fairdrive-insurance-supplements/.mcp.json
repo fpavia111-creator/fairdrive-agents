@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-insurance-supplements": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-insurance-supplements@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

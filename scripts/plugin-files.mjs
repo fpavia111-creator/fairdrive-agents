@@ -13,12 +13,12 @@ const want = new Map();
 const plugins = [];
 for (const n of pkgs) {
   const p = JSON.parse(readFileSync(join(root, 'packages', n, 'package.json'), 'utf8'));
-  const desc = ((s) => s[0].toUpperCase() + s.slice(1))(p.description.replace(/^[A-Z]\w+ of [A-Z]\w+:\s*/, ''));
+  const desc = ((s) => s[0].toUpperCase() + s.slice(1))(p.description.replace(/^Fairdrive [^:]+:\s*/, ''));
   want.set(join('packages', n, '.claude-plugin', 'plugin.json'), { name: n, version: p.version, description: desc, author: { name: p.author }, license: p.license, homepage: p.homepage, keywords: p.keywords });
   want.set(join('packages', n, '.mcp.json'), { mcpServers: { [n]: { command: 'npx', args: ['-y', `${n}@${p.version}`, 'mcp'] } } });
-  plugins.push({ name: n, source: `./packages/${n}`, description: desc, version: p.version, category: 'freight', keywords: [...new Set(p.keywords.filter((k) => !['mcp', 'mcp-server', 'fairdrive'].includes(k)))] });
+  plugins.push({ name: n, source: `./packages/${n}`, description: desc, version: p.version, category: 'automotive', keywords: [...new Set(p.keywords.filter((k) => !['mcp', 'mcp-server', 'fairdrive'].includes(k)))] });
 }
-want.set(join('.claude-plugin', 'marketplace.json'), { name: 'fairdrive-freight', owner: { name: 'Fairdrive' }, metadata: { description: 'Thirty freight and shipping cost agents. Each reads your exported files, writes reports locally and waits for a named person before anything that moves money, sends a message or changes a live system.' }, plugins });
+want.set(join('.claude-plugin', 'marketplace.json'), { name: 'fairdrive', owner: { name: 'Fairdrive' }, metadata: { description: 'Thirty-one agents for auto dealers, repair shops and body shops. Each reads your exported files, writes reports locally and waits for a named person before anything that moves money, sends a message or changes a live system.' }, plugins });
 let stale = 0;
 for (const [rel, obj] of want) {
   const f = join(root, rel); const text = JSON.stringify(obj, null, 2) + '\n';

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-deal-jackets": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-deal-jackets@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

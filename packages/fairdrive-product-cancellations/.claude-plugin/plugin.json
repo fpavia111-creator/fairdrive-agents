@@ -1,0 +1,23 @@
+{
+  "name": "fairdrive-product-cancellations",
+  "version": "0.1.0",
+  "description": "Recomputes the dealer chargeback on every cancelled F&I product (service contract, GAP, maintenance, appearance) from the product's profit and the unused share of its term, flags chargebacks above that figure or above the profit earned, and refunds not yet sent, and drafts a dispute to the provider. Never cancels a product or issues a refund.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-product-cancellations#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "f-and-i",
+    "chargebacks",
+    "product-cancellations",
+    "service-contracts",
+    "gap"
+  ]
+}

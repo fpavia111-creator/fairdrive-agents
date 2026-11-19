@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-gl-schedules",
+  "version": "0.1.0",
+  "description": "Ties each DMS schedule (contracts in transit, receivables, warranty, factory) to its ledger balance, ages the open items by control number, and lists items past 90 days, controls that net to zero and credit balances. Never posts or purges.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-gl-schedules#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "schedules",
+    "general-ledger",
+    "reconciliation",
+    "dealership-accounting"
+  ]
+}

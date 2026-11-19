@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-sales-commissions",
+  "version": "0.1.0",
+  "description": "Works out each salesperson commission from your pay plans (front and back percentages, minimums, split deals), compares it with what was paid, and drafts the commission sheet for one named person to approve. Never runs payroll.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-sales-commissions#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "commissions",
+    "pay-plans",
+    "salespeople",
+    "payroll"
+  ]
+}

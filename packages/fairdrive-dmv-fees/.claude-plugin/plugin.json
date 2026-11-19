@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-dmv-fees",
+  "version": "0.1.0",
+  "description": "Compares the title, registration and plate fees collected on each deal with what the DMV or tag agency charged, and lists fees over-collected, under-collected, not yet paid and charges with no deal. Never issues a refund.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-dmv-fees#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "dmv",
+    "fees",
+    "title",
+    "registration"
+  ]
+}

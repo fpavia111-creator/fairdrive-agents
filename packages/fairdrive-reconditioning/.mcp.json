@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-reconditioning": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-reconditioning@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

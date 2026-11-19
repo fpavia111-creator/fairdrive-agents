@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-sales-commissions": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-sales-commissions@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-open-repair-orders": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-open-repair-orders@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-warranty-claims": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-warranty-claims@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

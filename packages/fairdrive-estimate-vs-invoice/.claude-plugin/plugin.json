@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-estimate-vs-invoice",
+  "version": "0.1.0",
+  "description": "Compares the latest estimate and supplements on each collision repair (CCC, Mitchell) with the final invoice by labor, parts, materials and sublet, and lists repairs invoiced over or under the estimate, invoices with no estimate and estimates not invoiced. Never contacts an insurer.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-estimate-vs-invoice#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "collision",
+    "body-shop",
+    "estimates",
+    "invoices"
+  ]
+}

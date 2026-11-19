@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-floorplan-audit",
+  "version": "0.1.0",
+  "description": "Matches the DMS vehicle inventory against the floorplan lender statement and lists units sold but not paid off, units on the statement the DMS does not have, units on the lot not floored and balance differences, and drafts a payoff list for one named person. Never pays a lender.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-floorplan-audit#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "floorplan",
+    "floor-plan-audit",
+    "inventory",
+    "lender"
+  ]
+}

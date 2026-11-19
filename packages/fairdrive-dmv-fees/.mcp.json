@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-dmv-fees": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-dmv-fees@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

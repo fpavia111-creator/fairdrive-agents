@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-title-tracking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-title-tracking@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

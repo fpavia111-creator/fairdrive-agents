@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-curtailments",
+  "version": "0.1.0",
+  "description": "Works out the curtailment (principal pay-down) each floored unit owes under your lender schedule, lists what is overdue and what falls due in the coming weeks, and totals it by week. Never pays a lender.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-curtailments#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "floorplan",
+    "curtailments",
+    "inventory",
+    "cash-planning"
+  ]
+}

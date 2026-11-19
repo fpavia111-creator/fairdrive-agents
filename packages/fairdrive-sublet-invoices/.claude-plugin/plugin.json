@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-sublet-invoices",
+  "version": "0.1.0",
+  "description": "Matches sublet lines on repair orders against vendor invoices and lists invoices above the purchase order, closed orders with no sublet invoice, invoices with no repair order, sublet billed below cost and duplicate invoices. Never pays an invoice.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-sublet-invoices#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "sublet",
+    "repair-orders",
+    "invoices",
+    "service"
+  ]
+}

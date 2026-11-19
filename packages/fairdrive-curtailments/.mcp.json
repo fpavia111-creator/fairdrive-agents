@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-curtailments": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-curtailments@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

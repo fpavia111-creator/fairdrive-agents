@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-finance-reserve",
+  "version": "0.1.0",
+  "description": "Works out the finance reserve each deal should earn from the buy rate, contract rate, term and your lender share, compares it and the product income with what lenders and providers actually paid, and drafts a reserve inquiry to a lender. Never posts to the ledger.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-finance-reserve#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "finance-reserve",
+    "dealer-participation",
+    "f-and-i",
+    "lender"
+  ]
+}

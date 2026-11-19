@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-trade-payoffs": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-trade-payoffs@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

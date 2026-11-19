@@ -1,0 +1,22 @@
+{
+  "name": "fairdrive-warranty-claims",
+  "version": "0.1.0",
+  "description": "Matches warranty claims submitted against the manufacturer statement and lists unpaid claims by age, claims paid short, rejections with their resubmission deadline and debits after payment, and drafts a review request. Never resubmits a claim.",
+  "author": {
+    "name": "Kurt Francisco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-warranty-claims#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "warranty",
+    "claims",
+    "service",
+    "manufacturer"
+  ]
+}

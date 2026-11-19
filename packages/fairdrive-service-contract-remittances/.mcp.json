@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-service-contract-remittances": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-service-contract-remittances@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

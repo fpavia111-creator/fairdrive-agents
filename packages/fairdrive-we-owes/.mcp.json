@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-we-owes": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-we-owes@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}

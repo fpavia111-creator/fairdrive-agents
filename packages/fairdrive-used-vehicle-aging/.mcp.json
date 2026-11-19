@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairdrive-used-vehicle-aging": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fairdrive-used-vehicle-aging@0.1.0",
+        "mcp"
+      ]
+    }
+  }
+}
