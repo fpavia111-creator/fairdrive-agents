@@ -1,0 +1,301 @@
+{
+  "suite": "fairdrive-product-cancellations",
+  "root": "..",
+  "data_note": "Fictional cancellations in ../fixtures, as of 2026-11-15. No model is called.",
+  "pii_canaries": [
+    "Annika Sorensby",
+    "Celestine Dubrow",
+    "Esperanza Villalobos",
+    "Giselle Trautmann"
+  ],
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "cancellations_check",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.cancellations": 7,
+          "result.charged_back": 4691.67,
+          "result.overcharged": 542.09,
+          "result.over_expected": 3,
+          "result.above_profit": 1,
+          "result.refunds_not_sent": 2,
+          "result.cannot_compute": 0
+        }
+      }
+    },
+    {
+      "id": "largest-overcharge-first",
+      "tool": "cancellations_check",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.deal_number": "D3005",
+          "result.items.0.expected_chargeback": 539.55,
+          "result.items.1.deal_number": "D3001",
+          "result.items.1.expected_chargeback": 1051.33
+        }
+      }
+    },
+    {
+      "id": "right-chargebacks-not-listed",
+      "tool": "cancellations_check",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "not_contains": [
+          "D3002",
+          "D3006"
+        ],
+        "contains": [
+          "chargeback_below_expected",
+          "chargeback_above_profit",
+          "refund_not_sent"
+        ]
+      }
+    },
+    {
+      "id": "by-provider",
+      "tool": "cancellations_check",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.by_provider.0.provider": "Shine Guard Products",
+          "result.by_provider.1.overcharged": 181.64
+        }
+      }
+    },
+    {
+      "id": "wider-full-window",
+      "tool": "cancellations_check",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15",
+        "full_chargeback_days": 200
+      },
+      "expect": {
+        "equals": {
+          "result.over_expected": 2,
+          "result.overcharged": 332.97
+        }
+      }
+    },
+    {
+      "id": "refund-window",
+      "tool": "cancellations_check",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15",
+        "refund_days": 60
+      },
+      "expect": {
+        "equals": {
+          "result.refunds_not_sent": 1
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "cancellations_write_report",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "7 cancellation(s), 4691.67 charged back"
+        ]
+      }
+    },
+    {
+      "id": "draft-dispute",
+      "tool": "cancellations_draft_dispute",
+      "mode": "auto",
+      "auto_actions": [
+        "cancellations_draft_dispute"
+      ],
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15",
+        "provider": "Larkfield",
+        "from": "Jordan Reyes",
+        "contact": "dealers@larkfield-vp.example"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.id": "Larkfield Vehicle Protection",
+          "result.amount": 181.64,
+          "result.contracts": 2,
+          "result.open_markers": 1
+        }
+      }
+    },
+    {
+      "id": "no-dispute-when-nothing-over",
+      "tool": "cancellations_draft_dispute",
+      "mode": "auto",
+      "auto_actions": [
+        "cancellations_draft_dispute"
+      ],
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15",
+        "provider": "Lantern GAP Services"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "no chargebacks above"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "cancellations_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-provider-portal-cancel",
+      "tool": "provider_portal_cancel",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-ap-issue-refund",
+      "tool": "ap_issue_refund",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "cancellations_check",
+      "args": {
+        "cancellations": "../../../outside/export.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "cancellations_check",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "cancellations"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "cancellations_check",
+      "mode": "review",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.cancellations": 7,
+          "result.charged_back": 4691.67,
+          "result.overcharged": 542.09,
+          "result.over_expected": 3,
+          "result.above_profit": 1,
+          "result.refunds_not_sent": 2,
+          "result.cannot_compute": 0
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "cancellations_write_report",
+      "mode": "review",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    },
+    {
+      "id": "policy-draft-asks-first",
+      "tool": "cancellations_draft_dispute",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15",
+        "provider": "Larkfield",
+        "from": "Jordan Reyes",
+        "contact": "dealers@larkfield-vp.example"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    },
+    {
+      "id": "policy-draft-blocked-in-review",
+      "tool": "cancellations_draft_dispute",
+      "mode": "review",
+      "args": {
+        "cancellations": "fixtures/cancellations.csv",
+        "as_of": "2026-11-15",
+        "provider": "Larkfield",
+        "from": "Jordan Reyes",
+        "contact": "dealers@larkfield-vp.example"
+      },
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-approval-stays-one-click-in-auto",
+      "tool": "cancellations_request_send",
+      "mode": "auto",
+      "auto_actions": [
+        "cancellations_draft_dispute"
+      ],
+      "args": {
+        "draft": "fairdrive-out/cancellations/drafts/none.md",
+        "draft_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    }
+  ]
+}
