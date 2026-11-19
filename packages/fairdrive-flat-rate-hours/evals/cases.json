@@ -1,0 +1,228 @@
+{
+  "suite": "fairdrive-flat-rate-hours",
+  "root": "..",
+  "data_note": "Fictional technicians, flags and attendance in ../fixtures, week of 2026-11-09. No model is called.",
+  "pii_none": "Reads technician names, RO numbers and hours; staff time is not customer data, and no customer column is read.",
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.technicians": 3,
+          "result.attendance_hours": 112,
+          "result.flagged_hours": 102.5,
+          "result.actual_hours": 83.5,
+          "result.shop_proficiency_pct": 91.52,
+          "result.flagged_no_time": 1,
+          "result.flag_far_above_time": 1,
+          "result.flags_without_clock": 1,
+          "result.below_floor": 1
+        }
+      }
+    },
+    {
+      "id": "by-technician",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.by_technician.0.technician": "Corin Brennan",
+          "result.by_technician.0.proficiency_pct": 70.31,
+          "result.by_technician.0.efficiency_pct": 102.27,
+          "result.by_technician.1.efficiency_pct": 128.13,
+          "result.by_technician.2.flagged_hours": 39
+        }
+      }
+    },
+    {
+      "id": "findings-in-order",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.ro_number": "R7",
+          "result.items.1.ro_number": "R13",
+          "result.items.2.ro_number": "R10",
+          "result.items.3.finding": "below_proficiency_floor"
+        },
+        "length": {
+          "result.items": 4
+        }
+      }
+    },
+    {
+      "id": "lower-floor",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv",
+        "floor_pct": 70
+      },
+      "expect": {
+        "equals": {
+          "result.below_floor": 0
+        }
+      }
+    },
+    {
+      "id": "higher-floor",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv",
+        "floor_pct": 100
+      },
+      "expect": {
+        "equals": {
+          "result.below_floor": 2
+        }
+      }
+    },
+    {
+      "id": "looser-ratio",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv",
+        "ratio": 4
+      },
+      "expect": {
+        "equals": {
+          "result.flag_far_above_time": 0
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "flatrate_write_report",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "3 technician(s): 102.5 hours flagged, 112 clocked"
+        ]
+      }
+    },
+    {
+      "id": "bad-ratio-refused",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv",
+        "ratio": 1
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "ratio"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "flatrate_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-payroll-submit-hours",
+      "tool": "payroll_submit_hours",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-dms-edit-flag-hours",
+      "tool": "dms_edit_flag_hours",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "../../../outside/export.csv",
+        "clock": "fixtures/clock.csv"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "flatrate_check",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "flags"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "flatrate_check",
+      "mode": "review",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.technicians": 3,
+          "result.attendance_hours": 112,
+          "result.flagged_hours": 102.5,
+          "result.actual_hours": 83.5,
+          "result.shop_proficiency_pct": 91.52,
+          "result.flagged_no_time": 1,
+          "result.flag_far_above_time": 1,
+          "result.flags_without_clock": 1,
+          "result.below_floor": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "flatrate_write_report",
+      "mode": "review",
+      "args": {
+        "flags": "fixtures/flags.csv",
+        "clock": "fixtures/clock.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    }
+  ]
+}

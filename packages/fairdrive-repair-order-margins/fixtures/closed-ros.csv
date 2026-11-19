@@ -1,0 +1,8 @@
+ro_number,closed_date,advisor,customer,labor_type,labor_sale,labor_cost,parts_sale,parts_cost
+70001,2026-11-02,Lena Moreau,Harriet Dunsmore,Customer pay,500.00,150.00,400.00,240.00
+70002,2026-11-03,Lena Moreau,Ignatius Pell,Customer pay,300.00,135.00,200.00,150.00
+70003,2026-11-03,Marco Ilic,Juniper Okwu,Warranty,420.00,160.00,380.00,300.00
+70004,2026-11-04,Marco Ilic,Kasimir Rendell,Customer pay,0.00,90.00,120.00,80.00
+70005,2026-11-05,Marco Ilic,,Internal,250.00,120.00,90.00,110.00
+70006,2026-11-06,Lena Moreau,Leocadia Fenn,Customer pay,680.00,200.00,560.00,310.00
+70007,2026-11-07,Marco Ilic,Montgomery Hale,Customer pay,450.00,160.00,300.00,180.00
