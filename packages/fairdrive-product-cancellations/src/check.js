@@ -43,12 +43,12 @@ export function checkCancellations(rows, { asOf, fullDays = 90, tolerance = 5, r
   const today = asOfDate(asOf);
   const group = partyGrouper(rows.map((r) => r.provider));
   const names = new Map(); for (const n of rows.map((r) => str(r.provider)).filter(Boolean).sort()) if (!names.has(group(n))) names.set(group(n), n);
-  const items = []; const seen = new Set();
+  const items = []; const seen = new Set(); let chargedTotal = 0;
   const sorted = [...rows].filter((r) => normId(r.deal_number) && str(r.product)).sort(by('cancel_date', 'deal_number', 'product', 'contract_number'));
   for (const r of sorted) {
     const key = `${normId(r.deal_number)}|${str(r.product).toLowerCase()}|${normId(r.contract_number)}`; if (seen.has(key)) continue; seen.add(key);
     const e = expectedChargeback(r, { fullDays });
-    const charged = num(r.chargeback);
+    const charged = num(r.chargeback); chargedTotal += charged || 0;
     const findings = []; const why = [];
     let difference = null;
     if (charged !== null && e.expected !== null) {
@@ -67,8 +67,7 @@ export function checkCancellations(rows, { asOf, fullDays = 90, tolerance = 5, r
   items.sort(by('-difference', 'deal_number', 'product'));
   const over = items.filter((i) => i.findings.includes('chargeback_above_expected'));
   const byProvider = [...groupBy(items, (i) => i.provider || '(none)')].map(([provider, l]) => ({ provider, items: l.length, overcharged: round2(l.filter((i) => i.findings.includes('chargeback_above_expected')).reduce((s, i) => s + i.difference, 0)) })).sort(by('-overcharged', 'provider'));
-  const all = sorted.filter((r, i, a) => a.findIndex((x) => `${normId(x.deal_number)}|${str(x.product).toLowerCase()}|${normId(x.contract_number)}` === `${normId(r.deal_number)}|${str(r.product).toLowerCase()}|${normId(r.contract_number)}`) === i);
-  return { as_of: today, cancellations: all.length, charged_back: round2(all.reduce((s, r) => s + (num(r.chargeback) || 0), 0)), overcharged: round2(over.reduce((s, i) => s + i.difference, 0)), over_expected: over.length, above_profit: items.filter((i) => i.findings.includes('chargeback_above_profit')).length, refunds_not_sent: items.filter((i) => i.findings.includes('refund_not_sent')).length, cannot_compute: items.filter((i) => i.findings.includes('cannot_compute')).length, full_chargeback_days: fullDays, by_provider: byProvider, items };
+  return { as_of: today, cancellations: seen.size, charged_back: round2(chargedTotal), overcharged: round2(over.reduce((s, i) => s + i.difference, 0)), over_expected: over.length, above_profit: items.filter((i) => i.findings.includes('chargeback_above_profit')).length, refunds_not_sent: items.filter((i) => i.findings.includes('refund_not_sent')).length, cannot_compute: items.filter((i) => i.findings.includes('cannot_compute')).length, full_chargeback_days: fullDays, by_provider: byProvider, items };
 }
 
 export const line = (r) => `${r.cancellations} cancellation(s), ${r.charged_back} charged back. ${r.over_expected} chargeback(s) above the pro-rata figure by ${r.overcharged} in total; ${r.above_profit} above the profit earned; ${r.refunds_not_sent} refund(s) not sent.${r.cannot_compute ? ` ${r.cannot_compute} could not be computed (missing price, cost, term or dates).` : ''}`;

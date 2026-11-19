@@ -24,9 +24,12 @@ export function matchSublet(lines, invoices, { asOf, tolerance = 1, closedDays =
   const today = asOfDate(asOf);
   const ls = [...lines].filter((l) => normId(l.ro_number)).sort(by('ro_number', 'po_number')).map((l) => ({ ...l, inv: [] }));
   const items = []; const seenInv = new Map();
+  // Lines indexed by PO and by RO, first line (in the fixed order above) wins, so matching is linear.
+  const byPo = new Map(); const byRo = new Map();
+  for (const l of ls) { const po = normId(l.po_number), ro = normId(l.ro_number); if (po && !byPo.has(po)) byPo.set(po, l); if (!byRo.has(ro)) byRo.set(ro, []); byRo.get(ro).push(l); }
   for (const i of [...invoices].filter((x) => normId(x.invoice_number)).sort(by('invoice_date', 'invoice_number', 'amount'))) {
     const sig = `${partyKey(i.vendor)}|${normId(i.invoice_number)}`;
-    const match = ls.find((l) => normId(i.po_number) && normId(l.po_number) === normId(i.po_number)) || ls.find((l) => normId(i.ro_number) && normId(l.ro_number) === normId(i.ro_number) && (!str(i.vendor) || !str(l.vendor) || partyKey(i.vendor) === partyKey(l.vendor)));
+    const match = (normId(i.po_number) && byPo.get(normId(i.po_number))) || (normId(i.ro_number) ? (byRo.get(normId(i.ro_number)) || []).find((l) => !str(i.vendor) || !str(l.vendor) || partyKey(i.vendor) === partyKey(l.vendor)) : null);
     if (seenInv.has(sig)) { items.push({ ro_number: match ? str(match.ro_number) : '', po_number: str(i.po_number), vendor: str(i.vendor), invoice_number: str(i.invoice_number), cost: null, sale: null, invoiced: num(i.amount), finding: 'duplicate_invoice', amount: num(i.amount) ?? 0, why: `Invoice ${str(i.invoice_number)} from ${str(i.vendor)} appears twice.` }); continue; }
     seenInv.set(sig, i);
     if (match) match.inv.push(i);
