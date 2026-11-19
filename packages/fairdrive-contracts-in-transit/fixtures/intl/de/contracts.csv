@@ -1,11 +1,11 @@
 Vorgangsnummer;Kunde;FIN;Kreditgeber;contract_date;amount_financed;expected_funding;funded_date;funded_amount;Zustand;stips
-D2001;Lucinda Marrow;7ZZ0ZMJD0MA909511;Harbor Auto Finance;01.10.2026;28.450,00;;06.10.2026;28.450,00;Funded;
-D2002;Gideon Ashworth;7ZZ54RK4XNA140940;Harbor Auto Finance;20.10.2026;31.200,00;;;;In transit;"Proof of income; Proof of residence"
-D2003;Fenna Rietveld;7ZZ283DM6PA684601;Summit Credit Union;10.11.2026;18.900,00;;;;In transit;
-D2004;Osric Pemberton;7ZZBJT2J2RA564956;Bluegate Bank;28.09.2026;42.000,00;;;;Returned;Contract re-sign: APR does not match the approval
-D2005;Wilhelmina Tasker;7ZZAWVY04SA868254;Summit Credit Union;12.10.2026;22.750,00;;19.10.2026;22.250,00;Funded;
-D2006;Thaddeus Okonjo;7ZZ3H4R72TA225525;Harbor Auto Finance;02.11.2026;35.600,00;;;;In transit;
-D2007;Rosalind Achterberg;7ZZ4KATA0KA238684;Bluegate Bank;05.10.2026;26.300,00;;12.10.2026;26.300,00;Funded;
-D2008;Bram Kessler;7ZZ7HLX14LA626200;Summit Credit Union;13.11.2026;15.400,00;;;;In transit;
-D2009;Clementine Rourke;7ZZ3XXCJ3MA171839;Bluegate Bank;08.10.2026;24.100,00;;15.10.2026;24.100,00;Funded;
-D2010;Ezekiel Moravec;7ZZ69H3H2NA479841;Harbor Auto Finance;27.10.2026;19.800,00;;;;In transit;Insurance verification
+D2001;Lucinda Marrow;0ZZ0ZMJDXMA909511;Harbor Auto Finance;01.10.2026;28.450,00;;06.10.2026;28.450,00;Funded;
+D2002;Gideon Ashworth;0ZZ54RK49NA140940;Harbor Auto Finance;20.10.2026;31.200,00;;;;In transit;"Proof of income; Proof of residence"
+D2003;Fenna Rietveld;0ZZ283DM5PA684601;Summit Credit Union;10.11.2026;18.900,00;;;;In transit;
+D2004;Osric Pemberton;0ZZBJT2J1RA564956;Bluegate Bank;28.09.2026;42.000,00;;;;Returned;Contract re-sign: APR does not match the approval
+D2005;Wilhelmina Tasker;0ZZAWVY03SA868254;Summit Credit Union;12.10.2026;22.750,00;;19.10.2026;22.250,00;Funded;
+D2006;Thaddeus Okonjo;0ZZ3H4R71TA225525;Harbor Auto Finance;02.11.2026;35.600,00;;;;In transit;
+D2007;Rosalind Achterberg;0ZZ4KATAXKA238684;Bluegate Bank;05.10.2026;26.300,00;;12.10.2026;26.300,00;Funded;
+D2008;Bram Kessler;0ZZ7HLX13LA626200;Summit Credit Union;13.11.2026;15.400,00;;;;In transit;
+D2009;Clementine Rourke;0ZZ3XXCJ2MA171839;Bluegate Bank;08.10.2026;24.100,00;;15.10.2026;24.100,00;Funded;
+D2010;Ezekiel Moravec;0ZZ69H3H1NA479841;Harbor Auto Finance;27.10.2026;19.800,00;;;;In transit;Insurance verification

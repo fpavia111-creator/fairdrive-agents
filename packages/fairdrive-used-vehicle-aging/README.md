@@ -24,9 +24,12 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `dms_change_price` is listed and refused: It never changes a price in the DMS or on a website.
 - `auction_list_vehicle` is listed and refused: It never lists a vehicle at auction.
 
-## Customer data
+## What the AI model sees
 
-This agent reads no customer columns. Results still pass through the customer-data masker, which replaces anything that looks like a phone number, e-mail or SSN.
+- **Masked:** this agent reads no customer or staff column. Anything that looks like a phone number, e-mail or SSN is still replaced in every result.
+- **Sent as they are:** ids, codes and names of businesses (`stock_number`, `status`); VINs (`vin`; pseudonymised with `--pii strict`); dates (`received_date`, `last_price_change`); amounts and counts (`year`, `cost`, `list_price`, `market_price`, `odometer`).
+- **Free text sent as written** (known names, phone numbers, e-mails and SSN-like numbers inside it are replaced; anything else typed there is not): `description`.
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 

@@ -83,7 +83,8 @@ async function run(n, manifest, spec, c, edits) {
   const parent = mkdtempSync(join(tmpdir(), `acc-${n}-`)); const root = join(parent, 'root'); cpSync(join(PK, n, 'fixtures'), join(root, 'fixtures'), { recursive: true });
   try {
     edit(root, c.args, edits);
-    const rt = new AgentRuntime(manifest, { root, stateDir: null, audit: false });
+    // Masking off: findings are matched on the fixture's own ids and names (masking is checked by the canary tests).
+    const rt = new AgentRuntime(manifest, { root, stateDir: null, audit: false, pii: 'off' });
     const r = await rt.call(c.tool, c.args); if (r.status !== 'executed') throw new Error(`${c.tool}: ${r.status} ${r.reason || ''}`);
     return { ...findingsOf(r, spec), rows: rowsIn(root, c.args) };
   } finally { rmSync(parent, { recursive: true, force: true }); }

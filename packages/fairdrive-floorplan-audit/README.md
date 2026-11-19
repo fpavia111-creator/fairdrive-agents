@@ -27,9 +27,11 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `lender_portal_payoff` is listed and refused: It never pays off a unit or moves money to a lender.
 - `dms_change_inventory` is listed and refused: It never changes a vehicle record in the DMS.
 
-## Customer data
+## What the AI model sees
 
-This agent reads no customer columns. Results still pass through the customer-data masker, which replaces anything that looks like a phone number, e-mail or SSN.
+- **Masked:** this agent reads no customer or staff column. Anything that looks like a phone number, e-mail or SSN is still replaced in every result.
+- **Sent as they are:** ids, codes and names of businesses (`stock_number`, `status`, `new_used`); VINs (`vin`; pseudonymised with `--pii strict`); dates (`sold_date`, `floor_date`); amounts and counts (`floorplan_balance`, `balance`).
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 
@@ -43,11 +45,11 @@ Fairdrive Floorplan Audit demo (fictional inventory and lender statement, Novemb
 ▶ Run the check on the exported files
   status: executed  decision: allow
   7 unit(s) in inventory, 6 on the floorplan statement (195750). 1 sold and not paid off (33800); 1 payoff(s) due within 5 days (28950); 1 on the statement but not in inventory (29400); 1 balance difference(s); 1 in stock but not floored.
-    sold_not_paid_off              S5002  7ZZPNMXP6RA120301  33800
-    on_statement_not_in_inventory  -      7ZZMESC69NA408327  29400
-    balance_differs                S5004  7ZZ2XTPH7TA110178  1000
-    payoff_due                     S5003  7ZZ1R4FZ9SA576862  28950
-    not_floored                    S5005  7ZZLUK947KA636195  
+    sold_not_paid_off              S5002  0ZZPNMXP5RA120301  33800
+    on_statement_not_in_inventory  -      0ZZMESC68NA408327  29400
+    balance_differs                S5004  0ZZ2XTPH6TA110178  1000
+    payoff_due                     S5003  0ZZ1R4FZ8SA576862  28950
+    not_floored                    S5005  0ZZLUK946KA636195  
 
 ▶ Write the report (CSV and HTML)
   status: executed  decision: allow

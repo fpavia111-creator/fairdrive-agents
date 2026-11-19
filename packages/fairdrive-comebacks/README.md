@@ -24,9 +24,12 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `payroll_charge_back_tech` is listed and refused: It never charges a technician for a comeback.
 - `dms_change_ro` is listed and refused: It never changes a repair order.
 
-## Customer data
+## What the AI model sees
 
-Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): customer name (`customer`), staff name (`technician`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`ro_number`, `op_code`, `labor_type`); VINs (`vin`; pseudonymised with `--pii strict`); dates (`opened`, `closed`); amounts and counts (`odometer`).
+- **Free text sent as written** (known names, phone numbers, e-mails and SSN-like numbers inside it are replaced; anything else typed there is not): `concern`.
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 
@@ -39,14 +42,14 @@ Fairdrive Comebacks demo (fictional repair orders, September to November 2026)
 
 ▶ Run the check on the exported files
   status: executed  decision: allow
-  12 repair order(s), 3 comeback(s) within 30 days and 1000 miles (25%). Most: Ines Alvarez (2).
-    80010 -> 80012   2 days     30 mi  Ines Alvarez  same_op_code
-    80001 -> 80015  18 days    690 mi  Ines Alvarez  same_op_code
-    80003 -> 80018  23 days    550 mi  Corin Brennan  same_concern
+  12 repair order(s), 3 comeback(s) within 30 days and 1000 miles (25%). Most: ST-47ef0176 (2).
+    80010 -> 80012   2 days     30 mi  ST-47ef0176  same_op_code
+    80001 -> 80015  18 days    690 mi  ST-47ef0176  same_op_code
+    80003 -> 80018  23 days    550 mi  ST-9f911468  same_concern
 
 ▶ Write the report (CSV and HTML)
   status: executed  decision: allow
-  Report written. 12 repair order(s), 3 comeback(s) within 30 days and 1000 miles (25%). Most: Ines Alvarez (2).
+  Report written. 12 repair order(s), 3 comeback(s) within 30 days and 1000 miles (25%). Most: ST-47ef0176 (2).
 
 ▶ The agent tries payroll_charge_back_tech itself
   status: blocked  decision: block

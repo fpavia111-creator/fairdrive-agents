@@ -11,8 +11,13 @@
 //     digits and pseudonymises VINs.
 //   - It works from column and field names plus a few text patterns (SSN, e-mail,
 //     phone). A customer name typed into a free-text column the agent does not know
-//     about can get through. Staff names (salespeople, technicians, advisors) are not
-//     customer data and are not masked: commission and pay checks need them.
+//     about can get through.
+//   - Staff names (salespeople, technicians, advisors, F&I managers, approvers) are masked
+//     too (ST-...), from the final pass on 19 Nov 2026 (an agent marks other staff columns,
+//     such as an adjustment's approver, with pii: 'staff'; "approved_by" on a one-click
+//     approval is the person using the tool and is not masked): commission, flat-rate and comeback
+//     results are about named employees. The checks run on the real values before masking,
+//     and the worklists written on this machine keep the real names.
 //
 // Pseudonyms are HMAC-SHA256 of the value with a per-installation key
 // (<stateDir>/pii.key, created on first use, never returned), so the same customer
@@ -42,14 +47,15 @@ const KEY_KIND = new Map([
   ...keys('phone', ['phone', 'phone_number', 'home_phone', 'mobile_phone', 'mobile', 'cell_phone', 'cell', 'telephone', 'customer_phone', 'work_phone']),
   ...keys('email', ['email', 'email_address', 'customer_email', 'buyer_email']),
   ...keys('account', ['customer_number', 'customer_id', 'customer_no', 'loan_number', 'account_number', 'lender_account']),
+  ...keys('staff', ['salesperson', 'salespeople', 'split_with', 'technician', 'tech', 'technician_name', 'advisor', 'service_advisor', 'writer', 'fi_manager', 'finance_manager', 'sales_manager', 'performed_by', 'employee', 'employee_name']),
   ...keys('zip', ['zip', 'zip_code', 'postal_code', 'customer_zip', 'zipcode']),
   ...keys('vin', ['vin', 'vins', 'vehicle_vin', 'trade_vin']),
 ]);
 const STRICT_ONLY = new Set(['zip', 'vin']);
-const PREFIX = { name: 'CU', account: 'ACCT', license: 'DL', vin: 'VIN' };
+const PREFIX = { name: 'CU', staff: 'ST', account: 'ACCT', license: 'DL', vin: 'VIN' };
 const FIXED = { ssn: '[SSN]', address: '[ADDRESS]', phone: '[PHONE]', email: '[EMAIL]' };
 // Minimum length before a registered value is also searched for inside free text.
-const MIN_TEXT = { name: 4, account: 5, license: 5, dob: 8, vin: 8 };
+const MIN_TEXT = { name: 4, staff: 4, account: 5, license: 5, dob: 8, vin: 8 };
 
 const TEXT_PATTERNS = [
   [/\b\d{3}-\d{2}-\d{4}\b/g, '[SSN]'],
@@ -58,7 +64,7 @@ const TEXT_PATTERNS = [
 ];
 
 // A value that is already a pseudonym or placeholder is left alone (results pass the masker more than once).
-const ALREADY = /^((CU|ACCT|DL|VIN)-[0-9a-f]{8}|\[(SSN|ADDRESS|PHONE|EMAIL|DOB|ZIP)\]|\d{4} \(birth year\)|\d{3}XX)$/;
+const ALREADY = /^((CU|ST|ACCT|DL|VIN)-[0-9a-f]{8}|\[(SSN|ADDRESS|PHONE|EMAIL|DOB|ZIP)\]|\d{4} \(birth year\)|\d{3}XX)$/;
 
 /** Kind of a field name, or null. */
 export const piiKindOf = (key, mode = 'mask') => { const k = KEY_KIND.get(norm(key)); return !k || (STRICT_ONLY.has(k) && mode !== 'strict') ? null : k; };
@@ -101,7 +107,7 @@ export class PiiMasker {
 
   /** Stable pseudonym for a value of one kind. */
   token(kind, value) {
-    const v = kind === 'name' ? nameKey(value) : String(value).trim().toUpperCase();
+    const v = kind === 'name' || kind === 'staff' ? nameKey(value) : String(value).trim().toUpperCase();
     return `${PREFIX[kind] || 'ID'}-${createHmac('sha256', this.key).update(`${kind}|${v}`).digest('hex').slice(0, 8)}`;
   }
 
@@ -124,7 +130,7 @@ export class PiiMasker {
   register(kind, raw) {
     if (!this.on || raw === null || raw === undefined) return;
     if (STRICT_ONLY.has(kind) && this.mode !== 'strict') return;
-    const vals = kind === 'name' ? nameVariants(raw) : [String(raw).trim()];
+    const vals = kind === 'name' || kind === 'staff' ? nameVariants(raw) : [String(raw).trim()];
     const rep = FIXED[kind] || (kind === 'dob' ? '[DOB]' : this.token(kind, raw));
     // Leading and trailing punctuation is dropped for matching, so a value with junk in front of it
     // (a spreadsheet formula, a quote, a bullet) is still found where it appears in text.

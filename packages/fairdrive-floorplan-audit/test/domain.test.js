@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { auditFloorplan, payoffText } from '../src/index.js';
 
-const V1 = '7ZZCAEMU5PA994811', V2 = '7ZZPNMXP6RA120301';
+const V1 = '0ZZCAEMU4PA994811', V2 = '0ZZPNMXP5RA120301';
 const unit = (o = {}) => ({ stock_number: 'S1', vin: V1, status: 'In stock', ...o });
 const stmt = (o = {}) => ({ vin: V1, floor_date: '2026-09-01', balance: '30000', ...o });
 
@@ -21,7 +21,7 @@ test('a sold date alone marks a unit sold, whatever the status says', () => {
 });
 
 test('VINs match in any case and spacing, and by the last eight characters', () => {
-  assert.equal(auditFloorplan([unit({ vin: '7zz-caemu5pa994811' })], [stmt({ vin: 'PA994811' })], { asOf: '2026-11-15' }).floored_units, 1);
+  assert.equal(auditFloorplan([unit({ vin: '0zz-caemu5pa994811' })], [stmt({ vin: 'PA994811' })], { asOf: '2026-11-15' }).floored_units, 1);
 });
 
 test('statement lines with no inventory unit and stock with no statement line are both listed', () => {

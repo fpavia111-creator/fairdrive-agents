@@ -20,7 +20,7 @@ test('a used car needs a Buyers Guide; a financed one the credit application, co
 });
 
 test('a lease needs the lease agreement, not an installment contract; a trade adds title and power of attorney', () => {
-  const lease = requiredFor(deal({ deal_type: 'Lease', trade_vin: '7ZZUFBHK7LA997328' }));
+  const lease = requiredFor(deal({ deal_type: 'Lease', trade_vin: '0ZZUFBHK6LA997328' }));
   assert.ok(lease.includes('lease_agreement') && !lease.includes('installment_contract'));
   assert.ok(lease.includes('trade_title') && lease.includes('power_of_attorney'));
 });

@@ -25,9 +25,11 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `payroll_submit_hours` is listed and refused: It never submits hours or pay to payroll.
 - `dms_edit_flag_hours` is listed and refused: It never changes flagged hours, punches or repair orders.
 
-## Customer data
+## What the AI model sees
 
-This agent reads no customer columns. Results still pass through the customer-data masker, which replaces anything that looks like a phone number, e-mail or SSN.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): staff name (`technician`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`ro_number`, `labor_type`); dates (`date`); amounts and counts (`flag_hours`, `actual_hours`, `clock_hours`).
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 
@@ -41,13 +43,13 @@ Fairdrive Flat Rate Hours demo (fictional technicians, week of 9 November 2026)
 ▶ Run the check on the exported files
   status: executed  decision: allow
   3 technician(s): 102.5 hours flagged, 112 clocked, 83.5 punched on jobs; shop proficiency 91.52%. 1 under the 85% floor; 1 job(s) flagged with no time, 1 flagged far above time, 1 day(s) flagged with no clock-in.
-    Corin Brennan    clocked    32  flagged  22.5  proficiency 70.31%
-    Ines Alvarez     clocked    40  flagged    41  proficiency 102.5%
-    Mei Chu          clocked    40  flagged    39  proficiency 97.5%
-    flagged_no_time: Corin Brennan R7
-    flag_far_above_time: Mei Chu R13
-    flags_without_clock: Corin Brennan R10
-    below_proficiency_floor: Corin Brennan 
+    ST-9f911468      clocked    32  flagged  22.5  proficiency 70.31%
+    ST-47ef0176      clocked    40  flagged    41  proficiency 102.5%
+    ST-744d7d8e      clocked    40  flagged    39  proficiency 97.5%
+    flagged_no_time: ST-9f911468 R7
+    flag_far_above_time: ST-744d7d8e R13
+    flags_without_clock: ST-9f911468 R10
+    below_proficiency_floor: ST-9f911468 
 
 ▶ Write the report (CSV and HTML)
   status: executed  decision: allow

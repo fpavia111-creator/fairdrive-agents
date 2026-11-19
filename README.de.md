@@ -34,7 +34,7 @@ Jeder Agent hat eine `demo` mit fiktiven Dateien, ein `eval` mit eigenen Testfä
 ## Wie sie sicher bleiben
 
 - **Nur lokale Dateien.** Keine Anmeldung bei DMS, Banken, Herstellerportalen, Zulassungsstellen oder Versicherern; kein Netzwerk, keine Telemetrie.
-- **Maskiert, bevor das Modell es sieht.** Kundennamen, Telefonnummern, E-Mails, Adressen und Ausweisnummern werden zu Pseudonymen (`CU-3f9a1c2e`).
+- **Maskiert, bevor das Modell es sieht.** Kundennamen, Telefonnummern, E-Mails, Adressen und Ausweisnummern sowie Namen von Mitarbeitern (Verkauf, Werkstatt, Serviceberater) werden zu Pseudonymen (`CU-3f9a1c2e`, `ST-8cea1a2d`).
 - **Menschen handeln.** Zahlen, Finanzieren, Zulassen, Einreichen, Senden und Buchen verweigert jeder Agent; Entwürfe und Zahllisten warten auf den Klick einer namentlich genannten Person, auch im Auto-Modus.
 - **Einstellungen statt fester Regeln.** Tage, Sätze, Provisionspläne, Steuersätze und Grenzen bestätigt Ihr Betrieb.
 - **Keine Compliance-Urteile.** Der OFAC- und Red-Flags-Agent prüft nur, ob Nachweise vorliegen.

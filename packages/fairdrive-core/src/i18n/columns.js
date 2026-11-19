@@ -121,7 +121,8 @@ export const COLUMN_WORDS = {
   consent_source: W(['Quelle der Einwilligung'], ['Source du consentement'], ['Origen del consentimiento'], ['Origem do consentimento'], ['Fonte del consenso'], ['同意取得元', '同意経路'], ['同意来源'], ['동의 경로', '동의 출처']),
   unsubscribed: W(['Abgemeldet', 'Abmeldung'], ['Désabonné', 'Désinscrit'], ['Dado de baja', 'Baja'], ['Descadastrado'], ['Disiscritto'], ['配信停止', '配信解除'], ['已退订', '退订'], ['수신거부', '구독취소']),
   bounce: W(['Unzustellbar'], ['Rebond'], ['Rebote'], ['Rejeição'], ['Rimbalzo'], ['不達', 'バウンス'], ['退信', '退回'], ['반송', '반송여부']),
-  // ---- Freight and shipping (Fairdrive) ----
+  // ---- Freight and shipping ----
+  // Kept from the core this family was copied from; no Fairdrive agent reads these columns.
   // Written from common TMS, carrier, forwarder and customs-broker exports in each
   // market (DB Schenker, DHL, Nippon Express, Sinotrans, CJ Logistics style
   // reports, SAP TM and Oracle freight extracts). None was checked against a

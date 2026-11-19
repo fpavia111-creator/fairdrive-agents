@@ -10,7 +10,7 @@ export const ADJ_FIELDS = Object.freeze({
   vin: t(['VIN', 'Vehicle VIN']),
   amount: t(['Amount', 'Policy Amount', 'Adjustment', 'Goodwill Amount'], { type: 'money', required: true }),
   reason: t(['Reason', 'Explanation', 'Comment', 'Policy Reason']),
-  approved_by: t(['Approved By', 'Approver', 'Manager', 'Authorized By']),
+  approved_by: t(['Approved By', 'Approver', 'Manager', 'Authorized By'], { pii: 'staff' }),
 });
 const who = (v) => str(v).toLowerCase().replace(/\s+/g, ' ');
 

@@ -1,13 +1,13 @@
 Auftragsnummer;FIN;Kunde;opened;closed;odometer;Mechaniker;Arbeitsposition;concern;labor_type
-80001;7ZZ5R6E05LA192725;Nathaniel Brisco;02.10.2026;;41.200;Ines Alvarez;BRK01;Front brakes grinding;Customer pay
-80003;7ZZ9U1LW1MA734429;Octavia Lindgren;05.10.2026;;63.000;Corin Brennan;AC02;AC blowing warm;Customer pay
-80005;7ZZ8CCUK8NA412538;Peregrine Sallow;07.10.2026;;22.000;Mei Chu;OIL1;Oil change;Customer pay
-80008;7ZZ0TCCU6PA503360;Quinlan Mercer;01.09.2026;;90.000;Mei Chu;ENG3;Check engine light on;Customer pay
-80010;7ZZ8A87XXRA659009;Rosalind Whitcombe;10.10.2026;;15.000;Ines Alvarez;ELEC1;Battery dead;Customer pay
-80011;7ZZUSUHH2SA184098;Silas Ondaatje;11.10.2026;;50.000;Corin Brennan;SUSP;Clunk over bumps;Customer pay
-80012;7ZZ8A87XXRA659009;Rosalind Whitcombe;12.10.2026;;15.030;Mei Chu;ELEC1;Battery dead again;Warranty
-80015;7ZZ5R6E05LA192725;Nathaniel Brisco;20.10.2026;;41.890;Mei Chu;BRK01;Brakes grinding again front;Customer pay
-80018;7ZZ9U1LW1MA734429;Octavia Lindgren;28.10.2026;;63.550;Corin Brennan;DIAG;AC blowing warm air again;Customer pay
-80020;7ZZ8CCUK8NA412538;Peregrine Sallow;30.10.2026;;22.300;Ines Alvarez;TIRE2;Tire rotation;Customer pay
-80024;7ZZ0TCCU6PA503360;Quinlan Mercer;05.11.2026;;91.500;Mei Chu;ENG3;Check engine light on;Customer pay
-80026;7ZZUSUHH2SA184098;Silas Ondaatje;02.11.2026;;52.500;Corin Brennan;SUSP;Clunk over bumps;Customer pay
+80001;0ZZ5R6E04LA192725;Nathaniel Brisco;02.10.2026;;41.200;Ines Alvarez;BRK01;Front brakes grinding;Customer pay
+80003;0ZZ9U1LW0MA734429;Octavia Lindgren;05.10.2026;;63.000;Corin Brennan;AC02;AC blowing warm;Customer pay
+80005;0ZZ8CCUK7NA412538;Peregrine Sallow;07.10.2026;;22.000;Mei Chu;OIL1;Oil change;Customer pay
+80008;0ZZ0TCCU5PA503360;Quinlan Mercer;01.09.2026;;90.000;Mei Chu;ENG3;Check engine light on;Customer pay
+80010;0ZZ8A87X9RA659009;Rosalind Whitcombe;10.10.2026;;15.000;Ines Alvarez;ELEC1;Battery dead;Customer pay
+80011;0ZZUSUHH1SA184098;Silas Ondaatje;11.10.2026;;50.000;Corin Brennan;SUSP;Clunk over bumps;Customer pay
+80012;0ZZ8A87X9RA659009;Rosalind Whitcombe;12.10.2026;;15.030;Mei Chu;ELEC1;Battery dead again;Warranty
+80015;0ZZ5R6E04LA192725;Nathaniel Brisco;20.10.2026;;41.890;Mei Chu;BRK01;Brakes grinding again front;Customer pay
+80018;0ZZ9U1LW0MA734429;Octavia Lindgren;28.10.2026;;63.550;Corin Brennan;DIAG;AC blowing warm air again;Customer pay
+80020;0ZZ8CCUK7NA412538;Peregrine Sallow;30.10.2026;;22.300;Ines Alvarez;TIRE2;Tire rotation;Customer pay
+80024;0ZZ0TCCU5PA503360;Quinlan Mercer;05.11.2026;;91.500;Mei Chu;ENG3;Check engine light on;Customer pay
+80026;0ZZUSUHH1SA184098;Silas Ondaatje;02.11.2026;;52.500;Corin Brennan;SUSP;Clunk over bumps;Customer pay

@@ -92,11 +92,17 @@ export function vinIndex(rows, vinOf = (r) => r.vin) {
   };
 }
 
-/** Model year from the 10th VIN character (1980-2039 cycle, nearest to the given year). */
+/**
+ * Model year from the 10th VIN character (30-year cycle). For North American light vehicles a
+ * numeric 7th character means 1980-2009 and a letter means 2010-2039 (49 CFR 565); a later year
+ * than next year is never returned. Checked on 49,980 real NY registrations (final pass, 19 Nov
+ * 2026): the 7th-character rule removed every 30-year error.
+ */
 export function vinYear(v, near = new Date().getUTCFullYear()) {
   const s = normVin(v); if (s.length !== 17) return null;
   const codes = 'ABCDEFGHJKLMNPRSTVWXY123456789';
   const i = codes.indexOf(s[9]); if (i < 0) return null;
+  if (/[0-9]/.test(s[6])) return 1980 + i;
   const b = 2010 + i;
   return b <= near + 1 ? b : 1980 + i;
 }

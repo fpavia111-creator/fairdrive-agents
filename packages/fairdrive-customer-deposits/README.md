@@ -25,9 +25,11 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `ap_issue_refund` is listed and refused: It never refunds a deposit.
 - `dms_apply_deposit` is listed and refused: It never applies or moves a deposit in the DMS.
 
-## Customer data
+## What the AI model sees
 
-Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): customer name (`customer`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`receipt_number`, `deal_number`, `status`); dates (`date`, `refunded_date`, `delivery_date`); amounts and counts (`amount`).
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 

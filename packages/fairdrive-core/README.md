@@ -58,10 +58,10 @@ main(manifest); // gives you: mcp | tools | call | demo | eval | approve | rejec
 ## Scaffold a new agent
 
 ```bash
-npx -y -p fairdrive-core fairdrive-new-agent iris-of-tests --dir packages
+npx -y -p fairdrive-core fairdrive-new-agent fairdrive-example-check --dir packages
 ```
 
-The generated package passes `npm test`, `eval` and `npm pack --dry-run` as is. See `docs/build-an-agent.md` in the monorepo.
+The generated package passes `npm test`, `eval` and `npm pack --dry-run` as is. Names must be `fairdrive-<what it does>`.
 
 ## Approvals
 
@@ -101,7 +101,7 @@ const KINDS = {
 const mem = memoryTools('acme', KINDS);   // acme_recall, acme_learn, acme_accept_learning, acme_retire_memory
 
 export const manifest = defineManifest({
-  name: 'acme-of-access', /* … */
+  name: 'fairdrive-example-check', /* … */
   memory: { prefix: 'acme', kinds: KINDS },
   tools: [
     { name: 'acme_review', kind: 'read', description: '…', handler: async (a, ctx) => {
@@ -260,18 +260,18 @@ A tool marked `tier: 'pro'` (optionally with a `feature` name) runs only with a 
 A key is `FAIRDRIVE1.<payload>.<Ed25519 signature>` with licensee, plan, agents (`*` or package names), features, issue and expiry dates. It is checked offline against the public keys in `src/license-keys.js` (empty in this release, so nothing can be unlocked yet). There is no environment variable or config file that adds a trusted key.
 
 - Customer: `<pack> license install key.txt` (copies it to `.fairdrive/license.key`), `<pack> license status`, or set `FAIRDRIVE_LICENSE` / `FAIRDRIVE_LICENSE_FILE`. `fairdrive_info` shows the plan, expiry and which tools are unlocked, never the key.
-- Seller, on their own computer: `npx -p fairdrive-core fairdrive-license keygen --out ~/fairdrive-licence-keys`, paste the printed public key into `LICENSE_PUBLIC_KEYS`, release, then `fairdrive-license issue --key ~/fairdrive-licence-keys/private.pem --licensee "Customer" --plan pro --days 365 [--agents polaris-of-bills] --out customer.key` and `fairdrive-license verify customer.key --pubkey ~/fairdrive-licence-keys/public.pem`. Withdrawn licence ids go in `LICENSE_REVOKED_IDS` and take effect from the next release.
+- Seller, on their own computer: `npx -p fairdrive-core fairdrive-license keygen --out ~/fairdrive-licence-keys`, paste the printed public key into `LICENSE_PUBLIC_KEYS`, release, then `fairdrive-license issue --key ~/fairdrive-licence-keys/private.pem --licensee "Customer" --plan pro --days 365 [--agents fairdrive-floorplan-audit] --out customer.key` and `fairdrive-license verify customer.key --pubkey ~/fairdrive-licence-keys/public.pem`. Withdrawn licence ids go in `LICENSE_REVOKED_IDS` and take effect from the next release.
 - `ctx.license` gives a handler `{ status, valid, plan, features, has(feature) }`.
 
 This is not copy protection: the packages are MIT-licensed source and anyone can remove the check. It draws a clear line for honest customers.
 
 ## What the model pin means
 
-The manifest declares which host model a pack's prompts and evals target. An MCP server cannot force your MCP host to use that model; the pin is reported in `initialize` and `fairdrive_info` so you can check it. The wave-1 packs' tools are deterministic and call no model at all.
+The manifest declares which host model a pack's prompts and evals target. An MCP server cannot force your MCP host to use that model; the pin is reported in `initialize` and `fairdrive_info` so you can check it. Fairdrive agents' tools are deterministic and call no model at all.
 
 ## Packs built on this core
 
-All 30 Fairdrive domain agents in the monorepo, from `achernar-of-returns` to `vega-of-detention`. Source: <https://github.com/fpavia111-creator/fairdrive-agents>.
+All 31 Fairdrive agents in the monorepo, from `fairdrive-comebacks` to `fairdrive-we-owes`. Source: <https://github.com/fpavia111-creator/fairdrive-agents>.
 
 ## License
 

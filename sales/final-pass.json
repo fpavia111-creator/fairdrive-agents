@@ -1,0 +1,48 @@
+{
+  "product": "Fairdrive",
+  "repo": "https://github.com/fpavia111-creator/fairdrive-agents",
+  "try_it": ["git clone https://github.com/fpavia111-creator/fairdrive-agents", "cd fairdrive-agents", "npm install", "node packages/fairdrive-contracts-in-transit/bin/fairdrive-contracts-in-transit.js demo"],
+  "accuracy": { "agents": 31, "planted_found": 185, "planted_total": 185, "clean_rows": 205, "clean_false_positives": 0, "mutation_cases": 63, "mutation_caught": 63, "note": "On fictional test data, 19 Nov 2026. Every agent measured: each problem planted in its test files found, nothing else reported on them, no finding on the same files with the problems removed, and each one-fact change caught. No real dealer file has been measured yet." },
+  "real_data": [
+    ["NY State DMV vehicle registrations", "https://data.ny.gov/Transportation/Vehicle-Snowmobile-and-Boat-Registrations/w4pv-hbkt", "19 Nov 2026", "NY State open data, data.ny.gov terms of use", "49,980 real VINs: the VIN check digit agreed with an independent check on every one; model year from the VIN matched the DMV's for 99.86% (the rest are 1-2 year registration differences), after a fix found here; a floorplan audit of 400 real VINs against a statement printing only the last 8 characters and a contracts-in-transit run of 300 against the last 6 gave 0 wrong matches"],
+    ["NHTSA vPIC VIN decoder", "https://vpic.nhtsa.dot.gov/api/", "19 Nov 2026", "US government work (public domain)", "500 of the same VINs decoded: check digit and model year agree with Fairdrive on all 500; it also showed the test VINs used a real manufacturer's code, so they were changed to a code no manufacturer can hold"]
+  ],
+  "formats": [
+    ["CDK Drive", "F&I deal list, vehicle inventory list, open RO report", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["Reynolds & Reynolds ERA-IGNITE", "Deal recap report", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["Tekion ARC", "Deals list export", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["Dealertrack", "Funding status / contracts in transit report", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["DealerSocket", "Inventory export", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["Tekmetric", "Repair orders export", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["Shopmonkey", "Orders export", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["CCC ONE", "Estimate and supplement list export", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["Mitchell Cloud Estimating", "Estimate totals export", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["Floorplan lenders", "Floorplan statement or curtailment report", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["Manufacturers", "Warranty claim payment statement; incentive and dealer cash statement", "written from knowledge of the export, not yet checked against documentation or a real export"],
+    ["Any system", "VIN columns", "tested on a public sample (NY DMV registrations, NHTSA vPIC)"]
+  ],
+  "human_review": [
+    ["Contracts and funding starter", "A person calls the lender about each old contract, decides what to post, and sends any follow-up or dispute after reading the draft."],
+    ["F&I office pack", "A person decides whether a jacket is complete, runs and judges every OFAC and identity check, and approves any refund, remittance or lender letter."],
+    ["Floorplan and inventory pack", "A person confirms payoff amounts with the lender and pays them, and decides prices, wholesale and recon spending."],
+    ["Accounting office pack", "The controller decides every journal entry, tax figure, title action, payoff and commission paid; the agents only list what to look at."],
+    ["Fixed operations pack", "The service and parts managers decide on warranty resubmissions, adjustments, pay for technicians and returns to vendors."],
+    ["Independent repair shop", "The owner decides what to bill, pay or redo; the agents only list repair orders, hours and invoices that need a look."],
+    ["Collision pack", "A person decides what to ask an insurer for and sends it; supplements and invoices are never filed by the agents."],
+    ["Whole store", "Each department head reviews their own lists; every payment, letter and filing is made by a named person after reading the draft."],
+    ["Dealer group", "Each rooftop's office reviews its own lists and settings; nothing is posted, paid or sent for a store by the agents."],
+    ["Partner rollout", "The firm or consultant reviews each store's lists and settings with that store; every action stays with a named person at the store."]
+  ],
+  "common_problems": [
+    "Contracts in transit past the store's alert days, contracts the lender returned, and funding the lender sent that was never posted.",
+    "Units sold but still on the floorplan past the payoff days, and lender balances that differ from the DMS.",
+    "F&I product chargebacks higher than the pro-rata figure, and customer refunds not sent.",
+    "Deal jackets missing signed forms (odometer, privacy notice, credit documents) and deals with no OFAC or Red Flags record on file.",
+    "Manufacturer incentive and warranty claims not submitted, paid short, rejected or charged back.",
+    "Trade-in payoffs not sent, sent after the quote expired, or with no lien release.",
+    "Sales tax and DMV fees collected that differ from the county rate or the state charge.",
+    "Repair orders sold below the margin floors, comebacks within 30 days, and parts billed but never received."
+  ],
+  "reaches_the_model": "When an AI assistant calls a Fairdrive tool, the agent reads the files on the user's computer and returns a result. Before it leaves the agent, customer names, co-buyers, phones, e-mails, addresses, licence and account numbers, and staff names (salespeople, technicians, advisors, F&I managers) are replaced with stable pseudonyms or placeholders. Deal, stock, RO and claim numbers, VINs, dates, amounts and business names such as lenders and insurers are sent as they are; free-text notes are sent with known names and phone, e-mail and SSN patterns replaced. Results go to whatever model the user's assistant uses; for data that may not be shared with that provider, use a local model or one covered by the user's agreements. The reports written on the user's computer keep the real values.",
+  "rules_maintained": "Every day count, rate and limit (67 settings, such as the 10-day contracts-in-transit alert, the 90-day full chargeback window, the 75% reserve share and the curtailment schedules) is a working example written for version 0.1.0 on 18 Nov 2026, not a law or any lender's, manufacturer's or state's terms. Each default is in the agent's source and each is a named setting the store passes when the tool runs; tax rates, pay plans and extra deal-jacket documents come from the store's own files. Mythos Machines updates defaults in a new release with a changelog line, and settings updates are part of the support plan."
+}

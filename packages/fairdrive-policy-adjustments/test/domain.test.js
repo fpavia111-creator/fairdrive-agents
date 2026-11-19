@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { checkPolicy } from '../src/index.js';
 
-const a = (o = {}) => ({ ro_number: '1', date: '2026-10-01', advisor: 'Lena Moreau', vin: '7ZZ5R6E05LA192725', amount: '100', reason: 'Goodwill', approved_by: 'Dana Whitlock', ...o });
+const a = (o = {}) => ({ ro_number: '1', date: '2026-10-01', advisor: 'Lena Moreau', vin: '0ZZ5R6E04LA192725', amount: '100', reason: 'Goodwill', approved_by: 'Dana Whitlock', ...o });
 const f = (rows, o = {}) => checkPolicy(rows, o).items.map((i) => i.findings);
 
 test('an approved, explained, small adjustment is not listed', () => {

@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { findComebacks, sameWork } from '../src/index.js';
 
-const V = '7ZZ5R6E05LA192725';
+const V = '0ZZ5R6E04LA192725';
 const ro = (o = {}) => ({ ro_number: '1', vin: V, opened: '2026-10-01', odometer: '1000', technician: 'Ines', op_code: 'BRK01', concern: 'Brakes grinding', ...o });
 
 test('same op code, or two shared concern words, is the same work; one shared word is not', () => {
@@ -32,5 +32,5 @@ test('days count from the close date of the first visit when there is one', () =
 
 test('an internal first visit is not a comeback source; different vehicles are never compared', () => {
   assert.equal(findComebacks([ro({ labor_type: 'Internal' }), ro({ ro_number: '2', opened: '2026-10-05' })]).comebacks, 0);
-  assert.equal(findComebacks([ro(), ro({ ro_number: '2', vin: '7ZZ9U1LW1MA734429', opened: '2026-10-05' })]).comebacks, 0);
+  assert.equal(findComebacks([ro(), ro({ ro_number: '2', vin: '0ZZ9U1LW0MA734429', opened: '2026-10-05' })]).comebacks, 0);
 });

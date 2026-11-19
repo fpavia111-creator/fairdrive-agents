@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { checkIncentives, inquiryText } from '../src/index.js';
 
-const V = '7ZZ5R6E05LA192725';
+const V = '0ZZ5R6E04LA192725';
 const e = (o = {}) => ({ vin: V, sale_date: '2026-10-01', program: 'RET-1', amount_expected: '1000', claim_submitted: '2026-10-02', ...o });
 const s = (o = {}) => ({ vin: V, program: 'RET-1', amount_paid: '1000', paid_date: '2026-10-20', status: 'Paid', ...o });
 const run = (x, y, o = {}) => checkIncentives(x, y, { asOf: '2026-11-15', ...o });

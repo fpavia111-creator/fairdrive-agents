@@ -34,7 +34,7 @@ Ogni agente ha una `demo` su file fittizi, un `eval` con i propri casi di prova 
 ## Come restano sicuri
 
 - **Solo file locali.** Nessun accesso a DMS, banche, portali della casa madre, motorizzazione o assicurazioni; niente rete, niente telemetria.
-- **Mascherato prima che il modello lo veda.** Nomi, telefoni, e-mail, indirizzi e numeri di documento dei clienti diventano pseudonimi (`CU-3f9a1c2e`).
+- **Mascherato prima che il modello lo veda.** Nomi, telefoni, e-mail, indirizzi e numeri di documento dei clienti, e i nomi del personale (venditori, tecnici, accettatori), diventano pseudonimi (`CU-3f9a1c2e`, `ST-8cea1a2d`).
 - **Agiscono le persone.** Pagare, finanziare, immatricolare, presentare, inviare e registrare sono rifiutati; bozze e distinte di pagamento attendono il clic di una persona indicata per nome, anche in modalità Auto.
 - **Impostazioni, non regole fisse.** Giorni, tassi, piani provvigionali, aliquote e limiti li conferma la vostra azienda.
 - **Nessun giudizio di conformità.** L’agente OFAC e Red Flags controlla solo che le registrazioni esistano.

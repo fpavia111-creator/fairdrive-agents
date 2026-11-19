@@ -6,7 +6,9 @@
     "Ignatius Pell",
     "Kasimir Rendell",
     "Montgomery Hale",
-    "Harriet Dunsmore"
+    "Harriet Dunsmore",
+    "Lena Moreau",
+    "Marco Ilic"
   ],
   "cases": [
     {
@@ -50,7 +52,7 @@
       },
       "expect": {
         "equals": {
-          "result.by_advisor.0.advisor": "Lena Moreau",
+          "result.by_advisor.0.repair_orders": 3,
           "result.by_advisor.0.labor_gp_pct": 67.23,
           "result.by_advisor.1.labor_gp_pct": 44.44,
           "result.by_advisor.1.parts_gp_pct": 38.1

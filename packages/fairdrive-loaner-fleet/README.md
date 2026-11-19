@@ -25,9 +25,11 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `dms_retail_unit` is listed and refused: It never moves a loaner or demo into retail inventory or changes a unit.
 - `oem_portal_defleet` is listed and refused: It never files a loaner program claim or defleet request.
 
-## Customer data
+## What the AI model sees
 
-Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): customer name (`customer`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`stock_number`, `use`, `status`, `ro_number`); VINs (`vin`; pseudonymised with `--pii strict`); dates (`in_service_date`, `out_date`, `return_date`); amounts and counts (`odometer`, `odometer_in_service`).
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 

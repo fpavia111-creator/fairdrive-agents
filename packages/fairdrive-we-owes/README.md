@@ -24,9 +24,12 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `sms_text_customer` is listed and refused: It never texts, calls or e-mails a customer.
 - `dms_update_deal` is listed and refused: It never changes a deal or posts a cost.
 
-## Customer data
+## What the AI model sees
 
-Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): customer name (`customer`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`deal_number`, `ro_number`); dates (`delivery_date`, `promised_date`, `completed_date`); amounts and counts (`estimated_cost`, `cost_booked`).
+- **Free text sent as written** (known names, phone numbers, e-mails and SSN-like numbers inside it are replaced; anything else typed there is not): `item`.
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 

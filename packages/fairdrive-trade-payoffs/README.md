@@ -26,9 +26,11 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `bank_send_wire` is listed and refused: It never sends a check, wire or ACH.
 - `dms_update_deal` is listed and refused: It never changes a deal or the payoff log.
 
-## Customer data
+## What the AI model sees
 
-Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): customer name (`customer`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`deal_number`, `lienholder`); VINs (`trade_vin`; pseudonymised with `--pii strict`); dates (`deal_date`, `quote_good_through`, `payoff_sent`, `payoff_cleared`, `lien_release_received`); amounts and counts (`payoff_quote`, `per_diem`, `payoff_amount_sent`).
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 

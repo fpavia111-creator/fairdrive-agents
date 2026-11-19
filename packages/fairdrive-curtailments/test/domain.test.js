@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { position, scheduleCurtailments, DEFAULT_NEW, DEFAULT_USED } from '../src/index.js';
 
-const u = (o = {}) => ({ vin: '7ZZ0TCCU6PA503360', floor_date: '2026-01-01', original_amount: '20000', balance: '20000', new_used: 'New', ...o });
+const u = (o = {}) => ({ vin: '0ZZ0TCCU5PA503360', floor_date: '2026-01-01', original_amount: '20000', balance: '20000', new_used: 'New', ...o });
 
 test('nothing is due before the first step', () => {
   const p = position(u(), DEFAULT_NEW, '2026-03-01');

@@ -6,7 +6,10 @@
     "Nathaniel Brisco",
     "Octavia Lindgren",
     "Rosalind Whitcombe",
-    "Silas Ondaatje"
+    "Silas Ondaatje",
+    "Ines Alvarez",
+    "Corin Brennan",
+    "Mei Chu"
   ],
   "cases": [
     {
@@ -20,7 +23,6 @@
           "result.repair_orders": 12,
           "result.comebacks": 3,
           "result.comeback_pct": 25,
-          "result.by_technician.0.technician": "Ines Alvarez",
           "result.by_technician.0.comebacks": 2
         }
       }
@@ -188,7 +190,6 @@
           "result.repair_orders": 12,
           "result.comebacks": 3,
           "result.comeback_pct": 25,
-          "result.by_technician.0.technician": "Ines Alvarez",
           "result.by_technician.0.comebacks": 2
         }
       }
@@ -218,7 +219,6 @@
           "result.repair_orders": 12,
           "result.comebacks": 3,
           "result.comeback_pct": 25,
-          "result.by_technician.0.technician": "Ines Alvarez",
           "result.by_technician.0.comebacks": 2
         }
       },
@@ -235,7 +235,6 @@
           "result.repair_orders": 12,
           "result.comebacks": 3,
           "result.comeback_pct": 25,
-          "result.by_technician.0.technician": "Ines Alvarez",
           "result.by_technician.0.comebacks": 2
         }
       },

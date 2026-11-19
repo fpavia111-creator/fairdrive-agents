@@ -24,9 +24,11 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `dms_close_ro` is listed and refused: It never closes, reopens or changes a repair order.
 - `sms_text_customer` is listed and refused: It never texts or calls a customer.
 
-## Customer data
+## What the AI model sees
 
-Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): staff name (`advisor`), customer name (`customer`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`ro_number`, `labor_type`, `status`, `parts_on_order`); dates (`opened`, `promised_date`); amounts and counts (`total`).
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 
@@ -40,11 +42,11 @@ Fairdrive Open Repair Orders demo (fictional open RO report, 15 November 2026)
 ▶ Run the check on the exported files
   status: executed  decision: allow
   7 open repair order(s) worth 4210, oldest 48 days. 2 past the promised date, 1 waiting on parts, 1 warranty and 1 internal open too long, 1 customer-pay open too long.
-    90003   48 days  warranty      Marco Ilic   warranty_open_long
-    90006   41 days  customer_pay  Marco Ilic   past_promise, open_long
-    90004   26 days  internal      Lena Moreau  internal_open_long
-    90002   14 days  customer_pay  Marco Ilic   waiting_parts
-    90001    2 days  customer_pay  Lena Moreau  past_promise
+    90003   48 days  warranty      ST-c3a63027  warranty_open_long
+    90006   41 days  customer_pay  ST-c3a63027  past_promise, open_long
+    90004   26 days  internal      ST-ae639c70  internal_open_long
+    90002   14 days  customer_pay  ST-c3a63027  waiting_parts
+    90001    2 days  customer_pay  ST-ae639c70  past_promise
 
 ▶ Write the report (CSV and HTML)
   status: executed  decision: allow

@@ -77,7 +77,7 @@ All of them share [`fairdrive-core`](packages/fairdrive-core): the policy engine
 ## How they stay safe
 
 - **Local files only.** No login to a DMS, lender portal, manufacturer portal, DMV, insurer or bank; no network calls, no telemetry.
-- **Masked before the model sees it.** Customer names, phones, e-mails, addresses and ID numbers become stable pseudonyms (`CU-3f9a1c2e`) in every result an AI model reads. The files written on your machine keep the real values.
+- **Masked before the model sees it.** Customer names, phones, e-mails, addresses and ID numbers, and staff names (salespeople, technicians, advisors), become stable pseudonyms (`CU-3f9a1c2e`, `ST-8cea1a2d`) in every result an AI model reads. Deal, stock and RO numbers, VINs, dates and amounts are sent as they are. The files written on your machine keep the real values.
 - **People act.** Paying, funding, titling, filing, sending and posting are refused by every agent. Payoff lists, commission sheets and letters are drafts that wait for one named person's click, even in Auto mode, tied to the sha256 of the reviewed draft.
 - **Settings, not hard-coded rules.** Days, rates, pay plans, tax rates, curtailment schedules and program limits are arguments or files your store confirms.
 - **No compliance verdicts.** The OFAC and Red Flags agent checks that records exist and are dated before delivery; it never reads or clears a check result.

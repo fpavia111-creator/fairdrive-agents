@@ -21,7 +21,7 @@ files with you, and leave the reports and the approval routine working on your c
 | 2,000 | One body shop | Collision pack | Estimate vs invoice, insurance supplements, sublet invoices, open repair orders, parts receiving (5 agents) |
 | 7,500 | One store | Whole store | All 31 agents, one training session |
 | 11,000 | 2 to 4 rooftops | Dealer group | Whole store for each rooftop, each store mapped and set up separately |
-| 15,000 | Up to 15 stores | Partner rollout | For dealership accounting firms, 20 groups and fixed-ops consultants serving many stores: all 31 agents, one shared setup, every store's exports mapped with its own settings |
+| 15,000 | Up to 15 stores | Partner rollout | For dealership accounting firms, dealer peer groups and fixed-ops consultants who work with many stores: all 31 agents, one shared setup, and each store's exports mapped with its own settings |
 
 ## Support after setup
 

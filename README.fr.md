@@ -34,7 +34,7 @@ Chaque agent a une `demo` sur des fichiers fictifs, un `eval` avec ses propres c
 ## Comment ils restent sûrs
 
 - **Fichiers locaux uniquement.** Aucune connexion au DMS, aux banques, aux portails constructeur, à l’administration ou aux assureurs ; pas de réseau, pas de télémétrie.
-- **Masqué avant que le modèle ne le voie.** Noms, téléphones, e-mails, adresses et numéros d’identité des clients deviennent des pseudonymes (`CU-3f9a1c2e`).
+- **Masqué avant que le modèle ne le voie.** Noms, téléphones, e-mails, adresses et numéros d’identité des clients, ainsi que les noms du personnel (vendeurs, techniciens, conseillers), deviennent des pseudonymes (`CU-3f9a1c2e`, `ST-8cea1a2d`).
 - **Les personnes agissent.** Payer, financer, immatriculer, déposer, envoyer et comptabiliser sont refusés ; brouillons et listes de paiement attendent le clic d’une personne nommée, même en mode Auto.
 - **Des réglages, pas des règles figées.** Délais, taux, plans de commission, taux de taxe et limites sont confirmés par votre établissement.
 - **Aucun avis de conformité.** L’agent OFAC et Red Flags vérifie seulement que les justificatifs existent.

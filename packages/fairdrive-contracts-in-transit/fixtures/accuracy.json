@@ -37,7 +37,7 @@
    "not_on_lender_statement"
   ],
   [
-   "7ZZWU701XKA720489",
+   "0ZZWU7019KA720489",
    "statement_line_no_contract"
   ]
  ],
@@ -60,8 +60,8 @@
    "dropWhere": {
     "vin": [
      "SA868254",
-     "7ZZ3H4R72TA225525",
-     "7ZZWU701XKA720489"
+     "0ZZ3H4R71TA225525",
+     "0ZZWU7019KA720489"
     ]
    }
   }

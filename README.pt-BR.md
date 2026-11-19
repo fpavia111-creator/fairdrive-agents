@@ -34,7 +34,7 @@ Cada agente tem uma `demo` com arquivos fictícios, um `eval` com seus próprios
 ## Como eles continuam seguros
 
 - **Apenas arquivos locais.** Não entram no DMS, bancos, portais da montadora, órgão de trânsito ou seguradoras; sem rede, sem telemetria.
-- **Mascarado antes que o modelo veja.** Nomes, telefones, e-mails, endereços e números de documento dos clientes viram pseudônimos (`CU-3f9a1c2e`).
+- **Mascarado antes que o modelo veja.** Nomes, telefones, e-mails, endereços e números de documento dos clientes, e os nomes da equipe (vendedores, técnicos, consultores), viram pseudônimos (`CU-3f9a1c2e`, `ST-8cea1a2d`).
 - **Pessoas agem.** Pagar, financiar, emplacar, protocolar, enviar e lançar são recusados; rascunhos e listas de pagamento esperam o clique de uma pessoa nomeada, inclusive no modo Auto.
 - **Configurações, não regras fixas.** Prazos, taxas, planos de comissão, alíquotas e limites são confirmados pela sua loja.
 - **Sem pareceres de conformidade.** O agente de OFAC e Red Flags só verifica se os registros existem.

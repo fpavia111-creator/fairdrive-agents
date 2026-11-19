@@ -24,9 +24,12 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `dms_adjust_inventory` is listed and refused: It never adjusts quantities, costs or bins.
 - `oem_parts_return_submit` is listed and refused: It never submits a parts return.
 
-## Customer data
+## What the AI model sees
 
-This agent reads no customer columns. Results still pass through the customer-data masker, which replaces anything that looks like a phone number, e-mail or SSN.
+- **Masked:** this agent reads no customer or staff column. Anything that looks like a phone number, e-mail or SSN is still replaced in every result.
+- **Sent as they are:** ids, codes and names of businesses (`part_number`, `returnable`, `source`); dates (`last_sale_date`, `last_receipt_date`); amounts and counts (`on_hand`, `unit_cost`).
+- **Free text sent as written** (known names, phone numbers, e-mails and SSN-like numbers inside it are replaced; anything else typed there is not): `description`.
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 

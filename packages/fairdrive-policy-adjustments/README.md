@@ -24,9 +24,12 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `dms_post_policy` is listed and refused: It never posts, changes or reverses a policy adjustment.
 - `gl_post_entry` is listed and refused: It never posts to the ledger.
 
-## Customer data
+## What the AI model sees
 
-Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): staff name (`advisor`), customer name (`customer`), staff name (`approved_by`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`ro_number`); VINs (`vin`; pseudonymised with `--pii strict`); dates (`date`); amounts and counts (`amount`).
+- **Free text sent as written** (known names, phone numbers, e-mails and SSN-like numbers inside it are replaced; anything else typed there is not): `reason`.
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 
@@ -40,11 +43,11 @@ Fairdrive Policy Adjustments demo (fictional adjustments, October and November 2
 ▶ Run the check on the exported files
   status: executed  decision: allow
   6 policy adjustment(s) totalling 1265. 1 with no approver, 1 self-approved, 2 over 250, 1 with no reason, 1 repeated on the same vehicle.
-    92002  Marco Ilic      420  self_approved, large_adjustment
-    92006  Marco Ilic      300  large_adjustment
-    92005  Lena Moreau     210  repeat_vehicle
-    92003  Lena Moreau      95  no_approver
-    92004  Marco Ilic       60  no_reason
+    92002  ST-c3a63027     420  self_approved, large_adjustment
+    92006  ST-c3a63027     300  large_adjustment
+    92005  ST-ae639c70     210  repeat_vehicle
+    92003  ST-ae639c70      95  no_approver
+    92004  ST-c3a63027      60  no_reason
 
 ▶ Write the report (CSV and HTML)
   status: executed  decision: allow

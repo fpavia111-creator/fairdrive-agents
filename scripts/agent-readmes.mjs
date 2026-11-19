@@ -7,6 +7,7 @@
 import { readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { modelViewLines } from './lib/model-view.mjs';
 
 const PK = join(dirname(fileURLToPath(import.meta.url)), '..', 'packages');
 const MARK = '<!-- written by scripts/agent-readmes.mjs; delete this line to edit by hand -->';
@@ -35,8 +36,8 @@ for (const n of readdirSync(PK).filter((x) => x.startsWith('fairdrive-') && x !=
     `- \`${m.tools.find((t) => /_write_report$/.test(t.name)).name}\`: writes the same as CSV (for people to work) and HTML (to read, in the report language you choose with \`--lang\`).`,
     ...(draft ? [`- \`${draft.name}\`: ${draft.description}`, `- \`${req.name}\`: records that one named person approved the reviewed draft. It waits for that person even in Auto mode, is tied to the draft's sha256, and the agent never sends or pays anything itself.`] : []),
     ...refused.map((t) => `- \`${t.name}\` is listed and refused: ${t.description.replace(/^Listed so agents can see it is refused\.\s*/, '')}`), '',
-    '## Customer data', '',
-    Object.values(m.sources || {}).some((s) => Object.values(s.fields).some((fd) => fd && fd.pii)) ? 'Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.' : 'This agent reads no customer columns. Results still pass through the customer-data masker, which replaces anything that looks like a phone number, e-mail or SSN.', '',
+    '## What the AI model sees', '',
+    ...modelViewLines(m), '',
     '## Limits', '', ...(m.reportLimits || []).map((l) => `- ${l}`), '- Every figure comes from your files and settings. Check it before you act on it.', '',
   ].join('\n');
   // Keep the generated part (readme-sections.mjs) when rewriting.

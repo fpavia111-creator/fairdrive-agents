@@ -14,7 +14,7 @@
     ["$2,000 · One body shop", "Collision pack", "Estimates and supplements against final invoices, supplements waiting on insurers, sublet, open repair orders and parts receiving (5 agents)"],
     ["$7,500 · One store", "Whole store", "All 31 agents, mapped to your exports and set to the days, rates and pay plans your store confirms, one training session"],
     ["$11,000 · 2 to 4 rooftops", "Dealer group", "Whole store for each rooftop, each store's exports mapped and its own settings confirmed separately"],
-    ["$15,000 · Up to 15 stores", "Partner rollout", "For dealership accounting firms, 20 groups and fixed-ops consultants serving many stores: all 31 agents, one shared setup, every store's exports mapped with its own settings"]
+    ["$15,000 · Up to 15 stores", "Partner rollout", "For dealership accounting firms, dealer peer groups and fixed-ops consultants who work with many stores: all 31 agents, one shared setup, and each store's exports mapped with its own settings"]
   ],
   "support": "Support after setup: $250 a month for one pack, $600 a month for the whole store, $300 a month per rooftop for dealer groups and partner rollouts. Includes export changes, settings updates when your lender, manufacturer or state rules change, new versions and a monthly check-in.",
   "notes": [
@@ -24,7 +24,7 @@
     "The OFAC and Red Flags agent checks that records exist and are dated before delivery; it makes no compliance determination and never reads or clears a check result.",
     "Not legal, tax, lending or accounting advice. A person decides what to claim, pay, fund, title, charge back or post."
   ],
-  "warn": "Everything runs on your computer on files you choose. Results the AI model sees have customer names, phones, e-mails, addresses and ID numbers masked. Nothing is ever paid, funded, titled, filed, sent or posted by an agent: drafts and payment lists wait for one named person's click, even in Auto mode.",
+  "warn": "Everything runs on your computer on files you choose. Results the AI model sees have customer names, phones, e-mails, addresses, ID numbers and staff names masked. Nothing is ever paid, funded, titled, filed, sent or posted by an agent: drafts and payment lists wait for one named person's click, even in Auto mode.",
   "groups": [
     ["Deals and F&I", [
       ["Deal jackets", "Every deal checked for the documents its type needs; missing and unsigned ones listed, oldest delivery first"],

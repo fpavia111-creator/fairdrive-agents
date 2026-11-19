@@ -108,6 +108,7 @@ export class AgentRuntime {
     this.piiMode = options.pii || process.env.FAIRDRIVE_PII || 'mask';
     if (!PII_MODES.includes(this.piiMode)) throw new Error(`pii must be one of ${PII_MODES.join(', ')}`);
     this.piiPersist = persist;
+    this._piiKey = Buffer.isBuffer(options.piiKey) ? options.piiKey : null; // demos pass a fixed key for fictional data
     this.usage = new UsageStore(persist ? this.stateDir : null);
     // Domain memory (only for agents whose manifest declares it): one file per agent
     // under <stateDir>/memory/. Accepted facts are used unless memory: false.

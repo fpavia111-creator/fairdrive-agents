@@ -6,7 +6,9 @@
     "Thaddeus Greaves",
     "Ursula Penhallow",
     "Valentin Osei",
-    "Xenia Aldridge"
+    "Xenia Aldridge",
+    "Lena Moreau",
+    "Marco Ilic"
   ],
   "cases": [
     {
@@ -71,7 +73,7 @@
       },
       "expect": {
         "equals": {
-          "result.by_advisor.0.advisor": "Marco Ilic",
+          "result.by_advisor.0.repair_orders": 3,
           "result.by_advisor.0.amount": 2680,
           "result.by_advisor.1.oldest_days": 26
         }

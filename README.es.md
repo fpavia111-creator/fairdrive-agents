@@ -34,7 +34,7 @@ Cada agente tiene una `demo` con archivos ficticios, un `eval` con sus propios c
 ## Cómo se mantienen seguros
 
 - **Solo archivos locales.** No inician sesión en el DMS, bancos, portales del fabricante, la oficina de tránsito ni aseguradoras; sin red ni telemetría.
-- **Enmascarado antes de que el modelo lo vea.** Nombres, teléfonos, correos, direcciones y números de identificación de clientes se vuelven seudónimos (`CU-3f9a1c2e`).
+- **Enmascarado antes de que el modelo lo vea.** Nombres, teléfonos, correos, direcciones y números de identificación de clientes, y los nombres del personal (vendedores, técnicos, asesores), se vuelven seudónimos (`CU-3f9a1c2e`, `ST-8cea1a2d`).
 - **Las personas actúan.** Pagar, financiar, titular, presentar, enviar y contabilizar se rechazan; borradores y listas de pago esperan el clic de una persona con nombre, también en modo Auto.
 - **Ajustes, no reglas fijas.** Días, tasas, planes de comisión, tasas de impuesto y límites los confirma su negocio.
 - **Sin dictámenes de cumplimiento.** El agente de OFAC y Red Flags solo comprueba que los registros existan.

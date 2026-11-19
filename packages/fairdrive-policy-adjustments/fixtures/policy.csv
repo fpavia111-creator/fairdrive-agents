@@ -1,7 +1,7 @@
 ro_number,date,advisor,customer,vin,amount,reason,approved_by
-92001,2026-10-02,Lena Moreau,Sabine Holloway,7ZZ5R6E05LA192725,180.00,Goodwill - paint chip,Dana Whitlock
-92002,2026-10-06,Marco Ilic,Tobias Wrenfield,7ZZ9U1LW1MA734429,420.00,Transmission goodwill,Marco Ilic
-92003,2026-10-10,Lena Moreau,Ulrike Fontaine,7ZZ8CCUK8NA412538,95.00,Customer satisfaction,
-92004,2026-10-15,Marco Ilic,Vaughn Castellanos,7ZZ0TCCU6PA503360,60.00,,Dana Whitlock
-92005,2026-10-28,Lena Moreau,Sabine Holloway,7ZZ5R6E05LA192725,210.00,Paint again,Dana Whitlock
-92006,2026-11-03,Marco Ilic,Wilhelm Ostrander,7ZZ8A87XXRA659009,300.00,Warranty denied - goodwill,Dana Whitlock
+92001,2026-10-02,Lena Moreau,Sabine Holloway,0ZZ5R6E04LA192725,180.00,Goodwill - paint chip,Dana Whitlock
+92002,2026-10-06,Marco Ilic,Tobias Wrenfield,0ZZ9U1LW0MA734429,420.00,Transmission goodwill,Marco Ilic
+92003,2026-10-10,Lena Moreau,Ulrike Fontaine,0ZZ8CCUK7NA412538,95.00,Customer satisfaction,
+92004,2026-10-15,Marco Ilic,Vaughn Castellanos,0ZZ0TCCU5PA503360,60.00,,Dana Whitlock
+92005,2026-10-28,Lena Moreau,Sabine Holloway,0ZZ5R6E04LA192725,210.00,Paint again,Dana Whitlock
+92006,2026-11-03,Marco Ilic,Wilhelm Ostrander,0ZZ8A87X9RA659009,300.00,Warranty denied - goodwill,Dana Whitlock

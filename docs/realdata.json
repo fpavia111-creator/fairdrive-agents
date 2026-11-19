@@ -1,0 +1,81 @@
+{
+  "run": "2026-11-19",
+  "downloaded": "2026-11-19T07:35:32.672Z",
+  "ny": {
+    "rows": 50000,
+    "vins_17": 49980,
+    "distinct": 49980,
+    "check_digit_valid_core": 49972,
+    "check_digit_valid_independent": 49972,
+    "check_digit_disagreements": 0,
+    "model_year_compared": 49980,
+    "model_year_same": 49911,
+    "model_year_differences": {
+      "1": 3,
+      "3": 1,
+      "-1": 42,
+      "-2": 23
+    },
+    "tails": [
+      {
+        "tail": 6,
+        "vins_sharing_a_tail": 1878,
+        "pairs": 960,
+        "pair_probability": 7.6863014759116e-7,
+        "store_300_chance_of_any_shared_tail": 0.033885648392434686,
+        "store_1000": 0.31882150930200104
+      },
+      {
+        "tail": 8,
+        "vins_sharing_a_tail": 0,
+        "pairs": 0,
+        "pair_probability": 0,
+        "store_300_chance_of_any_shared_tail": 0,
+        "store_1000": 0
+      }
+    ]
+  },
+  "floorplan": {
+    "units": 400,
+    "statement_lines_last8": 400,
+    "findings": 0,
+    "by_finding": {}
+  },
+  "contracts_in_transit": {
+    "contracts": 300,
+    "statement_lines_last6": 300,
+    "findings": 0,
+    "by_finding": {},
+    "statement_lines_not_matched": 0
+  },
+  "vpic": {
+    "decoded": 500,
+    "check_digit_agree": 500,
+    "check_digit_differ": [],
+    "model_year_known": 500,
+    "model_year_same": 500
+  },
+  "fixture_vins": [
+    {
+      "vin": "0ZZ8A87X9RA659009",
+      "make": "",
+      "manufacturer": "",
+      "error_code": "7",
+      "error_text": "7 - Manufacturer is not registered with NHTSA for sale or importation in the U.S. for use on U.S roads; Please contact the manufacturer directly for more information"
+    },
+    {
+      "vin": "0ZZ0TCCU5PA503360",
+      "make": "",
+      "manufacturer": "",
+      "error_code": "7",
+      "error_text": "7 - Manufacturer is not registered with NHTSA for sale or importation in the U.S. for use on U.S roads; Please contact the manufacturer directly for more information"
+    },
+    {
+      "vin": "0ZZ5R6E04LA192725",
+      "make": "",
+      "manufacturer": "",
+      "error_code": "7",
+      "error_text": "7 - Manufacturer is not registered with NHTSA for sale or importation in the U.S. for use on U.S roads; Please contact the manufacturer directly for more information"
+    }
+  ]
+}

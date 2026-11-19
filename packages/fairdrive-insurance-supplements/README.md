@@ -26,9 +26,11 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `insurer_portal_submit` is listed and refused: It never submits a supplement or message to an insurer portal.
 - `dms_change_estimate` is listed and refused: It never changes an estimate or repair order.
 
-## Customer data
+## What the AI model sees
 
-Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): customer name (`customer`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`ro_number`, `claim_number`, `insurer`, `supplement_number`, `status`); dates (`submitted_date`, `response_date`); amounts and counts (`amount_requested`, `amount_approved`).
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 

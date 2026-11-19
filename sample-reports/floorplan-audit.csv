@@ -1,6 +1,6 @@
 finding,stock_number,vin,status,sold_date,days_since_sale,floor_date,statement_balance,amount,why
-sold_not_paid_off,S5002,7ZZPNMXP6RA120301,Sold,2026-11-03,12,2026-08-30,33800,33800,Sold 12 days ago and still on the floorplan statement for 33800. Pay it off; most floorplan agreements require it within days of the sale.
-on_statement_not_in_inventory,,7ZZMESC69NA408327,,,,2026-06-05,29400,29400,"The lender shows 29400 on this VIN and the DMS inventory does not have it: sold and removed without a payoff, or not yours."
-balance_differs,S5004,7ZZ2XTPH7TA110178,In stock,,,2026-07-18,24500,1000,The DMS carries 25500; the lender shows 24500. A curtailment or payoff was posted on one side only.
-payoff_due,S5003,7ZZ1R4FZ9SA576862,Delivered,2026-11-13,2,2026-10-02,28950,28950,Sold 2 day(s) ago; payoff of 28950 falls due within your 5 days.
-not_floored,S5005,7ZZLUK947KA636195,In stock,,,,,,In stock but not on the floorplan statement. Fine if it was bought for cash; otherwise it was never floored or was paid off by mistake.
+sold_not_paid_off,S5002,0ZZPNMXP5RA120301,Sold,2026-11-03,12,2026-08-30,33800,33800,Sold 12 days ago and still on the floorplan statement for 33800. Pay it off; most floorplan agreements require it within days of the sale.
+on_statement_not_in_inventory,,0ZZMESC68NA408327,,,,2026-06-05,29400,29400,"The lender shows 29400 on this VIN and the DMS inventory does not have it: sold and removed without a payoff, or not yours."
+balance_differs,S5004,0ZZ2XTPH6TA110178,In stock,,,2026-07-18,24500,1000,The DMS carries 25500; the lender shows 24500. A curtailment or payoff was posted on one side only.
+payoff_due,S5003,0ZZ1R4FZ8SA576862,Delivered,2026-11-13,2,2026-10-02,28950,28950,Sold 2 day(s) ago; payoff of 28950 falls due within your 5 days.
+not_floored,S5005,0ZZLUK946KA636195,In stock,,,,,,In stock but not on the floorplan statement. Fine if it was bought for cash; otherwise it was never floored or was paid off by mistake.

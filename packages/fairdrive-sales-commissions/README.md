@@ -28,9 +28,11 @@ Every file is one you already export (CSV, Excel, JSON). Column names are matche
 - `payroll_submit` is listed and refused: It never submits commissions or pay to payroll.
 - `dms_change_deal_gross` is listed and refused: It never changes a deal or its gross.
 
-## Customer data
+## What the AI model sees
 
-Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers replaced with stable pseudonyms (`--pii mask`, the default). The CSV and HTML files written on your machine keep the real values for the people working the list. Keep them in a secure folder.
+- **Masked** (stable pseudonyms such as `CU-3f2a9c1d` and `ST-8cea1a2d`, or `[PHONE]`-style placeholders): staff name (`salesperson`), staff name (`split_with`), customer name (`customer`). Where these values appear inside other text they are replaced too.
+- **Sent as they are:** ids, codes and names of businesses (`deal_number`, `sale_type`); dates (`delivery_date`); amounts and counts (`front_gross`, `back_gross`, `front_pct`, `back_pct`, `mini`, `amount_paid`).
+- Results go to whatever model your AI assistant uses. For data you may not share with that provider, use a local model or one covered by your agreements with it. The CSV and HTML files written on your machine keep the real values for the people working the list: keep them in a secure folder.
 
 <!-- generated:start -->
 
@@ -44,13 +46,13 @@ Fairdrive Sales Commissions demo (fictional salespeople, pay plans and deals, No
 ▶ Run the check on the exported files
   status: executed  decision: allow
   5 deal(s), 3 salesperson(s): 1955 commission by the pay plans. 1485 paid; 1 underpaid (110), 0 overpaid, 1 unpaid (360), 1 paid with no deal. 1 deal line(s) with no pay plan.
-    Aiden Royce    units  1.5  commission    1055  paid    1055
-    Bianca Sol     units  2.5  commission     900  paid     430
-    Casimir Vale   units    1  commission       -  paid       0
-    underpaid: Bianca Sol D14003
-    unpaid: Bianca Sol D14004
-    no_plan: Casimir Vale D14005
-    paid_without_deal: Aiden Royce D14099
+    ST-e896ae94    units  1.5  commission    1055  paid    1055
+    ST-9b83e7a1    units  2.5  commission     900  paid     430
+    ST-c0e9d756    units    1  commission       -  paid       0
+    underpaid: ST-9b83e7a1 D14003
+    unpaid: ST-9b83e7a1 D14004
+    no_plan: ST-c0e9d756 D14005
+    paid_without_deal: ST-e896ae94 D14099
 
 ▶ Write the report (CSV and HTML)
   status: executed  decision: allow
@@ -58,7 +60,7 @@ Fairdrive Sales Commissions demo (fictional salespeople, pay plans and deals, No
 
 ▶ Draft the commission sheet for Bianca Sol
   status: executed  decision: allow  (auto)
-  sheet Bianca Sol drafted for 900 with 1 open marker(s) ([CHECK the pay plan, spiffs, draws and chargebacks before this goes to payroll]). Nothing was sent.
+  sheet ST-9b83e7a1 drafted for 900 with 1 open marker(s) ([CHECK the pay plan, spiffs, draws and chargebacks before this goes to payroll]). Nothing was sent.
 
 ▶ Approve it: waits for a named person, even in Auto
   status: needs_approval  decision: ask
@@ -66,7 +68,7 @@ Fairdrive Sales Commissions demo (fictional salespeople, pay plans and deals, No
 
 ▶ The same call after the click (recorded; a person acts on it)
   status: executed  decision: ask  approved by: Jordan Reyes (fictional)
-  sheet Bianca-Sol approved and recorded. Nothing was sent or paid by the agent.
+  sheet ST-9b83e7a1 approved and recorded. Nothing was sent or paid by the agent.
 
 ▶ The agent tries payroll_submit itself
   status: blocked  decision: block

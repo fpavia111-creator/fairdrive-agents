@@ -7,23 +7,23 @@
  ],
  "planted": [
   [
-   "S5002/7ZZPNMXP6RA120301",
+   "S5002/0ZZPNMXP5RA120301",
    "sold_not_paid_off"
   ],
   [
-   "/7ZZMESC69NA408327",
+   "/0ZZMESC68NA408327",
    "on_statement_not_in_inventory"
   ],
   [
-   "S5004/7ZZ2XTPH7TA110178",
+   "S5004/0ZZ2XTPH6TA110178",
    "balance_differs"
   ],
   [
-   "S5003/7ZZ1R4FZ9SA576862",
+   "S5003/0ZZ1R4FZ8SA576862",
    "payoff_due"
   ],
   [
-   "S5005/7ZZLUK947KA636195",
+   "S5005/0ZZLUK946KA636195",
    "not_floored"
   ]
  ],
@@ -43,10 +43,10 @@
    "arg": "statement",
    "dropWhere": {
     "vin": [
-     "7ZZPNMXP6RA120301",
-     "7ZZ1R4FZ9SA576862",
-     "7ZZ2XTPH7TA110178",
-     "7ZZMESC69NA408327"
+     "0ZZPNMXP5RA120301",
+     "0ZZ1R4FZ8SA576862",
+     "0ZZ2XTPH6TA110178",
+     "0ZZMESC68NA408327"
     ]
    }
   }
@@ -71,7 +71,7 @@
    ],
    "expect": [
     [
-     "S5007/7ZZ4ZS2Y9MA880260",
+     "S5007/0ZZ4ZS2Y8MA880260",
      "balance_differs"
     ]
    ]
@@ -85,21 +85,21 @@
       {
        "where": [
         "vin",
-        "7ZZCAEMU5PA994811"
+        "0ZZCAEMU4PA994811"
        ],
        "column": "vin",
-       "value": "7ZZCAEMU5PA994899"
+       "value": "0ZZCAEMU1PA994899"
       }
      ]
     }
    ],
    "expect": [
     [
-     "S5001/7ZZCAEMU5PA994811",
+     "S5001/0ZZCAEMU4PA994811",
      "not_floored"
     ],
     [
-     "/7ZZCAEMU5PA994899",
+     "/0ZZCAEMU1PA994899",
      "on_statement_not_in_inventory"
     ]
    ]

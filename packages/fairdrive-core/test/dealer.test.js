@@ -7,19 +7,19 @@ import { join } from 'node:path';
 import { normVin, vinCheck, sameVin, vinIndex, vinYear, normId, ageBucket, bucketLabels, partyKey, sameParty, partyGrouper, yes, tally, PiiMasker, piiKindOf, checkAgent, AgentRuntime, ONE_CLICK_CATEGORIES } from '../src/index.js';
 
 test('VINs: normalised, check digit verified, tails matched', () => {
-  assert.equal(normVin(' 7zz-0zmjd0ma909511 '), '7ZZ0ZMJD0MA909511');
-  assert.equal(vinCheck('7ZZ0ZMJD0MA909511'), true);
-  assert.equal(vinCheck('7ZZ0ZMJD1MA909511'), false);
+  assert.equal(normVin(' 0zz-0zmjdxma909511 '), '0ZZ0ZMJDXMA909511');
+  assert.equal(vinCheck('0ZZ0ZMJDXMA909511'), true);
+  assert.equal(vinCheck('0ZZ0ZMJD0MA909511'), false);
   assert.equal(vinCheck('SHORT123'), null);
-  assert.equal(vinCheck('7ZZ0ZMJDOMA909511'), false, 'the letter O is never in a VIN');
-  assert.ok(sameVin('7ZZ0ZMJD0MA909511', 'MA909511')); assert.ok(!sameVin('7ZZ0ZMJD0MA909511', '909511X'));
-  assert.equal(vinYear('7ZZ0ZMJD0MA909511', 2026), 2021);
+  assert.equal(vinCheck('0ZZ0ZMJDOMA909511'), false, 'the letter O is never in a VIN');
+  assert.ok(sameVin('0ZZ0ZMJDXMA909511', 'MA909511')); assert.ok(!sameVin('0ZZ0ZMJDXMA909511', '909511X'));
+  assert.equal(vinYear('0ZZ0ZMJDXMA909511', 2026), 2021);
 });
 
 test('vinIndex finds a row by full VIN or by a unique tail', () => {
-  const idx = vinIndex([{ vin: '7ZZ0ZMJD0MA909511' }, { vin: 'NA140940' }]);
-  assert.equal(idx.get('MA909511').vin, '7ZZ0ZMJD0MA909511');
-  assert.equal(idx.get('7ZZ54RK4XNA140940').vin, 'NA140940');
+  const idx = vinIndex([{ vin: '0ZZ0ZMJDXMA909511' }, { vin: 'NA140940' }]);
+  assert.equal(idx.get('MA909511').vin, '0ZZ0ZMJDXMA909511');
+  assert.equal(idx.get('0ZZ54RK49NA140940').vin, 'NA140940');
   assert.equal(idx.get('XXXXX'), null);
 });
 
@@ -41,10 +41,10 @@ test('yes/no in several languages, and tally', () => {
   assert.deepEqual(tally([{ k: 'a' }, { k: 'b' }, { k: 'a' }], (r) => r.k, 'key'), [{ key: 'a', count: 2 }, { key: 'b', count: 1 }]);
 });
 
-test('masking: customer fields become stable pseudonyms; staff names stay; text is scrubbed', () => {
+test('masking: customer and staff fields become stable pseudonyms; text is scrubbed', () => {
   const m = new PiiMasker();
   const out = m.maskResult({ customer: 'Dana Whitfield', salesperson: 'Avery Lund', phone: '555-201-3344', why: 'Call Dana Whitfield at dana@example.test' });
-  assert.match(out.customer, /^CU-[0-9a-f]{8}$/); assert.equal(out.salesperson, 'Avery Lund'); assert.equal(out.phone, '[PHONE]');
+  assert.match(out.customer, /^CU-[0-9a-f]{8}$/); assert.match(out.salesperson, /^ST-[0-9a-f]{8}$/); assert.equal(m.maskResult({ technician: 'Avery Lund' }).technician, out.salesperson); assert.ok(m.same('Avery Lund', out.salesperson, 'staff')); assert.equal(out.phone, '[PHONE]');
   assert.equal(out.why, `Call ${out.customer} at [EMAIL]`);
   assert.equal(new PiiMasker().maskResult({ customer: 'Whitfield, Dana' }).customer, out.customer, 'same person, same pseudonym');
   assert.equal(piiKindOf('vin'), null); assert.equal(piiKindOf('vin', 'strict'), 'vin');
@@ -78,4 +78,11 @@ test('safePath refuses over-long paths before the file system sees them (a recur
   assert.throws(() => safePath(tmpdir(), 'A'.repeat(200000)), /too long/);
   assert.throws(() => safePath(tmpdir(), `out/${'B'.repeat(300)}/x.csv`), /too long/);
   assert.ok(safePath(tmpdir(), 'fairdrive-out/ok'));
+});
+
+test('vinYear: a numeric 7th character means 1980-2009, a letter 2010-2039 (never past next year)', () => {
+  assert.equal(vinYear('0ZZ12345XFAB12345', 2026), 1985, 'numeric 7th character: F is 1985');
+  assert.equal(vinYear('0ZZ123A5XFAB12345', 2026), 2015, 'letter 7th character: F is 2015');
+  assert.equal(vinYear('0ZZ123A5XWAB12345', 2026), 1998, 'W would be 2028, after next year: 1998');
+  assert.equal(vinYear('0ZZ123456', 2026), null);
 });

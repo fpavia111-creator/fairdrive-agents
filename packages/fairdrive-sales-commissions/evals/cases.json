@@ -6,7 +6,10 @@
     "Marguerite Lysander",
     "Nikodemus Farrow",
     "Ophelia Sandoval",
-    "Phineas Grantham"
+    "Phineas Grantham",
+    "Aiden Royce",
+    "Bianca Sol",
+    "Casimir Vale"
   ],
   "cases": [
     {
@@ -43,9 +46,8 @@
       },
       "expect": {
         "equals": {
-          "result.by_salesperson.0.salesperson": "Aiden Royce",
-          "result.by_salesperson.0.units": 1.5,
           "result.by_salesperson.0.commission": 1055,
+          "result.by_salesperson.0.units": 1.5,
           "result.by_salesperson.0.difference": 0,
           "result.by_salesperson.1.units": 2.5,
           "result.by_salesperson.1.difference": -470,
@@ -125,7 +127,6 @@
       "expect": {
         "status": "executed",
         "equals": {
-          "result.id": "Bianca Sol",
           "result.amount": 900,
           "result.deals": 3,
           "result.open_markers": 1
