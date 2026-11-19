@@ -24,7 +24,7 @@
 // gets the same pseudonym in every result, and a pseudonym cannot be reversed
 // without the key. Runs that keep no state (tests, evals) use a key made once per process.
 
-import { createHmac, randomBytes } from 'node:crypto';
+import { createHmac, createSecretKey, randomBytes } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync, mkdirSync, chmodSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 
@@ -97,6 +97,10 @@ export class PiiMasker {
     if (!PII_MODES.includes(mode)) throw new Error(`pii mode must be one of ${PII_MODES.join(', ')}`);
     this.mode = mode;
     this.key = key || PROCESS_KEY;
+    // One key object and a token cache: turning a raw key into a key object on every HMAC cost about
+    // 0.3 ms a value (10 s for 10,000 deal lines in the final-pass bench).
+    this.hmacKey = createSecretKey(this.key);
+    this.tokens = new Map();
     this.reset();
   }
 
@@ -108,7 +112,9 @@ export class PiiMasker {
   /** Stable pseudonym for a value of one kind. */
   token(kind, value) {
     const v = kind === 'name' || kind === 'staff' ? nameKey(value) : String(value).trim().toUpperCase();
-    return `${PREFIX[kind] || 'ID'}-${createHmac('sha256', this.key).update(`${kind}|${v}`).digest('hex').slice(0, 8)}`;
+    const id = `${kind}|${v}`; let t = this.tokens.get(id);
+    if (t === undefined) { t = `${PREFIX[kind] || 'ID'}-${createHmac('sha256', this.hmacKey).update(id).digest('hex').slice(0, 8)}`; this.tokens.set(id, t); }
+    return t;
   }
 
   /** What the model sees for one value of one kind. */

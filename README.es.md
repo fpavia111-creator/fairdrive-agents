@@ -41,4 +41,4 @@ Cada agente tiene una `demo` con archivos ficticios, un `eval` con sus propios c
 
 ## Comprobado
 
-812 pruebas y 559 casos de evaluación, todos aprobados (Windows, Node 24). Entradas hostiles y argumentos rotos: 0 hallazgos. Las exportaciones en nueve idiomas se leen igual. Detalles en [REVIEW-ver1.md](REVIEW-ver1.md).
+816 pruebas y 559 casos de evaluación, todos aprobados (Windows, Node 24). Entradas hostiles y argumentos rotos: 0 hallazgos. Las exportaciones en nueve idiomas se leen igual. Detalles en [REVIEW-ver1.md](REVIEW-ver1.md).

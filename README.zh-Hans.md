@@ -41,4 +41,4 @@ node packages/fairdrive-contracts-in-transit/bin/fairdrive-contracts-in-transit.
 
 ## 已检查
 
-812 个测试和 559 个评测用例全部通过（Windows，Node 24）。恶意输入与错误参数检查：0 项发现。九种语言的导出文件读取结果一致。详情见 [REVIEW-ver1.md](REVIEW-ver1.md)。
+816 个测试和 559 个评测用例全部通过（Windows，Node 24）。恶意输入与错误参数检查：0 项发现。九种语言的导出文件读取结果一致。详情见 [REVIEW-ver1.md](REVIEW-ver1.md)。

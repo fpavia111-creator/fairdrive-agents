@@ -41,4 +41,4 @@ node packages/fairdrive-contracts-in-transit/bin/fairdrive-contracts-in-transit.
 
 ## 확인됨
 
-테스트 812개와 평가 케이스 559개 모두 통과(Windows, Node 24). 악의적 입력·잘못된 인수 검사: 지적 0건. 9개 언어의 내보내기 파일을 똑같이 읽습니다. 자세한 내용은 [REVIEW-ver1.md](REVIEW-ver1.md).
+테스트 816개와 평가 케이스 559개 모두 통과(Windows, Node 24). 악의적 입력·잘못된 인수 검사: 지적 0건. 9개 언어의 내보내기 파일을 똑같이 읽습니다. 자세한 내용은 [REVIEW-ver1.md](REVIEW-ver1.md).

@@ -104,9 +104,10 @@ All on this machine: Windows 10, Node 24.20.0.
 1. **31 agents**, all 28 jobs named in the task plus three more the office needs every month: GL schedules,
    we-owes and loaner/demo fleet. Grouped in four areas for the site.
 2. **Names**: `fairdrive-<job>`, display titles "Fairdrive Deal Jackets" etc., acronyms kept (DMV, OFAC, GL).
-3. **Customer data masked, staff names not.** Buyers, co-buyers, owners and insureds are masked; salespeople,
-   technicians and advisors are not, because commission, flat-rate and comeback checks need them. VINs are masked
-   only in `--pii strict`, since most checks match on them.
+3. **Customer data masked; staff names masked too since the final pass.** Buyers, co-buyers, owners and insureds
+   are masked. The build left salespeople, technicians and advisors in clear, on the wrong reasoning that the checks
+   needed them: the checks run on the real values before masking, so the final pass masks them as well (see
+   "Final pass"). VINs are masked only in `--pii strict`, since most checks match on them.
 4. **Drafts that wait for one named click** in 10 agents: lender funding follow-up, chargeback review, reserve
    inquiry, incentive inquiry, warranty review, parts credit request, supplement follow-up (`binding_send`), and
    floorplan payoff list, trade payoff batch, commission sheet (`move_money`). Every other agent only reports.

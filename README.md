@@ -85,7 +85,7 @@ All of them share [`fairdrive-core`](packages/fairdrive-core): the policy engine
 
 ## Checked
 
-812 tests and 559 eval cases pass on Windows with Node 24. Hostile data and broken-argument runs: 0 findings. Every eval file read again as a German, French, Spanish, Portuguese, Italian, Japanese, Chinese and Korean export gives the same answers. Numbers, bugs fixed and what is not checked yet: [REVIEW-ver1.md](REVIEW-ver1.md).
+816 tests and 559 eval cases pass on Windows with Node 24. Hostile data and broken-argument runs: 0 findings. Every eval file read again as a German, French, Spanish, Portuguese, Italian, Japanese, Chinese and Korean export gives the same answers. Numbers, bugs fixed and what is not checked yet: [REVIEW-ver1.md](REVIEW-ver1.md).
 
 ## Scripts
 

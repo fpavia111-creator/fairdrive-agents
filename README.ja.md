@@ -41,4 +41,4 @@ node packages/fairdrive-contracts-in-transit/bin/fairdrive-contracts-in-transit.
 
 ## 確認済み
 
-812 件のテストと 559 件の評価ケースがすべて合格（Windows、Node 24）。敵対的入力・壊れた引数の検査は指摘 0 件。9 言語のエクスポートを同じように読みます。詳細は [REVIEW-ver1.md](REVIEW-ver1.md)。
+816 件のテストと 559 件の評価ケースがすべて合格（Windows、Node 24）。敵対的入力・壊れた引数の検査は指摘 0 件。9 言語のエクスポートを同じように読みます。詳細は [REVIEW-ver1.md](REVIEW-ver1.md)。

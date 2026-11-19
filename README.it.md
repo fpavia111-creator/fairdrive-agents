@@ -41,4 +41,4 @@ Ogni agente ha una `demo` su file fittizi, un `eval` con i propri casi di prova 
 
 ## Verificato
 
-812 test e 559 casi di valutazione, tutti superati (Windows, Node 24). Input ostili e argomenti malformati: 0 rilievi. Le esportazioni in nove lingue sono lette allo stesso modo. Dettagli in [REVIEW-ver1.md](REVIEW-ver1.md).
+816 test e 559 casi di valutazione, tutti superati (Windows, Node 24). Input ostili e argomenti malformati: 0 rilievi. Le esportazioni in nove lingue sono lette allo stesso modo. Dettagli in [REVIEW-ver1.md](REVIEW-ver1.md).

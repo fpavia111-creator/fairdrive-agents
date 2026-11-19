@@ -69,7 +69,7 @@ const T = {
     safeH: '안전 장치', safe: ['**로컬 파일만.** DMS, 은행, 제조사 포털, 차량 등록 기관, 보험사에 로그인하지 않으며 네트워크와 원격 수집이 없습니다.', '**모델이 보기 전에 마스킹.** 고객 이름·전화·이메일·주소·신분증 번호와 직원(영업·정비사·서비스 어드바이저) 이름은 가명(`CU-3f9a1c2e`, `ST-8cea1a2d`)으로 바뀝니다.', '**행동은 사람이.** 지급, 대출 실행, 등록, 신고, 발송, 전기는 모두 거부하며 초안과 지급 목록은 Auto 모드에서도 지정된 사람의 클릭을 기다립니다.', '**고정 규칙이 아닌 설정.** 일수, 요율, 커미션 계획, 세율, 한도는 매장이 확인합니다.', '**규정 준수 판정은 하지 않습니다.** OFAC·Red Flags 에이전트는 기록이 있는지만 확인합니다.'],
     checksH: '확인됨', checks: (t, e) => `테스트 ${t}개와 평가 케이스 ${e}개 모두 통과(Windows, Node 24). 악의적 입력·잘못된 인수 검사: 지적 0건. 9개 언어의 내보내기 파일을 똑같이 읽습니다. 자세한 내용은 [REVIEW-ver1.md](REVIEW-ver1.md).` },
 };
-const TESTS = Number(process.env.FAIRDRIVE_TESTS || 812);
+const TESTS = Number(process.env.FAIRDRIVE_TESTS || 816);
 const LANG_LINKS = '[English](README.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Italiano](README.it.md) · [日本語](README.ja.md) · [简体中文](README.zh-Hans.md) · [한국어](README.ko.md)';
 const tryBlock = ['```bash', 'npm install', 'npm test', 'node packages/fairdrive-floorplan-audit/bin/fairdrive-floorplan-audit.js demo', 'node packages/fairdrive-contracts-in-transit/bin/fairdrive-contracts-in-transit.js demo', '```'];
 
