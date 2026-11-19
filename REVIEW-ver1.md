@@ -1,6 +1,6 @@
 # Fairdrive ver 1: review
 
-18 Nov 2026. What was built, how it was checked, what was found and fixed, what is not checked yet,
+18 Nov 2026 (final pass 19 Nov: see the last section for the final numbers). What was built, how it was checked, what was found and fixed, what is not checked yet,
 and every decision made without Kurt (he asked for the suite to be built today without his input).
 
 ## Scope
@@ -131,3 +131,181 @@ Read one real export per DMS and shop system to confirm columns; money formattin
 support for odometers; a "month-end pack" that runs schedules, contracts in transit, floorplan, payoffs and
 warranty in one go; spiffs, draws and packs in commissions; rule-of-78s and cancel fees per provider; porting
 the two core fixes back to the Lodestar family.
+
+## Final pass (19 Nov 2026)
+
+Run on request from the main session, following `FINAL-PASS-REQUEST.md` and the brief's "Final pass" list. Everything
+below was run on Windows 10, Node 24.20.0, from a **fresh clone** of this folder (`git clone`, `npm install --offline`),
+unless it says otherwise. Fictional data only, apart from the public files under "Real data".
+
+### The bar, from a fresh clone
+
+| Check | Result |
+|---|---|
+| Fresh clone, `npm install --offline` | 32 packages linked, no network; the working tree stays clean (the lockfile was stale and is fixed, see below) |
+| `try_it` | `node packages/fairdrive-contracts-in-transit/bin/fairdrive-contracts-in-transit.js demo` runs all 6 steps offline with no setup |
+| `npm test` (32 workspaces) | **816 tests, 816 pass** (812 at the build; masking, VIN and pseudonym-draft tests added) |
+| `npm run evals` | **559/559** (restored: the script was missing) |
+| `npm run accuracy` (new) | **185/185 planted found, 0 not planted, 205 clean rows with 0 findings, 63/63 mutations caught** |
+| `npm run hostile` | 2,795 calls, 448 planted values, **0 findings** (72 results correctly flagged for instruction-like text) |
+| `npm run hostile:args` (6 workers) | 31 agents, 9,749 calls, **0 findings** (run on the fresh clone of c8c3195; the later commit changed only the masker's speed, the lockfile and README text) |
+| `npm run intl` | 31 agents, 361 cases × 8 languages: **every case that passes in English passes in every language** |
+| `npm run bench` (1,000 and 10,000 rows) | 62 tools, **0 need attention**; median 0.46 s and slowest 2.8 s (comebacks) at 10,000 rows, peak 256 MB |
+| `npm run release:check:offline` | **Ready to publish (dry run passed)**: git clean, secret scan 918 files clean, honest copy 97 files clean, one-click policy clean, 816 tests, 559/559 evals, hostile 0, pack 549 KB with no tests, state, output, keys or `.npmrc`; npm names skipped offline |
+| `readme`, `plugin`, `policy:evals`, `intl:fixtures` `--check` | pass on the fresh Windows clone (they failed on CRLF before this pass) |
+| Masking canaries (contract tests) | 102 fictional customer and staff names in 21 agents: **0 reached a result** |
+| `npm view` for all 32 names (read-only) | **all 32 still free**, 19 Nov 2026 |
+| `npm run realdata` | see "Real data" |
+
+### The final-pass list
+
+1. **Names.** Leftovers from the copied core were still in `fairdrive-core/README.md` (`iris-of-tests`, `acme-of-access`,
+   `polaris-of-bills`, and "All 30 Fairdrive domain agents ... from `achernar-of-returns` to `vega-of-detention`", which
+   was wrong) and in three script comments. Fixed. A search for the old horse-breed names and `<word>-of-<word>` names
+   now finds nothing outside fixture data, REVIEW history and git history.
+2. **Each agent read as a buyer.** Every README says what the agent reads, what it does, what it refuses (its two
+   refused tools are listed by name), and shows a captured demo run. The "Customer data" paragraph was too general: it
+   is now **"What the AI model sees"**, written from each agent's own columns (masked fields, fields sent as they are,
+   free text). Sample reports regenerated.
+3. **Honest copy.** No compliance, certification, savings, ROI or legal/tax advice claims in READMEs (9 languages),
+   `sales/`, sample reports or `docs/`; the release check's honest-copy scan passes.
+4. **Binding actions.** 10 agents draft something; each draft is approved only through a one-click request that waits
+   for one named person even in Auto (7 `binding_send`, 3 `move_money`), tied to the draft's sha256. Every agent lists
+   two refused tools (portal submits, payments, ledger posts, DMS changes) and blocks anything else by default. Checked
+   by every agent's contract tests and the release check.
+5. **Full bar from a clean install.** Table above. Two problems found and fixed on the way: `npm run evals` pointed at a
+   script that did not exist (`scripts/run-all-evals.mjs` added), and a fresh Windows clone (CRLF) would have failed
+   every `--check` script (they now ignore line endings, and `.gitattributes` keeps code LF and fixtures byte-exact).
+6. **Fixtures fictional.** NHTSA's decoder showed the fixture VINs began with `7ZZ`, a world manufacturer code assigned
+   to a real company (Beall Manufacturing, Inc.). All 46 fixture VINs now begin with `0ZZ`, which no manufacturer code
+   can start with; the last 14 characters (and so every tail a fixture prints) are kept and the check digit recomputed
+   (`scripts/fictional-vins.mjs`). NHTSA now reports no registered manufacturer for them. People, lenders, providers,
+   insurers and vendors in the fixtures are invented. **Masking:** staff names are now masked too (see question 2).
+7. **site.json and pricing page.** The 10 packages and prices match the pricing page line for line; the four groups list
+   all 31 agents once. The partner package said "20 groups" (the dealer peer-group term), which read like a count: it
+   now says "dealer peer groups" in both files. The masking line in `site.json` now includes staff names.
+8. **Package contents.** `npm pack` of every package: no tests, state (`.fairdrive/`), output (`fairdrive-out/`), keys or
+   `.npmrc`; the secret scan is clean. Downloaded real data lives in `_realdata/`, which is git-ignored.
+
+Also fixed in this pass: incentive payments that match no expected claim showed the VIN tail and program code
+normalised (`LA128652`, `RET202610`); they now show the statement's own values. `vinYear` now uses the 7th-character
+rule (found with real data, below). **The masker was slow on big results:** the first bench after staff masking showed
+sales commissions at 10.4 s for 10,000 deals (0.44 s with masking off); Node was turning the raw pseudonym key into a
+key object on every HMAC. One key object and a token cache bring it to 1.1 s, with the same pseudonyms.
+`package-lock.json` listed only the first 4 agents, so `npm install` in a fresh clone rewrote it; it is now complete.
+
+### Kurt's five questions
+
+**1. Accuracy** (`npm run accuracy`, `docs/accuracy.md`, each agent's `fixtures/accuracy.json`). On fictional test data:
+
+- **Planted problems found: 185 of 185** (all 31 agents), and **0 findings on the planted files that were not planted**.
+- **Clean set: 205 rows, 0 findings** (false positives). The clean set is the same files with the planted rows dropped
+  or the one wrong cell repaired; contracts in transit within the alert days are listed as information, not counted.
+- **One-fact mutations: 63 of 63 caught** (2 or 3 per agent, 1 for parts obsolescence), each giving exactly the named
+  finding and nothing else.
+- Honest limits: the planted list was written by me after the build and checked against the fixture rows by hand; the
+  fixture files are small (5 to 43 rows each); this measures the rules on known layouts, not on a real store's exports.
+  Recall and false positives on real dealer files are **not measured yet**.
+
+| Agent | Planted found | Clean rows / findings | Mutations |
+|---|---|---|---|
+| comebacks | 3 / 3 | 9 / 0 | 2 / 2 |
+| contracts-in-transit | 7 / 7 | 6 / 0 | 3 / 3 |
+| curtailments | 5 / 5 | 2 / 0 | 2 / 2 |
+| customer-deposits | 5 / 5 | 9 / 0 | 2 / 2 |
+| deal-jackets | 21 / 21 | 43 / 0 | 2 / 2 |
+| dmv-fees | 4 / 4 | 6 / 0 | 2 / 2 |
+| estimate-vs-invoice | 4 / 4 | 5 / 0 | 2 / 2 |
+| finance-reserve | 6 / 6 | 7 / 0 | 2 / 2 |
+| flat-rate-hours | 4 / 4 | 20 / 0 | 3 / 3 |
+| floorplan-audit | 5 / 5 | 5 / 0 | 2 / 2 |
+| gl-schedules | 7 / 7 | 8 / 0 | 2 / 2 |
+| incentive-claims | 7 / 7 | 4 / 0 | 2 / 2 |
+| insurance-supplements | 4 / 4 | 2 / 0 | 2 / 2 |
+| loaner-fleet | 5 / 5 | 3 / 0 | 2 / 2 |
+| ofac-red-flags | 5 / 5 | 6 / 0 | 2 / 2 |
+| open-repair-orders | 6 / 6 | 2 / 0 | 2 / 2 |
+| parts-obsolescence | 4 / 4 | 4 / 0 | 1 / 1 |
+| parts-receiving | 5 / 5 | 4 / 0 | 2 / 2 |
+| policy-adjustments | 6 / 6 | 5 / 0 | 2 / 2 |
+| product-cancellations | 7 / 7 | 4 / 0 | 2 / 2 |
+| reconditioning | 7 / 7 | 3 / 0 | 2 / 2 |
+| repair-order-margins | 5 / 5 | 3 / 0 | 2 / 2 |
+| sales-commissions | 4 / 4 | 7 / 0 | 2 / 2 |
+| sales-tax | 4 / 4 | 8 / 0 | 2 / 2 |
+| service-contract-remittances | 6 / 6 | 7 / 0 | 2 / 2 |
+| sublet-invoices | 6 / 6 | 7 / 0 | 2 / 2 |
+| title-tracking | 7 / 7 | 3 / 0 | 2 / 2 |
+| trade-payoffs | 6 / 6 | 2 / 0 | 2 / 2 |
+| used-vehicle-aging | 8 / 8 | 4 / 0 | 2 / 2 |
+| warranty-claims | 7 / 7 | 4 / 0 | 2 / 2 |
+| we-owes | 5 / 5 | 3 / 0 | 2 / 2 |
+| **Family (31 agents)** | **185 / 185** | **205 / 0** | **63 / 63** |
+
+**2. Security: what reaches the model** (`npm run model-view`, `docs/model-view.md`, and each README's "What the AI
+model sees").
+
+- **Masked** in every result (stable `CU-`/`ST-` pseudonyms or placeholders): customer names, co-buyers, owners,
+  insureds; phones, e-mails, addresses, SSN-like numbers, licence, account and customer numbers; and, new in this pass,
+  **staff names** (salespeople, split partners, technicians, advisors, F&I managers, people who ran a check, adjustment
+  approvers). A masked value is also replaced inside any other text. The checks run on the real values before
+  masking, and the CSV/HTML files written on the user's computer keep the real values. A salesperson's commission
+  sheet can be drafted from the `ST-` pseudonym the model saw (test added).
+- **Sent as they are:** deal, stock, RO, claim, PO, invoice and contract numbers; VINs (pseudonymised with
+  `--pii strict`); dates; amounts; business names (lenders, providers, vendors, insurers, agencies, counties).
+- **Free text** (descriptions, cancellation and adjustment reasons, stips, concerns, we-owe items, documents) is sent
+  as written, with known names and phone/e-mail/SSN patterns replaced. Anything else a person typed there reaches the
+  model.
+- **Canaries:** 102 fictional customer and staff names across 21 agents, each proven by a contract test never to
+  reach any result of any eval case (the 10 other agents read no customer or staff column and say so);
+  **0 reached a result**. Hostile passes: see the table above.
+- Results go to whatever model the user's AI assistant uses. For data that may not be shared with that provider, use a
+  local model or one covered by the user's agreements. No claim of compliance with any law or standard is made.
+
+**3. Compatibility.** 14 named export layouts (CDK deal list, inventory and open RO; Reynolds deal recap; Tekion deals;
+Dealertrack funding; DealerSocket inventory; Tekmetric repair orders; Shopmonkey orders; CCC ONE and Mitchell estimates;
+floorplan statement; manufacturer warranty and incentive statements) plus the column aliases in every agent. **Tested
+against a real export: 0. Checked against vendor documentation: 0. Written from knowledge of the export: all 14.** VIN
+columns and VIN matching were tested on public real data (below). The first setup with a store confirms its files
+with `inspect`.
+
+**4. Commercial traction.** No paying customers; no checkout is live (the main session answers this for the suite).
+
+**5. Support: rules that are dated settings** (`npm run settings`, `docs/settings.md`). 67 settings in 31 agents, each
+with its default, for example the contracts-in-transit alert (10 days), full chargeback window (90 days), reserve share
+(75%), floorplan payoff days (5), curtailment schedules (new 10% at 91/181/271 days, used 10% at 61/121), incentive and
+warranty deadlines (30 days), title days (30 to file, 45 for registration), proficiency floor (85%), margin floors
+(65%/30%), loaner limits (180 days / 6,000 miles). None is a law or any lender's, manufacturer's or state's terms: all
+are working examples written for 0.1.0 on 18 Nov 2026, not yet reviewed by a dealer, controller or lawyer. **Where:**
+the default is in each agent's `src/check.js`; each is a named argument of its check tool. Tax rates, pay plans and
+extra deal-jacket documents come from the store's own files. **How a store updates one:** pass it when the tool runs;
+every result lists the settings it used. **Who maintains them:** Mythos Machines, in releases with a CHANGELOG line; the
+support plan covers settings updates when a store's lender, manufacturer or state rules change.
+
+### Real data
+
+`npm run realdata:download` fetches; `npm run realdata` runs offline; results in `docs/realdata.md` and
+`docs/realdata.json`. Downloaded files stay in `_realdata/` (git-ignored, not committed).
+
+| Source | Date | Licence | What ran and what it found |
+|---|---|---|---|
+| NY State DMV, Vehicle, Snowmobile, and Boat Registrations, <https://data.ny.gov/Transportation/Vehicle-Snowmobile-and-Boat-Registrations/w4pv-hbkt> (only `vin`, `model_year`, `make`; 49,980 passenger registrations, model year 1981+) | 19 Nov 2026 | NY State open data, data.ny.gov terms of use (no separate licence in the metadata) | **Check digit:** 49,972 of 49,980 pass; an independent implementation agrees on every VIN (0 disagreements). **Model year** from the VIN matched the DMV's for 49,903 (99.85%); 9 were 30 years off (1980s vehicles read as 2010s). Fixed with the 7th-character rule: now 49,911 (99.86%) and no 30-year errors; the rest are 1-2 years apart, which NHTSA's decoder shows are the DMV's recorded year, not a decoding error. **Tails:** no two of the 49,980 VINs share their last 8 characters; 1,878 share their last 6 (about a 3% chance for a 300-unit store, 32% for 1,000 units). The core never matches an ambiguous tail. **Agents:** floorplan audit of 400 real VINs against a statement printing only the last 8: 0 findings (0 false); contracts in transit, 300 real VINs against a statement printing only the last 6 and no deal numbers: 0 findings, 0 unmatched lines. (Only the VINs are real in these two runs; deals, balances and dates are fictional.) |
+| NHTSA vPIC VIN decoder, <https://vpic.nhtsa.dot.gov/api/> | 19 Nov 2026 | US government work (public domain) | 500 of the same VINs: check digit and model year agree with Fairdrive on **500 of 500**. Decoding the fixture VINs showed they used a real manufacturer's code (fixed, see point 6); the new ones decode to no registered manufacturer. |
+
+**Nothing public fits** the other agents: no DMS, shop-system, estimating, lender, floorplan, manufacturer or provider
+export is published, and the deal, RO, tax, fee, warranty, incentive and parts agents need those files. OFAC data is
+public, but the OFAC agent only checks that a record of the check exists; it never matches names, so the SDN list does
+not apply.
+
+### Decide (Kurt)
+
+1. **Format labels on the site:** all 14 vendor layouts are "written from knowledge of the export, not yet checked
+   against documentation or a real export". That is not one of the three labels the site plan expects; it is the
+   honest one. Keep it, or say "not yet tested on a real export".
+2. **First real exports:** one de-identified export per DMS (CDK, Reynolds, Tekion, Dealertrack) and per shop system
+   (Tekmetric, Shopmonkey, CCC, Mitchell), with a store's written permission, would turn "written from knowledge" into
+   "tested" and give real accuracy numbers.
+3. **Rules review:** the 67 defaults should be read once by a dealership controller (and the deal-jacket checklist by
+   someone who knows F&I law) before a store relies on them.
+4. **Staff names are now masked** in what the model sees. If a sales or service manager wants names in the assistant's
+   answers, there is no staff-only switch yet (`--pii off` removes all masking, customers included). Default stays masked.
