@@ -1,0 +1,10 @@
+{"suite":"fairdrive-comebacks","root":"..","data_note":"Fictional repair orders in ../fixtures, September to November 2026. No model is called.","pii_canaries":["Nathaniel Brisco","Octavia Lindgren","Rosalind Whitcombe","Silas Ondaatje"],"cases":[
+{"id":"totals","tool":"comebacks_find","args":{"repair_orders":"fixtures/repair-orders.csv"},"expect":{"equals":{"result.repair_orders":12,"result.comebacks":3,"result.comeback_pct":25,"result.by_technician.0.technician":"Ines Alvarez","result.by_technician.0.comebacks":2}}},
+{"id":"in-date-order","tool":"comebacks_find","args":{"repair_orders":"fixtures/repair-orders.csv"},"expect":{"equals":{"result.items.0.return_ro":"80012","result.items.0.days":2,"result.items.1.first_ro":"80001","result.items.1.miles":690,"result.items.2.matched_by":"same_concern"}}},
+{"id":"unrelated-and-distant-not-counted","tool":"comebacks_find","args":{"repair_orders":"fixtures/repair-orders.csv"},"expect":{"not_contains":["80020","80024","80026"]}},
+{"id":"longer-window","tool":"comebacks_find","args":{"repair_orders":"fixtures/repair-orders.csv","days":90,"miles":2000},"expect":{"equals":{"result.comebacks":4}}},
+{"id":"more-miles","tool":"comebacks_find","args":{"repair_orders":"fixtures/repair-orders.csv","miles":3000},"expect":{"equals":{"result.comebacks":4}}},
+{"id":"shorter-window","tool":"comebacks_find","args":{"repair_orders":"fixtures/repair-orders.csv","days":10},"expect":{"equals":{"result.comebacks":1}}},
+{"id":"write-report","tool":"comebacks_write_report","args":{"repair_orders":"fixtures/repair-orders.csv"},"expect":{"status":"executed","length":{"result.files":2},"contains":["12 repair order(s), 3 comeback(s) within 30 days and 1000 miles (25%)"]}},
+{"id":"zero-days-refused","tool":"comebacks_find","args":{"repair_orders":"fixtures/repair-orders.csv","days":0},"expect":{"status":"error","contains":["days"]}}
+]}
