@@ -38,7 +38,10 @@ export function checkFunding(contracts, statement = null, { asOf, alertDays = 10
   const lines = (statement || []).map((s, i) => ({ i, deal: normId(s.deal_number), vin: normVin(s.vin), lender: lenderName(s.lender), date: isoDate(s.funded_date), amount: num(s.funded_amount) ?? 0, used: false }))
     .sort((a, b) => (a.date || '') < (b.date || '') ? -1 : (a.date || '') > (b.date || '') ? 1 : a.amount - b.amount || (a.deal + a.vin < b.deal + b.vin ? -1 : 1));
   // Statement lines are matched by deal number first, then by VIN (full or a tail of 6 or more).
-  const findLine = (c) => { const d = normId(c.deal_number), v = normVin(c.vin); return lines.find((l) => !l.used && l.deal && l.deal === d) || lines.find((l) => !l.used && !l.deal && vinMatch(l.vin, v)); };
+  // Indexed by deal number and by the last six VIN characters, in the fixed order above, so matching is linear.
+  const byDeal = new Map(); const byTail = new Map();
+  for (const l of lines) { if (l.deal) { if (!byDeal.has(l.deal)) byDeal.set(l.deal, []); byDeal.get(l.deal).push(l); } else if (l.vin.length >= 6) { const k = l.vin.slice(-6); if (!byTail.has(k)) byTail.set(k, []); byTail.get(k).push(l); } }
+  const findLine = (c) => { const d = normId(c.deal_number), v = normVin(c.vin); return (byDeal.get(d) || []).find((l) => !l.used) || (v.length >= 6 ? (byTail.get(v.slice(-6)) || []).find((l) => !l.used && vinMatch(l.vin, v)) : undefined); };
   const items = []; const seen = new Set();
   const sorted = [...contracts].filter((c) => normId(c.deal_number)).sort(by('contract_date', 'deal_number'));
   for (const c of sorted) {
