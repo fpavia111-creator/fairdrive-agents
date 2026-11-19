@@ -1,0 +1,7 @@
+invoice_number,po_number,part_number,qty_billed,unit_price,invoice_date,vendor
+INV-5501,PO-881,BRK-PAD-0441,12,38.50,2026-11-03,Northline Parts Distribution
+INV-5501,PO-881,FLT-OIL-1120,40,6.75,2026-11-03,Northline Parts Distribution
+INV-5502,PO-882,SNS-O2-7781,3,142.00,2026-11-05,Northline Parts Distribution
+INV-5503,PO-883,MOD-BCM-2290,1,610.00,2026-11-07,Northline Parts Distribution
+INV-5503,PO-883,MOD-BCM-2290,1,610.00,2026-11-07,Northline Parts Distribution
+INV-5504,PO-885,GSK-HD-3301,2,95.00,2026-11-10,Northline Parts Distribution

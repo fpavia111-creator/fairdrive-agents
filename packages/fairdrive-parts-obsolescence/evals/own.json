@@ -1,0 +1,10 @@
+{"suite":"fairdrive-parts-obsolescence","root":"..","data_note":"Fictional parts inventory in ../fixtures, as of 2026-11-15. No model is called.","pii_none":"Reads part numbers, quantities, costs and dates, no customer data.","cases":[
+{"id":"totals","tool":"obsolescence_check","args":{"parts":"fixtures/parts.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.parts":7,"result.value":2346,"result.obsolete_value":478,"result.obsolete_pct":20.38,"result.returnable_value":1226,"result.never_sold":1}}},
+{"id":"by-class","tool":"obsolescence_check","args":{"parts":"fixtures/parts.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.by_class.0.value":832,"result.by_class.1.value":426,"result.by_class.2.value":610,"result.by_class.3.parts":2}}},
+{"id":"highest-value-first","tool":"obsolescence_check","args":{"parts":"fixtures/parts.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.items.0.part_number":"MOD-BCM-2290","result.items.0.class":"obsolete_candidate","result.items.1.part_number":"SNS-O2-7781","result.items.2.never_sold":true},"length":{"result.items":4}}},
+{"id":"no-stock-and-active-not-listed","tool":"obsolescence_check","args":{"parts":"fixtures/parts.csv","as_of":"2026-11-15"},"expect":{"not_contains":["BLB-H11","\"FLT-OIL-1120\""]}},
+{"id":"tighter-limits","tool":"obsolescence_check","args":{"parts":"fixtures/parts.csv","as_of":"2026-11-15","month_edges":[3,6,9]},"expect":{"equals":{"result.obsolete_value":1088},"length":{"result.items":5}}},
+{"id":"later-date-ages-more","tool":"obsolescence_check","args":{"parts":"fixtures/parts.csv","as_of":"2027-06-01"},"expect":{"equals":{"result.by_class.0.parts":0}}},
+{"id":"write-report","tool":"obsolescence_write_report","args":{"parts":"fixtures/parts.csv","as_of":"2026-11-15"},"expect":{"status":"executed","length":{"result.files":2},"contains":["7 part number(s) on hand, 2346 at cost. Obsolete 478 (20.38%)"]}},
+{"id":"two-edges-refused","tool":"obsolescence_check","args":{"parts":"fixtures/parts.csv","month_edges":[6,12]},"expect":{"status":"error","contains":["month_edges"]}}
+]}
