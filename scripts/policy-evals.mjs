@@ -16,12 +16,15 @@ const PK = join(dirname(fileURLToPath(import.meta.url)), '..', 'packages');
 const check = process.argv.includes('--check');
 const only = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 let stale = 0;
-for (const n of readdirSync(PK).filter((x) => /^fairdrive-/.test(x) && x !== 'fairdrive-core' && existsSync(join(PK, x, 'evals', 'cases.json')) && (!only.length || only.includes(x))).sort()) {
+for (const n of readdirSync(PK).filter((x) => /^fairdrive-/.test(x) && x !== 'fairdrive-core' && (existsSync(join(PK, x, 'evals', 'cases.json')) || existsSync(join(PK, x, 'evals', 'own.json'))) && (!only.length || only.includes(x))).sort()) {
   const { manifest } = await import(pathToFileURL(join(PK, n, 'src', 'manifest.js')).href);
   const file = join(PK, n, 'evals', 'cases.json');
-  const data = JSON.parse(readFileSync(file, 'utf8'));
+  // Hand-written cases live in evals/own.json when it exists (cases.json is then generated).
+  const ownFile = join(PK, n, 'evals', 'own.json');
+  const prev = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : { cases: [] };
+  const data = existsSync(ownFile) ? JSON.parse(readFileSync(ownFile, 'utf8')) : prev;
   const own = data.cases.filter((c) => !c.id.startsWith('policy-') && !c.id.startsWith('intl-'));
-  const intl = data.cases.filter((c) => c.id.startsWith('intl-'));
+  const intl = prev.cases.filter((c) => c.id.startsWith('intl-'));
   const scan = manifest.tools.find((t) => t.kind === 'read');
   const report = manifest.tools.find((t) => t.kind === 'report' && t.name.endsWith('_write_report'));
   const prefix = (report ? report.name.replace(/_write_report$/, '') : scan.name.split('_')[0]);
@@ -50,6 +53,6 @@ for (const n of readdirSync(PK).filter((x) => /^fairdrive-/.test(x) && x !== 'fa
   }
   const next = { ...data, cases: [...own, ...add, ...intl] };
   const txt = JSON.stringify(next, null, 2) + '\n';
-  if (readFileSync(file, 'utf8') !== txt) { if (check) { console.log(`${n}: policy cases out of date`); stale++; } else { writeFileSync(file, txt); console.log(`${n}: ${add.length} policy case(s)`); } }
+  if (!existsSync(file) || readFileSync(file, 'utf8') !== txt) { if (check) { console.log(`${n}: policy cases out of date`); stale++; } else { writeFileSync(file, txt); console.log(`${n}: ${add.length} policy case(s)`); } }
 }
 if (check && stale) process.exit(1);

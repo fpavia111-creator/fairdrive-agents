@@ -1,0 +1,295 @@
+{
+  "suite": "fairdrive-floorplan-audit",
+  "root": "..",
+  "data_note": "Fictional inventory and floorplan statement in ../fixtures, as of 2026-11-15. No model is called.",
+  "pii_none": "Reads vehicle inventory and the lender statement: stock numbers, VINs and balances, no customer data.",
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "floorplan_audit",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 7,
+          "result.floored_units": 5,
+          "result.statement_lines": 6,
+          "result.statement_balance": 195750,
+          "result.sold_not_paid_off": 1,
+          "result.sold_not_paid_off_amount": 33800,
+          "result.payoff_due": 1,
+          "result.not_in_inventory_amount": 29400,
+          "result.balance_differs": 1,
+          "result.not_floored": 1
+        }
+      }
+    },
+    {
+      "id": "worst-first",
+      "tool": "floorplan_audit",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.stock_number": "S5002",
+          "result.items.0.days_since_sale": 12,
+          "result.items.1.finding": "on_statement_not_in_inventory",
+          "result.items.2.amount": 1000
+        },
+        "length": {
+          "result.items": 5
+        }
+      }
+    },
+    {
+      "id": "vin-tail-matches",
+      "tool": "floorplan_audit",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "not_contains": [
+          "S5007",
+          "S5001",
+          "S5006"
+        ]
+      }
+    },
+    {
+      "id": "longer-payoff-days",
+      "tool": "floorplan_audit",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "payoff_days": 15
+      },
+      "expect": {
+        "equals": {
+          "result.sold_not_paid_off": 0,
+          "result.payoff_due": 2,
+          "result.payoff_due_amount": 62750
+        }
+      }
+    },
+    {
+      "id": "looser-tolerance",
+      "tool": "floorplan_audit",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "tolerance": 1000
+      },
+      "expect": {
+        "equals": {
+          "result.balance_differs": 0
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "floorplan_write_report",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "7 unit(s) in inventory, 6 on the floorplan statement (195750)"
+        ]
+      }
+    },
+    {
+      "id": "draft-payoffs",
+      "tool": "floorplan_draft_payoffs",
+      "mode": "auto",
+      "auto_actions": [
+        "floorplan_draft_payoffs"
+      ],
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "lender": "Northgate Floorplan Credit",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.amount": 62750,
+          "result.units": 2,
+          "result.open_markers": 1
+        }
+      }
+    },
+    {
+      "id": "payoff-stays-one-click",
+      "tool": "floorplan_request_pay",
+      "mode": "auto",
+      "auto_actions": [
+        "floorplan_draft_payoffs"
+      ],
+      "args": {
+        "draft": "fairdrive-out/floorplan/drafts/payoffs-2026-11-15.md",
+        "draft_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "expect": {
+        "status": "needs_approval",
+        "contains": [
+          "move_money"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "floorplan_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-lender-portal-payoff",
+      "tool": "lender_portal_payoff",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-dms-change-inventory",
+      "tool": "dms_change_inventory",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "floorplan_audit",
+      "args": {
+        "inventory": "../../../outside/export.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "floorplan_audit",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "inventory"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "floorplan_audit",
+      "mode": "review",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.units": 7,
+          "result.floored_units": 5,
+          "result.statement_lines": 6,
+          "result.statement_balance": 195750,
+          "result.sold_not_paid_off": 1,
+          "result.sold_not_paid_off_amount": 33800,
+          "result.payoff_due": 1,
+          "result.not_in_inventory_amount": 29400,
+          "result.balance_differs": 1,
+          "result.not_floored": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "floorplan_write_report",
+      "mode": "review",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    },
+    {
+      "id": "policy-draft-asks-first",
+      "tool": "floorplan_draft_payoffs",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "lender": "Northgate Floorplan Credit",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    },
+    {
+      "id": "policy-draft-blocked-in-review",
+      "tool": "floorplan_draft_payoffs",
+      "mode": "review",
+      "args": {
+        "inventory": "fixtures/inventory.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "lender": "Northgate Floorplan Credit",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-approval-stays-one-click-in-auto",
+      "tool": "floorplan_request_pay",
+      "mode": "auto",
+      "auto_actions": [
+        "floorplan_draft_payoffs"
+      ],
+      "args": {
+        "draft": "fairdrive-out/floorplan/drafts/none.md",
+        "draft_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    }
+  ]
+}
