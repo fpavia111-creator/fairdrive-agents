@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-reconditioning",
+  "version": "0.1.0",
+  "description": "Fairdrive Reconditioning: follows every used unit from acquisition to front-line ready, with reconditioning cost against budget, days in recon, units stuck with open repair orders and units with no recon order at all. Never closes a repair order.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-reconditioning": "bin/fairdrive-reconditioning.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-reconditioning.js demo",
+    "eval": "node bin/fairdrive-reconditioning.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-reconditioning"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-reconditioning#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "reconditioning",
+    "used-cars",
+    "recon",
+    "service"
+  ]
+}

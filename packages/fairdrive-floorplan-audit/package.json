@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-floorplan-audit",
+  "version": "0.1.0",
+  "description": "Fairdrive Floorplan Audit: matches the DMS vehicle inventory against the floorplan lender statement and lists units sold but not paid off, units on the statement the DMS does not have, units on the lot not floored and balance differences, and drafts a payoff list for one named person. Never pays a lender.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-floorplan-audit": "bin/fairdrive-floorplan-audit.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-floorplan-audit.js demo",
+    "eval": "node bin/fairdrive-floorplan-audit.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-floorplan-audit"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-floorplan-audit#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "floorplan",
+    "floor-plan-audit",
+    "inventory",
+    "lender"
+  ]
+}

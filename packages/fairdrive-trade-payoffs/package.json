@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-trade-payoffs",
+  "version": "0.1.0",
+  "description": "Fairdrive Trade Payoffs: lists every trade-in lien payoff not yet sent, sent after the quote expired, short of the quote plus per diem, not yet cleared or without a lien release, and drafts a payoff batch for one named person. Never sends money.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-trade-payoffs": "bin/fairdrive-trade-payoffs.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-trade-payoffs.js demo",
+    "eval": "node bin/fairdrive-trade-payoffs.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-trade-payoffs"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-trade-payoffs#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "trade-in",
+    "payoffs",
+    "lien",
+    "title"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-gl-schedules",
+  "version": "0.1.0",
+  "description": "Fairdrive GL Schedules: ties each DMS schedule (contracts in transit, receivables, warranty, factory) to its ledger balance, ages the open items by control number, and lists items past 90 days, controls that net to zero and credit balances. Never posts or purges.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-gl-schedules": "bin/fairdrive-gl-schedules.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-gl-schedules.js demo",
+    "eval": "node bin/fairdrive-gl-schedules.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-gl-schedules"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-gl-schedules#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "schedules",
+    "general-ledger",
+    "reconciliation",
+    "dealership-accounting"
+  ]
+}

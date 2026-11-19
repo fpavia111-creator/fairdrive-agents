@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-warranty-claims",
+  "version": "0.1.0",
+  "description": "Fairdrive Warranty Claims: matches warranty claims submitted against the manufacturer statement and lists unpaid claims by age, claims paid short, rejections with their resubmission deadline and debits after payment, and drafts a review request. Never resubmits a claim.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-warranty-claims": "bin/fairdrive-warranty-claims.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-warranty-claims.js demo",
+    "eval": "node bin/fairdrive-warranty-claims.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-warranty-claims"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-warranty-claims#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "warranty",
+    "claims",
+    "service",
+    "manufacturer"
+  ]
+}

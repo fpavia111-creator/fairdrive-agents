@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-ofac-red-flags",
+  "version": "0.1.0",
+  "description": "Fairdrive OFAC Red Flags: checks that every deal has an OFAC check and a Red Flags (identity) check record for each buyer, dated before delivery, with the result recorded. It checks that records exist; it makes no compliance determination and never clears a match.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-ofac-red-flags": "bin/fairdrive-ofac-red-flags.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-ofac-red-flags.js demo",
+    "eval": "node bin/fairdrive-ofac-red-flags.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-ofac-red-flags"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-ofac-red-flags#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "ofac",
+    "red-flags",
+    "identity-theft",
+    "f-and-i"
+  ]
+}

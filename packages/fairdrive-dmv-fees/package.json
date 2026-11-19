@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-dmv-fees",
+  "version": "0.1.0",
+  "description": "Fairdrive DMV Fees: compares the title, registration and plate fees collected on each deal with what the DMV or tag agency charged, and lists fees over-collected, under-collected, not yet paid and charges with no deal. Never issues a refund.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-dmv-fees": "bin/fairdrive-dmv-fees.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-dmv-fees.js demo",
+    "eval": "node bin/fairdrive-dmv-fees.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-dmv-fees"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-dmv-fees#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "dmv",
+    "fees",
+    "title",
+    "registration"
+  ]
+}

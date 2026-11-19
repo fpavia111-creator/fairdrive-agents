@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-policy-adjustments",
+  "version": "0.1.0",
+  "description": "Fairdrive Policy Adjustments: lists policy and goodwill adjustments with no approver, self-approved, over the approval limit, with no reason or repeated on the same vehicle, and totals them by advisor and reason. Never posts an adjustment.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-policy-adjustments": "bin/fairdrive-policy-adjustments.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-policy-adjustments.js demo",
+    "eval": "node bin/fairdrive-policy-adjustments.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-policy-adjustments"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-policy-adjustments#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "policy",
+    "goodwill",
+    "service",
+    "controls"
+  ]
+}

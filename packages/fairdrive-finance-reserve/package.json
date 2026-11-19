@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-finance-reserve",
+  "version": "0.1.0",
+  "description": "Fairdrive Finance Reserve: works out the finance reserve each deal should earn from the buy rate, contract rate, term and your lender share, compares it and the product income with what lenders and providers actually paid, and drafts a reserve inquiry to a lender. Never posts to the ledger.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-finance-reserve": "bin/fairdrive-finance-reserve.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-finance-reserve.js demo",
+    "eval": "node bin/fairdrive-finance-reserve.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-finance-reserve"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-finance-reserve#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "finance-reserve",
+    "dealer-participation",
+    "f-and-i",
+    "lender"
+  ]
+}

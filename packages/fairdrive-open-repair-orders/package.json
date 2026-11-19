@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-open-repair-orders",
+  "version": "0.1.0",
+  "description": "Fairdrive Open Repair Orders: ages every open repair order by advisor and pay type, and lists those past their promised date, warranty and internal orders open too long, and orders waiting on parts. Never closes a repair order.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-open-repair-orders": "bin/fairdrive-open-repair-orders.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-open-repair-orders.js demo",
+    "eval": "node bin/fairdrive-open-repair-orders.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-open-repair-orders"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-open-repair-orders#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "open-ro",
+    "repair-orders",
+    "service",
+    "work-in-process"
+  ]
+}

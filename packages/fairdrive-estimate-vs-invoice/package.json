@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-estimate-vs-invoice",
+  "version": "0.1.0",
+  "description": "Fairdrive Estimate vs Invoice: compares the latest estimate and supplements on each collision repair (CCC, Mitchell) with the final invoice by labor, parts, materials and sublet, and lists repairs invoiced over or under the estimate, invoices with no estimate and estimates not invoiced. Never contacts an insurer.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-estimate-vs-invoice": "bin/fairdrive-estimate-vs-invoice.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-estimate-vs-invoice.js demo",
+    "eval": "node bin/fairdrive-estimate-vs-invoice.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-estimate-vs-invoice"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-estimate-vs-invoice#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "collision",
+    "body-shop",
+    "estimates",
+    "invoices"
+  ]
+}

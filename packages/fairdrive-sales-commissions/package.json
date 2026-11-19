@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-sales-commissions",
+  "version": "0.1.0",
+  "description": "Fairdrive Sales Commissions: works out each salesperson commission from your pay plans (front and back percentages, minimums, split deals), compares it with what was paid, and drafts the commission sheet for one named person to approve. Never runs payroll.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-sales-commissions": "bin/fairdrive-sales-commissions.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-sales-commissions.js demo",
+    "eval": "node bin/fairdrive-sales-commissions.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-sales-commissions"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-sales-commissions#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "commissions",
+    "pay-plans",
+    "salespeople",
+    "payroll"
+  ]
+}

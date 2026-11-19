@@ -1,0 +1,332 @@
+{
+  "suite": "fairdrive-finance-reserve",
+  "root": "..",
+  "data_note": "Fictional deals and payments in ../fixtures, as of 2026-11-15. No model is called.",
+  "pii_canaries": [
+    "Ingrid Halvorsen",
+    "Jasper Wetherell",
+    "Leopold Ferncastle",
+    "Magdalena Rusu",
+    "Percival Ashdown"
+  ],
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 8,
+          "result.reserve_expected": 6965.91,
+          "result.reserve_received": 3393.07,
+          "result.missing": 1,
+          "result.short_paid": 1,
+          "result.over_paid": 0,
+          "result.reserve_short": 2317.72,
+          "result.product_short": 1700,
+          "result.cannot_compute": 1
+        }
+      }
+    },
+    {
+      "id": "largest-shortfall-first",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.deal_number": "D4004",
+          "result.items.0.expected_reserve": 2217.72,
+          "result.items.1.deal_number": "D4002"
+        }
+      }
+    },
+    {
+      "id": "findings-named",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "contains": [
+          "reserve_missing",
+          "reserve_short",
+          "product_income_missing",
+          "product_income_short",
+          "cannot_compute",
+          "D4099"
+        ],
+        "not_contains": [
+          "\"D4001\"",
+          "\"D4003\"",
+          "\"D4006\""
+        ]
+      }
+    },
+    {
+      "id": "young-deal-not-chased",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "not_contains": [
+          "D4007"
+        ]
+      }
+    },
+    {
+      "id": "after-grace-young-deal-is-missing",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-12-20"
+      },
+      "expect": {
+        "equals": {
+          "result.missing": 2
+        }
+      }
+    },
+    {
+      "id": "lower-share",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15",
+        "share_pct": 50
+      },
+      "expect": {
+        "equals": {
+          "result.over_paid": 3
+        }
+      }
+    },
+    {
+      "id": "by-lender",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.by_lender.0.lender": "Bluegate Bank",
+          "result.by_lender.1.short": 100
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "reserve_write_report",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "8 deal(s): reserve expected 6965.91"
+        ]
+      }
+    },
+    {
+      "id": "draft-inquiry",
+      "tool": "reserve_draft_inquiry",
+      "mode": "auto",
+      "auto_actions": [
+        "reserve_draft_inquiry"
+      ],
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15",
+        "lender": "Harbor",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.id": "Harbor Auto Finance",
+          "result.amount": 100,
+          "result.deals": 1,
+          "result.open_markers": 2
+        }
+      }
+    },
+    {
+      "id": "no-inquiry-without-shortfall",
+      "tool": "reserve_draft_inquiry",
+      "mode": "auto",
+      "auto_actions": [
+        "reserve_draft_inquiry"
+      ],
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15",
+        "lender": "Summit Credit Union"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "no missing or short reserve"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "reserve_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-gl-post-reserve",
+      "tool": "gl_post_reserve",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-lender-portal-message",
+      "tool": "lender_portal_message",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "../../../outside/export.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "reserve_check",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "deals"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "reserve_check",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.deals": 8,
+          "result.reserve_expected": 6965.91,
+          "result.reserve_received": 3393.07,
+          "result.missing": 1,
+          "result.short_paid": 1,
+          "result.over_paid": 0,
+          "result.reserve_short": 2317.72,
+          "result.product_short": 1700,
+          "result.cannot_compute": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "reserve_write_report",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    },
+    {
+      "id": "policy-draft-asks-first",
+      "tool": "reserve_draft_inquiry",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15",
+        "lender": "Harbor",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    },
+    {
+      "id": "policy-draft-blocked-in-review",
+      "tool": "reserve_draft_inquiry",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "payments": "fixtures/payments.csv",
+        "as_of": "2026-11-15",
+        "lender": "Harbor",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-approval-stays-one-click-in-auto",
+      "tool": "reserve_request_send",
+      "mode": "auto",
+      "auto_actions": [
+        "reserve_draft_inquiry"
+      ],
+      "args": {
+        "draft": "fairdrive-out/reserve/drafts/none.md",
+        "draft_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-loaner-fleet",
+  "version": "0.1.0",
+  "description": "Fairdrive Loaner Fleet: checks service loaners and demonstrators against your days and mileage limits, and lists units over or near a limit, loaners out with no repair order and loan agreements open too long. Never retails a unit.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-loaner-fleet": "bin/fairdrive-loaner-fleet.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-loaner-fleet.js demo",
+    "eval": "node bin/fairdrive-loaner-fleet.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-loaner-fleet"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-loaner-fleet#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "loaners",
+    "demos",
+    "fleet",
+    "service"
+  ]
+}

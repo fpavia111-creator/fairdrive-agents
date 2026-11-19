@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-used-vehicle-aging",
+  "version": "0.1.0",
+  "description": "Fairdrive Used Vehicle Aging: ages the used-vehicle inventory, flags units past your wholesale age, priced above or well below market, priced below cost or with a stale price, and totals cost by age. Never changes a price or lists a car at auction.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-used-vehicle-aging": "bin/fairdrive-used-vehicle-aging.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-used-vehicle-aging.js demo",
+    "eval": "node bin/fairdrive-used-vehicle-aging.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-used-vehicle-aging"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-used-vehicle-aging#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "used-cars",
+    "inventory-aging",
+    "pricing",
+    "wholesale"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-insurance-supplements",
+  "version": "0.1.0",
+  "description": "Fairdrive Insurance Supplements: tracks every supplement sent to an insurer, lists those waiting past your follow-up days, approved short or denied, totals them by insurer, and drafts a follow-up to the adjuster. Never submits to an insurer.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-insurance-supplements": "bin/fairdrive-insurance-supplements.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-insurance-supplements.js demo",
+    "eval": "node bin/fairdrive-insurance-supplements.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-insurance-supplements"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-insurance-supplements#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "collision",
+    "supplements",
+    "insurance",
+    "body-shop"
+  ]
+}

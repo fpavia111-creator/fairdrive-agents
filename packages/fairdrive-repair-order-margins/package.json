@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-repair-order-margins",
+  "version": "0.1.0",
+  "description": "Fairdrive Repair Order Margins: works out labor and parts gross profit on every closed repair order by pay type and advisor, and lists repair orders under your margin floors, parts sold below cost and customer-pay labor given away. Never reprices a repair order.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-repair-order-margins": "bin/fairdrive-repair-order-margins.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-repair-order-margins.js demo",
+    "eval": "node bin/fairdrive-repair-order-margins.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-repair-order-margins"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-repair-order-margins#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "repair-orders",
+    "gross-profit",
+    "service",
+    "parts"
+  ]
+}

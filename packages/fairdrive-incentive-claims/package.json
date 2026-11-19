@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-incentive-claims",
+  "version": "0.1.0",
+  "description": "Fairdrive Incentive Claims: matches the manufacturer incentive and holdback you expect on each unit against the manufacturer statement and lists claims not submitted, submitted but unpaid, paid short, rejected or charged back, and drafts an inquiry to the incentive desk. Never submits a claim.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-incentive-claims": "bin/fairdrive-incentive-claims.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-incentive-claims.js demo",
+    "eval": "node bin/fairdrive-incentive-claims.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-incentive-claims"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-incentive-claims#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "incentives",
+    "rebates",
+    "holdback",
+    "manufacturer"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-parts-receiving",
+  "version": "0.1.0",
+  "description": "Fairdrive Parts Receiving: matches parts received against vendor and manufacturer invoices by purchase order and part number, and lists parts billed but not received, received but not billed, price differences and duplicate invoice lines, and drafts a credit request. Never pays an invoice.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-parts-receiving": "bin/fairdrive-parts-receiving.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-parts-receiving.js demo",
+    "eval": "node bin/fairdrive-parts-receiving.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-parts-receiving"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-parts-receiving#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "parts",
+    "receiving",
+    "invoices",
+    "three-way-match"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-sublet-invoices",
+  "version": "0.1.0",
+  "description": "Fairdrive Sublet Invoices: matches sublet lines on repair orders against vendor invoices and lists invoices above the purchase order, closed orders with no sublet invoice, invoices with no repair order, sublet billed below cost and duplicate invoices. Never pays an invoice.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-sublet-invoices": "bin/fairdrive-sublet-invoices.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-sublet-invoices.js demo",
+    "eval": "node bin/fairdrive-sublet-invoices.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-sublet-invoices"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-sublet-invoices#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "sublet",
+    "repair-orders",
+    "invoices",
+    "service"
+  ]
+}

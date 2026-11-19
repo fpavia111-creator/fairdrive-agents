@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-sales-tax",
+  "version": "0.1.0",
+  "description": "Fairdrive Sales Tax: recomputes the sales tax on each deal from the county rate table you supply (rate, trade-in credit, cap) and lists deals taxed over or under, and deals in a county with no rate. Never files a return.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-sales-tax": "bin/fairdrive-sales-tax.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-sales-tax.js demo",
+    "eval": "node bin/fairdrive-sales-tax.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-sales-tax"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-sales-tax#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "sales-tax",
+    "county",
+    "deals",
+    "tax"
+  ]
+}

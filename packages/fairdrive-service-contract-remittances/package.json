@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-service-contract-remittances",
+  "version": "0.1.0",
+  "description": "Fairdrive Service Contract Remittances: matches every service contract sold with its remittance to the provider and lists contracts not remitted within your days, remitted short or over, remitted twice or remitted with no sale. Never pays a provider.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-service-contract-remittances": "bin/fairdrive-service-contract-remittances.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-service-contract-remittances.js demo",
+    "eval": "node bin/fairdrive-service-contract-remittances.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-service-contract-remittances"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-service-contract-remittances#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "service-contracts",
+    "remittance",
+    "f-and-i",
+    "provider"
+  ]
+}

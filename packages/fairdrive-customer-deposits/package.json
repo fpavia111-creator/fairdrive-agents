@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-customer-deposits",
+  "version": "0.1.0",
+  "description": "Fairdrive Customer Deposits: matches customer deposits with deals and lists deposits held with no deal, deposits on dead deals (refund due), deposits not applied on delivered deals and refunds overdue. Never issues a refund.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-customer-deposits": "bin/fairdrive-customer-deposits.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-customer-deposits.js demo",
+    "eval": "node bin/fairdrive-customer-deposits.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-customer-deposits"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-customer-deposits#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "deposits",
+    "customer-deposits",
+    "deals",
+    "cash"
+  ]
+}

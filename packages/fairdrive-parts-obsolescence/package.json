@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-parts-obsolescence",
+  "version": "0.1.0",
+  "description": "Fairdrive Parts Obsolescence: classes every part on hand by months since its last sale, values idle and obsolete stock, and lists returnable parts worth sending back first. Never adjusts inventory or returns parts.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-parts-obsolescence": "bin/fairdrive-parts-obsolescence.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-parts-obsolescence.js demo",
+    "eval": "node bin/fairdrive-parts-obsolescence.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-parts-obsolescence"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-parts-obsolescence#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "parts",
+    "obsolescence",
+    "inventory",
+    "parts-department"
+  ]
+}
