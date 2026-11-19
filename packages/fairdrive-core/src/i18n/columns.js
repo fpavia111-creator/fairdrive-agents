@@ -312,4 +312,4 @@ export function namesFor(concept, lang = null) {
 }
 
 /** Every known column name, normalised: used to tell which text encoding a file was saved in. */
-export const KNOWN_HEADER_WORDS = new Set([...byField.values()].flat().map((x) => normHeader(x.word)).concat(Object.keys(COLUMN_WORDS).map(normHeader)).filter((k) => k && (k.length > 1 || /[^\x00-]/.test(k))));
+export const KNOWN_HEADER_WORDS = new Set([...byField.values()].flat().map((x) => normHeader(x.word)).concat(Object.keys(COLUMN_WORDS).map(normHeader)).filter((k) => k && k.length > 1));
