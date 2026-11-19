@@ -1,0 +1,10 @@
+{"suite":"fairdrive-open-repair-orders","root":"..","data_note":"Fictional open repair orders in ../fixtures, as of 2026-11-15. No model is called.","pii_canaries":["Thaddeus Greaves","Ursula Penhallow","Valentin Osei","Xenia Aldridge"],"cases":[
+{"id":"totals","tool":"openros_age","args":{"open_ros":"fixtures/open-ros.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.open":7,"result.amount":4210,"result.oldest_days":48,"result.past_promise":2,"result.waiting_parts":1,"result.warranty_open_long":1,"result.internal_open_long":1,"result.open_long":1}}},
+{"id":"oldest-first","tool":"openros_age","args":{"open_ros":"fixtures/open-ros.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.items.0.ro_number":"90003","result.items.1.ro_number":"90006","result.items.4.ro_number":"90001"},"length":{"result.items":5}}},
+{"id":"by-age","tool":"openros_age","args":{"open_ros":"fixtures/open-ros.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.by_age.0.repair_orders":3,"result.by_age.0.amount":1150,"result.by_age.3.amount":2230}}},
+{"id":"by-advisor","tool":"openros_age","args":{"open_ros":"fixtures/open-ros.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.by_advisor.0.advisor":"Marco Ilic","result.by_advisor.0.amount":2680,"result.by_advisor.1.oldest_days":26}}},
+{"id":"fine-orders-not-listed","tool":"openros_age","args":{"open_ros":"fixtures/open-ros.csv","as_of":"2026-11-15"},"expect":{"not_contains":["\"90005\"","\"90007\""]}},
+{"id":"stricter-internal","tool":"openros_age","args":{"open_ros":"fixtures/open-ros.csv","as_of":"2026-11-15","internal_days":30},"expect":{"equals":{"result.internal_open_long":0}}},
+{"id":"stricter-warranty","tool":"openros_age","args":{"open_ros":"fixtures/open-ros.csv","as_of":"2026-11-15","warranty_days":3},"expect":{"equals":{"result.warranty_open_long":2}}},
+{"id":"write-report","tool":"openros_write_report","args":{"open_ros":"fixtures/open-ros.csv","as_of":"2026-11-15"},"expect":{"status":"executed","length":{"result.files":2},"contains":["7 open repair order(s) worth 4210, oldest 48 days"]}}
+]}
