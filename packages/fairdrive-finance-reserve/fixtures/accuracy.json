@@ -1,0 +1,121 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "deal_number",
+ "lists": {
+  "payments_without_a_deal": {
+   "id": "deal_number",
+   "code": "payment_without_a_deal"
+  }
+ },
+ "planted": [
+  [
+   "D4004",
+   "reserve_missing"
+  ],
+  [
+   "D4004",
+   "product_income_short"
+  ],
+  [
+   "D4002",
+   "reserve_short"
+  ],
+  [
+   "D4005",
+   "product_income_missing"
+  ],
+  [
+   "D4008",
+   "cannot_compute"
+  ],
+  [
+   "D4099",
+   "payment_without_a_deal"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "deals",
+   "dropWhere": {
+    "deal_number": [
+     "D4002",
+     "D4004",
+     "D4005",
+     "D4008"
+    ]
+   }
+  },
+  {
+   "arg": "payments",
+   "dropWhere": {
+    "deal_number": [
+     "D4002",
+     "D4004",
+     "D4005",
+     "D4099"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "reserve paid 100 short",
+   "edits": [
+    {
+     "arg": "payments",
+     "set": [
+      {
+       "where": [
+        [
+         "deal_number",
+         "D4001"
+        ],
+        [
+         "kind",
+         "Reserve"
+        ]
+       ],
+       "column": "amount",
+       "value": "1455.77"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D4001",
+     "reserve_short"
+    ]
+   ]
+  },
+  {
+   "name": "contract past the grace days with nothing paid",
+   "edits": [
+    {
+     "arg": "deals",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D4007"
+       ],
+       "column": "contract_date",
+       "value": "2026-09-15"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D4007",
+     "reserve_missing"
+    ],
+    [
+     "D4007",
+     "product_income_missing"
+    ]
+   ]
+  }
+ ]
+}

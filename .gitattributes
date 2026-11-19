@@ -1,0 +1,7 @@
+# Code and generated docs are LF everywhere, so the --check scripts (readme, plugin, policy and intl evals)
+# also pass on a fresh Windows clone (git for Windows checks text out with CRLF by default).
+* text=auto eol=lf
+# Fixtures are test data in the exact bytes an export has (legacy encodings, CRLF line ends): never converted.
+**/fixtures/** -text
+*.xlsx binary
+*.png binary

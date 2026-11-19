@@ -1,0 +1,131 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": [
+  "technician",
+  "ro_number"
+ ],
+ "planted": [
+  [
+   "Corin Brennan/R7",
+   "flagged_no_time"
+  ],
+  [
+   "Mei Chu/R13",
+   "flag_far_above_time"
+  ],
+  [
+   "Corin Brennan/R10",
+   "flags_without_clock"
+  ],
+  [
+   "Corin Brennan/",
+   "below_proficiency_floor"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "flags",
+   "dropWhere": {
+    "technician": [
+     "Corin Brennan"
+    ]
+   }
+  },
+  {
+   "arg": "clock",
+   "dropWhere": {
+    "technician": [
+     "Corin Brennan"
+    ]
+   }
+  },
+  {
+   "arg": "flags",
+   "set": [
+    {
+     "where": [
+      "ro_number",
+      "R13"
+     ],
+     "column": "actual_hours",
+     "value": "8.0"
+    }
+   ]
+  }
+ ],
+ "mutations": [
+  {
+   "name": "one RO flagged far below its time",
+   "edits": [
+    {
+     "arg": "flags",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "R2"
+       ],
+       "column": "flag_hours",
+       "value": "1.5"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "Ines Alvarez/",
+     "below_proficiency_floor"
+    ]
+   ]
+  },
+  {
+   "name": "flag with no recorded time",
+   "edits": [
+    {
+     "arg": "flags",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "R3"
+       ],
+       "column": "actual_hours",
+       "value": ""
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "Ines Alvarez/R3",
+     "flagged_no_time"
+    ]
+   ]
+  },
+  {
+   "name": "flag four times the time worked",
+   "edits": [
+    {
+     "arg": "flags",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "R11"
+       ],
+       "column": "actual_hours",
+       "value": "2.0"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "Mei Chu/R11",
+     "flag_far_above_time"
+    ]
+   ]
+  }
+ ]
+}

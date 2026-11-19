@@ -1,0 +1,141 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": [
+  "schedule",
+  "control_number"
+ ],
+ "planted": [
+  [
+   "220/",
+   "out_of_balance"
+  ],
+  [
+   "230/",
+   "out_of_balance"
+  ],
+  [
+   "205/D2004",
+   "over_90_days"
+  ],
+  [
+   "220/H-1002",
+   "over_90_days"
+  ],
+  [
+   "230/C7099",
+   "credit_balance"
+  ],
+  [
+   "220/H-1003",
+   "zero_balance_control"
+  ],
+  [
+   "230/C7007",
+   "zero_balance_control"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "detail",
+   "dropWhere": {
+    "control_number": [
+     "D2004",
+     "H-1002",
+     "H-1003",
+     "C7007",
+     "C7099"
+    ]
+   }
+  },
+  {
+   "arg": "balances",
+   "set": [
+    {
+     "where": [
+      "schedule",
+      "205"
+     ],
+     "column": "gl_balance",
+     "value": "51000.00"
+    }
+   ]
+  },
+  {
+   "arg": "balances",
+   "set": [
+    {
+     "where": [
+      "schedule",
+      "220"
+     ],
+     "column": "gl_balance",
+     "value": "1500.00"
+    }
+   ]
+  },
+  {
+   "arg": "balances",
+   "set": [
+    {
+     "where": [
+      "schedule",
+      "230"
+     ],
+     "column": "gl_balance",
+     "value": "2710.00"
+    }
+   ]
+  }
+ ],
+ "mutations": [
+  {
+   "name": "GL 500 more than the schedule",
+   "edits": [
+    {
+     "arg": "balances",
+     "set": [
+      {
+       "where": [
+        "schedule",
+        "205"
+       ],
+       "column": "gl_balance",
+       "value": "51500.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "205/",
+     "out_of_balance"
+    ]
+   ]
+  },
+  {
+   "name": "item dated 106 days back",
+   "edits": [
+    {
+     "arg": "detail",
+     "set": [
+      {
+       "where": [
+        "control_number",
+        "D2002"
+       ],
+       "column": "date",
+       "value": "2026-08-01"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "205/D2002",
+     "over_90_days"
+    ]
+   ]
+  }
+ ]
+}

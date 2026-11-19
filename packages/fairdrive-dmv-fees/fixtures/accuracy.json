@@ -1,0 +1,95 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "deal_number",
+ "planted": [
+  [
+   "D12004",
+   "not_paid_yet"
+  ],
+  [
+   "D12099",
+   "charge_without_deal"
+  ],
+  [
+   "D12002",
+   "overcollected"
+  ],
+  [
+   "D12003",
+   "undercollected"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "deals",
+   "dropWhere": {
+    "deal_number": [
+     "D12002",
+     "D12003",
+     "D12004"
+    ]
+   }
+  },
+  {
+   "arg": "charges",
+   "dropWhere": {
+    "deal_number": [
+     "D12002",
+     "D12003",
+     "D12099"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "state charges more than collected",
+   "edits": [
+    {
+     "arg": "charges",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D12001"
+       ],
+       "column": "amount",
+       "value": "320.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D12001",
+     "undercollected"
+    ]
+   ]
+  },
+  {
+   "name": "delivered 45 days ago, no charge yet",
+   "edits": [
+    {
+     "arg": "deals",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D12005"
+       ],
+       "column": "delivery_date",
+       "value": "2026-10-01"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D12005",
+     "not_paid_yet"
+    ]
+   ]
+  }
+ ]
+}

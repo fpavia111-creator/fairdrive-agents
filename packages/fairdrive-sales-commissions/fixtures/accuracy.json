@@ -1,0 +1,103 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": [
+  "salesperson",
+  "deal_number"
+ ],
+ "planted": [
+  [
+   "Bianca Sol/D14003",
+   "underpaid"
+  ],
+  [
+   "Bianca Sol/D14004",
+   "unpaid"
+  ],
+  [
+   "Casimir Vale/D14005",
+   "no_plan"
+  ],
+  [
+   "Aiden Royce/D14099",
+   "paid_without_deal"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "deals",
+   "dropWhere": {
+    "deal_number": [
+     "D14003",
+     "D14004",
+     "D14005"
+    ]
+   }
+  },
+  {
+   "arg": "paid",
+   "dropWhere": {
+    "deal_number": [
+     "D14003",
+     "D14099"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "commission paid 60 short",
+   "edits": [
+    {
+     "arg": "paid",
+     "set": [
+      {
+       "where": [
+        [
+         "salesperson",
+         "Aiden Royce"
+        ],
+        [
+         "deal_number",
+         "D14001"
+        ]
+       ],
+       "column": "amount_paid",
+       "value": "600.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "Aiden Royce/D14001",
+     "underpaid"
+    ]
+   ]
+  },
+  {
+   "name": "pay plan front percent raised, old amount paid",
+   "edits": [
+    {
+     "arg": "plans",
+     "set": [
+      {
+       "where": [
+        "salesperson",
+        "Bianca Sol"
+       ],
+       "column": "front_pct",
+       "value": "25"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "Bianca Sol/D14002",
+     "underpaid"
+    ]
+   ]
+  }
+ ]
+}

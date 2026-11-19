@@ -1,0 +1,101 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "ro_number",
+ "planted": [
+  [
+   "B1005",
+   "not_invoiced"
+  ],
+  [
+   "B1099",
+   "no_estimate"
+  ],
+  [
+   "B1004",
+   "invoiced_under_estimate"
+  ],
+  [
+   "B1003",
+   "invoiced_over_estimate"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "estimates",
+   "dropWhere": {
+    "ro_number": [
+     "B1003",
+     "B1004",
+     "B1005"
+    ]
+   }
+  },
+  {
+   "arg": "invoices",
+   "dropWhere": {
+    "ro_number": [
+     "B1003",
+     "B1004",
+     "B1099"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "invoice 200 over the estimate",
+   "edits": [
+    {
+     "arg": "invoices",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "B1002"
+       ],
+       "column": "total",
+       "value": "5600.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "B1002",
+     "invoiced_over_estimate"
+    ]
+   ]
+  },
+  {
+   "name": "latest supplement higher than the invoice",
+   "edits": [
+    {
+     "arg": "estimates",
+     "set": [
+      {
+       "where": [
+        [
+         "ro_number",
+         "B1001"
+        ],
+        [
+         "version",
+         "S01"
+        ]
+       ],
+       "column": "total",
+       "value": "4700.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "B1001",
+     "invoiced_under_estimate"
+    ]
+   ]
+  }
+ ]
+}

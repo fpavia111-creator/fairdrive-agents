@@ -92,7 +92,7 @@ for (const n of readdirSync(PK).filter((x) => /^fairdrive-/.test(x) && x !== 'fa
   // The hand-written tool table is replaced by the generated one.
   if (!txt.includes(START)) txt = txt.replace(/\n## Tools\n[\s\S]*?(?=\n## )/, '\n');
   const next = txt.includes(START) ? txt.replace(new RegExp(`${START}[\\s\\S]*?${END}`), block) : txt.includes('\n## Limits') ? txt.replace(/\n## Limits\b/, `\n${block}\n\n## Limits`) : `${txt.trimEnd()}\n\n${block}\n`;
-  if (next === readFileSync(f, 'utf8')) continue;
+  if (next === readFileSync(f, 'utf8').replace(/\r\n/g, '\n')) continue; // a Windows clone may have CRLF
   if (check) { console.log(`${n}: README generated part is out of date`); stale++; continue; }
   writeFileSync(f, next); console.log(`${n}: README updated`);
 }

@@ -1,0 +1,91 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "receipt_number",
+ "planted": [
+  [
+   "R-504",
+   "refund_overdue"
+  ],
+  [
+   "R-501",
+   "not_applied"
+  ],
+  [
+   "R-502",
+   "held_no_deal"
+  ],
+  [
+   "R-507",
+   "applied_to_missing_deal"
+  ],
+  [
+   "R-505",
+   "refund_due"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "deposits",
+   "dropWhere": {
+    "receipt_number": [
+     "R-501",
+     "R-502",
+     "R-504",
+     "R-505",
+     "R-507"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "deposit held 26 days with no deal",
+   "edits": [
+    {
+     "arg": "deposits",
+     "set": [
+      {
+       "where": [
+        "receipt_number",
+        "R-503"
+       ],
+       "column": "date",
+       "value": "2026-10-20"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "R-503",
+     "held_no_deal"
+    ]
+   ]
+  },
+  {
+   "name": "deal delivered, deposit still held",
+   "edits": [
+    {
+     "arg": "deals",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D15009"
+       ],
+       "column": "status",
+       "value": "Delivered"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "R-509",
+     "not_applied"
+    ]
+   ]
+  }
+ ]
+}

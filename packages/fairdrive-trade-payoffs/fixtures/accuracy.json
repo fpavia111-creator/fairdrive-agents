@@ -1,0 +1,95 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "deal_number",
+ "planted": [
+  [
+   "D10005",
+   "lien_release_missing"
+  ],
+  [
+   "D10003",
+   "sent_after_quote_expired"
+  ],
+  [
+   "D10003",
+   "short_paid"
+  ],
+  [
+   "D10004",
+   "not_cleared"
+  ],
+  [
+   "D10007",
+   "payoff_not_sent"
+  ],
+  [
+   "D10002",
+   "payoff_not_sent"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "trades",
+   "dropWhere": {
+    "deal_number": [
+     "D10002",
+     "D10003",
+     "D10004",
+     "D10005",
+     "D10007"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "lien release never received",
+   "edits": [
+    {
+     "arg": "trades",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D10001"
+       ],
+       "column": "lien_release_received",
+       "value": ""
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D10001",
+     "lien_release_missing"
+    ]
+   ]
+  },
+  {
+   "name": "payoff not sent 14 days after the deal",
+   "edits": [
+    {
+     "arg": "trades",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D10006"
+       ],
+       "column": "deal_date",
+       "value": "2026-11-01"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D10006",
+     "payoff_not_sent"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,126 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "deal_number",
+ "planted": [
+  [
+   "D13003",
+   "overcharged"
+  ],
+  [
+   "D13004",
+   "undercharged"
+  ],
+  [
+   "D13002",
+   "overcharged"
+  ],
+  [
+   "D13005",
+   "no_rate"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "deals",
+   "dropWhere": {
+    "deal_number": [
+     "D13005"
+    ]
+   }
+  },
+  {
+   "arg": "deals",
+   "set": [
+    {
+     "where": [
+      "deal_number",
+      "D13002"
+     ],
+     "column": "tax_charged",
+     "value": "1250.00"
+    }
+   ]
+  },
+  {
+   "arg": "deals",
+   "set": [
+    {
+     "where": [
+      "deal_number",
+      "D13003"
+     ],
+     "column": "tax_charged",
+     "value": "1500.00"
+    }
+   ]
+  },
+  {
+   "arg": "deals",
+   "set": [
+    {
+     "where": [
+      "deal_number",
+      "D13004"
+     ],
+     "column": "tax_charged",
+     "value": "1384.38"
+    }
+   ]
+  }
+ ],
+ "mutations": [
+  {
+   "name": "trade allowance raised, tax not redone",
+   "edits": [
+    {
+     "arg": "deals",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D13001"
+       ],
+       "column": "trade_allowance",
+       "value": "12000.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D13001",
+     "overcharged"
+    ]
+   ]
+  },
+  {
+   "name": "county gives no trade credit",
+   "edits": [
+    {
+     "arg": "rates",
+     "set": [
+      {
+       "where": [
+        "county",
+        "Harrow"
+       ],
+       "column": "trade_credit",
+       "value": "no"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D13001",
+     "undercharged"
+    ],
+    [
+     "D13006",
+     "undercharged"
+    ]
+   ]
+  }
+ ]
+}

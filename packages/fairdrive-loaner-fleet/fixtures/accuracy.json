@@ -1,0 +1,100 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "stock_number",
+ "planted": [
+  [
+   "L2",
+   "over_days"
+  ],
+  [
+   "L1",
+   "near_limit"
+  ],
+  [
+   "L3",
+   "over_miles"
+  ],
+  [
+   "L5",
+   "agreement_open_long"
+  ],
+  [
+   "L6",
+   "loaner_out_no_ro"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "fleet",
+   "dropWhere": {
+    "stock_number": [
+     "L1",
+     "L2",
+     "L3",
+     "L5",
+     "L6"
+    ]
+   }
+  },
+  {
+   "arg": "agreements",
+   "dropWhere": {
+    "stock_number": [
+     "L5",
+     "L6"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "loaner past the mileage limit",
+   "edits": [
+    {
+     "arg": "fleet",
+     "set": [
+      {
+       "where": [
+        "stock_number",
+        "L4"
+       ],
+       "column": "odometer",
+       "value": "6500"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "L4",
+     "over_miles"
+    ]
+   ]
+  },
+  {
+   "name": "loaner in service 198 days",
+   "edits": [
+    {
+     "arg": "fleet",
+     "set": [
+      {
+       "where": [
+        "stock_number",
+        "L4"
+       ],
+       "column": "in_service_date",
+       "value": "2026-05-01"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "L4",
+     "over_days"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,143 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "deal_number",
+ "only_when": {
+  "in_transit": "over_alert"
+ },
+ "lists": {
+  "statement_lines_not_matched": {
+   "id": "vin",
+   "code": "statement_line_no_contract"
+  }
+ },
+ "planted": [
+  [
+   "D2004",
+   "returned_by_lender"
+  ],
+  [
+   "D2002",
+   "in_transit"
+  ],
+  [
+   "D2010",
+   "in_transit"
+  ],
+  [
+   "D2006",
+   "funded_not_posted"
+  ],
+  [
+   "D2005",
+   "funded_short"
+  ],
+  [
+   "D2007",
+   "not_on_lender_statement"
+  ],
+  [
+   "7ZZWU701XKA720489",
+   "statement_line_no_contract"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "contracts",
+   "dropWhere": {
+    "deal_number": [
+     "D2002",
+     "D2004",
+     "D2005",
+     "D2006",
+     "D2007",
+     "D2010"
+    ]
+   }
+  },
+  {
+   "arg": "lender_statement",
+   "dropWhere": {
+    "vin": [
+     "SA868254",
+     "7ZZ3H4R72TA225525",
+     "7ZZWU701XKA720489"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "contract 16 days old",
+   "edits": [
+    {
+     "arg": "contracts",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D2003"
+       ],
+       "column": "contract_date",
+       "value": "2026-10-30"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D2003",
+     "in_transit"
+    ]
+   ]
+  },
+  {
+   "name": "lender funds 500 less",
+   "edits": [
+    {
+     "arg": "lender_statement",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D2009"
+       ],
+       "column": "funded_amount",
+       "value": "23600.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D2009",
+     "funded_short"
+    ]
+   ]
+  },
+  {
+   "name": "lender returns a contract",
+   "edits": [
+    {
+     "arg": "contracts",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D2008"
+       ],
+       "column": "status",
+       "value": "Returned"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D2008",
+     "returned_by_lender"
+    ]
+   ]
+  }
+ ]
+}

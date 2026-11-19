@@ -1,0 +1,108 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": [
+  "stock_number",
+  "vin"
+ ],
+ "planted": [
+  [
+   "S5002/7ZZPNMXP6RA120301",
+   "sold_not_paid_off"
+  ],
+  [
+   "/7ZZMESC69NA408327",
+   "on_statement_not_in_inventory"
+  ],
+  [
+   "S5004/7ZZ2XTPH7TA110178",
+   "balance_differs"
+  ],
+  [
+   "S5003/7ZZ1R4FZ9SA576862",
+   "payoff_due"
+  ],
+  [
+   "S5005/7ZZLUK947KA636195",
+   "not_floored"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "inventory",
+   "dropWhere": {
+    "stock_number": [
+     "S5002",
+     "S5003",
+     "S5004",
+     "S5005"
+    ]
+   }
+  },
+  {
+   "arg": "statement",
+   "dropWhere": {
+    "vin": [
+     "7ZZPNMXP6RA120301",
+     "7ZZ1R4FZ9SA576862",
+     "7ZZ2XTPH7TA110178",
+     "7ZZMESC69NA408327"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "DMS carries 1,000 more than the lender",
+   "edits": [
+    {
+     "arg": "inventory",
+     "set": [
+      {
+       "where": [
+        "stock_number",
+        "S5007"
+       ],
+       "column": "floorplan_balance",
+       "value": "38900.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "S5007/7ZZ4ZS2Y9MA880260",
+     "balance_differs"
+    ]
+   ]
+  },
+  {
+   "name": "statement VIN typed wrong",
+   "edits": [
+    {
+     "arg": "statement",
+     "set": [
+      {
+       "where": [
+        "vin",
+        "7ZZCAEMU5PA994811"
+       ],
+       "column": "vin",
+       "value": "7ZZCAEMU5PA994899"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "S5001/7ZZCAEMU5PA994811",
+     "not_floored"
+    ],
+    [
+     "/7ZZCAEMU5PA994899",
+     "on_statement_not_in_inventory"
+    ]
+   ]
+  }
+ ]
+}

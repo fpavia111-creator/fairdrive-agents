@@ -1,0 +1,135 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": [
+  "deal_number",
+  "program"
+ ],
+ "lists": {
+  "paid_not_expected": {
+   "id": [
+    "vin",
+    "program"
+   ],
+   "code": "paid_not_expected"
+  }
+ },
+ "planted": [
+  [
+   "D11005/RET-2026-11",
+   "not_submitted"
+  ],
+  [
+   "D11004/RET-2026-09",
+   "not_submitted_past_deadline"
+  ],
+  [
+   "D11007/RET-2026-08",
+   "charged_back"
+  ],
+  [
+   "D11006/DLR-CASH",
+   "unpaid"
+  ],
+  [
+   "D11003/LOY-26",
+   "rejected"
+  ],
+  [
+   "D11002/RET-2026-09",
+   "paid_short"
+  ],
+  [
+   "7ZZYH27F0LA128652/RET-2026-10",
+   "paid_not_expected"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "expected",
+   "dropWhere": {
+    "deal_number": [
+     "D11002",
+     "D11003",
+     "D11004",
+     "D11005",
+     "D11006",
+     "D11007"
+    ]
+   }
+  },
+  {
+   "arg": "statement",
+   "dropWhere": {
+    "vin": [
+     "7ZZ9U1LW1MA734429",
+     "7ZZ8CCUK8NA412538",
+     "7ZZL9XH0XTA359430",
+     "7ZZYH27F0LA128652"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "manufacturer pays 300 short",
+   "edits": [
+    {
+     "arg": "statement",
+     "set": [
+      {
+       "where": [
+        [
+         "vin",
+         "7ZZ5R6E05LA192725"
+        ],
+        [
+         "program",
+         "RET-2026-09"
+        ]
+       ],
+       "column": "amount_paid",
+       "value": "1200.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D11001/RET-2026-09",
+     "paid_short"
+    ]
+   ]
+  },
+  {
+   "name": "expected holdback higher than paid",
+   "edits": [
+    {
+     "arg": "expected",
+     "set": [
+      {
+       "where": [
+        [
+         "deal_number",
+         "D11001"
+        ],
+        [
+         "program",
+         "HOLDBACK"
+        ]
+       ],
+       "column": "amount_expected",
+       "value": "1280.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D11001/HOLDBACK",
+     "paid_short"
+    ]
+   ]
+  }
+ ]
+}

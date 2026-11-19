@@ -1,0 +1,128 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "contract_number",
+ "planted": [
+  [
+   "SC-9003",
+   "due_soon"
+  ],
+  [
+   "SC-9006",
+   "remitted_twice"
+  ],
+  [
+   "SC-9002",
+   "not_remitted_overdue"
+  ],
+  [
+   "SC-9005",
+   "remitted_late"
+  ],
+  [
+   "SC-9099",
+   "remittance_no_sale"
+  ],
+  [
+   "SC-9004",
+   "remitted_short"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "sold",
+   "dropWhere": {
+    "contract_number": [
+     "SC-9002",
+     "SC-9003",
+     "SC-9006"
+    ]
+   }
+  },
+  {
+   "arg": "remittances",
+   "dropWhere": {
+    "contract_number": [
+     "SC-9006",
+     "SC-9099"
+    ]
+   }
+  },
+  {
+   "arg": "remittances",
+   "set": [
+    {
+     "where": [
+      "contract_number",
+      "SC-9004"
+     ],
+     "column": "amount",
+     "value": "1500.00"
+    }
+   ]
+  },
+  {
+   "arg": "remittances",
+   "set": [
+    {
+     "where": [
+      "contract_number",
+      "SC-9005"
+     ],
+     "column": "remit_date",
+     "value": "2026-10-08"
+    }
+   ]
+  }
+ ],
+ "mutations": [
+  {
+   "name": "remitted 50 short",
+   "edits": [
+    {
+     "arg": "remittances",
+     "set": [
+      {
+       "where": [
+        "contract_number",
+        "SC-9001"
+       ],
+       "column": "amount",
+       "value": "1100.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "SC-9001",
+     "remitted_short"
+    ]
+   ]
+  },
+  {
+   "name": "sold 36 days ago, not remitted",
+   "edits": [
+    {
+     "arg": "sold",
+     "set": [
+      {
+       "where": [
+        "contract_number",
+        "SC-9007"
+       ],
+       "column": "sale_date",
+       "value": "2026-10-10"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "SC-9007",
+     "not_remitted_overdue"
+    ]
+   ]
+  }
+ ]
+}

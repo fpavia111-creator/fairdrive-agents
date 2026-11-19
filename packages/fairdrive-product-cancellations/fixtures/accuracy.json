@@ -1,0 +1,130 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": [
+  "deal_number",
+  "product"
+ ],
+ "planted": [
+  [
+   "D3005/Appearance Package",
+   "chargeback_above_expected"
+  ],
+  [
+   "D3005/Appearance Package",
+   "chargeback_above_profit"
+  ],
+  [
+   "D3001/Service Contract",
+   "chargeback_above_expected"
+  ],
+  [
+   "D3003/Service Contract",
+   "chargeback_above_expected"
+  ],
+  [
+   "D3003/Service Contract",
+   "refund_not_sent"
+  ],
+  [
+   "D3004/Maintenance Plan",
+   "chargeback_below_expected"
+  ],
+  [
+   "D3007/Service Contract",
+   "refund_not_sent"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "cancellations",
+   "dropWhere": {
+    "deal_number": [
+     "D3003",
+     "D3005",
+     "D3007"
+    ]
+   }
+  },
+  {
+   "arg": "cancellations",
+   "set": [
+    {
+     "where": [
+      "deal_number",
+      "D3001"
+     ],
+     "column": "chargeback",
+     "value": "1051.33"
+    }
+   ]
+  },
+  {
+   "arg": "cancellations",
+   "set": [
+    {
+     "where": [
+      "deal_number",
+      "D3004"
+     ],
+     "column": "chargeback",
+     "value": "526.56"
+    }
+   ]
+  }
+ ],
+ "mutations": [
+  {
+   "name": "refund never sent",
+   "edits": [
+    {
+     "arg": "cancellations",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D3002"
+       ],
+       "column": "refund_sent",
+       "value": ""
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D3002/GAP",
+     "refund_not_sent"
+    ]
+   ]
+  },
+  {
+   "name": "chargeback above the pro-rata figure",
+   "edits": [
+    {
+     "arg": "cancellations",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D3006"
+       ],
+       "column": "chargeback",
+       "value": "700.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D3006/GAP",
+     "chargeback_above_expected"
+    ],
+    [
+     "D3006/GAP",
+     "chargeback_above_profit"
+    ]
+   ]
+  }
+ ]
+}

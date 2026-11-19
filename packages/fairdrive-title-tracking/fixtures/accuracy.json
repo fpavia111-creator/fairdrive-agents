@@ -1,0 +1,102 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "deal_number",
+ "planted": [
+  [
+   "D9005",
+   "temp_tag_expired"
+  ],
+  [
+   "D9005",
+   "registration_pending"
+  ],
+  [
+   "D9002",
+   "application_late"
+  ],
+  [
+   "D9002",
+   "temp_tag_expired"
+  ],
+  [
+   "D9003",
+   "application_due_soon"
+  ],
+  [
+   "D9003",
+   "temp_tag_expiring"
+  ],
+  [
+   "D9004",
+   "trade_title_missing"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "deals",
+   "dropWhere": {
+    "deal_number": [
+     "D9002",
+     "D9003",
+     "D9004",
+     "D9005"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "trade title not received after 36 days",
+   "edits": [
+    {
+     "arg": "deals",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D9007"
+       ],
+       "column": "trade_title_received",
+       "value": ""
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D9007",
+     "trade_title_missing"
+    ]
+   ]
+  },
+  {
+   "name": "registration not issued 56 days after delivery, temp tag ends in 4 days",
+   "edits": [
+    {
+     "arg": "deals",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D9001"
+       ],
+       "column": "registration_issued",
+       "value": ""
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D9001",
+     "registration_pending"
+    ],
+    [
+     "D9001",
+     "temp_tag_expiring"
+    ]
+   ]
+  }
+ ]
+}

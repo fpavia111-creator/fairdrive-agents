@@ -1,0 +1,85 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": [
+  "first_ro",
+  "return_ro"
+ ],
+ "code": "comeback",
+ "planted": [
+  [
+   "80010/80012",
+   "comeback"
+  ],
+  [
+   "80001/80015",
+   "comeback"
+  ],
+  [
+   "80003/80018",
+   "comeback"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "repair_orders",
+   "dropWhere": {
+    "ro_number": [
+     "80012",
+     "80015",
+     "80018"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "same op code 22 days and 400 miles later",
+   "edits": [
+    {
+     "arg": "repair_orders",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "80026"
+       ],
+       "column": "odometer",
+       "value": "50400"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "80011/80026",
+     "comeback"
+    ]
+   ]
+  },
+  {
+   "name": "second visit gets the first visit's op code",
+   "edits": [
+    {
+     "arg": "repair_orders",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "80020"
+       ],
+       "column": "op_code",
+       "value": "OIL1"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "80005/80020",
+     "comeback"
+    ]
+   ]
+  }
+ ]
+}

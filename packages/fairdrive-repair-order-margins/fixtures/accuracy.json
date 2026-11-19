@@ -1,0 +1,90 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "ro_number",
+ "planted": [
+  [
+   "70002",
+   "labor_gp_below_floor"
+  ],
+  [
+   "70002",
+   "parts_gp_below_floor"
+  ],
+  [
+   "70004",
+   "labor_given_away"
+  ],
+  [
+   "70005",
+   "parts_below_cost"
+  ],
+  [
+   "70007",
+   "labor_gp_below_floor"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "repair_orders",
+   "dropWhere": {
+    "ro_number": [
+     "70002",
+     "70004",
+     "70005",
+     "70007"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "labor cost raises to 40% of the sale",
+   "edits": [
+    {
+     "arg": "repair_orders",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "70001"
+       ],
+       "column": "labor_cost",
+       "value": "200.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "70001",
+     "labor_gp_below_floor"
+    ]
+   ]
+  },
+  {
+   "name": "parts sold below cost",
+   "edits": [
+    {
+     "arg": "repair_orders",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "70006"
+       ],
+       "column": "parts_cost",
+       "value": "600.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "70006",
+     "parts_below_cost"
+    ]
+   ]
+  }
+ ]
+}

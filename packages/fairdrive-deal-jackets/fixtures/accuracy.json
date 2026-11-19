@@ -1,0 +1,189 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "deal_number",
+ "lists": {
+  "documents_without_a_deal": {
+   "id": "deal_number",
+   "code": "documents_without_a_deal"
+  }
+ },
+ "planted": [
+  [
+   "D1010",
+   "missing:buyers_order"
+  ],
+  [
+   "D1010",
+   "missing:odometer"
+  ],
+  [
+   "D1010",
+   "missing:title_application"
+  ],
+  [
+   "D1010",
+   "missing:privacy_notice"
+  ],
+  [
+   "D1010",
+   "missing:ofac"
+  ],
+  [
+   "D1010",
+   "missing:red_flags"
+  ],
+  [
+   "D1010",
+   "missing:insurance"
+  ],
+  [
+   "D1010",
+   "missing:drivers_license"
+  ],
+  [
+   "D1010",
+   "missing:credit_application"
+  ],
+  [
+   "D1010",
+   "missing:installment_contract"
+  ],
+  [
+   "D1010",
+   "missing:credit_notice"
+  ],
+  [
+   "D1002",
+   "missing:buyers_guide"
+  ],
+  [
+   "D1002",
+   "missing:power_of_attorney"
+  ],
+  [
+   "D1002",
+   "unsigned:credit_notice"
+  ],
+  [
+   "D1006",
+   "missing:ofac"
+  ],
+  [
+   "D1006",
+   "missing:red_flags"
+  ],
+  [
+   "D1009",
+   "missing:insurance"
+  ],
+  [
+   "D1009",
+   "missing:drivers_license"
+  ],
+  [
+   "D1003",
+   "missing:lease_agreement"
+  ],
+  [
+   "D1004",
+   "unsigned:installment_contract"
+  ],
+  [
+   "D1099",
+   "documents_without_a_deal"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "deals",
+   "dropWhere": {
+    "deal_number": [
+     "D1002",
+     "D1003",
+     "D1004",
+     "D1006",
+     "D1009",
+     "D1010"
+    ]
+   }
+  },
+  {
+   "arg": "documents",
+   "dropWhere": {
+    "deal_number": [
+     "D1002",
+     "D1003",
+     "D1004",
+     "D1006",
+     "D1009",
+     "D1099"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "one form not signed",
+   "edits": [
+    {
+     "arg": "documents",
+     "set": [
+      {
+       "where": [
+        [
+         "deal_number",
+         "D1007"
+        ],
+        [
+         "document",
+         "Credit Score Notice"
+        ]
+       ],
+       "column": "signed",
+       "value": "no"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D1007",
+     "unsigned:credit_notice"
+    ]
+   ]
+  },
+  {
+   "name": "cash deal booked as finance",
+   "edits": [
+    {
+     "arg": "deals",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D1001"
+       ],
+       "column": "deal_type",
+       "value": "Retail Finance"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D1001",
+     "missing:credit_application"
+    ],
+    [
+     "D1001",
+     "missing:installment_contract"
+    ],
+    [
+     "D1001",
+     "missing:credit_notice"
+    ]
+   ]
+  }
+ ]
+}

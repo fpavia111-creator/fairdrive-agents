@@ -53,6 +53,6 @@ for (const n of readdirSync(PK).filter((x) => /^fairdrive-/.test(x) && x !== 'fa
   }
   const next = { ...data, cases: [...own, ...add, ...intl] };
   const txt = JSON.stringify(next, null, 2) + '\n';
-  if (!existsSync(file) || readFileSync(file, 'utf8') !== txt) { if (check) { console.log(`${n}: policy cases out of date`); stale++; } else { writeFileSync(file, txt); console.log(`${n}: ${add.length} policy case(s)`); } }
+  if (!existsSync(file) || readFileSync(file, 'utf8').replace(/\r\n/g, '\n') !== txt) { if (check) { console.log(`${n}: policy cases out of date`); stale++; } else { writeFileSync(file, txt); console.log(`${n}: ${add.length} policy case(s)`); } }
 }
 if (check && stale) process.exit(1);

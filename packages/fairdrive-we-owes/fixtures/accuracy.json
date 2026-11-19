@@ -1,0 +1,89 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "deal_number",
+ "planted": [
+  [
+   "D18003",
+   "open_long"
+  ],
+  [
+   "D18003",
+   "not_scheduled"
+  ],
+  [
+   "D18001",
+   "past_promise"
+  ],
+  [
+   "D18001",
+   "not_scheduled"
+  ],
+  [
+   "D18004",
+   "cost_not_booked"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "we_owes",
+   "dropWhere": {
+    "deal_number": [
+     "D18001",
+     "D18003",
+     "D18004"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "work done, cost not booked",
+   "edits": [
+    {
+     "arg": "we_owes",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D18005"
+       ],
+       "column": "cost_booked",
+       "value": ""
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D18005",
+     "cost_not_booked"
+    ]
+   ]
+  },
+  {
+   "name": "we-owe 14 days old with no RO",
+   "edits": [
+    {
+     "arg": "we_owes",
+     "set": [
+      {
+       "where": [
+        "deal_number",
+        "D18006"
+       ],
+       "column": "delivery_date",
+       "value": "2026-11-01"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "D18006",
+     "not_scheduled"
+    ]
+   ]
+  }
+ ]
+}

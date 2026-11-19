@@ -1,0 +1,115 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": [
+  "po_number",
+  "part_number"
+ ],
+ "planted": [
+  [
+   "PO-883/MOD-BCM-2290",
+   "duplicate_invoice_line"
+  ],
+  [
+   "PO-885/GSK-HD-3301",
+   "billed_not_received"
+  ],
+  [
+   "PO-882/SNS-O2-7781",
+   "billed_not_received"
+  ],
+  [
+   "PO-884/WPR-22IN",
+   "received_not_billed"
+  ],
+  [
+   "PO-881/FLT-OIL-1120",
+   "price_above_cost"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "receipts",
+   "dropWhere": {
+    "po_number": [
+     "PO-882",
+     "PO-883",
+     "PO-884"
+    ]
+   }
+  },
+  {
+   "arg": "invoices",
+   "dropWhere": {
+    "po_number": [
+     "PO-882",
+     "PO-883",
+     "PO-885"
+    ]
+   }
+  },
+  {
+   "arg": "invoices",
+   "set": [
+    {
+     "where": [
+      "part_number",
+      "FLT-OIL-1120"
+     ],
+     "column": "unit_price",
+     "value": "6.25"
+    }
+   ]
+  }
+ ],
+ "mutations": [
+  {
+   "name": "vendor bills 2 more than received",
+   "edits": [
+    {
+     "arg": "invoices",
+     "set": [
+      {
+       "where": [
+        "part_number",
+        "BRK-PAD-0441"
+       ],
+       "column": "qty_billed",
+       "value": "14"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "PO-881/BRK-PAD-0441",
+     "billed_not_received"
+    ]
+   ]
+  },
+  {
+   "name": "vendor bills above the PO cost",
+   "edits": [
+    {
+     "arg": "invoices",
+     "set": [
+      {
+       "where": [
+        "part_number",
+        "BRK-PAD-0441"
+       ],
+       "column": "unit_price",
+       "value": "40.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "PO-881/BRK-PAD-0441",
+     "price_above_cost"
+    ]
+   ]
+  }
+ ]
+}

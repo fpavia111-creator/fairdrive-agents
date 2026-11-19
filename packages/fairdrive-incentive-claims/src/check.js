@@ -24,7 +24,7 @@ const REJECT = /reject|denied|declin|return/i, CHARGE = /charge ?back|debit|reve
 
 export function checkIncentives(expected, statement, { asOf, deadlineDays = 30, unpaidDays = 45, tolerance = 1 } = {}) {
   const today = asOfDate(asOf);
-  const lines = statement.filter((s) => normVin(s.vin)).sort(by('paid_date', 'vin', 'program')).map((s, i) => ({ i, tail: vinTail(s.vin), program: prog(s.program), amount: num(s.amount_paid) ?? 0, date: isoDate(s.paid_date), status: str(s.status), reason: str(s.reason), used: false }));
+  const lines = statement.filter((s) => normVin(s.vin)).sort(by('paid_date', 'vin', 'program')).map((s, i) => ({ i, row: s, tail: vinTail(s.vin), program: prog(s.program), amount: num(s.amount_paid) ?? 0, date: isoDate(s.paid_date), status: str(s.status), reason: str(s.reason), used: false }));
   const byKey = groupBy(lines, (l) => `${l.tail}|${l.program}`);
   const seen = new Set(); const items = []; let expTotal = 0, paidTotal = 0, outstanding = 0;
   for (const e of [...expected].filter((x) => normVin(x.vin) && prog(x.program)).sort(by('sale_date', 'vin', 'program'))) {
@@ -47,7 +47,7 @@ export function checkIncentives(expected, statement, { asOf, deadlineDays = 30, 
     if (findings.length) items.push({ deal_number: str(e.deal_number), vin: normVin(e.vin), program: str(e.program), sale_date: sold, claim_submitted: sub, claim_number: str(e.claim_number), expected: exp, paid: net, outstanding: open, findings, why: why.join(' ') });
   }
   items.sort(by('-outstanding', 'vin', 'program'));
-  const unexpected = lines.filter((l) => !l.used && l.amount > 0).map((l) => ({ vin: str(statement[0] && l.tail), program: l.program, amount: l.amount, paid_date: l.date }));
+  const unexpected = lines.filter((l) => !l.used && l.amount > 0).map((l) => ({ vin: str(l.row.vin), program: str(l.row.program), amount: l.amount, paid_date: l.date }));
   const n = (f) => items.filter((i) => i.findings.includes(f)).length;
   return { as_of: today, lines: seen.size, expected: round2(expTotal), paid: round2(paidTotal), outstanding: round2(outstanding), not_submitted_past_deadline: n('not_submitted_past_deadline'), not_submitted: n('not_submitted'), unpaid: n('unpaid'), paid_short: n('paid_short'), rejected: n('rejected'), charged_back: n('charged_back'), paid_not_expected: unexpected, items };
 }

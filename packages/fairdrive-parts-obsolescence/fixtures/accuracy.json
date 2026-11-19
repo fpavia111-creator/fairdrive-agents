@@ -1,0 +1,76 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "part_number",
+ "class_field": "class",
+ "planted": [
+  [
+   "MOD-BCM-2290",
+   "obsolete_candidate"
+  ],
+  [
+   "SNS-O2-7781",
+   "slow"
+  ],
+  [
+   "TRM-DOOR-55",
+   "obsolete"
+  ],
+  [
+   "GSK-HD-3301",
+   "obsolete"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "parts",
+   "dropWhere": {
+    "part_number": [
+     "MOD-BCM-2290",
+     "SNS-O2-7781",
+     "TRM-DOOR-55",
+     "GSK-HD-3301"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "part stops moving (last sale and receipt 10+ months back)",
+   "edits": [
+    {
+     "arg": "parts",
+     "set": [
+      {
+       "where": [
+        "part_number",
+        "WPR-22IN"
+       ],
+       "column": "last_sale_date",
+       "value": "2026-01-15"
+      }
+     ]
+    },
+    {
+     "arg": "parts",
+     "set": [
+      {
+       "where": [
+        "part_number",
+        "WPR-22IN"
+       ],
+       "column": "last_receipt_date",
+       "value": "2025-12-01"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "WPR-22IN",
+     "obsolete_candidate"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,95 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "ro_number",
+ "planted": [
+  [
+   "90003",
+   "warranty_open_long"
+  ],
+  [
+   "90006",
+   "past_promise"
+  ],
+  [
+   "90006",
+   "open_long"
+  ],
+  [
+   "90004",
+   "internal_open_long"
+  ],
+  [
+   "90002",
+   "waiting_parts"
+  ],
+  [
+   "90001",
+   "past_promise"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "open_ros",
+   "dropWhere": {
+    "ro_number": [
+     "90001",
+     "90002",
+     "90003",
+     "90004",
+     "90006"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "promise date passed",
+   "edits": [
+    {
+     "arg": "open_ros",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "90005"
+       ],
+       "column": "promised_date",
+       "value": "2026-11-14"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "90005",
+     "past_promise"
+    ]
+   ]
+  },
+  {
+   "name": "warranty RO open 45 days",
+   "edits": [
+    {
+     "arg": "open_ros",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "90007"
+       ],
+       "column": "opened",
+       "value": "2026-10-01"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "90007",
+     "warranty_open_long"
+    ]
+   ]
+  }
+ ]
+}

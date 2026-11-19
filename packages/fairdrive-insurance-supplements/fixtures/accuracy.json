@@ -1,0 +1,89 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": [
+  "ro_number",
+  "supplement_number"
+ ],
+ "planted": [
+  [
+   "B1006/S01",
+   "pending_over"
+  ],
+  [
+   "B1007/S01",
+   "pending_over"
+  ],
+  [
+   "B1009/S01",
+   "denied"
+  ],
+  [
+   "B1003/S01",
+   "approved_short"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "supplements",
+   "dropWhere": {
+    "ro_number": [
+     "B1003",
+     "B1006",
+     "B1007",
+     "B1009"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "supplement waiting 14 days",
+   "edits": [
+    {
+     "arg": "supplements",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "B1008"
+       ],
+       "column": "submitted_date",
+       "value": "2026-11-01"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "B1008/S02",
+     "pending_over"
+    ]
+   ]
+  },
+  {
+   "name": "insurer approves 50 less",
+   "edits": [
+    {
+     "arg": "supplements",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "B1001"
+       ],
+       "column": "amount_approved",
+       "value": "900.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "B1001/S01",
+     "approved_short"
+    ]
+   ]
+  }
+ ]
+}

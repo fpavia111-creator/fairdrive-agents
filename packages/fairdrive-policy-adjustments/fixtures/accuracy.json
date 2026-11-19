@@ -1,0 +1,156 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "ro_number",
+ "planted": [
+  [
+   "92002",
+   "self_approved"
+  ],
+  [
+   "92002",
+   "large_adjustment"
+  ],
+  [
+   "92006",
+   "large_adjustment"
+  ],
+  [
+   "92005",
+   "repeat_vehicle"
+  ],
+  [
+   "92003",
+   "no_approver"
+  ],
+  [
+   "92004",
+   "no_reason"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "adjustments",
+   "dropWhere": {
+    "ro_number": [
+     "92005"
+    ]
+   }
+  },
+  {
+   "arg": "adjustments",
+   "set": [
+    {
+     "where": [
+      "ro_number",
+      "92002"
+     ],
+     "column": "approved_by",
+     "value": "Dana Whitlock"
+    }
+   ]
+  },
+  {
+   "arg": "adjustments",
+   "set": [
+    {
+     "where": [
+      "ro_number",
+      "92002"
+     ],
+     "column": "amount",
+     "value": "220.00"
+    }
+   ]
+  },
+  {
+   "arg": "adjustments",
+   "set": [
+    {
+     "where": [
+      "ro_number",
+      "92003"
+     ],
+     "column": "approved_by",
+     "value": "Dana Whitlock"
+    }
+   ]
+  },
+  {
+   "arg": "adjustments",
+   "set": [
+    {
+     "where": [
+      "ro_number",
+      "92004"
+     ],
+     "column": "reason",
+     "value": "Goodwill - wiper blades"
+    }
+   ]
+  },
+  {
+   "arg": "adjustments",
+   "set": [
+    {
+     "where": [
+      "ro_number",
+      "92006"
+     ],
+     "column": "amount",
+     "value": "240.00"
+    }
+   ]
+  }
+ ],
+ "mutations": [
+  {
+   "name": "advisor approves their own adjustment",
+   "edits": [
+    {
+     "arg": "adjustments",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "92001"
+       ],
+       "column": "approved_by",
+       "value": "Lena Moreau"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "92001",
+     "self_approved"
+    ]
+   ]
+  },
+  {
+   "name": "adjustment over the approval limit",
+   "edits": [
+    {
+     "arg": "adjustments",
+     "set": [
+      {
+       "where": [
+        "ro_number",
+        "92003"
+       ],
+       "column": "amount",
+       "value": "300.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "92003",
+     "large_adjustment"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,129 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "claim_number",
+ "lists": {
+  "paid_not_on_schedule": {
+   "id": "claim_number",
+   "code": "paid_not_on_schedule"
+  }
+ },
+ "planted": [
+  [
+   "C7005",
+   "unpaid"
+  ],
+  [
+   "C7007",
+   "debited_after_payment"
+  ],
+  [
+   "C7004",
+   "rejected_past_deadline"
+  ],
+  [
+   "C7003",
+   "rejected"
+  ],
+  [
+   "C7006",
+   "unpaid"
+  ],
+  [
+   "C7002",
+   "paid_short"
+  ],
+  [
+   "C7099",
+   "paid_not_on_schedule"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "claims",
+   "dropWhere": {
+    "claim_number": [
+     "C7003",
+     "C7004",
+     "C7005",
+     "C7006",
+     "C7007"
+    ]
+   }
+  },
+  {
+   "arg": "statement",
+   "dropWhere": {
+    "claim_number": [
+     "C7003",
+     "C7004",
+     "C7007",
+     "C7099"
+    ]
+   }
+  },
+  {
+   "arg": "statement",
+   "set": [
+    {
+     "where": [
+      "claim_number",
+      "C7002"
+     ],
+     "column": "amount_paid",
+     "value": "1450.00"
+    }
+   ]
+  }
+ ],
+ "mutations": [
+  {
+   "name": "manufacturer pays 120 short",
+   "edits": [
+    {
+     "arg": "statement",
+     "set": [
+      {
+       "where": [
+        "claim_number",
+        "C7001"
+       ],
+       "column": "amount_paid",
+       "value": "700.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "C7001",
+     "paid_short"
+    ]
+   ]
+  },
+  {
+   "name": "claim submitted for more than was paid",
+   "edits": [
+    {
+     "arg": "claims",
+     "set": [
+      {
+       "where": [
+        "claim_number",
+        "C7001"
+       ],
+       "column": "total_claimed",
+       "value": "900.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "C7001",
+     "paid_short"
+    ]
+   ]
+  }
+ ]
+}

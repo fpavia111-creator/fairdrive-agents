@@ -1,0 +1,127 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "stock_number",
+ "planted": [
+  [
+   "U7004",
+   "over_wholesale_age"
+  ],
+  [
+   "U7004",
+   "priced_well_below_market"
+  ],
+  [
+   "U7002",
+   "over_wholesale_age"
+  ],
+  [
+   "U7002",
+   "priced_above_market"
+  ],
+  [
+   "U7002",
+   "stale_price"
+  ],
+  [
+   "U7003",
+   "price_below_cost"
+  ],
+  [
+   "U7006",
+   "stale_price"
+  ],
+  [
+   "U7005",
+   "no_price"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "inventory",
+   "dropWhere": {
+    "stock_number": [
+     "U7002",
+     "U7004",
+     "U7005"
+    ]
+   }
+  },
+  {
+   "arg": "inventory",
+   "set": [
+    {
+     "where": [
+      "stock_number",
+      "U7003"
+     ],
+     "column": "list_price",
+     "value": "15995.00"
+    }
+   ]
+  },
+  {
+   "arg": "inventory",
+   "set": [
+    {
+     "where": [
+      "stock_number",
+      "U7006"
+     ],
+     "column": "last_price_change",
+     "value": "2026-11-10"
+    }
+   ]
+  }
+ ],
+ "mutations": [
+  {
+   "name": "priced 7% over market",
+   "edits": [
+    {
+     "arg": "inventory",
+     "set": [
+      {
+       "where": [
+        "stock_number",
+        "U7001"
+       ],
+       "column": "list_price",
+       "value": "22995.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "U7001",
+     "priced_above_market"
+    ]
+   ]
+  },
+  {
+   "name": "unit in stock 87 days",
+   "edits": [
+    {
+     "arg": "inventory",
+     "set": [
+      {
+       "where": [
+        "stock_number",
+        "U7001"
+       ],
+       "column": "received_date",
+       "value": "2026-08-20"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "U7001",
+     "over_wholesale_age"
+    ]
+   ]
+  }
+ ]
+}

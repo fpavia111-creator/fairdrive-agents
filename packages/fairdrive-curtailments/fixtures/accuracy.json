@@ -1,0 +1,91 @@
+{
+ "about": "Accuracy spec for scripts/accuracy.mjs: planted problems in these fictional fixtures, how to make a clean set, and one-fact mutations.",
+ "case": "totals",
+ "id": "stock_number",
+ "planted": [
+  [
+   "U6107",
+   "overdue"
+  ],
+  [
+   "N6101",
+   "overdue"
+  ],
+  [
+   "N6103",
+   "overdue"
+  ],
+  [
+   "U6105",
+   "due_soon"
+  ],
+  [
+   "N6102",
+   "due_soon"
+  ]
+ ],
+ "clean": [
+  {
+   "arg": "statement",
+   "dropWhere": {
+    "stock_number": [
+     "U6107",
+     "N6101",
+     "N6103",
+     "U6105",
+     "N6102"
+    ]
+   }
+  }
+ ],
+ "mutations": [
+  {
+   "name": "first used-unit curtailment not paid",
+   "edits": [
+    {
+     "arg": "statement",
+     "set": [
+      {
+       "where": [
+        "stock_number",
+        "U6104"
+       ],
+       "column": "balance",
+       "value": "18000.00"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "U6104",
+     "overdue"
+    ]
+   ]
+  },
+  {
+   "name": "new unit floored 82 days ago",
+   "edits": [
+    {
+     "arg": "statement",
+     "set": [
+      {
+       "where": [
+        "stock_number",
+        "N6106"
+       ],
+       "column": "floor_date",
+       "value": "2026-08-25"
+      }
+     ]
+    }
+   ],
+   "expect": [
+    [
+     "N6106",
+     "due_soon"
+    ]
+   ]
+  }
+ ]
+}
