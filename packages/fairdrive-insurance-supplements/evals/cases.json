@@ -1,0 +1,291 @@
+{
+  "suite": "fairdrive-insurance-supplements",
+  "root": "..",
+  "data_note": "Fictional supplement log in ../fixtures (insurers are made up), as of 2026-11-15. No model is called.",
+  "pii_canaries": [
+    "Valentina Rook",
+    "Wolfram Ainsley",
+    "Yardley Cumberbatch",
+    "Sylvester Moncrieff"
+  ],
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "supplements_track",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.supplements": 6,
+          "result.requested": 4100,
+          "result.approved": 1270,
+          "result.pending_amount": 2230,
+          "result.pending_over": 2,
+          "result.approved_short": 1,
+          "result.short_amount": 80,
+          "result.denied": 1,
+          "result.denied_amount": 520
+        }
+      }
+    },
+    {
+      "id": "largest-first",
+      "tool": "supplements_track",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.ro_number": "B1006",
+          "result.items.0.days_waiting": 12,
+          "result.items.2.finding": "denied",
+          "result.items.3.amount": 80
+        },
+        "length": {
+          "result.items": 4
+        }
+      }
+    },
+    {
+      "id": "by-insurer",
+      "tool": "supplements_track",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.by_insurer.0.insurer": "Granite Shield Insurance",
+          "result.by_insurer.0.pending": 980,
+          "result.by_insurer.0.average_days_to_response": 5,
+          "result.by_insurer.1.approved": 1270,
+          "result.by_insurer.1.average_days_to_response": 3
+        }
+      }
+    },
+    {
+      "id": "recent-and-approved-not-listed",
+      "tool": "supplements_track",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "not_contains": [
+          "\"B1001\"",
+          "\"B1008\""
+        ]
+      }
+    },
+    {
+      "id": "longer-follow-up",
+      "tool": "supplements_track",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15",
+        "follow_up_days": 10
+      },
+      "expect": {
+        "equals": {
+          "result.pending_over": 1
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "supplements_write_report",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "6 supplement(s): 4100 requested, 1270 approved, 2230 waiting"
+        ]
+      }
+    },
+    {
+      "id": "draft-follow-up",
+      "tool": "supplements_draft_follow_up",
+      "mode": "auto",
+      "auto_actions": [
+        "supplements_draft_follow_up"
+      ],
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15",
+        "insurer": "Heron",
+        "from": "Jordan Reyes",
+        "contact": "adjuster@heron-mutual.example"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.id": "Heron Mutual",
+          "result.amount": 1250,
+          "result.supplements": 1,
+          "result.open_markers": 1
+        }
+      }
+    },
+    {
+      "id": "nothing-waiting-with-insurer",
+      "tool": "supplements_draft_follow_up",
+      "mode": "auto",
+      "auto_actions": [
+        "supplements_draft_follow_up"
+      ],
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15",
+        "insurer": "Keel Insurance"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "no supplements waiting"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "supplements_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-insurer-portal-submit",
+      "tool": "insurer_portal_submit",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-dms-change-estimate",
+      "tool": "dms_change_estimate",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "supplements_track",
+      "args": {
+        "supplements": "../../../outside/export.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "supplements_track",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "supplements"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "supplements_track",
+      "mode": "review",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.supplements": 6,
+          "result.requested": 4100,
+          "result.approved": 1270,
+          "result.pending_amount": 2230,
+          "result.pending_over": 2,
+          "result.approved_short": 1,
+          "result.short_amount": 80,
+          "result.denied": 1,
+          "result.denied_amount": 520
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "supplements_write_report",
+      "mode": "review",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    },
+    {
+      "id": "policy-draft-asks-first",
+      "tool": "supplements_draft_follow_up",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15",
+        "insurer": "Heron",
+        "from": "Jordan Reyes",
+        "contact": "adjuster@heron-mutual.example"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    },
+    {
+      "id": "policy-draft-blocked-in-review",
+      "tool": "supplements_draft_follow_up",
+      "mode": "review",
+      "args": {
+        "supplements": "fixtures/supplements.csv",
+        "as_of": "2026-11-15",
+        "insurer": "Heron",
+        "from": "Jordan Reyes",
+        "contact": "adjuster@heron-mutual.example"
+      },
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-approval-stays-one-click-in-auto",
+      "tool": "supplements_request_send",
+      "mode": "auto",
+      "auto_actions": [
+        "supplements_draft_follow_up"
+      ],
+      "args": {
+        "draft": "fairdrive-out/supplements/drafts/none.md",
+        "draft_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    }
+  ]
+}

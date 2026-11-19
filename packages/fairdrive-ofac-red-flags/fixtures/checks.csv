@@ -1,0 +1,9 @@
+deal_number,check_type,person,check_date,result_recorded,performed_by
+D17001,OFAC,Buyer,2026-10-01,yes,Avery Lund
+D17001,Red Flags,Buyer,2026-10-01,yes,Avery Lund
+D17002,OFAC,Buyer,2026-10-04,yes,Sam Ibarra
+D17002,Red Flags Checklist,Buyer,2026-10-04,yes,Sam Ibarra
+D17003,OFAC SDN search,Buyer,2026-10-12,yes,Avery Lund
+D17004,Identity verification,Buyer,2026-10-13,no,Sam Ibarra
+D17005,OFAC,Buyer,2026-10-17,yes,Avery Lund
+D17006,OFAC,Buyer,2026-10-21,yes,Sam Ibarra

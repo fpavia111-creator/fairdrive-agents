@@ -1,0 +1,8 @@
+deal_number,customer,co_buyer,delivery_date,deal_type,credit_pulled,status
+D17001,Aurelia Fenwick,,2026-10-02,Retail Finance,yes,Booked
+D17002,Bartram Oyelaran,Cressida Oyelaran,2026-10-05,Retail Finance,yes,Booked
+D17003,Desmond Whitlow,,2026-10-10,Cash,no,Booked
+D17004,Eulalia Prentiss,,2026-10-14,Lease,yes,Booked
+D17005,Fabian Lockridge,,2026-10-18,Retail Finance,yes,Booked
+D17006,Gisela Marchbanks,,2026-10-22,Cash,no,Booked
+D17007,Hartley Voss,,2026-10-25,Retail Finance,yes,Unwound
