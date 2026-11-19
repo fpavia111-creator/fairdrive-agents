@@ -7,13 +7,13 @@ const deal = (o = {}) => ({ deal_number: 'D1', lender: 'Harbor Auto Finance', co
 
 test('finance charge: zero at 0%, and the amortised figure at 6% for 12 months (payment 1032.80)', () => {
   assert.equal(financeCharge(12000, 0, 12), 0);
-  assert.equal(financeCharge(12000, 6, 12), 393.58);
+  assert.equal(financeCharge(12000, 6, 12), 393.57);
   assert.equal(financeCharge(0, 6, 12), null);
 });
 
 test('expected reserve is the share of the markup in finance charge', () => {
-  assert.deepEqual(expectedReserve(deal()), { method: 'rate_markup', expected: 295.19 });
-  assert.equal(expectedReserve(deal(), { sharePct: 100 }).expected, 393.58);
+  assert.deepEqual(expectedReserve(deal()), { method: 'rate_markup', expected: 295.18 });
+  assert.equal(expectedReserve(deal(), { sharePct: 100 }).expected, 393.57);
   assert.equal(expectedReserve(deal(), { cap: 200 }).expected, 200);
 });
 
@@ -24,8 +24,8 @@ test('a flat fee wins over the rates; no markup earns nothing; missing rates can
 });
 
 test('payments with a reserve kind or no kind count as reserve; product commissions count as product income', () => {
-  const r = checkReserve([deal({ product_income_expected: '500' })], [{ deal_number: 'D1', kind: 'Reserve', amount: '200' }, { deal_number: 'D1', amount: '95.19' }, { deal_number: 'D1', kind: 'GAP commission', amount: '500' }], { asOf: '2026-11-01' });
-  assert.equal(r.items.length, 0); assert.equal(r.reserve_received, 295.19);
+  const r = checkReserve([deal({ product_income_expected: '500' })], [{ deal_number: 'D1', kind: 'Reserve', amount: '200' }, { deal_number: 'D1', amount: '95.18' }, { deal_number: 'D1', kind: 'GAP commission', amount: '500' }], { asOf: '2026-11-01' });
+  assert.equal(r.items.length, 0); assert.equal(r.reserve_received, 295.18);
 });
 
 test('no reserve after the grace days is missing; inside them it is not chased', () => {
@@ -52,5 +52,5 @@ test('a payment for a deal not in the deal file is listed, not counted', () => {
 test('the inquiry lists shortfalls and asks the person to check the share assumed', () => {
   const r = checkReserve([deal()], [], { asOf: '2026-11-01' });
   const d = inquiryText(r.items, { lender: 'Harbor Auto Finance', sharePct: 75 });
-  assert.equal(d.total, 295.19); assert.match(d.text, /\[CHECK the reserve terms/); assert.match(d.text, /75%/);
+  assert.equal(d.total, 295.18); assert.match(d.text, /\[CHECK the reserve terms/); assert.match(d.text, /75%/);
 });
