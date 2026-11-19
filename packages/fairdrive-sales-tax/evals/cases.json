@@ -1,0 +1,230 @@
+{
+  "suite": "fairdrive-sales-tax",
+  "root": "..",
+  "data_note": "Fictional deals and a fictional county rate table in ../fixtures (county names are made up; rates are examples, not any state's law). No model is called.",
+  "pii_canaries": [
+    "Horatio Velasquez",
+    "Imelda Kowalczyk",
+    "Jerome Achterberg",
+    "Katrina Oyelowo"
+  ],
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "rates": "fixtures/county-rates.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 6,
+          "result.tax_charged": 6853.14,
+          "result.tax_expected": 5403.14,
+          "result.overcharged": 2,
+          "result.overcharged_amount": 509.38,
+          "result.undercharged": 1,
+          "result.undercharged_amount": 184.38,
+          "result.no_rate": 1
+        }
+      }
+    },
+    {
+      "id": "largest-first",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "rates": "fixtures/county-rates.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.deal_number": "D13003",
+          "result.items.0.expected_tax": 1500,
+          "result.items.1.deal_number": "D13004",
+          "result.items.1.taxable": 22150,
+          "result.items.3.finding": "no_rate"
+        },
+        "length": {
+          "result.items": 4
+        }
+      }
+    },
+    {
+      "id": "right-tax-not-listed",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "rates": "fixtures/county-rates.csv"
+      },
+      "expect": {
+        "not_contains": [
+          "D13001",
+          "D13006"
+        ]
+      }
+    },
+    {
+      "id": "by-county",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "rates": "fixtures/county-rates.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.by_county.2.county": "Harrow",
+          "result.by_county.2.deals": 3,
+          "result.by_county.2.charged": 2468.76,
+          "result.by_county.2.expected": 2653.14
+        }
+      }
+    },
+    {
+      "id": "looser-tolerance",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "rates": "fixtures/county-rates.csv",
+        "tolerance": 10
+      },
+      "expect": {
+        "equals": {
+          "result.overcharged": 1
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "salestax_write_report",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "rates": "fixtures/county-rates.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "6 deal(s): tax charged 6853.14, 5403.14 by your rate table"
+        ]
+      }
+    },
+    {
+      "id": "missing-rates-named",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "fixtures/deals.csv"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "rates"
+        ]
+      }
+    },
+    {
+      "id": "bad-tolerance-refused",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "rates": "fixtures/county-rates.csv",
+        "tolerance": 500
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "tolerance"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "salestax_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-tax-portal-file-return",
+      "tool": "tax_portal_file_return",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-gl-post-entry",
+      "tool": "gl_post_entry",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "../../../outside/export.csv",
+        "rates": "fixtures/county-rates.csv"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "salestax_check",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "deals"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "salestax_check",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "rates": "fixtures/county-rates.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.deals": 6,
+          "result.tax_charged": 6853.14,
+          "result.tax_expected": 5403.14,
+          "result.overcharged": 2,
+          "result.overcharged_amount": 509.38,
+          "result.undercharged": 1,
+          "result.undercharged_amount": 184.38,
+          "result.no_rate": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "salestax_write_report",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "rates": "fixtures/county-rates.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    }
+  ]
+}

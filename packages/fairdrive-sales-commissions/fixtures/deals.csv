@@ -1,0 +1,6 @@
+deal_number,delivery_date,salesperson,split_with,customer,sale_type,front_gross,back_gross
+D14001,2026-11-02,Aiden Royce,,Marguerite Lysander,New,2400.00,1200.00
+D14002,2026-11-05,Aiden Royce,Bianca Sol,Nikodemus Farrow,Used,3000.00,800.00
+D14003,2026-11-08,Bianca Sol,,Ophelia Sandoval,Used,-300.00,900.00
+D14004,2026-11-11,Bianca Sol,,Phineas Grantham,New,1800.00,0.00
+D14005,2026-11-12,Casimir Vale,,Rowena Kittredge,Used,1500.00,500.00
