@@ -1,0 +1,226 @@
+{
+  "suite": "fairdrive-title-tracking",
+  "root": "..",
+  "data_note": "Fictional title log in ../fixtures, as of 2026-11-15, default day limits. No model is called.",
+  "pii_canaries": [
+    "Rosamund Kettering",
+    "Ulrich Brandauer",
+    "Sebastian Oduya",
+    "Tamsin Ellwood"
+  ],
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "titles_track",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 7,
+          "result.needing_action": 4,
+          "result.application_late": 1,
+          "result.application_due_soon": 1,
+          "result.trade_title_missing": 1,
+          "result.temp_tag_expired": 2,
+          "result.temp_tag_expiring": 1,
+          "result.registration_pending": 1
+        }
+      }
+    },
+    {
+      "id": "oldest-first",
+      "tool": "titles_track",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.deal_number": "D9005",
+          "result.items.0.days_since_delivery": 75,
+          "result.items.1.deal_number": "D9002",
+          "result.items.3.deal_number": "D9004"
+        }
+      }
+    },
+    {
+      "id": "done-deals-not-listed",
+      "tool": "titles_track",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "not_contains": [
+          "D9001",
+          "D9006",
+          "D9007"
+        ]
+      }
+    },
+    {
+      "id": "state-allows-longer",
+      "tool": "titles_track",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15",
+        "submit_days": 60
+      },
+      "expect": {
+        "equals": {
+          "result.application_late": 0,
+          "result.application_due_soon": 0
+        }
+      }
+    },
+    {
+      "id": "stricter-trade-title",
+      "tool": "titles_track",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15",
+        "trade_title_days": 30
+      },
+      "expect": {
+        "equals": {
+          "result.trade_title_missing": 0
+        }
+      }
+    },
+    {
+      "id": "earlier-tag-warning",
+      "tool": "titles_track",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15",
+        "tag_warning_days": 2
+      },
+      "expect": {
+        "equals": {
+          "result.temp_tag_expiring": 0
+        }
+      }
+    },
+    {
+      "id": "registration-window",
+      "tool": "titles_track",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15",
+        "registration_days": 90
+      },
+      "expect": {
+        "equals": {
+          "result.registration_pending": 0
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "titles_write_report",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "7 delivered deal(s), 4 needing action"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "titles_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-dmv-submit-application",
+      "tool": "dmv_submit_application",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-dms-update-deal",
+      "tool": "dms_update_deal",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "titles_track",
+      "args": {
+        "deals": "../../../outside/export.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "titles_track",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "deals"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "titles_track",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.deals": 7,
+          "result.needing_action": 4,
+          "result.application_late": 1,
+          "result.application_due_soon": 1,
+          "result.trade_title_missing": 1,
+          "result.temp_tag_expired": 2,
+          "result.temp_tag_expiring": 1,
+          "result.registration_pending": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "titles_write_report",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/title-log.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    }
+  ]
+}
