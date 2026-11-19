@@ -1,0 +1,6 @@
+ro_number,invoice_date,customer,labor,parts,materials,sublet,total
+B1001,2026-10-20,Quintus Arbogast,1450.00,2600.00,350.00,150.00,4550.00
+B1002,2026-10-21,Rhiannon Delacourt,1800.00,3200.00,400.00,0.00,5400.00
+B1003,2026-10-30,Sylvester Moncrieff,1100.00,1800.00,250.00,0.00,3150.00
+B1004,2026-10-18,Tabitha Wexford,2000.00,2650.00,450.00,200.00,5300.00
+B1099,2026-11-04,Ulysses Penhaligon,500.00,600.00,100.00,0.00,1200.00
