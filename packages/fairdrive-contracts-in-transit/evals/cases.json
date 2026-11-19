@@ -1,0 +1,322 @@
+{
+  "suite": "fairdrive-contracts-in-transit",
+  "root": "..",
+  "data_note": "Fictional contracts and a fictional lender statement in ../fixtures, as of 2026-11-15. No model is called.",
+  "pii_canaries": [
+    "Lucinda Marrow",
+    "Gideon Ashworth",
+    "Osric Pemberton",
+    "Petronella Vos",
+    "Wilhelmina Tasker"
+  ],
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "funding_age_contracts",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.contracts": 10,
+          "result.in_transit": 5,
+          "result.in_transit_amount": 127300,
+          "result.over_alert": 3,
+          "result.oldest_days": 48,
+          "result.returned": 1,
+          "result.funded_not_posted": 1,
+          "result.funded_short": -500,
+          "result.not_on_statement": 1
+        }
+      }
+    },
+    {
+      "id": "returned-first-then-oldest",
+      "tool": "funding_age_contracts",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.deal_number": "D2004",
+          "result.items.0.finding": "returned_by_lender",
+          "result.items.1.deal_number": "D2002",
+          "result.items.2.deal_number": "D2010"
+        }
+      }
+    },
+    {
+      "id": "statement-findings",
+      "tool": "funding_age_contracts",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "contains": [
+          "funded_not_posted",
+          "not_on_lender_statement",
+          "funded_short",
+          "Proof of income; Proof of residence",
+          "9999"
+        ],
+        "length": {
+          "result.statement_lines_not_matched": 1
+        }
+      }
+    },
+    {
+      "id": "by-lender-and-age",
+      "tool": "funding_age_contracts",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.by_lender.0.lender": "Harbor Auto Finance",
+          "result.by_lender.0.amount": 51000,
+          "result.by_age.0.contracts": 2,
+          "result.by_age.3.amount": 42000
+        }
+      }
+    },
+    {
+      "id": "without-a-statement",
+      "tool": "funding_age_contracts",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.in_transit": 6,
+          "result.in_transit_amount": 162900,
+          "result.over_alert": 4,
+          "result.not_on_statement": 0,
+          "result.funded_short": -500,
+          "result.statement_checked": false
+        }
+      }
+    },
+    {
+      "id": "wider-alert",
+      "tool": "funding_age_contracts",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15",
+        "alert_days": 30
+      },
+      "expect": {
+        "equals": {
+          "result.over_alert": 1
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "funding_write_report",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "10 contract(s): 5 in transit for 127300"
+        ]
+      }
+    },
+    {
+      "id": "draft-follow-up-harbor",
+      "tool": "funding_draft_follow_up",
+      "mode": "auto",
+      "auto_actions": [
+        "funding_draft_follow_up"
+      ],
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15",
+        "lender": "Harbor",
+        "contact": "funding@harbor-auto-finance.example"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.id": "Harbor Auto Finance",
+          "result.contracts": 2,
+          "result.amount": 51000,
+          "result.open_markers": 2
+        }
+      }
+    },
+    {
+      "id": "no-follow-up-without-contracts",
+      "tool": "funding_draft_follow_up",
+      "mode": "auto",
+      "auto_actions": [
+        "funding_draft_follow_up"
+      ],
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15",
+        "lender": "Keel Motor Credit"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "no contracts in transit"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "funding_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-lender-portal-submit",
+      "tool": "lender_portal_submit",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-gl-post-funding",
+      "tool": "gl_post_funding",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "funding_age_contracts",
+      "args": {
+        "contracts": "../../../outside/export.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "funding_age_contracts",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "contracts"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "funding_age_contracts",
+      "mode": "review",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.contracts": 10,
+          "result.in_transit": 5,
+          "result.in_transit_amount": 127300,
+          "result.over_alert": 3,
+          "result.oldest_days": 48,
+          "result.returned": 1,
+          "result.funded_not_posted": 1,
+          "result.funded_short": -500,
+          "result.not_on_statement": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "funding_write_report",
+      "mode": "review",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    },
+    {
+      "id": "policy-draft-asks-first",
+      "tool": "funding_draft_follow_up",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15",
+        "lender": "Harbor",
+        "contact": "funding@harbor-auto-finance.example"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    },
+    {
+      "id": "policy-draft-blocked-in-review",
+      "tool": "funding_draft_follow_up",
+      "mode": "review",
+      "args": {
+        "contracts": "fixtures/contracts.csv",
+        "lender_statement": "fixtures/lender-statement.csv",
+        "as_of": "2026-11-15",
+        "lender": "Harbor",
+        "contact": "funding@harbor-auto-finance.example"
+      },
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-approval-stays-one-click-in-auto",
+      "tool": "funding_request_send",
+      "mode": "auto",
+      "auto_actions": [
+        "funding_draft_follow_up"
+      ],
+      "args": {
+        "draft": "fairdrive-out/funding/drafts/none.md",
+        "draft_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    }
+  ]
+}

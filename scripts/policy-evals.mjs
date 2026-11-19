@@ -16,7 +16,7 @@ const PK = join(dirname(fileURLToPath(import.meta.url)), '..', 'packages');
 const check = process.argv.includes('--check');
 const only = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 let stale = 0;
-for (const n of readdirSync(PK).filter((x) => /-of-/.test(x) && existsSync(join(PK, x, 'evals', 'cases.json')) && (!only.length || only.includes(x))).sort()) {
+for (const n of readdirSync(PK).filter((x) => /^fairdrive-/.test(x) && x !== 'fairdrive-core' && existsSync(join(PK, x, 'evals', 'cases.json')) && (!only.length || only.includes(x))).sort()) {
   const { manifest } = await import(pathToFileURL(join(PK, n, 'src', 'manifest.js')).href);
   const file = join(PK, n, 'evals', 'cases.json');
   const data = JSON.parse(readFileSync(file, 'utf8'));
@@ -24,11 +24,11 @@ for (const n of readdirSync(PK).filter((x) => /-of-/.test(x) && existsSync(join(
   const intl = data.cases.filter((c) => c.id.startsWith('intl-'));
   const scan = manifest.tools.find((t) => t.kind === 'read');
   const report = manifest.tools.find((t) => t.kind === 'report' && t.name.endsWith('_write_report'));
+  const prefix = (report ? report.name.replace(/_write_report$/, '') : scan.name.split('_')[0]);
   const base = own.find((c) => c.tool === scan.name && (!c.expect || !c.expect.status || c.expect.status === 'executed'));
   if (!base) { console.log(`${n}: no hand-written case for ${scan.name}; skipped`); continue; }
   const req = scan.inputSchema.required || [];
   const fileArg = Object.keys(base.args).find((k) => typeof base.args[k] === 'string' && /\.(csv|xlsx|json|tsv|txt)$/i.test(base.args[k]));
-  const prefix = scan.name.split('_')[0];
   const add = [];
   add.push({ id: 'policy-invented-tool-refused', tool: `${prefix}_pay_and_post_everything_now`, args: {}, expect: { status: 'blocked' } });
   for (const t of manifest.tools.filter((x) => (manifest.policy.rules.find((r) => r.tool === x.name) || {}).decision === 'block')) {

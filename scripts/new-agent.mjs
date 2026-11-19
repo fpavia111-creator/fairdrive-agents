@@ -4,14 +4,14 @@
 // The agent's own logic, manifest, demo, fixtures, evals and README are written by hand.
 // Run it again to refresh the generated files; hand-written files are kept.
 //
-//   node scripts/new-agent.mjs <breed>-of-<job> "<one-line description>" kw1,kw2 [logic-module]
+//   node scripts/new-agent.mjs fairdrive-<job words> "<one-line description>" kw1,kw2 [logic-module]
 import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repo = join(dirname(fileURLToPath(import.meta.url)), '..');
 const [name, description, kw = ''] = process.argv.slice(2);
-if (!name || !/^[a-z]+-of-[a-z]+(-[a-z]+)*$/.test(name) || !description) { console.error('usage: new-agent.mjs <breed>-of-<job> "<description>" kw1,kw2'); process.exit(2); }
+if (!name || !/^fairdrive-[a-z]+(-[a-z]+){0,4}$/.test(name) || !description) { console.error('usage: new-agent.mjs fairdrive-<job words> "<description>" kw1,kw2'); process.exit(2); }
 const root = join(repo, 'packages', name);
 const corePkg = JSON.parse(readFileSync(join(repo, 'packages/fairdrive-core/package.json'), 'utf8'));
 const write = (f, text, { keep = false } = {}) => { const p = join(root, f); if (keep && existsSync(p)) return; mkdirSync(dirname(p), { recursive: true }); writeFileSync(p, text); };

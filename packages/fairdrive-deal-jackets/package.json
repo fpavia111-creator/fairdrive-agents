@@ -1,0 +1,57 @@
+{
+  "name": "fairdrive-deal-jackets",
+  "version": "0.1.0",
+  "description": "Fairdrive Deal Jackets: checks every deal jacket against the documents a deal of its type should hold (buyer's order, contract, odometer statement, title application, privacy notice, OFAC and Red Flags records, Buyers Guide on used cars, trade-in papers) and lists what is missing or unsigned, oldest delivery first. Never books, changes or sends a deal.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kurt Francisco",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "fairdrive-deal-jackets": "bin/fairdrive-deal-jackets.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "fixtures",
+    "evals",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.cjs",
+    "demo": "node bin/fairdrive-deal-jackets.js demo",
+    "eval": "node bin/fairdrive-deal-jackets.js eval"
+  },
+  "dependencies": {
+    "fairdrive-core": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
+    "directory": "packages/fairdrive-deal-jackets"
+  },
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-deal-jackets#readme",
+  "bugs": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "auto-dealer",
+    "car-dealership",
+    "dealership",
+    "fairdrive",
+    "deal-jacket",
+    "f-and-i",
+    "dealer-compliance-paperwork",
+    "dms"
+  ]
+}

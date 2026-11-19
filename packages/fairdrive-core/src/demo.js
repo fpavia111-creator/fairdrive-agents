@@ -33,7 +33,7 @@ export async function checkDemo(manifest, fixturesDir, { intro, args, show, draf
   printStep('Run the check on the exported files', r);
   if (show && r.result) for (const line of show(r.result).slice(0, 12)) process.stdout.write(`    ${line}
 `);
-  printStep('Write the report (CSV and HTML)', await rt.call(`${manifest.tools[0].name.split('_')[0]}_write_report`, args));
+  printStep('Write the report (CSV and HTML)', await rt.call(manifest.tools.find((t) => t.kind === 'report' && /_write_report$/.test(t.name)).name, args));
   if (draft && draftTool && reqTool) {
     const d = await rt.call(draftTool.name, { ...args, ...draft.args });
     printStep(draft.label || 'Write the draft', d);
