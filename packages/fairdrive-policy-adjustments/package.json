@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-policy-adjustments",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-policy-adjustments",
   "description": "Fairdrive Policy Adjustments: lists policy and goodwill adjustments with no approver, self-approved, over the approval limit, with no reason or repeated on the same vehicle, and totals them by advisor and reason. Never posts an adjustment.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

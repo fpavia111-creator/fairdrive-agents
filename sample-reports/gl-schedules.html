@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schedules at 2026-11-15</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--mut:#6b6760;--line:#e4e0d8;--ok:#1f7a4d;--bad:#b42318;--warn:#a15c07;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#161514;--fg:#ecebe8;--mut:#a29d94;--line:#34312d;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--card:#1f1e1c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,"Hiragino Sans","Yu Gothic UI","Microsoft YaHei","PingFang SC","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px}
+.mut{color:var(--mut)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tiles{display:flex;gap:12px;flex-wrap:wrap}.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.tile b{display:block;font-size:22px}code{font-size:13px;overflow-wrap:anywhere}pre{overflow-x:auto}
+.wrap{overflow-x:auto;max-width:100%}svg,img{max-width:100%;height:auto}figure{margin:16px 0}p,li,h1,h2,h3{overflow-wrap:break-word}
+</style></head><body><main>
+<h1>Schedules at 2026-11-15</h1>
+<p class="mut">3 schedule(s), 65210 in detail. 2 out of balance with the ledger; 2 control(s) open over 90 days (10300); 1 credit balance(s) on receivables; 2 control(s) netting to zero, ready to clear.</p>
+<h2>By schedule</h2><div class="wrap"><table><thead><tr><th scope="col">schedule</th><th scope="col">schedule name</th><th scope="col">gl balance</th><th scope="col">detail total</th><th scope="col">difference</th><th scope="col">open controls</th><th scope="col">age 0-30</th><th scope="col">age 31-60</th><th scope="col">age 61-90</th><th scope="col">age 90+</th></tr></thead><tbody>
+<tr><td>205</td><td>Contracts in transit</td><td>59200</td><td>59200</td><td>0</td><td>3</td><td>51000</td><td>0</td><td>0</td><td>8200</td></tr>
+<tr><td>220</td><td>Factory receivable</td><td>4100</td><td>3600</td><td>-500</td><td>2</td><td>0</td><td>1500</td><td>0</td><td>2100</td></tr>
+<tr><td>230</td><td>Warranty receivable</td><td>2750</td><td>2410</td><td>-340</td><td>3</td><td>110</td><td>0</td><td>2300</td><td>0</td></tr>
+</tbody></table></div>
+<h2>All rows (7)</h2>
+<div class="wrap"><table><thead><tr><th scope="col">finding</th><th scope="col">schedule</th><th scope="col">schedule name</th><th scope="col">control number</th><th scope="col">age</th><th scope="col">amount</th><th scope="col">why</th></tr></thead><tbody>
+<tr><td>out_of_balance</td><td>220</td><td>Factory receivable</td><td></td><td></td><td>-500</td><td>Detail adds up to 3600; the ledger shows 4100. Something was posted to the account without a control number, or to the wrong schedule.</td></tr>
+<tr><td>out_of_balance</td><td>230</td><td>Warranty receivable</td><td></td><td></td><td>-340</td><td>Detail adds up to 2410; the ledger shows 2750. Something was posted to the account without a control number, or to the wrong schedule.</td></tr>
+<tr><td>over_90_days</td><td>205</td><td>Contracts in transit</td><td>D2004</td><td>106</td><td>8200</td><td>Open 106 days.</td></tr>
+<tr><td>over_90_days</td><td>220</td><td>Factory receivable</td><td>H-1002</td><td>123</td><td>2100</td><td>Open 123 days.</td></tr>
+<tr><td>credit_balance</td><td>230</td><td>Warranty receivable</td><td>C7099</td><td>18</td><td>-300</td><td>A credit of -300 on a receivable schedule: paid twice, posted to the wrong control, or a debit still to come.</td></tr>
+<tr><td>zero_balance_control</td><td>220</td><td>Factory receivable</td><td>H-1003</td><td>41</td><td>0</td><td>2 lines net to zero; ready to clear from the schedule.</td></tr>
+<tr><td>zero_balance_control</td><td>230</td><td>Warranty receivable</td><td>C7007</td><td>44</td><td>0</td><td>2 lines net to zero; ready to clear from the schedule.</td></tr>
+</tbody></table></div>
+<h2>Limits</h2><ul><li>Reads only the files you export and give it. It does not log in to a DMS, lender portal, manufacturer system, DMV or bank.</li><li>Receivable schedules are recognised by their names (receivable, in transit, warranty, factory, rebate, holdback). Credit balances on other schedules are not flagged.</li><li>Not legal, tax, lending or accounting advice. A person decides what to claim, pay, fund, title, charge back or post.</li></ul>
+<p class="mut" style="margin-top:32px">Written by a Fairdrive agent from your files. Nothing was sent, paid, funded, titled or posted.</p>
+</main></body></html>

@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-product-cancellations",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-product-cancellations",
   "description": "Fairdrive Product Cancellations: recomputes the dealer chargeback on every cancelled F&I product (service contract, GAP, maintenance, appearance) from the product's profit and the unused share of its term, flags chargebacks above that figure or above the profit earned, and refunds not yet sent, and drafts a dispute to the provider. Never cancels a product or issues a refund.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

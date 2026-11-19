@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-dmv-fees",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-dmv-fees",
   "description": "Fairdrive DMV Fees: compares the title, registration and plate fees collected on each deal with what the DMV or tag agency charged, and lists fees over-collected, under-collected, not yet paid and charges with no deal. Never issues a refund.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

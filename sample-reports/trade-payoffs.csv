@@ -1,0 +1,6 @@
+deal_number,customer,trade_vin,lienholder,deal_date,days_since_deal,payoff_quote,quote_good_through,payoff_sent,amount_sent,owed_now,short,findings,why
+D10005,Bartholomew Szabo,7ZZ8A87XXRA659009,Summit Credit Union,2026-09-05,71,12600,2026-09-15,2026-09-08,12600,,,lien_release_missing,Cleared 61 days ago and no lien release or title received.
+D10003,Zachariah Mbeki,7ZZ8CCUK8NA412538,Bluegate Bank,2026-10-10,36,9800,2026-10-15,2026-10-22,9800,,14.7,sent_after_quote_expired / short_paid,Sent 7 day(s) after the quote expired on 2026-10-15. Sent 9800; 9814.7 was owed on 2026-10-22. The lienholder will hold the title until 14.7 more arrives.
+D10004,Agatha Rennick,7ZZ0TCCU6PA503360,Harbor Auto Finance,2026-10-20,26,18250,2026-10-30,2026-10-24,18250,,,not_cleared,Sent 22 days ago and not cleared.
+D10007,Dashiell Vantreese,7ZZL9XH0XTA359430,Bluegate Bank,2026-10-28,18,6400,2026-11-07,,,6412,,payoff_not_sent,Deal 18 days old and no payoff sent; about 6412 owed today with per diem.
+D10002,Yolanda Pressburger,7ZZ9U1LW1MA734429,Summit Credit Union,2026-11-01,14,22400,2026-11-10,,,22421,,payoff_not_sent,Deal 14 days old and no payoff sent; about 22421 owed today with per diem.

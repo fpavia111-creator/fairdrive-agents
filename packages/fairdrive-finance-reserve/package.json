@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-finance-reserve",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-finance-reserve",
   "description": "Fairdrive Finance Reserve: works out the finance reserve each deal should earn from the buy rate, contract rate, term and your lender share, compares it and the product income with what lenders and providers actually paid, and drafts a reserve inquiry to a lender. Never posts to the ledger.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

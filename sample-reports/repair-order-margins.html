@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repair order margins</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--mut:#6b6760;--line:#e4e0d8;--ok:#1f7a4d;--bad:#b42318;--warn:#a15c07;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#161514;--fg:#ecebe8;--mut:#a29d94;--line:#34312d;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--card:#1f1e1c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,"Hiragino Sans","Yu Gothic UI","Microsoft YaHei","PingFang SC","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px}
+.mut{color:var(--mut)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tiles{display:flex;gap:12px;flex-wrap:wrap}.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.tile b{display:block;font-size:22px}code{font-size:13px;overflow-wrap:anywhere}pre{overflow-x:auto}
+.wrap{overflow-x:auto;max-width:100%}svg,img{max-width:100%;height:auto}figure{margin:16px 0}p,li,h1,h2,h3{overflow-wrap:break-word}
+</style></head><body><main>
+<h1>Repair order margins</h1>
+<p class="mut">7 repair order(s). Customer-pay labor gross 61.92%, parts 39.24%. 2 under the 65% labor floor, 1 under the 30% parts floor, 1 with customer-pay labor given away, 1 with parts sold below cost.</p>
+<h2>By pay type</h2><div class="wrap"><table><thead><tr><th scope="col">pay type</th><th scope="col">repair orders</th><th scope="col">labor sale</th><th scope="col">labor gp</th><th scope="col">labor gp pct</th><th scope="col">parts sale</th><th scope="col">parts gp</th><th scope="col">parts gp pct</th></tr></thead><tbody>
+<tr><td>customer_pay</td><td>5</td><td>1930</td><td>1195</td><td>61.92</td><td>1580</td><td>620</td><td>39.24</td></tr>
+<tr><td>warranty</td><td>1</td><td>420</td><td>260</td><td>61.9</td><td>380</td><td>80</td><td>21.05</td></tr>
+<tr><td>internal</td><td>1</td><td>250</td><td>130</td><td>52</td><td>90</td><td>-20</td><td>-22.22</td></tr>
+</tbody></table></div>
+<h2>By advisor</h2><div class="wrap"><table><thead><tr><th scope="col">advisor</th><th scope="col">repair orders</th><th scope="col">labor sale</th><th scope="col">labor gp pct</th><th scope="col">parts sale</th><th scope="col">parts gp pct</th></tr></thead><tbody>
+<tr><td>Lena Moreau</td><td>3</td><td>1480</td><td>67.23</td><td>1160</td><td>39.66</td></tr>
+<tr><td>Marco Ilic</td><td>2</td><td>450</td><td>44.44</td><td>420</td><td>38.1</td></tr>
+</tbody></table></div>
+<h2>All rows (4)</h2>
+<div class="wrap"><table><thead><tr><th scope="col">ro number</th><th scope="col">pay type</th><th scope="col">closed date</th><th scope="col">advisor</th><th scope="col">customer</th><th scope="col">labor sale</th><th scope="col">labor cost</th><th scope="col">labor gp pct</th><th scope="col">parts sale</th><th scope="col">parts cost</th><th scope="col">parts gp pct</th><th scope="col">findings</th><th scope="col">why</th></tr></thead><tbody>
+<tr><td>70002</td><td>customer_pay</td><td>2026-11-03</td><td>Lena Moreau</td><td>Ignatius Pell</td><td>300</td><td>135</td><td>55</td><td>200</td><td>150</td><td>25</td><td>labor_gp_below_floor / parts_gp_below_floor</td><td>Customer-pay labor gross 55%, floor 65%. Customer-pay parts gross 25%, floor 30%.</td></tr>
+<tr><td>70004</td><td>customer_pay</td><td>2026-11-04</td><td>Marco Ilic</td><td>Kasimir Rendell</td><td>0</td><td>90</td><td></td><td>120</td><td>80</td><td>33.33</td><td>labor_given_away</td><td>Customer-pay labor cost 90 with no labor sold.</td></tr>
+<tr><td>70005</td><td>internal</td><td>2026-11-05</td><td>Marco Ilic</td><td></td><td>250</td><td>120</td><td>52</td><td>90</td><td>110</td><td>-22.22</td><td>parts_below_cost</td><td>Parts sold for 90 against 110 cost.</td></tr>
+<tr><td>70007</td><td>customer_pay</td><td>2026-11-07</td><td>Marco Ilic</td><td>Montgomery Hale</td><td>450</td><td>160</td><td>64.44</td><td>300</td><td>180</td><td>40</td><td>labor_gp_below_floor</td><td>Customer-pay labor gross 64.44%, floor 65%.</td></tr>
+</tbody></table></div>
+<h2>Limits</h2><ul><li>Reads only the files you export and give it. It does not log in to a DMS, lender portal, manufacturer system, DMV or bank.</li><li>Labor cost is the technician cost in your file; how it is loaded (flat rate, hourly, benefits) is your DMS setting.</li><li>Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers masked. The files written here keep the real values: keep them in a secure folder.</li></ul>
+<p class="mut" style="margin-top:32px">Written by a Fairdrive agent from your files. Nothing was sent, paid, funded, titled or posted.</p>
+</main></body></html>

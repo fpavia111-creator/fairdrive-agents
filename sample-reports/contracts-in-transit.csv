@@ -1,0 +1,9 @@
+finding,deal_number,customer,lender,contract_date,amount_financed,days,bucket,stips,funded_on,funded_amount,difference,why
+returned_by_lender,D2004,Osric Pemberton,Bluegate Bank,2026-09-28,42000,48,30+,Contract re-sign: APR does not match the approval,,,,Returned by the lender (Returned): Contract re-sign: APR does not match the approval. Fix and resubmit; it is not funding while it waits.
+in_transit,D2002,Gideon Ashworth,Harbor Auto Finance,2026-10-20,31200,26,21-30,Proof of income; Proof of residence,,,,26 day(s) since contract; open stips: Proof of income; Proof of residence.
+in_transit,D2010,Ezekiel Moravec,Harbor Auto Finance,2026-10-27,19800,19,11-20,Insurance verification,,,,19 day(s) since contract; open stips: Insurance verification.
+in_transit,D2003,Fenna Rietveld,Summit Credit Union,2026-11-10,18900,5,0-10,,,,,5 day(s) since contract.
+in_transit,D2008,Bram Kessler,Summit Credit Union,2026-11-13,15400,2,0-10,,,,,2 day(s) since contract.
+funded_not_posted,D2006,Thaddeus Okonjo,Harbor Auto Finance,2026-11-02,35600,7,,,2026-11-09,35600,,The lender statement shows 35600 funded on 2026-11-09; the DMS still shows the contract in transit. Post the funding and clear it from the schedule.
+funded_short,D2005,Wilhelmina Tasker,Summit Credit Union,2026-10-12,22750,7,,,2026-10-19,22250,-500,"Funded 22250 against 22750 expected (-500). Check the lender's funding notice for fees, a reserve change or a product the lender did not buy."
+not_on_lender_statement,D2007,Rosalind Achterberg,Bluegate Bank,2026-10-05,26300,7,,,2026-10-12,26300,,The DMS shows it funded but no line on the lender statement matches it by deal number or VIN. Confirm the money arrived.

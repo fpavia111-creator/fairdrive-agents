@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-sublet-invoices",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-sublet-invoices",
   "description": "Fairdrive Sublet Invoices: matches sublet lines on repair orders against vendor invoices and lists invoices above the purchase order, closed orders with no sublet invoice, invoices with no repair order, sublet billed below cost and duplicate invoices. Never pays an invoice.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

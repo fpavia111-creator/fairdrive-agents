@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-trade-payoffs",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-trade-payoffs",
   "description": "Fairdrive Trade Payoffs: lists every trade-in lien payoff not yet sent, sent after the quote expired, short of the quote plus per diem, not yet cleared or without a lien release, and drafts a payoff batch for one named person. Never sends money.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

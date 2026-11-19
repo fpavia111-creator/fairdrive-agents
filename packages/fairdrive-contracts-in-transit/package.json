@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-contracts-in-transit",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-contracts-in-transit",
   "description": "Fairdrive Contracts In Transit: ages every financed contract that has not funded yet (contracts in transit) by lender, with the stipulations still open, catches contracts funded short, money a lender sent that the DMS still shows as unfunded, and contracts marked funded that are not on the lender statement, and drafts the follow-up to a lender. Never submits to a lender or posts to the ledger.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

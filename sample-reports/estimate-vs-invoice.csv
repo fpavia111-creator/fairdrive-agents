@@ -1,0 +1,5 @@
+finding,ro_number,claim_number,insurer,customer,latest_version,versions,estimate_total,invoice_total,difference,categories,why
+not_invoiced,B1005,CLM-75,Heron Mutual,,E01,1,3800,,,,Estimate written 56 days ago and no invoice.
+no_estimate,B1099,,,Ulysses Penhaligon,,0,,1200,,,Invoice with no estimate on file for this RO.
+invoiced_under_estimate,B1004,CLM-74,Granite Shield Insurance,Tabitha Wexford,E01,1,5650,5300,-350,labor -200 / parts -150,Invoiced 5300 against 5650 approved. Check for items approved but not billed.
+invoiced_over_estimate,B1003,CLM-73,Heron Mutual,Sylvester Moncrieff,S01,2,2920,3150,230,labor +100 / parts +100 / materials +30,Invoiced 3150 against 2920 on S01. The insurer pays the estimate; write a supplement or the customer owes the rest.

@@ -1,0 +1,8 @@
+finding,schedule,schedule_name,control_number,age,amount,why
+out_of_balance,220,Factory receivable,,,-500,"Detail adds up to 3600; the ledger shows 4100. Something was posted to the account without a control number, or to the wrong schedule."
+out_of_balance,230,Warranty receivable,,,-340,"Detail adds up to 2410; the ledger shows 2750. Something was posted to the account without a control number, or to the wrong schedule."
+over_90_days,205,Contracts in transit,D2004,106,8200,Open 106 days.
+over_90_days,220,Factory receivable,H-1002,123,2100,Open 123 days.
+credit_balance,230,Warranty receivable,C7099,18,-300,"A credit of -300 on a receivable schedule: paid twice, posted to the wrong control, or a debit still to come."
+zero_balance_control,220,Factory receivable,H-1003,41,0,2 lines net to zero; ready to clear from the schedule.
+zero_balance_control,230,Warranty receivable,C7007,44,0,2 lines net to zero; ready to clear from the schedule.

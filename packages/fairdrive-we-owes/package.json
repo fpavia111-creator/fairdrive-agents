@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-we-owes",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-we-owes",
   "description": "Fairdrive We Owes: lists every we-owe (due bill) promised on a deal that is open past its promise date or not scheduled, and completed ones whose cost was never booked, with the open cost by age. Never contacts a customer.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

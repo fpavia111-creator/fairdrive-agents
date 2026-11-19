@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warranty claims at 2026-11-15</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--mut:#6b6760;--line:#e4e0d8;--ok:#1f7a4d;--bad:#b42318;--warn:#a15c07;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#161514;--fg:#ecebe8;--mut:#a29d94;--line:#34312d;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--card:#1f1e1c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,"Hiragino Sans","Yu Gothic UI","Microsoft YaHei","PingFang SC","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px}
+.mut{color:var(--mut)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tiles{display:flex;gap:12px;flex-wrap:wrap}.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.tile b{display:block;font-size:22px}code{font-size:13px;overflow-wrap:anywhere}pre{overflow-x:auto}
+.wrap{overflow-x:auto;max-width:100%}svg,img{max-width:100%;height:auto}figure{margin:16px 0}p,li,h1,h2,h3{overflow-wrap:break-word}
+</style></head><body><main>
+<h1>Warranty claims at 2026-11-15</h1>
+<p class="mut">7 claim(s): 7735 claimed, 2030 paid, 5705 outstanding. 2 unpaid (2710), 1 paid short (240), 2 rejected (1575; 1 past the resubmission date), 1 debited after payment (1180).</p>
+<h2>Unpaid by age</h2><div class="wrap"><table><thead><tr><th scope="col">bucket</th><th scope="col">claims</th><th scope="col">amount</th></tr></thead><tbody>
+<tr><td>0-30</td><td>1</td><td>410</td></tr>
+<tr><td>31-60</td><td>0</td><td>0</td></tr>
+<tr><td>61-90</td><td>1</td><td>2300</td></tr>
+<tr><td>90+</td><td>0</td><td>0</td></tr>
+</tbody></table></div>
+<h2>By reason</h2><div class="wrap"><table><thead><tr><th scope="col">reason</th><th scope="col">claims</th><th scope="col">amount</th></tr></thead><tbody>
+<tr><td>Audit: diagnosis time not supported</td><td>1</td><td>1180</td></tr>
+<tr><td>Part not returned</td><td>1</td><td>975</td></tr>
+<tr><td>Labor op not on repair order</td><td>1</td><td>600</td></tr>
+</tbody></table></div>
+<h2>Statement lines not on the schedule</h2><div class="wrap"><table><thead><tr><th scope="col">claim number</th><th scope="col">amount</th></tr></thead><tbody>
+<tr><td>C7099</td><td>300</td></tr>
+</tbody></table></div>
+<h2>All rows (6)</h2>
+<div class="wrap"><table><thead><tr><th scope="col">claim number</th><th scope="col">ro number</th><th scope="col">vin</th><th scope="col">submitted date</th><th scope="col">age days</th><th scope="col">bucket</th><th scope="col">claimed</th><th scope="col">paid</th><th scope="col">outstanding</th><th scope="col">resubmit by</th><th scope="col">reason</th><th scope="col">findings</th><th scope="col">why</th></tr></thead><tbody>
+<tr><td>C7005</td><td>50072</td><td>7ZZ8A87XXRA659009</td><td>2026-09-01</td><td>75</td><td>61-90</td><td>2300</td><td>0</td><td>2300</td><td></td><td></td><td>unpaid</td><td>Submitted 75 days ago and not on the statement.</td></tr>
+<tr><td>C7007</td><td>50079</td><td>7ZZL9XH0XTA359430</td><td>2026-09-20</td><td>56</td><td></td><td>1180</td><td>0</td><td>1180</td><td></td><td>Audit: diagnosis time not supported</td><td>debited_after_payment</td><td>Debited 1180 on 2026-11-03: Audit: diagnosis time not supported.</td></tr>
+<tr><td>C7004</td><td>50088</td><td>7ZZ0TCCU6PA503360</td><td>2026-09-15</td><td>61</td><td></td><td>975</td><td>0</td><td>975</td><td>2026-10-25</td><td>Part not returned</td><td>rejected_past_deadline</td><td>Rejected: Part not returned. Resubmit by 2026-10-25 (passed).</td></tr>
+<tr><td>C7003</td><td>50120</td><td>7ZZ8CCUK8NA412538</td><td>2026-10-08</td><td>38</td><td></td><td>600</td><td>0</td><td>600</td><td>2026-11-19</td><td>Labor op not on repair order</td><td>rejected</td><td>Rejected: Labor op not on repair order. Resubmit by 2026-11-19.</td></tr>
+<tr><td>C7006</td><td>50161</td><td>7ZZUSUHH2SA184098</td><td>2026-11-05</td><td>10</td><td>0-30</td><td>410</td><td>0</td><td>410</td><td></td><td></td><td>unpaid</td><td>Submitted 10 days ago and not on the statement.</td></tr>
+<tr><td>C7002</td><td>50114</td><td>7ZZ9U1LW1MA734429</td><td>2026-10-05</td><td>41</td><td></td><td>1450</td><td>1210</td><td>240</td><td></td><td></td><td>paid_short</td><td>Paid 1210 against 1450 claimed.</td></tr>
+</tbody></table></div>
+<h2>Limits</h2><ul><li>Reads only the files you export and give it. It does not log in to a DMS, lender portal, manufacturer system, DMV or bank.</li><li>Resubmission dates use the days you set; the manufacturer warranty policy manual decides.</li><li>Not legal, tax, lending or accounting advice. A person decides what to claim, pay, fund, title, charge back or post.</li></ul>
+<p class="mut" style="margin-top:32px">Written by a Fairdrive agent from your files. Nothing was sent, paid, funded, titled or posted.</p>
+</main></body></html>

@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-gl-schedules",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-gl-schedules",
   "description": "Fairdrive GL Schedules: ties each DMS schedule (contracts in transit, receivables, warranty, factory) to its ledger balance, ages the open items by control number, and lists items past 90 days, controls that net to zero and credit balances. Never posts or purges.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

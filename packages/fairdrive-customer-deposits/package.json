@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-customer-deposits",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-customer-deposits",
   "description": "Fairdrive Customer Deposits: matches customer deposits with deals and lists deposits held with no deal, deposits on dead deals (refund due), deposits not applied on delivered deals and refunds overdue. Never issues a refund.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

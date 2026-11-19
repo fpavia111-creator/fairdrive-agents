@@ -1,0 +1,37 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.fpavia111-creator/fairdrive-deal-jackets",
+  "title": "Fairdrive Deal Jackets",
+  "description": "Fairdrive Deal Jackets: checks every deal jacket against the documents a deal of its type should…",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents",
+    "source": "github",
+    "subfolder": "packages/fairdrive-deal-jackets"
+  },
+  "websiteUrl": "https://fair-agents.com/fairdrive.html",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "fairdrive-deal-jackets",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "mcp"
+        },
+        {
+          "type": "named",
+          "name": "--root",
+          "description": "Folder holding the exports this agent may read and write (it cannot reach outside it)",
+          "isRequired": true,
+          "format": "filepath",
+          "valueHint": "exports_folder"
+        }
+      ]
+    }
+  ]
+}

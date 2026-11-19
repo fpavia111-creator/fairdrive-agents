@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-warranty-claims",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-warranty-claims",
   "description": "Fairdrive Warranty Claims: matches warranty claims submitted against the manufacturer statement and lists unpaid claims by age, claims paid short, rejections with their resubmission deadline and debits after payment, and drafts a review request. Never resubmits a claim.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

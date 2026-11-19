@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-repair-order-margins",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-repair-order-margins",
   "description": "Fairdrive Repair Order Margins: works out labor and parts gross profit on every closed repair order by pay type and advisor, and lists repair orders under your margin floors, parts sold below cost and customer-pay labor given away. Never reprices a repair order.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

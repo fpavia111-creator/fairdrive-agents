@@ -1,0 +1,5 @@
+ro_number,pay_type,closed_date,advisor,customer,labor_sale,labor_cost,labor_gp_pct,parts_sale,parts_cost,parts_gp_pct,findings,why
+70002,customer_pay,2026-11-03,Lena Moreau,Ignatius Pell,300,135,55,200,150,25,labor_gp_below_floor / parts_gp_below_floor,"Customer-pay labor gross 55%, floor 65%. Customer-pay parts gross 25%, floor 30%."
+70004,customer_pay,2026-11-04,Marco Ilic,Kasimir Rendell,0,90,,120,80,33.33,labor_given_away,Customer-pay labor cost 90 with no labor sold.
+70005,internal,2026-11-05,Marco Ilic,,250,120,52,90,110,-22.22,parts_below_cost,Parts sold for 90 against 110 cost.
+70007,customer_pay,2026-11-07,Marco Ilic,Montgomery Hale,450,160,64.44,300,180,40,labor_gp_below_floor,"Customer-pay labor gross 64.44%, floor 65%."

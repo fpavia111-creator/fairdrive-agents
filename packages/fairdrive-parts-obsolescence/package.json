@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-parts-obsolescence",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-parts-obsolescence",
   "description": "Fairdrive Parts Obsolescence: classes every part on hand by months since its last sale, values idle and obsolete stock, and lists returnable parts worth sending back first. Never adjusts inventory or returns parts.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

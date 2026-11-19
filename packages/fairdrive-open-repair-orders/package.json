@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-open-repair-orders",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-open-repair-orders",
   "description": "Fairdrive Open Repair Orders: ages every open repair order by advisor and pay type, and lists those past their promised date, warranty and internal orders open too long, and orders waiting on parts. Never closes a repair order.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

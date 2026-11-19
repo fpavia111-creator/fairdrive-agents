@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fairdrive sample reports</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--mut:#6b6760;--line:#e4e0d8;--ok:#1f7a4d;--bad:#b42318;--warn:#a15c07;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#161514;--fg:#ecebe8;--mut:#a29d94;--line:#34312d;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--card:#1f1e1c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,"Hiragino Sans","Yu Gothic UI","Microsoft YaHei","PingFang SC","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px}
+.mut{color:var(--mut)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tiles{display:flex;gap:12px;flex-wrap:wrap}.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.tile b{display:block;font-size:22px}code{font-size:13px;overflow-wrap:anywhere}pre{overflow-x:auto}
+.wrap{overflow-x:auto;max-width:100%}svg,img{max-width:100%;height:auto}figure{margin:16px 0}p,li,h1,h2,h3{overflow-wrap:break-word}
+</style></head><body><main>
+<h1>Fairdrive sample reports</h1>
+<p class="mut">Written by the agents themselves on their bundled fictional fixtures (made-up stores, customers, lenders, insurers and vehicles). Each page has a CSV twin with the same rows for people to work.</p>
+<div class="wrap"><table><thead><tr><th scope="col">Agent</th><th scope="col">What the run found</th><th scope="col">Files</th></tr></thead><tbody>
+<tr><td>fairdrive-floorplan-audit</td><td>7 unit(s) in inventory, 6 on the floorplan statement (195750). 1 sold and not paid off (33800); 1 payoff(s) due within 5 days (28950); 1 on the statement but not in inventory (29400); 1 balance difference(s); 1 in stock but not floored.</td><td><a href="floorplan-audit.html">HTML</a> · <a href="floorplan-audit.csv">CSV</a></td></tr>
+<tr><td>fairdrive-contracts-in-transit</td><td>10 contract(s): 5 in transit for 127300 (3 over 10 days, oldest 48 days, 1 returned by the lender). 1 funded by the lender but still open in the DMS. Funded short by 500 in total. 1 marked funded but not on the lender statement; 1 statement line(s) match no contract.</td><td><a href="contracts-in-transit.html">HTML</a> · <a href="contracts-in-transit.csv">CSV</a></td></tr>
+<tr><td>fairdrive-deal-jackets</td><td>9 deal(s) checked: 6 incomplete, 3 complete. 18 document(s) missing, 2 unsigned. Oldest incomplete jacket: 40 day(s) since delivery. 1 scanned deal number(s) not in the deal file.</td><td><a href="deal-jackets.html">HTML</a> · <a href="deal-jackets.csv">CSV</a></td></tr>
+<tr><td>fairdrive-warranty-claims</td><td>7 claim(s): 7735 claimed, 2030 paid, 5705 outstanding. 2 unpaid (2710), 1 paid short (240), 2 rejected (1575; 1 past the resubmission date), 1 debited after payment (1180).</td><td><a href="warranty-claims.html">HTML</a> · <a href="warranty-claims.csv">CSV</a></td></tr>
+<tr><td>fairdrive-repair-order-margins</td><td>7 repair order(s). Customer-pay labor gross 61.92%, parts 39.24%. 2 under the 65% labor floor, 1 under the 30% parts floor, 1 with customer-pay labor given away, 1 with parts sold below cost.</td><td><a href="repair-order-margins.html">HTML</a> · <a href="repair-order-margins.csv">CSV</a></td></tr>
+<tr><td>fairdrive-trade-payoffs</td><td>7 trade payoff(s): 2 not sent (about 28833 owed today), 1 paid short by 14.7, 1 sent after the quote expired, 1 not cleared, 1 without a lien release.</td><td><a href="trade-payoffs.html">HTML</a> · <a href="trade-payoffs.csv">CSV</a></td></tr>
+<tr><td>fairdrive-estimate-vs-invoice</td><td>6 repair(s): estimated 22320, invoiced 19600. 1 invoiced over the latest estimate (230), 1 under (350), 1 invoice(s) with no estimate, 1 estimate(s) not invoiced (3800).</td><td><a href="estimate-vs-invoice.html">HTML</a> · <a href="estimate-vs-invoice.csv">CSV</a></td></tr>
+<tr><td>fairdrive-gl-schedules</td><td>3 schedule(s), 65210 in detail. 2 out of balance with the ledger; 2 control(s) open over 90 days (10300); 1 credit balance(s) on receivables; 2 control(s) netting to zero, ready to clear.</td><td><a href="gl-schedules.html">HTML</a> · <a href="gl-schedules.csv">CSV</a></td></tr>
+</tbody></table></div>
+<p class="mut" style="margin-top:32px">Fictional data only. Nothing was sent, paid, funded, titled or posted.</p>
+</main></body></html>

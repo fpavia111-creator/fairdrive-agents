@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deal jackets with missing documents</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--mut:#6b6760;--line:#e4e0d8;--ok:#1f7a4d;--bad:#b42318;--warn:#a15c07;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#161514;--fg:#ecebe8;--mut:#a29d94;--line:#34312d;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--card:#1f1e1c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,"Hiragino Sans","Yu Gothic UI","Microsoft YaHei","PingFang SC","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px}
+.mut{color:var(--mut)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tiles{display:flex;gap:12px;flex-wrap:wrap}.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.tile b{display:block;font-size:22px}code{font-size:13px;overflow-wrap:anywhere}pre{overflow-x:auto}
+.wrap{overflow-x:auto;max-width:100%}svg,img{max-width:100%;height:auto}figure{margin:16px 0}p,li,h1,h2,h3{overflow-wrap:break-word}
+</style></head><body><main>
+<h1>Deal jackets with missing documents</h1>
+<p class="mut">9 deal(s) checked: 6 incomplete, 3 complete. 18 document(s) missing, 2 unsigned. Oldest incomplete jacket: 40 day(s) since delivery. 1 scanned deal number(s) not in the deal file.</p>
+<h2>By document</h2><div class="wrap"><table><thead><tr><th scope="col">document</th><th scope="col">deals</th></tr></thead><tbody>
+<tr><td>Copy of driver&#39;s license</td><td>2</td></tr>
+<tr><td>Credit score / risk-based pricing notice</td><td>2</td></tr>
+<tr><td>OFAC check record</td><td>2</td></tr>
+<tr><td>Proof of insurance</td><td>2</td></tr>
+<tr><td>Red Flags / identity check record</td><td>2</td></tr>
+<tr><td>Retail installment contract</td><td>2</td></tr>
+<tr><td>Buyer&#39;s order / bill of sale</td><td>1</td></tr>
+<tr><td>Buyers Guide (window form)</td><td>1</td></tr>
+<tr><td>Credit application</td><td>1</td></tr>
+<tr><td>Lease agreement</td><td>1</td></tr>
+<tr><td>Odometer disclosure</td><td>1</td></tr>
+<tr><td>Power of attorney</td><td>1</td></tr>
+<tr><td>Privacy notice</td><td>1</td></tr>
+<tr><td>Title / registration application</td><td>1</td></tr>
+</tbody></table></div>
+<h2>By F&amp;I manager</h2><div class="wrap"><table><thead><tr><th scope="col">fi manager</th><th scope="col">incomplete deals</th><th scope="col">gaps</th></tr></thead><tbody>
+<tr><td>Sam Ibarra</td><td>4</td><td>15</td></tr>
+<tr><td>Avery Lund</td><td>2</td><td>5</td></tr>
+</tbody></table></div>
+<h2>All rows (6)</h2>
+<div class="wrap"><table><thead><tr><th scope="col">deal number</th><th scope="col">customer</th><th scope="col">deal type</th><th scope="col">sale type</th><th scope="col">fi manager</th><th scope="col">delivered</th><th scope="col">days since delivery</th><th scope="col">missing</th><th scope="col">unsigned</th><th scope="col">gaps</th></tr></thead><tbody>
+<tr><td>D1010</td><td>Cormac Delahunt</td><td>finance</td><td>new</td><td>Sam Ibarra</td><td>2026-11-11</td><td>4</td><td>Buyer&#39;s order / bill of sale / Odometer disclosure / Title / registration application / Privacy notice / OFAC check record / Red Flags / identity check record / Proof of insurance / Copy of driver&#39;s license / Credit application / Retail installment contract / Credit score / risk-based pricing notice</td><td></td><td>11</td></tr>
+<tr><td>D1002</td><td>Marcus Oyelaran</td><td>finance</td><td>used</td><td>Avery Lund</td><td>2026-10-06</td><td>40</td><td>Buyers Guide (window form) / Power of attorney</td><td>Credit score / risk-based pricing notice</td><td>3</td></tr>
+<tr><td>D1006</td><td>Rafael Quintero</td><td>cash</td><td>used</td><td>Sam Ibarra</td><td>2026-10-21</td><td>25</td><td>OFAC check record / Red Flags / identity check record</td><td></td><td>2</td></tr>
+<tr><td>D1009</td><td>Bettina Okafor</td><td>cash</td><td>new</td><td>Avery Lund</td><td>2026-11-09</td><td>6</td><td>Proof of insurance / Copy of driver&#39;s license</td><td></td><td>2</td></tr>
+<tr><td>D1003</td><td>Priya Castellanos</td><td>lease</td><td>new</td><td>Sam Ibarra</td><td>2026-10-10</td><td>36</td><td>Lease agreement</td><td></td><td>1</td></tr>
+<tr><td>D1004</td><td>Theo Brandvold</td><td>finance</td><td>new</td><td>Sam Ibarra</td><td>2026-10-15</td><td>31</td><td></td><td>Retail installment contract</td><td>1</td></tr>
+</tbody></table></div>
+<h2>Limits</h2><ul><li>Reads only the files you export and give it. It does not log in to a DMS, lender portal, manufacturer system, DMV or bank.</li><li>The checklist is a working default by deal type; your state, lenders and store policy may need more or fewer documents. It checks that a document is in the jacket, not that it is filled in correctly.</li><li>Not legal advice. Whether a deal meets a law or a lender&#39;s rules is for your compliance officer.</li><li>Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers masked. The files written here keep the real values: keep them in a secure folder.</li></ul>
+<p class="mut" style="margin-top:32px">Written by a Fairdrive agent from your files. Nothing was sent, paid, funded, titled or posted.</p>
+</main></body></html>

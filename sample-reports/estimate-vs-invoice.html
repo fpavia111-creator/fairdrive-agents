@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estimates against invoices at 2026-11-15</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--mut:#6b6760;--line:#e4e0d8;--ok:#1f7a4d;--bad:#b42318;--warn:#a15c07;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#161514;--fg:#ecebe8;--mut:#a29d94;--line:#34312d;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--card:#1f1e1c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,"Hiragino Sans","Yu Gothic UI","Microsoft YaHei","PingFang SC","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px}
+.mut{color:var(--mut)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tiles{display:flex;gap:12px;flex-wrap:wrap}.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.tile b{display:block;font-size:22px}code{font-size:13px;overflow-wrap:anywhere}pre{overflow-x:auto}
+.wrap{overflow-x:auto;max-width:100%}svg,img{max-width:100%;height:auto}figure{margin:16px 0}p,li,h1,h2,h3{overflow-wrap:break-word}
+</style></head><body><main>
+<h1>Estimates against invoices at 2026-11-15</h1>
+<p class="mut">6 repair(s): estimated 22320, invoiced 19600. 1 invoiced over the latest estimate (230), 1 under (350), 1 invoice(s) with no estimate, 1 estimate(s) not invoiced (3800).</p>
+<h2>All rows (4)</h2>
+<div class="wrap"><table><thead><tr><th scope="col">finding</th><th scope="col">ro number</th><th scope="col">claim number</th><th scope="col">insurer</th><th scope="col">customer</th><th scope="col">latest version</th><th scope="col">versions</th><th scope="col">estimate total</th><th scope="col">invoice total</th><th scope="col">difference</th><th scope="col">categories</th><th scope="col">why</th></tr></thead><tbody>
+<tr><td>not_invoiced</td><td>B1005</td><td>CLM-75</td><td>Heron Mutual</td><td></td><td>E01</td><td>1</td><td>3800</td><td></td><td></td><td></td><td>Estimate written 56 days ago and no invoice.</td></tr>
+<tr><td>no_estimate</td><td>B1099</td><td></td><td></td><td>Ulysses Penhaligon</td><td></td><td>0</td><td></td><td>1200</td><td></td><td></td><td>Invoice with no estimate on file for this RO.</td></tr>
+<tr><td>invoiced_under_estimate</td><td>B1004</td><td>CLM-74</td><td>Granite Shield Insurance</td><td>Tabitha Wexford</td><td>E01</td><td>1</td><td>5650</td><td>5300</td><td>-350</td><td>labor -200 / parts -150</td><td>Invoiced 5300 against 5650 approved. Check for items approved but not billed.</td></tr>
+<tr><td>invoiced_over_estimate</td><td>B1003</td><td>CLM-73</td><td>Heron Mutual</td><td>Sylvester Moncrieff</td><td>S01</td><td>2</td><td>2920</td><td>3150</td><td>230</td><td>labor +100 / parts +100 / materials +30</td><td>Invoiced 3150 against 2920 on S01. The insurer pays the estimate; write a supplement or the customer owes the rest.</td></tr>
+</tbody></table></div>
+<h2>Limits</h2><ul><li>Reads only the files you export and give it. It does not log in to a DMS, lender portal, manufacturer system, DMV or bank.</li><li>The latest estimate is the highest version (E01, then S01, S02...); each supplement is read as the full revised estimate, as estimating systems print it.</li><li>Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers masked. The files written here keep the real values: keep them in a secure folder.</li></ul>
+<p class="mut" style="margin-top:32px">Written by a Fairdrive agent from your files. Nothing was sent, paid, funded, titled or posted.</p>
+</main></body></html>

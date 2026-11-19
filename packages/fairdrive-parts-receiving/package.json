@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-parts-receiving",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-parts-receiving",
   "description": "Fairdrive Parts Receiving: matches parts received against vendor and manufacturer invoices by purchase order and part number, and lists parts billed but not received, received but not billed, price differences and duplicate invoice lines, and drafts a credit request. Never pays an invoice.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

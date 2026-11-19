@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floorplan audit at 2026-11-15</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--mut:#6b6760;--line:#e4e0d8;--ok:#1f7a4d;--bad:#b42318;--warn:#a15c07;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#161514;--fg:#ecebe8;--mut:#a29d94;--line:#34312d;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--card:#1f1e1c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,"Hiragino Sans","Yu Gothic UI","Microsoft YaHei","PingFang SC","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px}
+.mut{color:var(--mut)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tiles{display:flex;gap:12px;flex-wrap:wrap}.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.tile b{display:block;font-size:22px}code{font-size:13px;overflow-wrap:anywhere}pre{overflow-x:auto}
+.wrap{overflow-x:auto;max-width:100%}svg,img{max-width:100%;height:auto}figure{margin:16px 0}p,li,h1,h2,h3{overflow-wrap:break-word}
+</style></head><body><main>
+<h1>Floorplan audit at 2026-11-15</h1>
+<p class="mut">7 unit(s) in inventory, 6 on the floorplan statement (195750). 1 sold and not paid off (33800); 1 payoff(s) due within 5 days (28950); 1 on the statement but not in inventory (29400); 1 balance difference(s); 1 in stock but not floored.</p>
+<h2>All rows (5)</h2>
+<div class="wrap"><table><thead><tr><th scope="col">finding</th><th scope="col">stock number</th><th scope="col">vin</th><th scope="col">status</th><th scope="col">sold date</th><th scope="col">days since sale</th><th scope="col">floor date</th><th scope="col">statement balance</th><th scope="col">amount</th><th scope="col">why</th></tr></thead><tbody>
+<tr><td>sold_not_paid_off</td><td>S5002</td><td>7ZZPNMXP6RA120301</td><td>Sold</td><td>2026-11-03</td><td>12</td><td>2026-08-30</td><td>33800</td><td>33800</td><td>Sold 12 days ago and still on the floorplan statement for 33800. Pay it off; most floorplan agreements require it within days of the sale.</td></tr>
+<tr><td>on_statement_not_in_inventory</td><td></td><td>7ZZMESC69NA408327</td><td></td><td></td><td></td><td>2026-06-05</td><td>29400</td><td>29400</td><td>The lender shows 29400 on this VIN and the DMS inventory does not have it: sold and removed without a payoff, or not yours.</td></tr>
+<tr><td>balance_differs</td><td>S5004</td><td>7ZZ2XTPH7TA110178</td><td>In stock</td><td></td><td></td><td>2026-07-18</td><td>24500</td><td>1000</td><td>The DMS carries 25500; the lender shows 24500. A curtailment or payoff was posted on one side only.</td></tr>
+<tr><td>payoff_due</td><td>S5003</td><td>7ZZ1R4FZ9SA576862</td><td>Delivered</td><td>2026-11-13</td><td>2</td><td>2026-10-02</td><td>28950</td><td>28950</td><td>Sold 2 day(s) ago; payoff of 28950 falls due within your 5 days.</td></tr>
+<tr><td>not_floored</td><td>S5005</td><td>7ZZLUK947KA636195</td><td>In stock</td><td></td><td></td><td></td><td></td><td></td><td>In stock but not on the floorplan statement. Fine if it was bought for cash; otherwise it was never floored or was paid off by mistake.</td></tr>
+</tbody></table></div>
+<h2>Limits</h2><ul><li>Reads only the files you export and give it. It does not log in to a DMS, lender portal, manufacturer system, DMV or bank.</li><li>Statement balances are principal only; the lender payoff adds interest and fees to date.</li><li>Not legal or lending advice. Your floorplan agreement sets the payoff terms.</li></ul>
+<p class="mut" style="margin-top:32px">Written by a Fairdrive agent from your files. Nothing was sent, paid, funded, titled or posted.</p>
+</main></body></html>

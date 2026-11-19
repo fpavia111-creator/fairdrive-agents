@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contracts in transit at 2026-11-15</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--mut:#6b6760;--line:#e4e0d8;--ok:#1f7a4d;--bad:#b42318;--warn:#a15c07;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#161514;--fg:#ecebe8;--mut:#a29d94;--line:#34312d;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--card:#1f1e1c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,"Hiragino Sans","Yu Gothic UI","Microsoft YaHei","PingFang SC","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px}
+.mut{color:var(--mut)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:600}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tiles{display:flex;gap:12px;flex-wrap:wrap}.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.tile b{display:block;font-size:22px}code{font-size:13px;overflow-wrap:anywhere}pre{overflow-x:auto}
+.wrap{overflow-x:auto;max-width:100%}svg,img{max-width:100%;height:auto}figure{margin:16px 0}p,li,h1,h2,h3{overflow-wrap:break-word}
+</style></head><body><main>
+<h1>Contracts in transit at 2026-11-15</h1>
+<p class="mut">10 contract(s): 5 in transit for 127300 (3 over 10 days, oldest 48 days, 1 returned by the lender). 1 funded by the lender but still open in the DMS. Funded short by 500 in total. 1 marked funded but not on the lender statement; 1 statement line(s) match no contract.</p>
+<h2>By lender</h2><div class="wrap"><table><thead><tr><th scope="col">lender</th><th scope="col">contracts</th><th scope="col">amount</th><th scope="col">oldest days</th></tr></thead><tbody>
+<tr><td>Harbor Auto Finance</td><td>2</td><td>51000</td><td>26</td></tr>
+<tr><td>Bluegate Bank</td><td>1</td><td>42000</td><td>48</td></tr>
+<tr><td>Summit Credit Union</td><td>2</td><td>34300</td><td>5</td></tr>
+</tbody></table></div>
+<h2>By age</h2><div class="wrap"><table><thead><tr><th scope="col">bucket</th><th scope="col">contracts</th><th scope="col">amount</th></tr></thead><tbody>
+<tr><td>0-10</td><td>2</td><td>34300</td></tr>
+<tr><td>11-20</td><td>1</td><td>19800</td></tr>
+<tr><td>21-30</td><td>1</td><td>31200</td></tr>
+<tr><td>30+</td><td>1</td><td>42000</td></tr>
+</tbody></table></div>
+<h2>Statement lines that match no contract</h2><div class="wrap"><table><thead><tr><th scope="col">lender</th><th scope="col">deal number</th><th scope="col">vin</th><th scope="col">funded on</th><th scope="col">funded amount</th></tr></thead><tbody>
+<tr><td>Summit Credit Union</td><td></td><td>7ZZWU701XKA720489</td><td>2026-11-04</td><td>9999</td></tr>
+</tbody></table></div>
+<h2>All rows (8)</h2>
+<div class="wrap"><table><thead><tr><th scope="col">finding</th><th scope="col">deal number</th><th scope="col">customer</th><th scope="col">lender</th><th scope="col">contract date</th><th scope="col">amount financed</th><th scope="col">days</th><th scope="col">bucket</th><th scope="col">stips</th><th scope="col">funded on</th><th scope="col">funded amount</th><th scope="col">difference</th><th scope="col">why</th></tr></thead><tbody>
+<tr><td>returned_by_lender</td><td>D2004</td><td>Osric Pemberton</td><td>Bluegate Bank</td><td>2026-09-28</td><td>42000</td><td>48</td><td>30+</td><td>Contract re-sign: APR does not match the approval</td><td></td><td></td><td></td><td>Returned by the lender (Returned): Contract re-sign: APR does not match the approval. Fix and resubmit; it is not funding while it waits.</td></tr>
+<tr><td>in_transit</td><td>D2002</td><td>Gideon Ashworth</td><td>Harbor Auto Finance</td><td>2026-10-20</td><td>31200</td><td>26</td><td>21-30</td><td>Proof of income; Proof of residence</td><td></td><td></td><td></td><td>26 day(s) since contract; open stips: Proof of income; Proof of residence.</td></tr>
+<tr><td>in_transit</td><td>D2010</td><td>Ezekiel Moravec</td><td>Harbor Auto Finance</td><td>2026-10-27</td><td>19800</td><td>19</td><td>11-20</td><td>Insurance verification</td><td></td><td></td><td></td><td>19 day(s) since contract; open stips: Insurance verification.</td></tr>
+<tr><td>in_transit</td><td>D2003</td><td>Fenna Rietveld</td><td>Summit Credit Union</td><td>2026-11-10</td><td>18900</td><td>5</td><td>0-10</td><td></td><td></td><td></td><td></td><td>5 day(s) since contract.</td></tr>
+<tr><td>in_transit</td><td>D2008</td><td>Bram Kessler</td><td>Summit Credit Union</td><td>2026-11-13</td><td>15400</td><td>2</td><td>0-10</td><td></td><td></td><td></td><td></td><td>2 day(s) since contract.</td></tr>
+<tr><td>funded_not_posted</td><td>D2006</td><td>Thaddeus Okonjo</td><td>Harbor Auto Finance</td><td>2026-11-02</td><td>35600</td><td>7</td><td></td><td></td><td>2026-11-09</td><td>35600</td><td></td><td>The lender statement shows 35600 funded on 2026-11-09; the DMS still shows the contract in transit. Post the funding and clear it from the schedule.</td></tr>
+<tr><td>funded_short</td><td>D2005</td><td>Wilhelmina Tasker</td><td>Summit Credit Union</td><td>2026-10-12</td><td>22750</td><td>7</td><td></td><td></td><td>2026-10-19</td><td>22250</td><td>-500</td><td>Funded 22250 against 22750 expected (-500). Check the lender&#39;s funding notice for fees, a reserve change or a product the lender did not buy.</td></tr>
+<tr><td>not_on_lender_statement</td><td>D2007</td><td>Rosalind Achterberg</td><td>Bluegate Bank</td><td>2026-10-05</td><td>26300</td><td>7</td><td></td><td></td><td>2026-10-12</td><td>26300</td><td></td><td>The DMS shows it funded but no line on the lender statement matches it by deal number or VIN. Confirm the money arrived.</td></tr>
+</tbody></table></div>
+<h2>Limits</h2><ul><li>Reads only the files you export and give it. It does not log in to a DMS, lender portal, manufacturer system, DMV or bank.</li><li>Funded means the DMS shows a funded date or status, or the lender statement shows the money. It does not read a bank account.</li><li>Not lending advice. A person decides what to send a lender and when to post funding.</li><li>Results returned to the AI model have customer names, phones, e-mails, addresses and ID numbers masked. The files written here keep the real values: keep them in a secure folder.</li></ul>
+<p class="mut" style="margin-top:32px">Written by a Fairdrive agent from your files. Nothing was sent, paid, funded, titled or posted.</p>
+</main></body></html>

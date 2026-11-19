@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-ofac-red-flags",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-ofac-red-flags",
   "description": "Fairdrive OFAC Red Flags: checks that every deal has an OFAC check and a Red Flags (identity) check record for each buyer, dated before delivery, with the result recorded. It checks that records exist; it makes no compliance determination and never clears a match.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-floorplan-audit",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-floorplan-audit",
   "description": "Fairdrive Floorplan Audit: matches the DMS vehicle inventory against the floorplan lender statement and lists units sold but not paid off, units on the statement the DMS does not have, units on the lot not floored and balance differences, and drafts a payoff list for one named person. Never pays a lender.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

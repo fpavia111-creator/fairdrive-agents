@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-deal-jackets",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-deal-jackets",
   "description": "Fairdrive Deal Jackets: checks every deal jacket against the documents a deal of its type should hold (buyer's order, contract, odometer statement, title application, privacy notice, OFAC and Red Flags records, Buyers Guide on used cars, trade-in papers) and lists what is missing or unsigned, oldest delivery first. Never books, changes or sends a deal.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

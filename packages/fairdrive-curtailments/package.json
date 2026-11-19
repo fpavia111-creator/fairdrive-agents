@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-curtailments",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-curtailments",
   "description": "Fairdrive Curtailments: works out the curtailment (principal pay-down) each floored unit owes under your lender schedule, lists what is overdue and what falls due in the coming weeks, and totals it by week. Never pays a lender.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

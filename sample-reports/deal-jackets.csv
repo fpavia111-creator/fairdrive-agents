@@ -1,0 +1,7 @@
+deal_number,customer,deal_type,sale_type,fi_manager,delivered,days_since_delivery,missing,unsigned,gaps
+D1010,Cormac Delahunt,finance,new,Sam Ibarra,2026-11-11,4,Buyer's order / bill of sale / Odometer disclosure / Title / registration application / Privacy notice / OFAC check record / Red Flags / identity check record / Proof of insurance / Copy of driver's license / Credit application / Retail installment contract / Credit score / risk-based pricing notice,,11
+D1002,Marcus Oyelaran,finance,used,Avery Lund,2026-10-06,40,Buyers Guide (window form) / Power of attorney,Credit score / risk-based pricing notice,3
+D1006,Rafael Quintero,cash,used,Sam Ibarra,2026-10-21,25,OFAC check record / Red Flags / identity check record,,2
+D1009,Bettina Okafor,cash,new,Avery Lund,2026-11-09,6,Proof of insurance / Copy of driver's license,,2
+D1003,Priya Castellanos,lease,new,Sam Ibarra,2026-10-10,36,Lease agreement,,1
+D1004,Theo Brandvold,finance,new,Sam Ibarra,2026-10-15,31,,Retail installment contract,1

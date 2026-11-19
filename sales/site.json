@@ -1,0 +1,70 @@
+{
+  "product": "Fairdrive",
+  "industry": "Auto dealers, repair shops and body shops",
+  "kicker": "31 agents for the dealership office, the service drive and the body shop",
+  "lede": "Thirty-one small agents that read the files your DMS, shop system, estimating system, floorplan lender and manufacturer already export, and hand your office a worked list of what is missing, late, short or wrong.",
+  "from": "$1,500",
+  "packages": [
+    ["$1,500 · One store", "Contracts and funding starter", "Contracts in transit by lender and age, finance reserve against what lenders paid, and F&I product chargebacks recomputed (3 agents)"],
+    ["$2,500 · One store", "F&I office pack", "Deal jackets, OFAC and Red Flags records on file, contracts in transit, reserve, cancellations, service contract remittances, deposits and we-owes (8 agents)"],
+    ["$2,500 · One store", "Floorplan and inventory pack", "Floorplan against inventory, curtailments by week, used-car aging and pricing, reconditioning days and cost, loaners and demos (5 agents)"],
+    ["$2,500 · One store", "Accounting office pack", "Schedules tied to the ledger, titles and temp tags, trade payoffs, DMV fees, sales tax by county, commissions and incentive claims (7 agents)"],
+    ["$3,000 · One store", "Fixed operations pack", "Warranty claims, open repair orders, margins, comebacks, flat-rate hours, policy adjustments, sublet, parts obsolescence and receiving (9 agents)"],
+    ["$1,500 · One shop", "Independent repair shop", "Open repair orders, margins, comebacks, technician hours, sublet invoices and parts receiving from Tekmetric, Shopmonkey or similar (6 agents)"],
+    ["$2,000 · One body shop", "Collision pack", "Estimates and supplements against final invoices, supplements waiting on insurers, sublet, open repair orders and parts receiving (5 agents)"],
+    ["$7,500 · One store", "Whole store", "All 31 agents, mapped to your exports and set to the days, rates and pay plans your store confirms, one training session"],
+    ["$11,000 · 2 to 4 rooftops", "Dealer group", "Whole store for each rooftop, each store's exports mapped and its own settings confirmed separately"],
+    ["$15,000 · Up to 15 stores", "Partner rollout", "For dealership accounting firms, 20 groups and fixed-ops consultants serving many stores: all 31 agents, one shared setup, every store's exports mapped with its own settings"]
+  ],
+  "support": "Support after setup: $250 a month for one pack, $600 a month for the whole store, $300 a month per rooftop for dealer groups and partner rollouts. Includes export changes, settings updates when your lender, manufacturer or state rules change, new versions and a monthly check-in.",
+  "notes": [
+    "Reads the files you export; it does not log in to your DMS, shop system, estimating system, lender portal, manufacturer portal, DMV or bank.",
+    "Days, rates, pay plans, tax rates, curtailment schedules and program limits are settings your store confirms; the defaults are working examples, not any lender's, manufacturer's or state's rules.",
+    "Column layouts for CDK, Reynolds and Reynolds, Dealertrack, DealerSocket, Tekion, Tekmetric, Shopmonkey, CCC and Mitchell were written from knowledge of those exports and have not been checked against a live account; setup confirms them with your files.",
+    "The OFAC and Red Flags agent checks that records exist and are dated before delivery; it makes no compliance determination and never reads or clears a check result.",
+    "Not legal, tax, lending or accounting advice. A person decides what to claim, pay, fund, title, charge back or post."
+  ],
+  "warn": "Everything runs on your computer on files you choose. Results the AI model sees have customer names, phones, e-mails, addresses and ID numbers masked. Nothing is ever paid, funded, titled, filed, sent or posted by an agent: drafts and payment lists wait for one named person's click, even in Auto mode.",
+  "groups": [
+    ["Deals and F&I", [
+      ["Deal jackets", "Every deal checked for the documents its type needs; missing and unsigned ones listed, oldest delivery first"],
+      ["Contracts in transit", "Financed deals not yet funded, by lender and days, with open stips, short funding and money funded but not posted"],
+      ["Finance reserve", "Reserve each deal should earn from the buy and contract rates, against what the lender actually paid"],
+      ["Product cancellations", "Dealer chargebacks on cancelled service contracts, GAP and other products recomputed pro rata, and refunds not sent"],
+      ["Service contract remittances", "Every contract sold matched to its remittance; late, short, double or missing remittances listed"],
+      ["OFAC and Red Flags records", "OFAC and identity check records on file for each buyer and co-buyer, dated before delivery; presence only"],
+      ["Customer deposits", "Deposits not applied to delivered deals, due back on dead deals, or held with no deal"],
+      ["We-owes", "Promises made on deals that are late, unscheduled, or done without the cost booked"],
+      ["Sales commissions", "Commission per deal from your pay plans, splits and minimums, against what was paid"]
+    ]],
+    ["Vehicles and floorplan", [
+      ["Floorplan audit", "Inventory against the lender statement: sold and not paid off, on the statement but not in stock, balances that differ"],
+      ["Curtailments", "Principal pay-downs owed under your floorplan schedule, overdue and by week ahead"],
+      ["Used vehicle aging", "Days in stock, units past your wholesale line, priced above or well below market, below cost or stale"],
+      ["Reconditioning", "Days and cost from acquisition to front line, units stuck with open orders or never started"],
+      ["Loaner fleet", "Loaners and demos past or near their day and mile limits, and loaners out with no repair order"],
+      ["Trade payoffs", "Lien payoffs not sent, sent late or short of the per diem, not cleared, or without a lien release"],
+      ["Title tracking", "Title applications, trade titles, registrations and temp tags against your state's days"],
+      ["Incentive claims", "Rebates, dealer cash and holdback expected per unit against the manufacturer statement"]
+    ]],
+    ["Service, parts and collision", [
+      ["Warranty claims", "Claims unpaid by age, paid short, rejected with their resubmit-by date, or debited after payment"],
+      ["Open repair orders", "Open orders by age and advisor; past promise, waiting on parts, warranty and internal orders open too long"],
+      ["Repair order margins", "Labor and parts gross by pay type and advisor; orders under your floors and parts sold below cost"],
+      ["Comebacks", "The same vehicle back within your days and miles for the same work, by technician and operation"],
+      ["Flat-rate hours", "Flagged hours against clocked and punched time per technician, with jobs flagged and never worked"],
+      ["Policy adjustments", "Goodwill with no approver, self-approved, over your review line, unexplained or repeated"],
+      ["Sublet invoices", "Sublet lines against vendor invoices: over the PO, never invoiced, billed below cost or twice"],
+      ["Parts obsolescence", "Parts on hand by months since last sale, valued, with returnable stock first"],
+      ["Parts receiving", "Parts received against invoices: billed not received, received not billed, overpriced, duplicated"],
+      ["Estimate vs invoice", "The latest estimate and supplements against the final invoice by labor, parts, materials and sublet"],
+      ["Insurance supplements", "Supplements waiting on insurers, approved short or denied, with days to answer by insurer"]
+    ]],
+    ["The accounting office", [
+      ["GL schedules", "Each schedule tied to the ledger and aged by control number; old items, credits and zero controls listed"],
+      ["DMV fees", "Title and registration fees collected on each deal against what the DMV or tag agency charged"],
+      ["Sales tax", "Tax on each deal recomputed from your county rate table, trade credit and caps"]
+    ]]
+  ],
+  "closing": "Each one does one job, on your computer, from a file you export. It writes the list your office works from, drafts what a person may send, and never pays, funds, titles, files or posts anything itself."
+}

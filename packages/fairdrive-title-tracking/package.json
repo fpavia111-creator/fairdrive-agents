@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-title-tracking",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-title-tracking",
   "description": "Fairdrive Title Tracking: tracks title applications, trade-in titles, registrations and temporary tags for every delivered deal against the days you set, and lists what is late or about to expire. Never files with the DMV.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.fpavia111-creator/fairdrive-sublet-invoices",
+  "title": "Fairdrive Sublet Invoices",
+  "description": "Fairdrive Sublet Invoices: matches sublet lines on repair orders against vendor invoices and lists…",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/fpavia111-creator/fairdrive-agents",
+    "source": "github",
+    "subfolder": "packages/fairdrive-sublet-invoices"
+  },
+  "websiteUrl": "https://fair-agents.com/fairdrive.html",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "fairdrive-sublet-invoices",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "mcp"
+        },
+        {
+          "type": "named",
+          "name": "--root",
+          "description": "Folder holding the exports this agent may read and write (it cannot reach outside it)",
+          "isRequired": true,
+          "format": "filepath",
+          "valueHint": "exports_folder"
+        }
+      ]
+    }
+  ]
+}

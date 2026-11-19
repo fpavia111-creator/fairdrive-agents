@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-comebacks",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-comebacks",
   "description": "Fairdrive Comebacks: finds repair orders where the same vehicle came back within your days and miles for the same operation or concern, and totals comebacks by technician and operation. Never charges a technician.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

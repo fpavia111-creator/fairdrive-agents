@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-insurance-supplements",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-insurance-supplements",
   "description": "Fairdrive Insurance Supplements: tracks every supplement sent to an insurer, lists those waiting past your follow-up days, approved short or denied, totals them by insurer, and drafts a follow-up to the adjuster. Never submits to an insurer.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

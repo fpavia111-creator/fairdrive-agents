@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-sales-commissions",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-sales-commissions",
   "description": "Fairdrive Sales Commissions: works out each salesperson commission from your pay plans (front and back percentages, minimums, split deals), compares it with what was paid, and drafts the commission sheet for one named person to approve. Never runs payroll.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

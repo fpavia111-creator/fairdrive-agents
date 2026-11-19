@@ -1,0 +1,7 @@
+claim_number,ro_number,vin,submitted_date,age_days,bucket,claimed,paid,outstanding,resubmit_by,reason,findings,why
+C7005,50072,7ZZ8A87XXRA659009,2026-09-01,75,61-90,2300,0,2300,,,unpaid,Submitted 75 days ago and not on the statement.
+C7007,50079,7ZZL9XH0XTA359430,2026-09-20,56,,1180,0,1180,,Audit: diagnosis time not supported,debited_after_payment,Debited 1180 on 2026-11-03: Audit: diagnosis time not supported.
+C7004,50088,7ZZ0TCCU6PA503360,2026-09-15,61,,975,0,975,2026-10-25,Part not returned,rejected_past_deadline,Rejected: Part not returned. Resubmit by 2026-10-25 (passed).
+C7003,50120,7ZZ8CCUK8NA412538,2026-10-08,38,,600,0,600,2026-11-19,Labor op not on repair order,rejected,Rejected: Labor op not on repair order. Resubmit by 2026-11-19.
+C7006,50161,7ZZUSUHH2SA184098,2026-11-05,10,0-30,410,0,410,,,unpaid,Submitted 10 days ago and not on the statement.
+C7002,50114,7ZZ9U1LW1MA734429,2026-10-05,41,,1450,1210,240,,,paid_short,Paid 1210 against 1450 claimed.

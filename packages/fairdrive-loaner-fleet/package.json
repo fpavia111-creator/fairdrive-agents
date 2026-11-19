@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-loaner-fleet",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-loaner-fleet",
   "description": "Fairdrive Loaner Fleet: checks service loaners and demonstrators against your days and mileage limits, and lists units over or near a limit, loaners out with no repair order and loan agreements open too long. Never retails a unit.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",

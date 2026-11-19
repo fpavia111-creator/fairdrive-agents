@@ -1,6 +1,7 @@
 {
   "name": "fairdrive-estimate-vs-invoice",
   "version": "0.1.0",
+  "mcpName": "io.github.fpavia111-creator/fairdrive-estimate-vs-invoice",
   "description": "Fairdrive Estimate vs Invoice: compares the latest estimate and supplements on each collision repair (CCC, Mitchell) with the final invoice by labor, parts, materials and sublet, and lists repairs invoiced over or under the estimate, invoices with no estimate and estimates not invoiced. Never contacts an insurer.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "evals",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "scripts": {
     "test": "node scripts/run-tests.cjs",
