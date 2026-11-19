@@ -26,13 +26,13 @@ All on this machine: Windows 10, Node 24.20.0.
 
 | Check | Result |
 |---|---|
-| `npm test` (32 workspaces) | **811 tests, 811 pass, 0 fail**: 132 in `fairdrive-core`, 21 to 26 per agent |
+| `npm test` (32 workspaces) | **812 tests, 812 pass, 0 fail**: 133 in `fairdrive-core`, 21 to 26 per agent |
 | Eval cases (`<agent> eval`, also run inside each agent's tests) | **559 cases, all pass**; 17 to 22 per agent (hand-written domain cases, generated policy cases, German and Japanese export cases) |
 | `npm run hostile` (formulas, HTML, `../` ids and AI-aimed instructions planted in every fixture; every eval case) | **2,795 calls, 327 planted values, 0 findings**; 72 results correctly flagged for instruction-like text |
-| `npm run hostile:args` (null, numbers, arrays, a 200,000-character string, NUL, `../` and absolute paths in every argument of every tool) | see the line added at the end of this file |
+| `npm run hostile:args` (null, numbers, arrays, a 200,000-character string, NUL, `../` and absolute paths in every argument of every tool; data and export passes included) | **9,749 calls, 0 findings**, after the hang fix below (run as six parallel workers, a few agents each) |
 | `npm run intl` (every spreadsheet eval case re-read as a German, French, Spanish, Portuguese, Italian, Japanese, Chinese and Korean export, legacy encodings, comma decimals, local dates) | **31 agents, 361 cases × 8 languages, every case that passes in English passes in every language**; 189 of 355 columns found by a translated name (German count) |
-| `npm run bench` (1,000 and 10,000 rows) | see the line added at the end of this file |
-| `npm run release:check:offline` | see the line added at the end of this file |
+| `npm run bench` (1,000 and 10,000 rows) | **62 tools in 31 agents, all run at 10,000 rows, 0 need attention** after the fixes below; median 2.4 s at 10,000 rows, slowest 5.8 s (contracts in transit), peak memory 245 MB. Timings were taken while other sessions ran heavy checks on the same machine |
+| `npm run release:check:offline` | **passes**: 32 packages listed, metadata in order, git clean, no `.npmrc`, secret scan (869 files) clean, honest copy (97 files) clean, one-click policy clean, no paid tools, 812 tests, 559/559 evals, hostile 0 findings, `npm pack` of 32 packages (527 KB) with no tests, state, output or keys. npm names skipped offline (checked separately below) |
 | Contract tests in every agent | every tool that runs has an eval; readable errors for missing or wrong arguments; files outside `--root` refused; Review mode and the kill switch hold; drafts tied to their sha256; same answer twice, with columns reordered, an extra column, BOM and CRLF, padded values, blank lines or rows in another order; a header-only file answered; report page in the report language with the CSV unchanged; the agent's own column names read as they are; **masking canaries** (3 to 5 fictional customer names per agent never reach a result; agents that read no customer column say why) |
 | `npm view` for all 32 package names (read-only) | **all 32 free** on npm, 18 Nov 2026 |
 | MCP Registry step (`node ..\add-mcp-registry.cjs fairdrive-agents fairdrive.html`) | `mcpName` and `server.json` added to all 31 agents |
@@ -52,6 +52,14 @@ All on this machine: Windows 10, Node 24.20.0.
 
 ## Found and fixed during the build
 
+- **Core: `hostile:args` hung on Windows.** A report written to a 200,000-character `out_dir` reached a
+  recursive `mkdir`, which never returns on Windows (one CPU at 100%, no output for 20 minutes). `safePath` now
+  refuses paths over 1,024 characters or with a name over 255 before the file system sees them. Every family
+  copied from the Lodestar core has the same code; a note for the other sessions is in the shared notes folder.
+- **Bench: two agents were quadratic.** product-cancellations counted unique rows with `findIndex` inside
+  `filter`, and sublet-invoices searched every sublet line for each invoice: about 79 s at 10,000 rows. Both are
+  linear now (about 1.3 s). contracts-in-transit searched the whole lender statement per contract (10.7 s);
+  statement lines are now indexed by deal number and VIN tail (about 5 s).
 - **Core: one file given for two arguments** (for example the same CSV as `deals` and `checks`) was read twice
   with the first argument's column layout, so the second read silently found none of its columns. Each read now
   takes the next argument that names the file. Found by an OFAC eval; core test added.

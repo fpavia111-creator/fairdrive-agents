@@ -41,4 +41,4 @@ Jeder Agent hat eine `demo` mit fiktiven Dateien, ein `eval` mit eigenen Testfä
 
 ## Geprüft
 
-811 Tests und 559 Eval-Fälle, alle bestanden (Windows, Node 24). Feindliche Eingaben und kaputte Argumente: 0 Befunde. Exporte in neun Sprachen werden gleich gelesen. Details in [REVIEW-ver1.md](REVIEW-ver1.md).
+812 Tests und 559 Eval-Fälle, alle bestanden (Windows, Node 24). Feindliche Eingaben und kaputte Argumente: 0 Befunde. Exporte in neun Sprachen werden gleich gelesen. Details in [REVIEW-ver1.md](REVIEW-ver1.md).
