@@ -72,3 +72,10 @@ test('runtime: the same file given for two arguments is read once per argument, 
   assert.ok(seen.A.includes('id') && seen.B.includes('code'), JSON.stringify(seen));
   assert.doesNotMatch(JSON.stringify(r), /Pat Example/, 'the customer name is masked in the result');
 });
+
+test('safePath refuses over-long paths before the file system sees them (a recursive mkdir would hang on Windows)', async () => {
+  const { safePath } = await import('../src/util.js');
+  assert.throws(() => safePath(tmpdir(), 'A'.repeat(200000)), /too long/);
+  assert.throws(() => safePath(tmpdir(), `out/${'B'.repeat(300)}/x.csv`), /too long/);
+  assert.ok(safePath(tmpdir(), 'fairdrive-out/ok'));
+});
