@@ -38,8 +38,8 @@ export const EXPORTS = Object.freeze(Object.fromEntries([
   e('ccc_one_estimates', 'CCC ONE', 'Estimate and supplement list export (CSV)', [['RO Number', 'RO #'], ['Supplement', 'Supplement Number'], ['Gross Total', 'Estimate Total']]),
   e('mitchell_estimates', 'Mitchell Cloud Estimating', 'Estimate totals export (CSV)', [['Claim Number', 'Claim #'], ['Estimate Total', 'Grand Total'], ['Version', 'Supplement']]),
   // Manufacturer statements
-  e('oem_warranty_statement', 'Manufacturer warranty statement (generic)', 'Warranty claim payment statement saved as CSV', ['Claim Number', ['Amount Paid', 'Paid Amount'], ['Status', 'Claim Status']]),
-  e('oem_incentive_statement', 'Manufacturer incentive statement (generic)', 'Incentive / dealer cash payment statement saved as CSV', ['VIN', ['Program Code', 'Program'], ['Amount Paid', 'Paid Amount', 'Credit Amount']]),
+  e('oem_warranty_statement', 'Manufacturer warranty statement (generic)', 'Warranty claim payment statement saved as CSV', ['Claim Number', 'Claim Status', ['Amount Paid', 'Paid Amount'], 'Debit Code']),
+  e('oem_incentive_statement', 'Manufacturer incentive statement (generic)', 'Incentive / dealer cash payment statement saved as CSV', ['VIN', 'Program Code', ['Amount Paid', 'Paid Amount', 'Credit Amount'], 'Statement Date']),
 ].map((x) => [x.id, x])));
 
 /** A profile for an agent: a catalogue entry plus the agent's column map. */

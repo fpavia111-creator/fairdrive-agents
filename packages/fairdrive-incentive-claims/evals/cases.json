@@ -1,0 +1,278 @@
+{
+  "suite": "fairdrive-incentive-claims",
+  "root": "..",
+  "data_note": "Fictional incentive programs and a fictional manufacturer statement in ../fixtures, as of 2026-11-15. No model is called.",
+  "pii_none": "Reads VINs, program codes, dates and amounts, no customer data.",
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "incentives_check",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.lines": 8,
+          "result.expected": 10580,
+          "result.paid": 3580,
+          "result.outstanding": 7000,
+          "result.not_submitted_past_deadline": 1,
+          "result.not_submitted": 1,
+          "result.unpaid": 1,
+          "result.paid_short": 1,
+          "result.rejected": 1,
+          "result.charged_back": 1
+        }
+      }
+    },
+    {
+      "id": "largest-outstanding-first",
+      "tool": "incentives_check",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.program": "RET-2026-11",
+          "result.items.1.deal_number": "D11004",
+          "result.items.5.outstanding": 500
+        },
+        "length": {
+          "result.items": 6,
+          "result.paid_not_expected": 1
+        }
+      }
+    },
+    {
+      "id": "reasons-carried",
+      "tool": "incentives_check",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "contains": [
+          "Proof of ownership missing",
+          "Unit reported sold twice"
+        ],
+        "not_contains": [
+          "\"D11001\""
+        ]
+      }
+    },
+    {
+      "id": "later-deadline",
+      "tool": "incentives_check",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "deadline_days": 60
+      },
+      "expect": {
+        "equals": {
+          "result.not_submitted_past_deadline": 0,
+          "result.not_submitted": 2
+        }
+      }
+    },
+    {
+      "id": "longer-unpaid-window",
+      "tool": "incentives_check",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "unpaid_days": 90
+      },
+      "expect": {
+        "equals": {
+          "result.unpaid": 0
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "incentives_write_report",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "8 incentive line(s): 10580 expected, 3580 paid, 7000 outstanding"
+        ]
+      }
+    },
+    {
+      "id": "draft-inquiry",
+      "tool": "incentives_draft_inquiry",
+      "mode": "auto",
+      "auto_actions": [
+        "incentives_draft_inquiry"
+      ],
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "from": "Jordan Reyes",
+        "contact": "incentives@oem.example"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.amount": 3500,
+          "result.claims": 4,
+          "result.open_markers": 1
+        }
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "incentives_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-oem-portal-submit-claim",
+      "tool": "oem_portal_submit_claim",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-gl-post-receivable",
+      "tool": "gl_post_receivable",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "incentives_check",
+      "args": {
+        "expected": "../../../outside/export.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "incentives_check",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "expected"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "incentives_check",
+      "mode": "review",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.lines": 8,
+          "result.expected": 10580,
+          "result.paid": 3580,
+          "result.outstanding": 7000,
+          "result.not_submitted_past_deadline": 1,
+          "result.not_submitted": 1,
+          "result.unpaid": 1,
+          "result.paid_short": 1,
+          "result.rejected": 1,
+          "result.charged_back": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "incentives_write_report",
+      "mode": "review",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    },
+    {
+      "id": "policy-draft-asks-first",
+      "tool": "incentives_draft_inquiry",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "from": "Jordan Reyes",
+        "contact": "incentives@oem.example"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    },
+    {
+      "id": "policy-draft-blocked-in-review",
+      "tool": "incentives_draft_inquiry",
+      "mode": "review",
+      "args": {
+        "expected": "fixtures/expected.csv",
+        "statement": "fixtures/statement.csv",
+        "as_of": "2026-11-15",
+        "from": "Jordan Reyes",
+        "contact": "incentives@oem.example"
+      },
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-approval-stays-one-click-in-auto",
+      "tool": "incentives_request_send",
+      "mode": "auto",
+      "auto_actions": [
+        "incentives_draft_inquiry"
+      ],
+      "args": {
+        "draft": "fairdrive-out/incentives/drafts/none.md",
+        "draft_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    }
+  ]
+}
