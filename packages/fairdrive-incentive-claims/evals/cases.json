@@ -273,6 +273,54 @@
       "expect": {
         "status": "needs_approval"
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "incentives_check",
+      "args": {
+        "expected": "fixtures/intl/de/expected.csv",
+        "statement": "fixtures/intl/de/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.lines": 8,
+          "result.expected": 10580,
+          "result.paid": 3580,
+          "result.outstanding": 7000,
+          "result.not_submitted_past_deadline": 1,
+          "result.not_submitted": 1,
+          "result.unpaid": 1,
+          "result.paid_short": 1,
+          "result.rejected": 1,
+          "result.charged_back": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "incentives_check",
+      "args": {
+        "expected": "fixtures/intl/ja/expected.csv",
+        "statement": "fixtures/intl/ja/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.lines": 8,
+          "result.expected": 10580,
+          "result.paid": 3580,
+          "result.outstanding": 7000,
+          "result.not_submitted_past_deadline": 1,
+          "result.not_submitted": 1,
+          "result.unpaid": 1,
+          "result.paid_short": 1,
+          "result.rejected": 1,
+          "result.charged_back": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

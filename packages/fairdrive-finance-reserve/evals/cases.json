@@ -327,6 +327,52 @@
       "expect": {
         "status": "needs_approval"
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "fixtures/intl/de/deals.csv",
+        "payments": "fixtures/intl/de/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 8,
+          "result.reserve_expected": 6965.91,
+          "result.reserve_received": 3393.07,
+          "result.missing": 1,
+          "result.short_paid": 1,
+          "result.over_paid": 0,
+          "result.reserve_short": 2317.72,
+          "result.product_short": 1700,
+          "result.cannot_compute": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "reserve_check",
+      "args": {
+        "deals": "fixtures/intl/ja/deals.csv",
+        "payments": "fixtures/intl/ja/payments.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 8,
+          "result.reserve_expected": 6965.91,
+          "result.reserve_received": 3393.07,
+          "result.missing": 1,
+          "result.short_paid": 1,
+          "result.over_paid": 0,
+          "result.reserve_short": 2317.72,
+          "result.product_short": 1700,
+          "result.cannot_compute": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

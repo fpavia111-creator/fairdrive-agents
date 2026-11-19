@@ -210,6 +210,44 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "policy_check",
+      "args": {
+        "adjustments": "fixtures/intl/de/policy.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.adjustments": 6,
+          "result.amount": 1265,
+          "result.no_approver": 1,
+          "result.self_approved": 1,
+          "result.large_adjustment": 2,
+          "result.no_reason": 1,
+          "result.repeat_vehicle": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "policy_check",
+      "args": {
+        "adjustments": "fixtures/intl/ja/policy.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.adjustments": 6,
+          "result.amount": 1265,
+          "result.no_approver": 1,
+          "result.self_approved": 1,
+          "result.large_adjustment": 2,
+          "result.no_reason": 1,
+          "result.repeat_vehicle": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

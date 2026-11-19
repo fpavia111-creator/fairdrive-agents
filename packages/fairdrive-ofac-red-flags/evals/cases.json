@@ -229,6 +229,48 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "redflags_check",
+      "args": {
+        "deals": "fixtures/intl/de/deals.csv",
+        "checks": "fixtures/intl/de/checks.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 6,
+          "result.skipped_unwound": 1,
+          "result.deals_with_gaps": 4,
+          "result.ofac_missing": 1,
+          "result.ofac_after_delivery": 1,
+          "result.co_buyer_not_checked": 1,
+          "result.red_flags_missing": 1,
+          "result.result_not_recorded": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "redflags_check",
+      "args": {
+        "deals": "fixtures/intl/ja/deals.csv",
+        "checks": "fixtures/intl/ja/checks.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 6,
+          "result.skipped_unwound": 1,
+          "result.deals_with_gaps": 4,
+          "result.ofac_missing": 1,
+          "result.ofac_after_delivery": 1,
+          "result.co_buyer_not_checked": 1,
+          "result.red_flags_missing": 1,
+          "result.result_not_recorded": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

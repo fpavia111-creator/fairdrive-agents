@@ -228,6 +228,48 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "schedules_age",
+      "args": {
+        "detail": "fixtures/intl/de/schedule-detail.csv",
+        "balances": "fixtures/intl/de/gl-balances.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.schedules": 3,
+          "result.out_of_balance": 2,
+          "result.open_total": 65210,
+          "result.over_90_controls": 2,
+          "result.over_90_amount": 10300,
+          "result.zero_balance_controls": 2,
+          "result.credit_balances": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "schedules_age",
+      "args": {
+        "detail": "fixtures/intl/ja/schedule-detail.csv",
+        "balances": "fixtures/intl/ja/gl-balances.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.schedules": 3,
+          "result.out_of_balance": 2,
+          "result.open_total": 65210,
+          "result.over_90_controls": 2,
+          "result.over_90_amount": 10300,
+          "result.zero_balance_controls": 2,
+          "result.credit_balances": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

@@ -232,6 +232,54 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "recon_check",
+      "args": {
+        "units": "fixtures/intl/de/units.csv",
+        "repair_orders": "fixtures/intl/de/recon-ros.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 7,
+          "result.frontline": 4,
+          "result.in_recon": 3,
+          "result.average_days_to_frontline": 7.5,
+          "result.recon_cost": 6350,
+          "result.over_budget": 2,
+          "result.slow": 1,
+          "result.stuck": 1,
+          "result.waiting_no_ro": 1,
+          "result.open_ro_after_frontline": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "recon_check",
+      "args": {
+        "units": "fixtures/intl/ja/units.csv",
+        "repair_orders": "fixtures/intl/ja/recon-ros.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 7,
+          "result.frontline": 4,
+          "result.in_recon": 3,
+          "result.average_days_to_frontline": 7.5,
+          "result.recon_cost": 6350,
+          "result.over_budget": 2,
+          "result.slow": 1,
+          "result.stuck": 1,
+          "result.waiting_no_ro": 1,
+          "result.open_ro_after_frontline": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

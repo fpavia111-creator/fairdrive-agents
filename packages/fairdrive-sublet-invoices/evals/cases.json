@@ -234,6 +234,56 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "sublet_match",
+      "args": {
+        "sublet_lines": "fixtures/intl/de/sublet-lines.csv",
+        "invoices": "fixtures/intl/de/sublet-invoices.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.sublet_lines": 6,
+          "result.cost": 1330,
+          "result.sale": 1540,
+          "result.invoice_over_po": 1,
+          "result.over_amount": 30,
+          "result.closed_no_invoice": 1,
+          "result.unbooked_cost": 410,
+          "result.sold_below_cost": 1,
+          "result.not_billed": 1,
+          "result.duplicate_invoices": 1,
+          "result.invoices_no_ro": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "sublet_match",
+      "args": {
+        "sublet_lines": "fixtures/intl/ja/sublet-lines.csv",
+        "invoices": "fixtures/intl/ja/sublet-invoices.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.sublet_lines": 6,
+          "result.cost": 1330,
+          "result.sale": 1540,
+          "result.invoice_over_po": 1,
+          "result.over_amount": 30,
+          "result.closed_no_invoice": 1,
+          "result.unbooked_cost": 410,
+          "result.sold_below_cost": 1,
+          "result.not_billed": 1,
+          "result.duplicate_invoices": 1,
+          "result.invoices_no_ro": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

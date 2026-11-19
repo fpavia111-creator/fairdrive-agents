@@ -252,27 +252,40 @@ export const COLUMN_WORDS = {
   account_name: W(['Kontobezeichnung', 'Kontoname'], ['Libellé du compte', 'Intitulé du compte'], ['Nombre de la cuenta', 'Descripción de la cuenta'], ['Nome da conta', 'Descrição da conta'], ['Descrizione conto', 'Nome conto'], ['勘定科目名', '科目名'], ['科目名称', '会计科目名称'], ['계정과목명', '계정명']),
   balance: W(['Saldo', 'Endsaldo', 'Kontostand'], ['Solde', 'Solde final'], ['Saldo', 'Saldo final'], ['Saldo', 'Saldo final'], ['Saldo', 'Saldo finale'], ['残高', '期末残高'], ['余额', '期末余额', '餘額'], ['잔액', '기말잔액']),
   subsidiary: W(['Gesellschaft', 'Buchungskreis', 'Tochtergesellschaft'], ['Société', 'Filiale', 'Entité'], ['Sociedad', 'Filial', 'Entidad'], ['Empresa', 'Filial', 'Entidade'], ['Società', 'Filiale', 'Entità'], ['会社', '子会社', '会社コード'], ['子公司', '公司代码', '核算主体'], ['법인', '자회사', '회사코드']),
+  // ---- Dealers, repair shops and body shops ----
+  // Written from common DMS, shop-system and estimating exports in each market. None was
+  // checked against a live export; "columns" in fairdrive-sources.json fixes a wrong word.
+  deal_number: W(['Vorgangsnummer', 'Verkaufsnummer', 'Deal-Nr.'], ['N° de vente', 'N° de dossier vente'], ['N.º de operación', 'Número de operación'], ['N.º da venda', 'Número da venda'], ['N. vendita', 'Numero vendita'], ['取引番号', '商談番号'], ['交易号', '交易编号'], ['거래 번호', '계약 번호']),
+  stock_number: W(['Bestandsnummer', 'Lagernummer', 'Interne Nr.'], ['N° de stock', 'Numéro de stock'], ['N.º de stock', 'Número de inventario'], ['N.º de estoque', 'Número de estoque'], ['N. stock', 'Numero di stock'], ['在庫番号', 'ストック番号'], ['库存编号', '库存号'], ['재고 번호', '재고번호']),
+  vin: W(['FIN', 'Fahrgestellnummer'], ['Numéro de série', 'N° de série'], ['Número de bastidor', 'Bastidor'], ['Chassi', 'Número do chassi'], ['Telaio', 'Numero di telaio'], ['車台番号'], ['车架号', '车辆识别代号'], ['차대번호', '차대 번호']),
+  ro_number: W(['Auftragsnummer', 'Werkstattauftrag'], ['N° d’OR', 'Ordre de réparation'], ['N.º de orden de reparación', 'Orden de reparación'], ['N.º da OS', 'Ordem de serviço'], ['N. ordine di riparazione', 'Ordine di lavoro'], ['修理オーダー番号', '作業指示書番号'], ['维修工单号', '工单号'], ['수리 오더 번호', '작업지시서 번호']),
+  lender: W(['Kreditgeber', 'Finanzierer'], ['Prêteur', 'Organisme de financement'], ['Financiera', 'Entidad financiera'], ['Financeira', 'Agente financeiro'], ['Finanziatore', 'Società finanziaria'], ['金融機関', 'ローン会社'], ['贷款机构', '金融机构'], ['금융사', '대출 기관']),
+  provider: W(['Anbieter', 'Garantieanbieter'], ['Fournisseur du contrat', 'Gestionnaire'], ['Proveedor', 'Administrador'], ['Administradora', 'Fornecedor do contrato'], ['Fornitore', 'Amministratore'], ['プロバイダー', '保証会社'], ['服务商', '保障公司'], ['제공사', '보증 회사']),
+  insurer: W(['Versicherer', 'Versicherung'], ['Assureur', 'Compagnie d’assurance'], ['Aseguradora', 'Compañía de seguros'], ['Seguradora', 'Companhia de seguros'], ['Assicuratore', 'Compagnia assicurativa'], ['保険会社'], ['保险公司'], ['보험사', '보험 회사']),
+  technician: W(['Mechaniker', 'Techniker'], ['Technicien', 'Mécanicien'], ['Técnico', 'Mecánico'], ['Mecânico', 'Técnico mecânico'], ['Tecnico', 'Meccanico'], ['整備士', 'メカニック'], ['技师', '维修技师'], ['정비사', '테크니션']),
+  advisor: W(['Serviceberater', 'Kundendienstberater'], ['Conseiller service', 'Réceptionnaire'], ['Asesor de servicio', 'Recepcionista de taller'], ['Consultor técnico', 'Consultor de serviço'], ['Accettatore', 'Consulente di servizio'], ['サービスアドバイザー', '受付担当'], ['服务顾问', '接待顾问'], ['서비스 어드바이저', '접수 담당']),
+  salesperson: W(['Verkäufer', 'Verkaufsberater'], ['Vendeur', 'Conseiller commercial'], ['Vendedor', 'Asesor comercial'], ['Consultor de vendas', 'Vendedor responsável'], ['Venditore', 'Consulente vendite'], ['営業担当', '販売担当'], ['销售顾问', '销售员'], ['영업 사원', '판매 사원']),
+  delivery_date: W(['Auslieferungsdatum', 'Übergabedatum'], ['Date de livraison', 'Date de remise'], ['Fecha de entrega'], ['Data de entrega'], ['Data di consegna'], ['納車日'], ['交车日期', '交付日期'], ['출고일', '인도일']),
+  claim_number: W(['Antragsnummer', 'Garantieantrag-Nr.'], ['N° de demande', 'N° de réclamation'], ['N.º de reclamación', 'Número de reclamación'], ['N.º do pedido', 'Número do pedido de garantia'], ['N. richiesta', 'Numero pratica'], ['請求番号', 'クレーム番号'], ['索赔号', '索赔编号'], ['청구 번호', '클레임 번호']),
+  part_number: W(['Teilenummer', 'Ersatzteilnummer'], ['Référence pièce', 'N° de pièce'], ['Número de pieza', 'Referencia de repuesto'], ['Número da peça', 'Código da peça'], ['Codice ricambio', 'Numero pezzo'], ['部品番号', '品番'], ['零件号', '配件编号'], ['부품 번호', '품번']),
+  county: W(['Landkreis', 'Kreis'], ['Comté', 'Département'], ['Condado', 'Provincia'], ['Município', 'Condado'], ['Contea', 'Provincia'], ['郡名', '郡'], ['县名', '县'], ['카운티', '군']),
+  program: W(['Programm', 'Aktionscode'], ['Programme', 'Code programme'], ['Programa', 'Código de programa'], ['Código do programa', 'Programa'], ['Programma', 'Codice programma'], ['プログラム', '販売施策'], ['激励项目', '项目代码'], ['프로그램', '프로그램 코드']),
+  op_code: W(['Arbeitsposition', 'AW-Nummer'], ['Code opération', 'Code main-d’œuvre'], ['Código de operación', 'Código de mano de obra'], ['Código de operação', 'Código de mão de obra'], ['Codice operazione', 'Codice manodopera'], ['作業コード'], ['工时代码', '作业代码'], ['작업 코드']),
+  schedule: W(['Kontennachweis', 'Nebenbuch'], ['Détail de compte', 'Compte auxiliaire'], ['Auxiliar', 'Cuenta auxiliar'], ['Razão auxiliar', 'Conta auxiliar'], ['Partitario', 'Conto ausiliario'], ['勘定明細', '補助科目'], ['明细表', '辅助科目'], ['계정 명세', '보조 계정']),
+  control_number: W(['Kontrollnummer', 'Belegreferenz'], ['N° de contrôle', 'Référence de contrôle'], ['N.º de control', 'Número de control'], ['N.º de controle', 'Número de controle'], ['Numero di controllo', 'Riferimento di controllo'], ['コントロール番号', '管理番号'], ['控制号', '管理编号'], ['관리 번호', '통제 번호']),
   ledger_debit: W(['Soll', 'Soll-Betrag'], ['Débit'], ['Debe', 'Débito'], ['Débito'], ['Dare'], ['借方', '借方金額'], ['借方', '借方金额'], ['차변', '차변금액']),
   ledger_credit: W(['Haben', 'Haben-Betrag'], ['Crédit'], ['Haber', 'Crédito'], ['Crédito'], ['Avere'], ['貸方', '貸方金額'], ['贷方', '贷方金额'], ['대변', '대변금액']),
 };
 
 /**
- * Agent fields that read another entry of the dictionary: a freight agent's
- * load_id is a shipment number, its billed weight a chargeable weight. A field
+ * Agent fields that read another entry of the dictionary: a lienholder is a lender,
+ * a quantity received or billed is a quantity. A field
  * that is not here reads the entry of its own name, when there is one.
  */
 export const FIELD_CONCEPTS = Object.freeze({
-  load_id: 'shipment_id', invoice_number: 'invoice', carrier_name: 'carrier',
-  bl: 'bol', delivery_date: 'delivered_date', delivered_at: 'delivered_date', delivery_actual: 'delivered_date', pod_delivery_date: 'delivered_date',
-  pickup_actual: 'pickup_date', actual_weight: 'weight', declared_weight: 'weight', billed_kg: 'billed_weight', actual_kg: 'weight',
-  miles: 'distance', origin_city: 'origin', dest_city: 'destination', charge_type: 'charge_description', charge_code: 'charge_description',
-  cost: 'freight_cost', freight: 'freight_cost', billed: 'freight_cost', paid: 'paid_amount', billed_amount: 'amount', invoice_amount: 'amount',
-  paid_on: 'paid_date', paid_at: 'paid_date', units: 'qty', quantity: 'qty', value: 'goods_value', gl_account: 'account', product: 'item',
-  valid_until: 'expires', promised_at: 'deliver_by', at: 'event_time', facility: 'location', size: 'container_type', credit: 'credit_amount',
-  pro: 'tracking', freight_billed: 'freight_charge', received_on: 'received_date', received_at: 'received_date', exception_type: 'exception', exceptions: 'exception',
-  accessorials_ordered: 'accessorials', delivery_appt: 'appointment_at', remit_to: 'payee', payment_ref: 'reference', pay_terms_days: 'payment_terms', effective: 'effective_date',
-  dispatch_phone: 'phone', dispatch_email: 'email', handling_units: 'pieces', on_hand: 'system_qty', recipient_postal: 'dest_postal', recipient_address: 'address',
-  billed_at: 'invoice_date', credited_at: 'credited_date', credit_number: 'credit_note',
+  invoice_number: 'invoice', po_number: 'po', lienholder: 'lender', total: 'amount',
+  qty_received: 'qty', qty_billed: 'qty', on_hand: 'system_qty', payment_ref: 'reference',
+  paid_on: 'paid_date', received_on: 'received_date', gl_account: 'account',
 });
 
 const byField = new Map();
@@ -299,4 +312,4 @@ export function namesFor(concept, lang = null) {
 }
 
 /** Every known column name, normalised: used to tell which text encoding a file was saved in. */
-export const KNOWN_HEADER_WORDS = new Set([...byField.values()].flat().map((x) => normHeader(x.word)).concat(Object.keys(COLUMN_WORDS).map(normHeader)).filter((k) => k && k.length > 1));
+export const KNOWN_HEADER_WORDS = new Set([...byField.values()].flat().map((x) => normHeader(x.word)).concat(Object.keys(COLUMN_WORDS).map(normHeader)).filter((k) => k && (k.length > 1 || /[^\x00-]/.test(k))));

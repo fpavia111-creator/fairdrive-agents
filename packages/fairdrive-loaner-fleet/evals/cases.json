@@ -237,6 +237,50 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "fixtures/intl/de/fleet.csv",
+        "agreements": "fixtures/intl/de/agreements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 6,
+          "result.skipped_retailed": 1,
+          "result.out_now": 2,
+          "result.over_days": 1,
+          "result.over_miles": 1,
+          "result.near_limit": 1,
+          "result.loaner_out_no_ro": 1,
+          "result.agreement_open_long": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "fixtures/intl/ja/fleet.csv",
+        "agreements": "fixtures/intl/ja/agreements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 6,
+          "result.skipped_retailed": 1,
+          "result.out_now": 2,
+          "result.over_days": 1,
+          "result.over_miles": 1,
+          "result.near_limit": 1,
+          "result.loaner_out_no_ro": 1,
+          "result.agreement_open_long": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

@@ -240,6 +240,54 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "deposits_match",
+      "args": {
+        "deposits": "fixtures/intl/de/deposits.csv",
+        "deals": "fixtures/intl/de/deals.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deposits": 9,
+          "result.held": 7,
+          "result.held_amount": 5950,
+          "result.not_applied": 1,
+          "result.not_applied_amount": 1000,
+          "result.held_no_deal": 1,
+          "result.refund_overdue": 1,
+          "result.refund_due": 1,
+          "result.refund_amount": 2300,
+          "result.applied_to_missing_deal": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "deposits_match",
+      "args": {
+        "deposits": "fixtures/intl/ja/deposits.csv",
+        "deals": "fixtures/intl/ja/deals.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deposits": 9,
+          "result.held": 7,
+          "result.held_amount": 5950,
+          "result.not_applied": 1,
+          "result.not_applied_amount": 1000,
+          "result.held_no_deal": 1,
+          "result.refund_overdue": 1,
+          "result.refund_due": 1,
+          "result.refund_amount": 2300,
+          "result.applied_to_missing_deal": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

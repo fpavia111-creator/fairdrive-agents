@@ -1,0 +1,8 @@
+Vorgangsnummer;Kunde;product;Anbieter;contract_number;sale_date;cancel_date;term_months;product_price;product_cost;chargeback;refund_amount;refund_sent;Grund
+D3001;Annika Sorensby;Service Contract;Larkfield Vehicle Protection;SC-77101;15.11.2025;15.05.2026;48;2.400,00;1.200,00;1.200,00;2.100,00;30.05.2026;Trade-in
+D3002;Barnaby Quillfeather;GAP;Lantern GAP Services;GAP-5520;10.01.2026;01.03.2026;60;895,00;295,00;600,00;850,00;20.03.2026;Payoff
+D3003;Celestine Dubrow;Service Contract;Larkfield Vehicle Protection;SC-77140;15.05.2025;15.05.2026;36;3.000,00;1.400,00;1.100,00;1.950,00;;Customer request
+D3004;Desmond Feathering;Maintenance Plan;Larkfield Vehicle Protection;MP-2210;01.02.2026;01.08.2026;24;1.200,00;500,00;350,00;720,00;20.08.2026;Customer request
+D3005;Esperanza Villalobos;Appearance Package;Shine Guard Products;AP-901;15.03.2026;15.09.2026;60;799,00;199,00;900,00;640,00;01.10.2026;Total loss
+D3006;Fitzgerald Amankwah;GAP;Lantern GAP Services;GAP-5588;01.09.2025;01.09.2026;72;995,00;345,00;541,67;800,00;18.09.2026;Payoff
+D3007;Giselle Trautmann;Service Contract;Larkfield Vehicle Protection;SC-77195;01.04.2026;01.10.2026;48;2.600,00;1.300,00;;2.300,00;;Repossession

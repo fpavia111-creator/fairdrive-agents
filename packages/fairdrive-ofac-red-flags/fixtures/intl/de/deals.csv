@@ -1,0 +1,8 @@
+Vorgangsnummer;Kunde;co_buyer;Auslieferungsdatum;deal_type;credit_pulled;Zustand
+D17001;Aurelia Fenwick;;02.10.2026;Retail Finance;yes;Booked
+D17002;Bartram Oyelaran;Cressida Oyelaran;05.10.2026;Retail Finance;yes;Booked
+D17003;Desmond Whitlow;;10.10.2026;Cash;no;Booked
+D17004;Eulalia Prentiss;;14.10.2026;Lease;yes;Booked
+D17005;Fabian Lockridge;;18.10.2026;Retail Finance;yes;Booked
+D17006;Gisela Marchbanks;;22.10.2026;Cash;no;Booked
+D17007;Hartley Voss;;25.10.2026;Retail Finance;yes;Unwound

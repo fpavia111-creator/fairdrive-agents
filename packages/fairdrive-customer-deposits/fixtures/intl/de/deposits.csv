@@ -1,0 +1,10 @@
+receipt_number;Datum;Kunde;Betrag;Vorgangsnummer;Zustand;refunded_date
+R-501;20.10.2026;Alistair Penrose;1.000,00;D15001;Held;
+R-502;25.10.2026;Beatrix Hallorann;500,00;;Held;
+R-503;10.11.2026;Cosimo Varga;750,00;;Held;
+R-504;01.10.2026;Delphine Ashworth;2.000,00;D15004;Held;
+R-505;12.11.2026;Emeric Solberg;300,00;D15005;Held;
+R-506;15.10.2026;Florian Abernathy;1.500,00;D15006;Applied;
+R-507;28.10.2026;Georgina Talbot;400,00;D15099;Held;
+R-508;30.09.2026;Hamish Okonkwo;250,00;;Refunded;05.10.2026
+R-509;01.11.2026;Isadora Leclerc;1.000,00;D15009;Held;

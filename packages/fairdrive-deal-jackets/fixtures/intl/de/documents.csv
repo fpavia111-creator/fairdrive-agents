@@ -1,0 +1,88 @@
+Vorgangsnummer;document;signed;Eingangsdatum
+D1001;Buyer's Order;yes;03.10.2026
+D1001;Odometer Disclosure;yes;03.10.2026
+D1001;Title Application;yes;03.10.2026
+D1001;Privacy Notice;yes;03.10.2026
+D1001;OFAC Check;yes;03.10.2026
+D1001;Red Flags Checklist;yes;03.10.2026
+D1001;Proof of Insurance;yes;03.10.2026
+D1001;Driver's License Copy;yes;03.10.2026
+D1002;Buyer's Order;yes;06.10.2026
+D1002;Odometer Disclosure;yes;06.10.2026
+D1002;Title Application;yes;06.10.2026
+D1002;Privacy Notice;yes;06.10.2026
+D1002;OFAC Check;yes;06.10.2026
+D1002;Red Flags Checklist;yes;06.10.2026
+D1002;Proof of Insurance;yes;06.10.2026
+D1002;Driver's License Copy;yes;06.10.2026
+D1002;Credit Application;yes;06.10.2026
+D1002;Retail Installment Contract;yes;06.10.2026
+D1002;Credit Score Notice;no;06.10.2026
+D1002;Trade Title;yes;06.10.2026
+D1003;Buyer's Order;yes;10.10.2026
+D1003;Odometer Disclosure;yes;10.10.2026
+D1003;Title Application;yes;10.10.2026
+D1003;Privacy Notice;yes;10.10.2026
+D1003;OFAC Check;yes;10.10.2026
+D1003;Red Flags Checklist;yes;10.10.2026
+D1003;Proof of Insurance;yes;10.10.2026
+D1003;Driver's License Copy;yes;10.10.2026
+D1003;Credit Application;yes;10.10.2026
+D1003;Credit Score Notice;yes;10.10.2026
+D1004;Buyer's Order;yes;15.10.2026
+D1004;Odometer Disclosure;yes;15.10.2026
+D1004;Title Application;yes;15.10.2026
+D1004;Privacy Notice;yes;15.10.2026
+D1004;OFAC Check;yes;15.10.2026
+D1004;Red Flags Checklist;yes;15.10.2026
+D1004;Proof of Insurance;yes;15.10.2026
+D1004;Driver's License Copy;yes;15.10.2026
+D1004;Credit Application;yes;15.10.2026
+D1004;Retail Installment Contract;no;15.10.2026
+D1004;Credit Score Notice;yes;15.10.2026
+D1005;Buyer's Order;yes;17.10.2026
+D1005;Odometer Disclosure;yes;17.10.2026
+D1005;Title Application;yes;17.10.2026
+D1005;Privacy Notice;yes;17.10.2026
+D1005;OFAC Check;yes;17.10.2026
+D1005;Red Flags Checklist;yes;17.10.2026
+D1005;Proof of Insurance;yes;17.10.2026
+D1005;Driver's License Copy;yes;17.10.2026
+D1006;Buyer's Order;yes;21.10.2026
+D1006;Odometer Disclosure;yes;21.10.2026
+D1006;Title Application;yes;21.10.2026
+D1006;Privacy Notice;yes;21.10.2026
+D1006;Proof of Insurance;yes;21.10.2026
+D1006;Driver's License Copy;yes;21.10.2026
+D1006;Buyers Guide;yes;21.10.2026
+D1007;Buyer's Order;yes;26.10.2026
+D1007;Odometer Disclosure;yes;26.10.2026
+D1007;Title Application;yes;26.10.2026
+D1007;Privacy Notice;yes;26.10.2026
+D1007;OFAC Check;yes;26.10.2026
+D1007;Red Flags Checklist;yes;26.10.2026
+D1007;Proof of Insurance;yes;26.10.2026
+D1007;Driver's License Copy;yes;26.10.2026
+D1007;Credit Application;yes;26.10.2026
+D1007;Retail Installment Contract;yes;26.10.2026
+D1007;Credit Score Notice;yes;26.10.2026
+D1008;Bill of Sale;yes;30.10.2026
+D1008;Odometer Statement;yes;30.10.2026
+D1008;Title App;yes;30.10.2026
+D1008;GLBA Privacy Notice;yes;30.10.2026
+D1008;OFAC search;yes;30.10.2026
+D1008;ID verification;yes;30.10.2026
+D1008;Insurance card;yes;30.10.2026
+D1008;Driver License copy;yes;30.10.2026
+D1008;As-Is Buyers Guide;yes;30.10.2026
+D1008;Credit App;yes;30.10.2026
+D1008;RISC;yes;30.10.2026
+D1008;Risk-Based Pricing Notice;yes;30.10.2026
+D1009;Buyer's Order;yes;09.11.2026
+D1009;Odometer Disclosure;yes;09.11.2026
+D1009;Title Application;yes;09.11.2026
+D1009;Privacy Notice;yes;09.11.2026
+D1009;OFAC Check;yes;09.11.2026
+D1009;Red Flags Checklist;yes;09.11.2026
+D1009;We Owe form;yes;09.11.2026
+D1099;Buyer's Order;yes;12.11.2026

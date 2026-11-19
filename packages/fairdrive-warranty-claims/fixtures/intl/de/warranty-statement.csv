@@ -1,0 +1,8 @@
+Antragsnummer;Zahlungsdatum;amount_paid;Zustand;Grund
+C7001;15.10.2026;820,00;Paid;
+C7002;19.10.2026;1.210,00;Paid;Labor time adjusted to standard
+C7003;20.10.2026;0,00;Rejected;Labor op not on repair order
+C7004;25.09.2026;0,00;Rejected;Part not returned
+C7007;02.10.2026;1.180,00;Paid;
+C7007;03.11.2026;-1.180,00;Debit;Audit: diagnosis time not supported
+C7099;28.10.2026;300,00;Paid;

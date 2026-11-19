@@ -223,6 +223,50 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "fixtures/intl/de/flags.csv",
+        "clock": "fixtures/intl/de/clock.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.technicians": 3,
+          "result.attendance_hours": 112,
+          "result.flagged_hours": 102.5,
+          "result.actual_hours": 83.5,
+          "result.shop_proficiency_pct": 91.52,
+          "result.flagged_no_time": 1,
+          "result.flag_far_above_time": 1,
+          "result.flags_without_clock": 1,
+          "result.below_floor": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "flatrate_check",
+      "args": {
+        "flags": "fixtures/intl/ja/flags.csv",
+        "clock": "fixtures/intl/ja/clock.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.technicians": 3,
+          "result.attendance_hours": 112,
+          "result.flagged_hours": 102.5,
+          "result.actual_hours": 83.5,
+          "result.shop_proficiency_pct": 91.52,
+          "result.flagged_no_time": 1,
+          "result.flag_far_above_time": 1,
+          "result.flags_without_clock": 1,
+          "result.below_floor": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

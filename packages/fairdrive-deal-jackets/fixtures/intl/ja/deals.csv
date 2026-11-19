@@ -1,0 +1,11 @@
+取引番号,deal_date,納車日,顧客,deal_type,sale_type,在庫番号,trade_vin,fi_manager,ステータス
+D1001,2026/10/02,2026/10/03,Dana Whitfield,Cash,New,N4410,,Avery Lund,Booked
+D1002,2026/10/05,2026/10/06,Marcus Oyelaran,Retail Finance,Used,U2207,7ZZUFBHK7LA997328,Avery Lund,Booked
+D1003,2026/10/09,2026/10/10,Priya Castellanos,Lease,New,N4415,,Sam Ibarra,Booked
+D1004,2026/10/14,2026/10/15,Theo Brandvold,Retail Finance,New,N4419,,Sam Ibarra,Booked
+D1005,2026/10/16,2026/10/17,Imogen Saltwell,Retail Finance,Used,U2214,,Avery Lund,Unwound
+D1006,2026/10/20,2026/10/21,Rafael Quintero,Cash,Used,U2219,,Sam Ibarra,Booked
+D1007,2026/10/25,2026/10/26,Hollis Vantongeren,Retail Finance,New,N4422,,Avery Lund,Booked
+D1008,2026/10/29,2026/10/30,Noor Elgammal,Retail Finance,Used,U2224,,Sam Ibarra,Booked
+D1009,2026/11/08,2026/11/09,Bettina Okafor,Cash,New,N4430,,Avery Lund,Booked
+D1010,2026/11/10,2026/11/11,Cormac Delahunt,Retail Finance,New,N4433,,Sam Ibarra,Booked

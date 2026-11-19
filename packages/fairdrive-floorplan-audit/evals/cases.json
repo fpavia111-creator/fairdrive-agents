@@ -290,6 +290,54 @@
       "expect": {
         "status": "needs_approval"
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "floorplan_audit",
+      "args": {
+        "inventory": "fixtures/intl/de/inventory.csv",
+        "statement": "fixtures/intl/de/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 7,
+          "result.floored_units": 5,
+          "result.statement_lines": 6,
+          "result.statement_balance": 195750,
+          "result.sold_not_paid_off": 1,
+          "result.sold_not_paid_off_amount": 33800,
+          "result.payoff_due": 1,
+          "result.not_in_inventory_amount": 29400,
+          "result.balance_differs": 1,
+          "result.not_floored": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "floorplan_audit",
+      "args": {
+        "inventory": "fixtures/intl/ja/inventory.csv",
+        "statement": "fixtures/intl/ja/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 7,
+          "result.floored_units": 5,
+          "result.statement_lines": 6,
+          "result.statement_balance": 195750,
+          "result.sold_not_paid_off": 1,
+          "result.sold_not_paid_off_amount": 33800,
+          "result.payoff_due": 1,
+          "result.not_in_inventory_amount": 29400,
+          "result.balance_differs": 1,
+          "result.not_floored": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

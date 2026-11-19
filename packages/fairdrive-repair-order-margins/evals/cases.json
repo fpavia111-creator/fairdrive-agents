@@ -216,6 +216,44 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "fixtures/intl/de/closed-ros.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.repair_orders": 7,
+          "result.customer_pay_labor_gp_pct": 61.92,
+          "result.customer_pay_parts_gp_pct": 39.24,
+          "result.labor_below_floor": 2,
+          "result.parts_below_floor": 1,
+          "result.labor_given_away": 1,
+          "result.parts_below_cost": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "fixtures/intl/ja/closed-ros.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.repair_orders": 7,
+          "result.customer_pay_labor_gp_pct": 61.92,
+          "result.customer_pay_parts_gp_pct": 39.24,
+          "result.labor_below_floor": 2,
+          "result.parts_below_floor": 1,
+          "result.labor_given_away": 1,
+          "result.parts_below_cost": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

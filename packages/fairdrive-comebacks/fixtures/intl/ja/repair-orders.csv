@@ -1,0 +1,13 @@
+修理オーダー番号,車台番号,顧客,opened,closed,odometer,整備士,作業コード,concern,labor_type
+80001,7ZZ5R6E05LA192725,Nathaniel Brisco,2026/10/02,,"41,200",Ines Alvarez,BRK01,Front brakes grinding,Customer pay
+80003,7ZZ9U1LW1MA734429,Octavia Lindgren,2026/10/05,,"63,000",Corin Brennan,AC02,AC blowing warm,Customer pay
+80005,7ZZ8CCUK8NA412538,Peregrine Sallow,2026/10/07,,"22,000",Mei Chu,OIL1,Oil change,Customer pay
+80008,7ZZ0TCCU6PA503360,Quinlan Mercer,2026/09/01,,"90,000",Mei Chu,ENG3,Check engine light on,Customer pay
+80010,7ZZ8A87XXRA659009,Rosalind Whitcombe,2026/10/10,,"15,000",Ines Alvarez,ELEC1,Battery dead,Customer pay
+80011,7ZZUSUHH2SA184098,Silas Ondaatje,2026/10/11,,"50,000",Corin Brennan,SUSP,Clunk over bumps,Customer pay
+80012,7ZZ8A87XXRA659009,Rosalind Whitcombe,2026/10/12,,"15,030",Mei Chu,ELEC1,Battery dead again,Warranty
+80015,7ZZ5R6E05LA192725,Nathaniel Brisco,2026/10/20,,"41,890",Mei Chu,BRK01,Brakes grinding again front,Customer pay
+80018,7ZZ9U1LW1MA734429,Octavia Lindgren,2026/10/28,,"63,550",Corin Brennan,DIAG,AC blowing warm air again,Customer pay
+80020,7ZZ8CCUK8NA412538,Peregrine Sallow,2026/10/30,,"22,300",Ines Alvarez,TIRE2,Tire rotation,Customer pay
+80024,7ZZ0TCCU6PA503360,Quinlan Mercer,2026/11/05,,"91,500",Mei Chu,ENG3,Check engine light on,Customer pay
+80026,7ZZUSUHH2SA184098,Silas Ondaatje,2026/11/02,,"52,500",Corin Brennan,SUSP,Clunk over bumps,Customer pay

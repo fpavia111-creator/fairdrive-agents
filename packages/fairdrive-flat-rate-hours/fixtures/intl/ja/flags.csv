@@ -1,0 +1,16 @@
+整備士,修理オーダー番号,日付,labor_type,flag_hours,actual_hours
+Ines Alvarez,R1,2026/11/09,Customer pay,6.0,5.0
+Ines Alvarez,R2,2026/11/10,Customer pay,9.5,7.0
+Ines Alvarez,R3,2026/11/11,Warranty,8.0,6.5
+Ines Alvarez,R4,2026/11/12,Customer pay,10.0,7.5
+Ines Alvarez,R5,2026/11/13,Internal,7.5,6.0
+Corin Brennan,R6,2026/11/09,Customer pay,5.0,6.0
+Corin Brennan,R7,2026/11/10,Warranty,4.0,
+Corin Brennan,R8,2026/11/11,Customer pay,6.0,7.5
+Corin Brennan,R9,2026/11/12,Internal,4.5,6.0
+Corin Brennan,R10,2026/11/13,Customer pay,3.0,2.5
+Mei Chu,R11,2026/11/09,Customer pay,8.0,7.0
+Mei Chu,R12,2026/11/10,Customer pay,7.0,6.5
+Mei Chu,R13,2026/11/11,Warranty,9.0,2.5
+Mei Chu,R14,2026/11/12,Customer pay,8.0,7.0
+Mei Chu,R15,2026/11/13,Internal,7.0,6.5

@@ -274,6 +274,48 @@
       "expect": {
         "status": "needs_approval"
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "payoffs_check",
+      "args": {
+        "trades": "fixtures/intl/de/payoffs.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.trades": 7,
+          "result.not_sent": 2,
+          "result.not_sent_amount": 28833,
+          "result.short_paid": 1,
+          "result.short_amount": 14.7,
+          "result.sent_after_quote_expired": 1,
+          "result.not_cleared": 1,
+          "result.lien_release_missing": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "payoffs_check",
+      "args": {
+        "trades": "fixtures/intl/ja/payoffs.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.trades": 7,
+          "result.not_sent": 2,
+          "result.not_sent_amount": 28833,
+          "result.short_paid": 1,
+          "result.short_amount": 14.7,
+          "result.sent_after_quote_expired": 1,
+          "result.not_cleared": 1,
+          "result.lien_release_missing": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

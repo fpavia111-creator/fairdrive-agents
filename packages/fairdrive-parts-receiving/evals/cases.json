@@ -290,6 +290,52 @@
       "expect": {
         "status": "needs_approval"
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "receiving_match",
+      "args": {
+        "receipts": "fixtures/intl/de/receipts.csv",
+        "invoices": "fixtures/intl/de/invoices.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.lines": 6,
+          "result.billed": 1958,
+          "result.received_value": 1726,
+          "result.overbilled": 962,
+          "result.billed_not_received": 2,
+          "result.received_not_billed": 1,
+          "result.received_not_billed_value": 120,
+          "result.price_above_cost": 1,
+          "result.duplicate_invoice_lines": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "receiving_match",
+      "args": {
+        "receipts": "fixtures/intl/ja/receipts.csv",
+        "invoices": "fixtures/intl/ja/invoices.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.lines": 6,
+          "result.billed": 1958,
+          "result.received_value": 1726,
+          "result.overbilled": 962,
+          "result.billed_not_received": 2,
+          "result.received_not_billed": 1,
+          "result.received_not_billed_value": 120,
+          "result.price_above_cost": 1,
+          "result.duplicate_invoice_lines": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

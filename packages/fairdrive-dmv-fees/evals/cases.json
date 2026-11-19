@@ -241,6 +241,56 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "dmvfees_reconcile",
+      "args": {
+        "deals": "fixtures/intl/de/deals.csv",
+        "charges": "fixtures/intl/de/dmv-charges.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 6,
+          "result.collected": 1957.5,
+          "result.charged": 1340.25,
+          "result.overcollected": 1,
+          "result.overcollected_amount": 50,
+          "result.undercollected": 1,
+          "result.undercollected_amount": 35.75,
+          "result.not_paid_yet": 1,
+          "result.not_paid_amount": 298,
+          "result.charges_without_deal": 1,
+          "result.charges_without_deal_amount": 199
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "dmvfees_reconcile",
+      "args": {
+        "deals": "fixtures/intl/ja/deals.csv",
+        "charges": "fixtures/intl/ja/dmv-charges.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 6,
+          "result.collected": 1957.5,
+          "result.charged": 1340.25,
+          "result.overcollected": 1,
+          "result.overcollected_amount": 50,
+          "result.undercollected": 1,
+          "result.undercollected_amount": 35.75,
+          "result.not_paid_yet": 1,
+          "result.not_paid_amount": 298,
+          "result.charges_without_deal": 1,
+          "result.charges_without_deal_amount": 199
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

@@ -296,6 +296,46 @@
       "expect": {
         "status": "needs_approval"
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "cancellations_check",
+      "args": {
+        "cancellations": "fixtures/intl/de/cancellations.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.cancellations": 7,
+          "result.charged_back": 4691.67,
+          "result.overcharged": 542.09,
+          "result.over_expected": 3,
+          "result.above_profit": 1,
+          "result.refunds_not_sent": 2,
+          "result.cannot_compute": 0
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "cancellations_check",
+      "args": {
+        "cancellations": "fixtures/intl/ja/cancellations.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.cancellations": 7,
+          "result.charged_back": 4691.67,
+          "result.overcharged": 542.09,
+          "result.over_expected": 3,
+          "result.above_profit": 1,
+          "result.refunds_not_sent": 2,
+          "result.cannot_compute": 0
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

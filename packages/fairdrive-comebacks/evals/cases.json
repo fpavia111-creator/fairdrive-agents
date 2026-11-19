@@ -206,6 +206,40 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "comebacks_find",
+      "args": {
+        "repair_orders": "fixtures/intl/de/repair-orders.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.repair_orders": 12,
+          "result.comebacks": 3,
+          "result.comeback_pct": 25,
+          "result.by_technician.0.technician": "Ines Alvarez",
+          "result.by_technician.0.comebacks": 2
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "comebacks_find",
+      "args": {
+        "repair_orders": "fixtures/intl/ja/repair-orders.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.repair_orders": 12,
+          "result.comebacks": 3,
+          "result.comeback_pct": 25,
+          "result.by_technician.0.technician": "Ines Alvarez",
+          "result.by_technician.0.comebacks": 2
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

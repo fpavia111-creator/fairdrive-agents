@@ -225,6 +225,48 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "fixtures/intl/de/deals.csv",
+        "rates": "fixtures/intl/de/county-rates.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 6,
+          "result.tax_charged": 6853.14,
+          "result.tax_expected": 5403.14,
+          "result.overcharged": 2,
+          "result.overcharged_amount": 509.38,
+          "result.undercharged": 1,
+          "result.undercharged_amount": 184.38,
+          "result.no_rate": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "salestax_check",
+      "args": {
+        "deals": "fixtures/intl/ja/deals.csv",
+        "rates": "fixtures/intl/ja/county-rates.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 6,
+          "result.tax_charged": 6853.14,
+          "result.tax_expected": 5403.14,
+          "result.overcharged": 2,
+          "result.overcharged_amount": 509.38,
+          "result.undercharged": 1,
+          "result.undercharged_amount": 184.38,
+          "result.no_rate": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

@@ -1,0 +1,9 @@
+Vorgangsnummer;check_type;person;check_date;result_recorded;performed_by
+D17001;OFAC;Buyer;01.10.2026;yes;Avery Lund
+D17001;Red Flags;Buyer;01.10.2026;yes;Avery Lund
+D17002;OFAC;Buyer;04.10.2026;yes;Sam Ibarra
+D17002;Red Flags Checklist;Buyer;04.10.2026;yes;Sam Ibarra
+D17003;OFAC SDN search;Buyer;12.10.2026;yes;Avery Lund
+D17004;Identity verification;Buyer;13.10.2026;no;Sam Ibarra
+D17005;OFAC;Buyer;17.10.2026;yes;Avery Lund
+D17006;OFAC;Buyer;21.10.2026;yes;Sam Ibarra

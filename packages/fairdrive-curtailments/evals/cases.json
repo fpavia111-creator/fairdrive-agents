@@ -231,6 +231,44 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "curtailments_schedule",
+      "args": {
+        "statement": "fixtures/intl/de/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 7,
+          "result.balance": 185800,
+          "result.overdue_units": 3,
+          "result.overdue_amount": 17100,
+          "result.due_soon_units": 2,
+          "result.due_soon_amount": 4500
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "curtailments_schedule",
+      "args": {
+        "statement": "fixtures/intl/ja/statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 7,
+          "result.balance": 185800,
+          "result.overdue_units": 3,
+          "result.overdue_amount": 17100,
+          "result.due_soon_units": 2,
+          "result.due_soon_amount": 4500
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

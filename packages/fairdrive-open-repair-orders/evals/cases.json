@@ -223,6 +223,48 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "openros_age",
+      "args": {
+        "open_ros": "fixtures/intl/de/open-ros.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.open": 7,
+          "result.amount": 4210,
+          "result.oldest_days": 48,
+          "result.past_promise": 2,
+          "result.waiting_parts": 1,
+          "result.warranty_open_long": 1,
+          "result.internal_open_long": 1,
+          "result.open_long": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "openros_age",
+      "args": {
+        "open_ros": "fixtures/intl/ja/open-ros.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.open": 7,
+          "result.amount": 4210,
+          "result.oldest_days": 48,
+          "result.past_promise": 2,
+          "result.waiting_parts": 1,
+          "result.warranty_open_long": 1,
+          "result.internal_open_long": 1,
+          "result.open_long": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

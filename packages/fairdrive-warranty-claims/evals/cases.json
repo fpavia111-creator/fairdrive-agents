@@ -280,6 +280,60 @@
       "expect": {
         "status": "needs_approval"
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "warranty_check",
+      "args": {
+        "claims": "fixtures/intl/de/claims.csv",
+        "statement": "fixtures/intl/de/warranty-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.claims": 7,
+          "result.claimed": 7735,
+          "result.paid": 2030,
+          "result.outstanding": 5705,
+          "result.unpaid": 2,
+          "result.unpaid_amount": 2710,
+          "result.paid_short": 1,
+          "result.short_amount": 240,
+          "result.rejected": 2,
+          "result.rejected_amount": 1575,
+          "result.rejected_past_deadline": 1,
+          "result.debited": 1,
+          "result.debited_amount": 1180
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "warranty_check",
+      "args": {
+        "claims": "fixtures/intl/ja/claims.csv",
+        "statement": "fixtures/intl/ja/warranty-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.claims": 7,
+          "result.claimed": 7735,
+          "result.paid": 2030,
+          "result.outstanding": 5705,
+          "result.unpaid": 2,
+          "result.unpaid_amount": 2710,
+          "result.paid_short": 1,
+          "result.short_amount": 240,
+          "result.rejected": 2,
+          "result.rejected_amount": 1575,
+          "result.rejected_past_deadline": 1,
+          "result.debited": 1,
+          "result.debited_amount": 1180
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

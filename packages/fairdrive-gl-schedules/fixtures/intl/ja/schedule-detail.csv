@@ -1,0 +1,13 @@
+勘定明細,コントロール番号,摘要,日付,金額
+205,D2002,Contract in transit Harbor,2026/10/20,"31,200.00"
+205,D2010,Contract in transit Harbor,2026/10/27,"19,800.00"
+205,D2004,Contract in transit Bluegate,2026/08/01,"8,200.00"
+220,H-1001,Holdback Q3,2026/09/30,"1,500.00"
+220,H-1002,Dealer cash July,2026/07/15,"2,100.00"
+220,H-1003,Incentive RET-2026-10,2026/10/05,600.00
+220,H-1003,Incentive RET-2026-10 paid,2026/10/20,-600.00
+230,C7005,Warranty claim,2026/09/01,"2,300.00"
+230,C7007,Warranty claim,2026/10/02,"1,180.00"
+230,C7007,Warranty claim paid,2026/11/03,"-1,180.00"
+230,C7099,Warranty payment no claim,2026/10/28,-300.00
+230,C7006,Warranty claim,2026/11/05,410.00

@@ -1,0 +1,8 @@
+修理オーダー番号,opened,サービスアドバイザー,顧客,labor_type,ステータス,promised_date,金額,parts_on_order
+90001,2026/11/13,Lena Moreau,Thaddeus Greaves,Customer pay,In progress,2026/11/14,640.00,no
+90002,2026/11/01,Marco Ilic,Ursula Penhallow,Customer pay,Waiting parts,2026/11/20,450.00,yes
+90003,2026/09/28,Marco Ilic,Valentin Osei,Warranty,Waiting approval,,"1,250.00",no
+90004,2026/10/20,Lena Moreau,,Internal,In progress,,380.00,no
+90005,2026/11/14,Lena Moreau,Winifred Castellan,Customer pay,Diagnosis,2026/11/16,210.00,no
+90006,2026/10/05,Marco Ilic,Xenia Aldridge,Customer pay,Sublet,2026/10/08,980.00,no
+90007,2026/11/10,Lena Moreau,Yusuf Bellamy,Warranty,In progress,,300.00,no

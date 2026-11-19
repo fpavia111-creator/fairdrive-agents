@@ -317,6 +317,52 @@
       "expect": {
         "status": "needs_approval"
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "funding_age_contracts",
+      "args": {
+        "contracts": "fixtures/intl/de/contracts.csv",
+        "lender_statement": "fixtures/intl/de/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.contracts": 10,
+          "result.in_transit": 5,
+          "result.in_transit_amount": 127300,
+          "result.over_alert": 3,
+          "result.oldest_days": 48,
+          "result.returned": 1,
+          "result.funded_not_posted": 1,
+          "result.funded_short": -500,
+          "result.not_on_statement": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "funding_age_contracts",
+      "args": {
+        "contracts": "fixtures/intl/ja/contracts.csv",
+        "lender_statement": "fixtures/intl/ja/lender-statement.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.contracts": 10,
+          "result.in_transit": 5,
+          "result.in_transit_amount": 127300,
+          "result.over_alert": 3,
+          "result.oldest_days": 48,
+          "result.returned": 1,
+          "result.funded_not_posted": 1,
+          "result.funded_short": -500,
+          "result.not_on_statement": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

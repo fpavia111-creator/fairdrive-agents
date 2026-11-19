@@ -225,6 +225,54 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "aging_check",
+      "args": {
+        "inventory": "fixtures/intl/de/used-inventory.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 6,
+          "result.skipped_sold": 1,
+          "result.total_cost": 122300,
+          "result.average_age": 48,
+          "result.over_wholesale_age": 2,
+          "result.over_wholesale_cost": 32300,
+          "result.priced_above_market": 1,
+          "result.priced_well_below_market": 1,
+          "result.price_below_cost": 1,
+          "result.stale_price": 2,
+          "result.no_price": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "aging_check",
+      "args": {
+        "inventory": "fixtures/intl/ja/used-inventory.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 6,
+          "result.skipped_sold": 1,
+          "result.total_cost": 122300,
+          "result.average_age": 48,
+          "result.over_wholesale_age": 2,
+          "result.over_wholesale_cost": 32300,
+          "result.priced_above_market": 1,
+          "result.priced_well_below_market": 1,
+          "result.price_below_cost": 1,
+          "result.stale_price": 2,
+          "result.no_price": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

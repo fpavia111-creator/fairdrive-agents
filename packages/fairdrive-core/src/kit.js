@@ -183,6 +183,8 @@ export function checkAgent(spec) {
   return defineManifest({
     name: spec.name, version: spec.version, description: spec.description, model: MODEL_PIN, caps: { maxSteps: 60, maxSpendUsd: 0 },
     sources: spec.sources, argDocs: {},
+    // Kept for the README and the sales page: what the report says it cannot do.
+    reportLimits: rep.limits || [LIMITS.files, LIMITS.advice],
     prompts: p ? [{ name: p.name, title: p.title, description: p.description, arguments: p.arguments || [], text: p.text }] : [],
     tools, policy: { rules },
   });

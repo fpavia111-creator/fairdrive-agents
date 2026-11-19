@@ -239,6 +239,54 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "estimates_compare",
+      "args": {
+        "estimates": "fixtures/intl/de/estimates.csv",
+        "invoices": "fixtures/intl/de/invoices.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.repairs": 6,
+          "result.estimated": 22320,
+          "result.invoiced": 19600,
+          "result.over_estimate": 1,
+          "result.over_amount": 230,
+          "result.under_estimate": 1,
+          "result.under_amount": 350,
+          "result.no_estimate": 1,
+          "result.not_invoiced": 1,
+          "result.not_invoiced_amount": 3800
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "estimates_compare",
+      "args": {
+        "estimates": "fixtures/intl/ja/estimates.csv",
+        "invoices": "fixtures/intl/ja/invoices.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.repairs": 6,
+          "result.estimated": 22320,
+          "result.invoiced": 19600,
+          "result.over_estimate": 1,
+          "result.over_amount": 230,
+          "result.under_estimate": 1,
+          "result.under_amount": 350,
+          "result.no_estimate": 1,
+          "result.not_invoiced": 1,
+          "result.not_invoiced_amount": 3800
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

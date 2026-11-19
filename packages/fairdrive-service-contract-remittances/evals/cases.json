@@ -240,6 +240,56 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "remittances_check",
+      "args": {
+        "sold": "fixtures/intl/de/contracts-sold.csv",
+        "remittances": "fixtures/intl/de/remittances.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.contracts": 7,
+          "result.dealer_cost": 8075,
+          "result.remitted": 5525,
+          "result.not_remitted_overdue": 1,
+          "result.overdue_amount": 980,
+          "result.due_soon": 1,
+          "result.remitted_short": 1,
+          "result.remitted_over": 0,
+          "result.remitted_twice": 1,
+          "result.remitted_late": 1,
+          "result.remittance_no_sale": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "remittances_check",
+      "args": {
+        "sold": "fixtures/intl/ja/contracts-sold.csv",
+        "remittances": "fixtures/intl/ja/remittances.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.contracts": 7,
+          "result.dealer_cost": 8075,
+          "result.remitted": 5525,
+          "result.not_remitted_overdue": 1,
+          "result.overdue_amount": 980,
+          "result.due_soon": 1,
+          "result.remitted_short": 1,
+          "result.remitted_over": 0,
+          "result.remitted_twice": 1,
+          "result.remitted_late": 1,
+          "result.remittance_no_sale": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

@@ -1,0 +1,8 @@
+請求番号,支払日,amount_paid,ステータス,理由
+C7001,2026/10/15,820.00,Paid,
+C7002,2026/10/19,"1,210.00",Paid,Labor time adjusted to standard
+C7003,2026/10/20,0.00,Rejected,Labor op not on repair order
+C7004,2026/09/25,0.00,Rejected,Part not returned
+C7007,2026/10/02,"1,180.00",Paid,
+C7007,2026/11/03,"-1,180.00",Debit,Audit: diagnosis time not supported
+C7099,2026/10/28,300.00,Paid,

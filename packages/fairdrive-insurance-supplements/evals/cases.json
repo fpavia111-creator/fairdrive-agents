@@ -286,6 +286,50 @@
       "expect": {
         "status": "needs_approval"
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "supplements_track",
+      "args": {
+        "supplements": "fixtures/intl/de/supplements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.supplements": 6,
+          "result.requested": 4100,
+          "result.approved": 1270,
+          "result.pending_amount": 2230,
+          "result.pending_over": 2,
+          "result.approved_short": 1,
+          "result.short_amount": 80,
+          "result.denied": 1,
+          "result.denied_amount": 520
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "supplements_track",
+      "args": {
+        "supplements": "fixtures/intl/ja/supplements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.supplements": 6,
+          "result.requested": 4100,
+          "result.approved": 1270,
+          "result.pending_amount": 2230,
+          "result.pending_over": 2,
+          "result.approved_short": 1,
+          "result.short_amount": 80,
+          "result.denied": 1,
+          "result.denied_amount": 520
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

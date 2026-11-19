@@ -221,6 +221,48 @@
           "result.files": 2
         }
       }
+    },
+    {
+      "id": "intl-de-totals",
+      "tool": "titles_track",
+      "args": {
+        "deals": "fixtures/intl/de/title-log.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 7,
+          "result.needing_action": 4,
+          "result.application_late": 1,
+          "result.application_due_soon": 1,
+          "result.trade_title_missing": 1,
+          "result.temp_tag_expired": 2,
+          "result.temp_tag_expiring": 1,
+          "result.registration_pending": 1
+        }
+      },
+      "note": "German export of the same data (fixtures/intl/de); must match the English case \"totals\"."
+    },
+    {
+      "id": "intl-ja-totals",
+      "tool": "titles_track",
+      "args": {
+        "deals": "fixtures/intl/ja/title-log.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 7,
+          "result.needing_action": 4,
+          "result.application_late": 1,
+          "result.application_due_soon": 1,
+          "result.trade_title_missing": 1,
+          "result.temp_tag_expired": 2,
+          "result.temp_tag_expiring": 1,
+          "result.registration_pending": 1
+        }
+      },
+      "note": "Japanese export of the same data (fixtures/intl/ja); must match the English case \"totals\"."
     }
   ]
 }

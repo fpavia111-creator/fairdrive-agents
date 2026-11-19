@@ -1,0 +1,16 @@
+Mechaniker;Auftragsnummer;Datum;labor_type;flag_hours;actual_hours
+Ines Alvarez;R1;09.11.2026;Customer pay;6,0;5,0
+Ines Alvarez;R2;10.11.2026;Customer pay;9,5;7,0
+Ines Alvarez;R3;11.11.2026;Warranty;8,0;6,5
+Ines Alvarez;R4;12.11.2026;Customer pay;10,0;7,5
+Ines Alvarez;R5;13.11.2026;Internal;7,5;6,0
+Corin Brennan;R6;09.11.2026;Customer pay;5,0;6,0
+Corin Brennan;R7;10.11.2026;Warranty;4,0;
+Corin Brennan;R8;11.11.2026;Customer pay;6,0;7,5
+Corin Brennan;R9;12.11.2026;Internal;4,5;6,0
+Corin Brennan;R10;13.11.2026;Customer pay;3,0;2,5
+Mei Chu;R11;09.11.2026;Customer pay;8,0;7,0
+Mei Chu;R12;10.11.2026;Customer pay;7,0;6,5
+Mei Chu;R13;11.11.2026;Warranty;9,0;2,5
+Mei Chu;R14;12.11.2026;Customer pay;8,0;7,0
+Mei Chu;R15;13.11.2026;Internal;7,0;6,5

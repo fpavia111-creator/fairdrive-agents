@@ -1,0 +1,7 @@
+修理オーダー番号,請求番号,保険会社,supplement_number,submitted_date,amount_requested,ステータス,response_date,amount_approved,顧客
+B1001,CLM-71,Heron Mutual,S01,2026/10/10,950.00,Approved,2026/10/12,950.00,Quintus Arbogast
+B1003,CLM-73,Heron Mutual,S01,2026/10/20,400.00,Partial,2026/10/24,320.00,Sylvester Moncrieff
+B1006,CLM-76,Heron Mutual,S01,2026/11/03,"1,250.00",Pending,,,Valentina Rook
+B1007,CLM-77,Granite Shield Insurance,S01,2026/11/06,680.00,Pending,,,Wolfram Ainsley
+B1008,CLM-78,Granite Shield Insurance,S02,2026/11/13,300.00,Pending,,,Xanthe Merriweather
+B1009,CLM-79,Granite Shield Insurance,S01,2026/10/28,520.00,Denied,2026/11/02,0.00,Yardley Cumberbatch
