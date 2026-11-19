@@ -1,0 +1,7 @@
+deal_number,customer,delivery_date,item,promised_date,estimated_cost,ro_number,completed_date,cost_booked
+D18001,Ambrose Kittering,2026-10-02,Second key fob,2026-10-20,180.00,,,
+D18002,Bellamy Okafor,2026-10-10,Paint touch-up rear bumper,2026-11-30,250.00,93011,,
+D18003,Caspian Wolde,2026-09-15,Floor mats,,120.00,,,
+D18004,Damaris Ellwood,2026-10-20,Tint front windows,2026-11-05,200.00,93020,2026-11-01,
+D18005,Eamon Fairweather,2026-10-25,Full detail,2026-10-31,95.00,93024,2026-10-30,95.00
+D18006,Felicity Ngata,2026-11-12,Wheel locks,2026-11-20,60.00,,,

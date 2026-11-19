@@ -1,0 +1,10 @@
+{"suite":"fairdrive-we-owes","root":"..","data_note":"Fictional we-owe log in ../fixtures, as of 2026-11-15. No model is called.","pii_canaries":["Ambrose Kittering","Caspian Wolde","Damaris Ellwood","Felicity Ngata"],"cases":[
+{"id":"totals","tool":"weowes_check","args":{"we_owes":"fixtures/we-owes.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.we_owes":6,"result.open":4,"result.open_cost":610,"result.past_promise":1,"result.not_scheduled":2,"result.open_long":1,"result.cost_not_booked":1,"result.cost_not_booked_estimate":200}}},
+{"id":"oldest-first","tool":"weowes_check","args":{"we_owes":"fixtures/we-owes.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.items.0.deal_number":"D18003","result.items.0.days_since_delivery":61,"result.items.1.deal_number":"D18001","result.items.2.findings.0":"cost_not_booked"},"length":{"result.items":3}}},
+{"id":"open-by-age","tool":"weowes_check","args":{"we_owes":"fixtures/we-owes.csv","as_of":"2026-11-15"},"expect":{"equals":{"result.open_by_age.0.we_owes":1,"result.open_by_age.1.estimated_cost":430,"result.open_by_age.2.estimated_cost":120}}},
+{"id":"fine-ones-not-listed","tool":"weowes_check","args":{"we_owes":"fixtures/we-owes.csv","as_of":"2026-11-15"},"expect":{"not_contains":["\"D18002\"","\"D18005\"","\"D18006\""]}},
+{"id":"longer-open-window","tool":"weowes_check","args":{"we_owes":"fixtures/we-owes.csv","as_of":"2026-11-15","open_days":90},"expect":{"equals":{"result.open_long":0}}},
+{"id":"later-date","tool":"weowes_check","args":{"we_owes":"fixtures/we-owes.csv","as_of":"2026-12-05"},"expect":{"equals":{"result.past_promise":3,"result.not_scheduled":3}}},
+{"id":"write-report","tool":"weowes_write_report","args":{"we_owes":"fixtures/we-owes.csv","as_of":"2026-11-15"},"expect":{"status":"executed","length":{"result.files":2},"contains":["6 we-owe(s), 4 open (610 estimated cost still owed)"]}},
+{"id":"bad-window-refused","tool":"weowes_check","args":{"we_owes":"fixtures/we-owes.csv","open_days":0},"expect":{"status":"error","contains":["open_days"]}}
+]}
