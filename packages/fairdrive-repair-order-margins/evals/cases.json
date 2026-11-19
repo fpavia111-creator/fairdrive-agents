@@ -1,0 +1,221 @@
+{
+  "suite": "fairdrive-repair-order-margins",
+  "root": "..",
+  "data_note": "Fictional closed repair orders in ../fixtures, November 2026. No model is called.",
+  "pii_canaries": [
+    "Ignatius Pell",
+    "Kasimir Rendell",
+    "Montgomery Hale",
+    "Harriet Dunsmore"
+  ],
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.repair_orders": 7,
+          "result.customer_pay_labor_gp_pct": 61.92,
+          "result.customer_pay_parts_gp_pct": 39.24,
+          "result.labor_below_floor": 2,
+          "result.parts_below_floor": 1,
+          "result.labor_given_away": 1,
+          "result.parts_below_cost": 1
+        }
+      }
+    },
+    {
+      "id": "by-pay-type",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.by_pay_type.0.labor_gp": 1195,
+          "result.by_pay_type.1.parts_gp_pct": 21.05,
+          "result.by_pay_type.2.parts_gp": -20,
+          "result.by_pay_type.2.labor_gp_pct": 52
+        }
+      }
+    },
+    {
+      "id": "by-advisor",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.by_advisor.0.advisor": "Lena Moreau",
+          "result.by_advisor.0.labor_gp_pct": 67.23,
+          "result.by_advisor.1.labor_gp_pct": 44.44,
+          "result.by_advisor.1.parts_gp_pct": 38.1
+        }
+      }
+    },
+    {
+      "id": "flagged-orders",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.ro_number": "70002",
+          "result.items.2.findings.0": "parts_below_cost"
+        },
+        "length": {
+          "result.items": 4
+        },
+        "not_contains": [
+          "\"70001\"",
+          "\"70006\""
+        ]
+      }
+    },
+    {
+      "id": "lower-labor-floor",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv",
+        "labor_floor": 60
+      },
+      "expect": {
+        "equals": {
+          "result.labor_below_floor": 1
+        }
+      }
+    },
+    {
+      "id": "lower-parts-floor",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv",
+        "parts_floor": 20
+      },
+      "expect": {
+        "equals": {
+          "result.parts_below_floor": 0
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "margins_write_report",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "7 repair order(s). Customer-pay labor gross 61.92%, parts 39.24%"
+        ]
+      }
+    },
+    {
+      "id": "floor-out-of-range-refused",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv",
+        "labor_floor": 120
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "labor_floor"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "margins_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-dms-reprice-ro",
+      "tool": "dms_reprice_ro",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-payroll-adjust-advisor-pay",
+      "tool": "payroll_adjust_advisor_pay",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "margins_check",
+      "args": {
+        "repair_orders": "../../../outside/export.csv"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "margins_check",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "repair_orders"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "margins_check",
+      "mode": "review",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.repair_orders": 7,
+          "result.customer_pay_labor_gp_pct": 61.92,
+          "result.customer_pay_parts_gp_pct": 39.24,
+          "result.labor_below_floor": 2,
+          "result.parts_below_floor": 1,
+          "result.labor_given_away": 1,
+          "result.parts_below_cost": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "margins_write_report",
+      "mode": "review",
+      "args": {
+        "repair_orders": "fixtures/closed-ros.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    }
+  ]
+}
