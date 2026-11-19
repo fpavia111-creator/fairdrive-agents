@@ -1,0 +1,10 @@
+{"suite":"fairdrive-policy-adjustments","root":"..","data_note":"Fictional policy adjustments in ../fixtures, October and November 2026. No model is called.","pii_canaries":["Sabine Holloway","Tobias Wrenfield","Ulrike Fontaine","Wilhelm Ostrander"],"cases":[
+{"id":"totals","tool":"policy_check","args":{"adjustments":"fixtures/policy.csv"},"expect":{"equals":{"result.adjustments":6,"result.amount":1265,"result.no_approver":1,"result.self_approved":1,"result.large_adjustment":2,"result.no_reason":1,"result.repeat_vehicle":1}}},
+{"id":"largest-first","tool":"policy_check","args":{"adjustments":"fixtures/policy.csv"},"expect":{"equals":{"result.items.0.ro_number":"92002","result.items.1.ro_number":"92006","result.items.2.findings.0":"repeat_vehicle","result.items.4.ro_number":"92004"},"length":{"result.items":5}}},
+{"id":"by-advisor","tool":"policy_check","args":{"adjustments":"fixtures/policy.csv"},"expect":{"equals":{"result.by_advisor.0.advisor":"Marco Ilic","result.by_advisor.0.amount":780,"result.by_advisor.1.amount":485}}},
+{"id":"clean-adjustment-not-listed","tool":"policy_check","args":{"adjustments":"fixtures/policy.csv"},"expect":{"not_contains":["\"92001\""]}},
+{"id":"higher-review-line","tool":"policy_check","args":{"adjustments":"fixtures/policy.csv","approval_limit":500},"expect":{"equals":{"result.large_adjustment":0}}},
+{"id":"shorter-repeat-window","tool":"policy_check","args":{"adjustments":"fixtures/policy.csv","repeat_days":20},"expect":{"equals":{"result.repeat_vehicle":0}}},
+{"id":"write-report","tool":"policy_write_report","args":{"adjustments":"fixtures/policy.csv"},"expect":{"status":"executed","length":{"result.files":2},"contains":["6 policy adjustment(s) totalling 1265"]}},
+{"id":"bad-repeat-window-refused","tool":"policy_check","args":{"adjustments":"fixtures/policy.csv","repeat_days":0},"expect":{"status":"error","contains":["repeat_days"]}}
+]}

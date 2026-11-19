@@ -1,0 +1,313 @@
+{
+  "suite": "fairdrive-sales-commissions",
+  "root": "..",
+  "data_note": "Fictional salespeople, pay plans, deals and payments in ../fixtures, November 2026. No model is called.",
+  "pii_canaries": [
+    "Marguerite Lysander",
+    "Nikodemus Farrow",
+    "Ophelia Sandoval",
+    "Phineas Grantham"
+  ],
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "commissions_compute",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "paid": "fixtures/commissions-paid.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.deals": 5,
+          "result.salespeople": 3,
+          "result.commission": 1955,
+          "result.paid": 1485,
+          "result.underpaid": 1,
+          "result.underpaid_amount": 110,
+          "result.overpaid": 0,
+          "result.unpaid": 1,
+          "result.unpaid_amount": 360,
+          "result.no_plan": 1,
+          "result.paid_without_deal": 1
+        }
+      }
+    },
+    {
+      "id": "by-salesperson",
+      "tool": "commissions_compute",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "paid": "fixtures/commissions-paid.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.by_salesperson.0.salesperson": "Aiden Royce",
+          "result.by_salesperson.0.units": 1.5,
+          "result.by_salesperson.0.commission": 1055,
+          "result.by_salesperson.0.difference": 0,
+          "result.by_salesperson.1.units": 2.5,
+          "result.by_salesperson.1.difference": -470,
+          "result.by_salesperson.2.commission": null
+        }
+      }
+    },
+    {
+      "id": "mini-and-split",
+      "tool": "commissions_compute",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv"
+      },
+      "expect": {
+        "equals": {
+          "result.lines.1.commission": 395,
+          "result.lines.2.commission": 340,
+          "result.lines.3.commission": 200,
+          "result.paid_checked": false
+        },
+        "length": {
+          "result.items": 1
+        }
+      }
+    },
+    {
+      "id": "findings-named",
+      "tool": "commissions_compute",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "paid": "fixtures/commissions-paid.csv"
+      },
+      "expect": {
+        "contains": [
+          "underpaid",
+          "unpaid",
+          "no_plan",
+          "paid_without_deal",
+          "D14099"
+        ]
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "commissions_write_report",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "paid": "fixtures/commissions-paid.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "5 deal(s), 3 salesperson(s): 1955 commission by the pay plans"
+        ]
+      }
+    },
+    {
+      "id": "draft-sheet",
+      "tool": "commissions_draft_sheet",
+      "mode": "auto",
+      "auto_actions": [
+        "commissions_draft_sheet"
+      ],
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "salesperson": "bianca sol",
+        "period": "November 2026",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.id": "Bianca Sol",
+          "result.amount": 900,
+          "result.deals": 3,
+          "result.open_markers": 1
+        }
+      }
+    },
+    {
+      "id": "sheet-without-plan-marks-it",
+      "tool": "commissions_draft_sheet",
+      "mode": "auto",
+      "auto_actions": [
+        "commissions_draft_sheet"
+      ],
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "salesperson": "Casimir Vale",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.open_markers": 2
+        }
+      }
+    },
+    {
+      "id": "unknown-salesperson",
+      "tool": "commissions_draft_sheet",
+      "mode": "auto",
+      "auto_actions": [
+        "commissions_draft_sheet"
+      ],
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "salesperson": "Nobody Here"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "no deals for"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "commissions_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-payroll-submit",
+      "tool": "payroll_submit",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-dms-change-deal-gross",
+      "tool": "dms_change_deal_gross",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "commissions_compute",
+      "args": {
+        "deals": "../../../outside/export.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "paid": "fixtures/commissions-paid.csv"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "commissions_compute",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "deals"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "commissions_compute",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "paid": "fixtures/commissions-paid.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.deals": 5,
+          "result.salespeople": 3,
+          "result.commission": 1955,
+          "result.paid": 1485,
+          "result.underpaid": 1,
+          "result.underpaid_amount": 110,
+          "result.overpaid": 0,
+          "result.unpaid": 1,
+          "result.unpaid_amount": 360,
+          "result.no_plan": 1,
+          "result.paid_without_deal": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "commissions_write_report",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "paid": "fixtures/commissions-paid.csv"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    },
+    {
+      "id": "policy-draft-asks-first",
+      "tool": "commissions_draft_sheet",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "salesperson": "bianca sol",
+        "period": "November 2026",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    },
+    {
+      "id": "policy-draft-blocked-in-review",
+      "tool": "commissions_draft_sheet",
+      "mode": "review",
+      "args": {
+        "deals": "fixtures/deals.csv",
+        "plans": "fixtures/pay-plans.csv",
+        "salesperson": "bianca sol",
+        "period": "November 2026",
+        "from": "Jordan Reyes"
+      },
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-approval-stays-one-click-in-auto",
+      "tool": "commissions_request_pay",
+      "mode": "auto",
+      "auto_actions": [
+        "commissions_draft_sheet"
+      ],
+      "args": {
+        "draft": "fairdrive-out/commissions/drafts/none.md",
+        "draft_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expect": {
+        "status": "needs_approval"
+      }
+    }
+  ]
+}
