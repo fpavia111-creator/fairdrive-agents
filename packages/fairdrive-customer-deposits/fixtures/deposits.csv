@@ -1,0 +1,10 @@
+receipt_number,date,customer,amount,deal_number,status,refunded_date
+R-501,2026-10-20,Alistair Penrose,1000.00,D15001,Held,
+R-502,2026-10-25,Beatrix Hallorann,500.00,,Held,
+R-503,2026-11-10,Cosimo Varga,750.00,,Held,
+R-504,2026-10-01,Delphine Ashworth,2000.00,D15004,Held,
+R-505,2026-11-12,Emeric Solberg,300.00,D15005,Held,
+R-506,2026-10-15,Florian Abernathy,1500.00,D15006,Applied,
+R-507,2026-10-28,Georgina Talbot,400.00,D15099,Held,
+R-508,2026-09-30,Hamish Okonkwo,250.00,,Refunded,2026-10-05
+R-509,2026-11-01,Isadora Leclerc,1000.00,D15009,Held,
