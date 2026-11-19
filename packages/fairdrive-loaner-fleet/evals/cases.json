@@ -1,0 +1,242 @@
+{
+  "suite": "fairdrive-loaner-fleet",
+  "root": "..",
+  "data_note": "Fictional loaners, demos and agreements in ../fixtures, as of 2026-11-15, default limits. No model is called.",
+  "pii_canaries": [
+    "Galen Ashcroft",
+    "Honora Blackwood",
+    "Ignatius Fairbairn"
+  ],
+  "cases": [
+    {
+      "id": "totals",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "agreements": "fixtures/agreements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.units": 6,
+          "result.skipped_retailed": 1,
+          "result.out_now": 2,
+          "result.over_days": 1,
+          "result.over_miles": 1,
+          "result.near_limit": 1,
+          "result.loaner_out_no_ro": 1,
+          "result.agreement_open_long": 1
+        }
+      }
+    },
+    {
+      "id": "longest-first",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "agreements": "fixtures/agreements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.items.0.stock_number": "L2",
+          "result.items.0.days_in_service": 228,
+          "result.items.1.stock_number": "L1",
+          "result.items.2.miles_in_service": 7385,
+          "result.items.4.stock_number": "L6"
+        },
+        "length": {
+          "result.items": 5
+        }
+      }
+    },
+    {
+      "id": "without-agreements",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "equals": {
+          "result.out_now": 0,
+          "result.loaner_out_no_ro": 0
+        },
+        "length": {
+          "result.items": 3
+        }
+      }
+    },
+    {
+      "id": "fine-and-retailed-not-listed",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "agreements": "fixtures/agreements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "not_contains": [
+          "\"L4\"",
+          "\"L7\""
+        ]
+      }
+    },
+    {
+      "id": "program-limits",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "agreements": "fixtures/agreements.csv",
+        "as_of": "2026-11-15",
+        "max_days": 240,
+        "max_miles": 8000
+      },
+      "expect": {
+        "equals": {
+          "result.over_days": 0,
+          "result.over_miles": 0,
+          "result.near_limit": 2
+        }
+      }
+    },
+    {
+      "id": "longer-open-window",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "agreements": "fixtures/agreements.csv",
+        "as_of": "2026-11-15",
+        "open_days": 30
+      },
+      "expect": {
+        "equals": {
+          "result.agreement_open_long": 0
+        }
+      }
+    },
+    {
+      "id": "write-report",
+      "tool": "loaners_write_report",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "agreements": "fixtures/agreements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        },
+        "contains": [
+          "6 loaner and demo unit(s), 2 out now"
+        ]
+      }
+    },
+    {
+      "id": "bad-limit-refused",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "max_days": 0
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "max_days"
+        ]
+      }
+    },
+    {
+      "id": "policy-invented-tool-refused",
+      "tool": "loaners_pay_and_post_everything_now",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-dms-retail-unit",
+      "tool": "dms_retail_unit",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-refuses-oem-portal-defleet",
+      "tool": "oem_portal_defleet",
+      "mode": "auto",
+      "args": {},
+      "expect": {
+        "status": "blocked"
+      }
+    },
+    {
+      "id": "policy-file-outside-root-refused",
+      "tool": "loaners_check",
+      "args": {
+        "fleet": "../../../outside/export.csv",
+        "agreements": "fixtures/agreements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "error",
+        "contains": [
+          "outside"
+        ]
+      }
+    },
+    {
+      "id": "policy-missing-argument-named",
+      "tool": "loaners_check",
+      "args": {},
+      "expect": {
+        "status": "error",
+        "contains": [
+          "fleet"
+        ]
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reads",
+      "tool": "loaners_check",
+      "mode": "review",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "agreements": "fixtures/agreements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "equals": {
+          "result.units": 6,
+          "result.skipped_retailed": 1,
+          "result.out_now": 2,
+          "result.over_days": 1,
+          "result.over_miles": 1,
+          "result.near_limit": 1,
+          "result.loaner_out_no_ro": 1,
+          "result.agreement_open_long": 1
+        }
+      }
+    },
+    {
+      "id": "policy-review-mode-still-reports",
+      "tool": "loaners_write_report",
+      "mode": "review",
+      "args": {
+        "fleet": "fixtures/fleet.csv",
+        "agreements": "fixtures/agreements.csv",
+        "as_of": "2026-11-15"
+      },
+      "expect": {
+        "status": "executed",
+        "length": {
+          "result.files": 2
+        }
+      }
+    }
+  ]
+}
