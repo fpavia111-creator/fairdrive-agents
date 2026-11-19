@@ -208,7 +208,7 @@ export class AgentRuntime {
   context(args = {}, toolName = null, seen = [], call = {}) {
     const root = this.root;
     const configSchemas = this.manifest.configSchemas || {};
-    const applied = call.applied || []; const memWarnings = call.memWarnings || []; const pii = call.pii || null;
+    const applied = call.applied || []; const memWarnings = call.memWarnings || []; const pii = call.pii || null; const usedArgs = new Set();
     let config; let memState;
     return {
       root,
@@ -242,6 +242,9 @@ export class AgentRuntime {
       // records(path, { raw: true }) skips column mapping.
       records: (p, opt) => {
         if (config === undefined) config = loadSourceOverrides(root);
+        // The same file given for two arguments is read once per argument, in order, each with
+        // its own column layout (not twice with the first argument's).
+        if (!opt) { const byArg = kindsByArg(this.manifest, toolName); const k = Object.keys(args || {}).find((a) => byArg.has(a) && args[a] === p && !usedArgs.has(a)); if (k) { usedArgs.add(k); opt = { kind: byArg.get(k), arg: k }; } }
         const r = this.#readSource(p, opt, args, toolName, config, pii);
         if (r.report && (r.report.adapted || r.report.warnings.length) && !seen.some((x) => x.file === r.report.file && x.kind === r.report.kind)) seen.push(r.report);
         return r.rows;
