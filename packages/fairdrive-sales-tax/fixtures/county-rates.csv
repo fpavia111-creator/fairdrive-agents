@@ -1,0 +1,4 @@
+state,county,rate_pct,trade_credit,doc_fee_taxable,max_tax
+TX,Harrow,6.25,yes,yes,
+TX,Bellmead,6.25,yes,no,
+TX,Kessler,6.25,no,yes,1500.00

@@ -1,0 +1,7 @@
+deal_number,customer,delivery_date,state,county,sale_price,trade_allowance,doc_fee,tax_charged
+D13001,Gwendolyn Ashcombe,2026-10-02,TX,Harrow,30000.00,10000.00,150.00,1259.38
+D13002,Horatio Velasquez,2026-10-06,TX,Bellmead,25000.00,5000.00,150.00,1259.38
+D13003,Imelda Kowalczyk,2026-10-09,TX,Kessler,40000.00,8000.00,150.00,2000.00
+D13004,Jerome Achterberg,2026-10-14,TX,Harrow,22000.00,0.00,150.00,1200.00
+D13005,Katrina Oyelowo,2026-10-20,TX,Dunmore,18000.00,0.00,150.00,1125.00
+D13006,Lorcan Petrakis,2026-10-27,TX,Harrow,15000.00,15000.00,150.00,9.38
