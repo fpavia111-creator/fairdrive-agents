@@ -33,3 +33,5 @@ export { round2, num, sum, str, pct, isoDate, daysBetween, hoursBetween, addDays
 export { PiiMasker, PII_MODES, PII_KEY_FILE, piiKindOf, loadPiiKey } from './pii.js';
 export { REPORT_TEXT, reportText } from './report-text.js';
 export { MODEL_PIN, OPEN_MARKER, filesHash, appendRow, htmlTable, writeWorklist, refusedTools, draftPair, LIMITS, checkAgent, flatRows } from './kit.js';
+export { stateSeal, envSeal, generateStateKey, parseStateKey, convertStateFile, StateKeyError, STATE_KINDS } from './state.js';
+export { FAMILY_PROFILE } from './engine.js';

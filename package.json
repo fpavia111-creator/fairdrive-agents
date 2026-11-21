@@ -4,6 +4,7 @@
   "description": "Fairdrive: agents for franchise and independent auto dealers, repair shops and body shops (31 agents) that read the files a DMS, shop system, estimating system, floorplan lender or manufacturer already exports.",
   "license": "MIT",
   "workspaces": [
+    "vendor/fair-agent-core",
     "packages/fairdrive-core",
     "packages/*"
   ],
