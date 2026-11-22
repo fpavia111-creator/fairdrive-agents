@@ -40,7 +40,7 @@
     "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
     "directory": "packages/fairdrive-used-vehicle-aging"
   },
-  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-used-vehicle-aging#readme",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/master/packages/fairdrive-used-vehicle-aging#readme",
   "bugs": {
     "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
   },

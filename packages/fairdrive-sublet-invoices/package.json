@@ -40,7 +40,7 @@
     "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
     "directory": "packages/fairdrive-sublet-invoices"
   },
-  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-sublet-invoices#readme",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/master/packages/fairdrive-sublet-invoices#readme",
   "bugs": {
     "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
   },

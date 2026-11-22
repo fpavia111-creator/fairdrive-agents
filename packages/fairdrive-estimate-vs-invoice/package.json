@@ -40,7 +40,7 @@
     "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
     "directory": "packages/fairdrive-estimate-vs-invoice"
   },
-  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-estimate-vs-invoice#readme",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/master/packages/fairdrive-estimate-vs-invoice#readme",
   "bugs": {
     "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
   },

@@ -40,7 +40,7 @@
     "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
     "directory": "packages/fairdrive-parts-receiving"
   },
-  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-parts-receiving#readme",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/master/packages/fairdrive-parts-receiving#readme",
   "bugs": {
     "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
   },

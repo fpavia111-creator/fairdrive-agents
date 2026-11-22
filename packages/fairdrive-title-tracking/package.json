@@ -40,7 +40,7 @@
     "url": "git+https://github.com/fpavia111-creator/fairdrive-agents.git",
     "directory": "packages/fairdrive-title-tracking"
   },
-  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/main/packages/fairdrive-title-tracking#readme",
+  "homepage": "https://github.com/fpavia111-creator/fairdrive-agents/tree/master/packages/fairdrive-title-tracking#readme",
   "bugs": {
     "url": "https://github.com/fpavia111-creator/fairdrive-agents/issues"
   },
